@@ -7,7 +7,7 @@
 set nocompatible "do not use vi compatible mode
 set background=dark
 let &t_Co=256
-color desert
+color bsmith
 set helplang=en
 set backspace=indent,eol,start
 set visualbell
