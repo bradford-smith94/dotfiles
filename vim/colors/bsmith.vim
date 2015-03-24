@@ -19,18 +19,23 @@ let g:colors_name = "bsmith"
 "Clear the colors for any items that you don't like
 hi clear Comment
 hi clear String
+hi clear Character "todo
+hi clear Boolean "todo
+hi clear Number "todo
 hi clear Keyword
 hi clear Conditional
 hi clear Statement
 hi clear Error
 hi clear Operator
 hi clear PreProc
+hi clear Type
 
 "Set up your new & improved colors
 hi Comment ctermfg=darkcyan
 hi String ctermfg=darkgreen
-hi Keyword ctermfg=yellow
-hi Conditional cterm=bold ctermfg=yellow
-hi Statement cterm=bold ctermfg=red
+hi Keyword ctermfg=172
+hi Conditional cterm=bold ctermfg=172
+hi Statement ctermfg=red
 hi Error ctermbg=red
 hi PreProc cterm=bold ctermfg=161
+hi Type cterm=bold ctermfg=green
