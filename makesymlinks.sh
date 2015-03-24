@@ -13,7 +13,7 @@ dir=~/.dotfiles
 olddir=~/.dotfiles_old
 
 # list of files/folders to symlink in homedir
-files="vimrc vim"
+files="bash_aliases vimrc vim"
 
 ##########
 
