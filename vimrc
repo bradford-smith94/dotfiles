@@ -1,12 +1,12 @@
 "Bradford Smith
 ".vimrc
-"updated: 3/20/15
+"updated: 3/26/15
 """"""""""""""""""
 
 "---basic stuff
 set nocompatible "do not use vi compatible mode
 set background=dark
-let &t_Co=256
+let &t_Co=256 "enable full 256 color support
 color bsmith
 set helplang=en
 set backspace=indent,eol,start
@@ -44,15 +44,15 @@ endif
 syntax on
 set number
 set ruler
-set showcmd
+set showcmd "show hanging command while typing
 set wildmenu
 set wildmode=longest:full,full
 set laststatus=2 "always show statusline
 "let g:airline#extensions#tabline#enabled = 1
 
 "make splits feel more correct
-set splitbelow
-set splitright
+set splitbelow "instead of above
+set splitright "instead of left
 
 "highlight the line the cursor is on
 set cursorline
@@ -79,7 +79,7 @@ set autoindent
 set shiftwidth=4
 set noexpandtab "don't use softabs (:set expandtab)
 set softtabstop=4 "softtabs (tab key types spaces)
-set nowrap
+set nowrap "don't wrap text
 
 autocmd BufWritePre * :%s/\s\+$//e "trim trailing whitespaces before saving
 
@@ -94,5 +94,7 @@ map <F8> <Esc>:setlocal spell spelllang=en_us<CR>
 map <F9> <Esc>:setlocal nospell<CR>
 "[F5] saves and compiles using Makefile
 map <F5> <Esc>:w<CR>:make<CR>
-"[F2] greps current project directory for word under cursor (results in buffer)
-map <F2> :execute " grep -srnw --binary-files=without-match --exclude-dir=.git . -e " . expand("<cword>") . " " <bar> cwindow<CR><CR><CR>
+"[F2] toggles NERDTree
+map <F2> <Esc>:NERDTreeToggle<CR>
+"[F3] greps current project directory for word under cursor (results in buffer)
+map <F3> :execute " grep -srnw --binary-files=without-match --exclude-dir=.git . -e " . expand("<cword>") . " " <bar> cwindow<CR><CR><CR>
