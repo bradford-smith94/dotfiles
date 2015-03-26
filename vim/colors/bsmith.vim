@@ -32,6 +32,7 @@ hi clear PreCondit
 hi clear PreProc
 hi clear Type
 hi clear SpecialKey
+hi clear CursorLineNR
 
 "Set up your new & improved colors
 hi Comment ctermfg=darkcyan
@@ -48,3 +49,4 @@ hi PreCondit cterm=bold ctermfg=darkcyan
 hi PreProc cterm=bold ctermfg=161
 hi Type cterm=bold ctermfg=green
 hi SpecialKey ctermfg=lightgreen
+hi CursorLineNR cterm=bold ctermfg=208
