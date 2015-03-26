@@ -10,11 +10,14 @@ let &t_Co=256 "enable full 256 color support
 color bsmith
 set helplang=en
 set backspace=indent,eol,start
-set visualbell
+set noerrorbells
+set viminfo="none"
+set ttyfast
+set nohidden "close buffers when I close tabs
 
 "---setup vundle to manage plugins
 "automatically install vundle if not present
-"...see github.com/timss/vimconf
+"credit: github.com/timss/vimconf
 let has_vundle=1
 if !filereadable($HOME."/.vim/bundle/Vundle.vim/README.md")
 	echo "Installing Vundle..."
@@ -59,8 +62,10 @@ set cursorline
 hi CursorLine term=bold cterm=bold
 hi CursorLineNR term=bold cterm=bold
 
+"searching
 set incsearch
-set ignorecase
+set ignorecase "case insensitive search
+set smartcase "unless I searched for capitalized letters
 set hlsearch "highlight all matches (:nohlsearch or :noh to stop)
 
 "highlight matching brackets
@@ -83,10 +88,9 @@ set nowrap "don't wrap text
 
 autocmd BufWritePre * :%s/\s\+$//e "trim trailing whitespaces before saving
 
-"---enable folding of code blocks([z][a] and [z][R] and [z][M])
-"---don't start folded
-setlocal foldmethod=syntax
-setlocal nofoldenable
+"enable folding of code blocks([z][a] and [z][R] and [z][M])
+set foldmethod=syntax
+set nofoldenable "do not start folded
 
 "---my mappings
 "[F8] enables spell-check, [F9] disables
