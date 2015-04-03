@@ -1,19 +1,19 @@
 "Bradford Smith
 ".vimrc
-"updated: 3/26/15
+"updated: 4/2/15
 """"""""""""""""""
 
 "---basic stuff
-set nocompatible "do not use vi compatible mode
+set nocompatible "do not use vi compatible mode, we're better than that
 set background=dark
-let &t_Co=256 "enable full 256 color support
-color bsmith
+let &t_Co=256 "enable full 256 color support (colorschemes like this)
+color bsmith "custom colorscheme
 set helplang=en
 set backspace=indent,eol,start
 set noerrorbells
+set visualbell
 set viminfo="none"
 set ttyfast
-set nohidden "close buffers when I close tabs
 
 "---setup vundle to manage plugins
 "automatically install vundle if not present
@@ -30,14 +30,14 @@ endif
 filetype off
 set rtp+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin()
-"plugins '<github_user>/<repo>'
+"plugins '<github_user>/<repo>' or full git path
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 call vundle#end()
-"quit when installing for the first time
+"quit after installing for the first time
 if has_vundle == 0
 	:silent! PluginInstall
 	:qa
@@ -45,7 +45,10 @@ endif
 
 "---visual stuff
 syntax on
-set number
+set number "line numbers
+set relativenumber "and relative numbers (current line is exact)
+autocmd InsertEnter * :set norelativenumber "don't need relatives in insert
+autocmd InsertLeave * :set relativenumber "back on for everything else
 set ruler
 set showcmd "show hanging command while typing
 set wildmenu
@@ -72,9 +75,14 @@ set hlsearch "highlight all matches (:nohlsearch or :noh to stop)
 set showmatch
 hi MatchParen cterm=none term=none ctermbg=none ctermfg=red
 
-"---ignore accidental capitalization
+"---ignore accidental capitalizations
+:command WQA wqa
+:command WQa wqa
+:command Wqa wqa
 :command WQ wq
 :command Wq wq
+:command WA wa
+:command Wa wa
 :command W w
 :command Q q
 
@@ -82,7 +90,7 @@ hi MatchParen cterm=none term=none ctermbg=none ctermfg=red
 set tabstop=4
 set autoindent
 set shiftwidth=4
-set noexpandtab "don't use softabs (:set expandtab)
+set noexpandtab "don't use softabs by default (:set expandtab)
 set softtabstop=4 "softtabs (tab key types spaces)
 set nowrap "don't wrap text
 
@@ -96,9 +104,12 @@ set nofoldenable "do not start folded
 "[F8] enables spell-check, [F9] disables
 map <F8> <Esc>:setlocal spell spelllang=en_us<CR>
 map <F9> <Esc>:setlocal nospell<CR>
+
 "[F5] saves and compiles using Makefile
 map <F5> <Esc>:w<CR>:make<CR>
+
 "[F2] toggles NERDTree
 map <F2> <Esc>:NERDTreeToggle<CR>
+
 "[F3] greps current project directory for word under cursor (results in buffer)
 map <F3> :execute " grep -srnw --binary-files=without-match --exclude-dir=.git . -e " . expand("<cword>") . " " <bar> cwindow<CR><CR><CR>
