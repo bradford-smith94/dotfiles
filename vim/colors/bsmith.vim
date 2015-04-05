@@ -1,7 +1,7 @@
 " Vim color file
 " Author: Bradford Smith
 " <bradford.smith94@gmail.com>
-" Date: 3/24/15
+" Date: 4/2/15
 "=============================
 
 "these lines are suggested to be at the top of every colorscheme
