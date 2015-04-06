@@ -1,13 +1,14 @@
-#
-# ~/.bashrc
-#
+#Bradford Smith
+#.bashrc
+#updated: 4/6/2015
+#################
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 # Source global definitions
 if [ -f /etc/bash.bashrc ]; then
-        . /etc/bash.bashrc
+	. /etc/bash.bashrc
 fi
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -33,11 +34,15 @@ shopt -s checkwinsize
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+	. ~/.bash_aliases
 fi
 
+# Prompt.
+# user@host: dir$
+#   | user - green        | @host - bright green  | dir - blue           | $ - green           |
 PS1='\[\e[0;32m\]\u\[\e[m\]\[\e[1;32m\]@\h:\[\e[m\] \[\e[1;34m\]\w\[\e[m\]\[\e[0;32m\]\$\[\e[m\] '
 
+# use vim as the default editor
 if [ -f /usr/bin/vim ]; then
 	export EDITOR=/usr/bin/vim
 fi
@@ -47,5 +52,8 @@ PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 #if not in SSH
 if [ "x${SSH_TTY}" = "x" ]; then
-	screenfetch
+#   and screenfetch is installed
+	if [ -f /usr/bin/screenfetch ]; then
+		screenfetch
+	fi
 fi
