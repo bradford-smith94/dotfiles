@@ -1,0 +1,20 @@
+#Bradford Smith
+#.gitconfig (global git settings)
+#updated: 4/6/2015
+#################################
+
+[user]
+	name = Bradford Smith
+	#set user.email in per repository config files
+[merge]
+	tool = meld
+[core]
+	editor = vim
+[commit] #commits start with prefilled text provided in:
+	template = /home/bradford/.gitmessage
+[color]
+	ui = auto
+	branch = true
+	diff = true
+	interactive = true
+	status = true
