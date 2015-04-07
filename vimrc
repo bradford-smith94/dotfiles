@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 4/2/15
+"updated: 4/6/15
 """"""""""""""""""
 
 "---basic stuff
@@ -14,6 +14,7 @@ set noerrorbells
 set visualbell
 set viminfo="none"
 set ttyfast
+set nomodeline "disable modelines
 
 "---setup vundle to manage plugins
 "automatically install vundle if not present
