@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 4/6/15
+"updated: 4/8/15
 """"""""""""""""""
 
 "---basic stuff
@@ -54,6 +54,7 @@ set ruler
 set showcmd "show hanging command while typing
 set wildmenu
 set wildmode=longest:full,full
+set wildignore+=*.a,*.o,*~,*.swp,*.tmp,.git "ignore binaries, swaps and git
 set laststatus=2 "always show statusline
 "let g:airline#extensions#tabline#enabled = 1
 
