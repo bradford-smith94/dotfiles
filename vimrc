@@ -35,6 +35,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
+Plugin 'tacahiroy/ctrlp-funky' "adds function searching to ctrlp (:CtrlPFunky)
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 call vundle#end()
