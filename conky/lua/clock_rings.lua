@@ -113,7 +113,49 @@ settings_table = {
         fg_alpha=0.8,
         x=50, y=250,
         radius=25,
-        thickness=5,
+        thickness=4,
+        start_angle=-90,
+        end_angle=180
+    },
+	{
+        name='cpu',
+        arg='cpu1',
+        max=100,
+        bg_color=0x000000,
+        bg_alpha=0.3,
+        fg_color=0x1793D0,
+        fg_alpha=0.8,
+        x=50, y=250,
+        radius=20,
+        thickness=4,
+        start_angle=-90,
+        end_angle=180
+    },
+	{
+        name='cpu',
+        arg='cpu2',
+        max=100,
+        bg_color=0x000000,
+        bg_alpha=0.3,
+        fg_color=0x1793D0,
+        fg_alpha=0.8,
+        x=50, y=250,
+        radius=15,
+        thickness=4,
+        start_angle=-90,
+        end_angle=180
+    },
+	{
+        name='cpu',
+        arg='cpu3',
+        max=100,
+        bg_color=0x000000,
+        bg_alpha=0.3,
+        fg_color=0x1793D0,
+        fg_alpha=0.8,
+        x=50, y=250,
+        radius=10,
+        thickness=4,
         start_angle=-90,
         end_angle=180
     },
@@ -155,11 +197,39 @@ settings_table = {
         fg_alpha=0.8,
         x=100, y=350,
         radius=25,
-        thickness=5,
+        thickness=4,
         start_angle=-90,
         end_angle=180
     },
-        {
+	{
+        name='fs_used_perc',
+        arg='/home',
+        max=100,
+        bg_color=0x000000,
+        bg_alpha=0.3,
+        fg_color=0x1793D0,
+        fg_alpha=0.8,
+        x=100, y=350,
+        radius=20,
+        thickness=4,
+        start_angle=-90,
+        end_angle=180
+    },
+	{
+        name='fs_used_perc',
+        arg='/boot',
+        max=100,
+        bg_color=0x000000,
+        bg_alpha=0.3,
+        fg_color=0x1793D0,
+        fg_alpha=0.8,
+        x=100, y=350,
+        radius=15,
+        thickness=4,
+        start_angle=-90,
+        end_angle=180
+    },
+    {
         name='downspeedf',
         arg='wlo1',
         max=100,
@@ -173,7 +243,7 @@ settings_table = {
         start_angle=-90,
         end_angle=180
     },
-        {
+    {
         name='upspeedf',
         arg='wlo1',
         max=100,
