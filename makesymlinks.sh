@@ -20,7 +20,7 @@ olddir=$HOME/.dotfiles_old
 oldconfig=$HOME/.config_old
 
 # list of files/folders to symlink in homedir
-files="bashrc bash_aliases vimrc vim gitconfig gitmessage conkyrc"
+files="bashrc bash_aliases vimrc vim gitconfig gitmessage conkyrc conky"
 config_files="redshift.conf"
 
 ##########
