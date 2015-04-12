@@ -1,6 +1,6 @@
 # Bradford Smith
 # .conkyrc
-# updated: 4/9/2015
+# updated: 4/12/2015
 ####################
 
 ##Basic Conky Settings##
@@ -32,7 +32,7 @@ gap_y 60
 default_outline_color white
 default_shade_color white
 draw_borders no
-draw_graph_borders yes
+draw_graph_borders no
 draw_outline no
 draw_shades no
 out_to_console no
@@ -63,6 +63,7 @@ ${font DejaVu Sans Mono:size=20}${alignr}${time %a %b %d %Y}
 $hr
 ${font DejaVu Sans Mono:size=12}$nodename - $sysname $kernel on $machine
 ${color1}Uptime:$color $uptime
+$hr
 ${alignc}${color1}Frequency (in MHz):$color $freq
 ${alignc}${color1}Frequency (in GHz):$color $freq_g
 ${color1}        CPU Usage:$color $cpu%
@@ -72,6 +73,7 @@ ${color1}            File systems:
               / $color${fs_used_perc /}% Filled
 ${color1}              /home $color${fs_used_perc /home}% Filled
 ${color1}              /boot $color${fs_used_perc /boot}% Filled
-${alignc}${color1}Networking:
-${alignc}     Down:$color ${downspeed wlo1}
-${alignc}${color1}  Up:$color ${upspeed wlo1}
+${color1}Networking: ${color}wlo1: ${wireless_essid wlo1}
+${color1}Down:$color ${downspeed wlo1}${alignc}${color1}Up:$color ${upspeed wlo1}
+${downspeedgraph wlo1 25,100 dddddd 1793d0 0}${alignc}${upspeedgraph wlo1 25,100 dddddd ff3300 0}
+$hr

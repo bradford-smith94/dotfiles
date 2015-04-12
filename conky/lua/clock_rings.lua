@@ -75,34 +75,6 @@ settings_table = {
         start_angle=0,
         end_angle=360
     },
---[[    {
-        name='time',
-        arg='%d', --Day
-        max=31,
-        bg_color=0xffffff,
-        bg_alpha=0.1,
-        fg_color=0x1793D0,
-        fg_alpha=0.8,
-        x=60, y=60,
-        radius=70,
-        thickness=5,
-        start_angle=-90,
-        end_angle=90
-    },
-    {
-        name='time',
-        arg='%m', --Month
-        max=12,
-        bg_color=0xffffff,
-        bg_alpha=0.1,
-        fg_color=0x1793D0,
-        fg_alpha=1,
-        x=60, y=60,
-        radius=76,
-        thickness=5,
-        start_angle=-90,
-        end_angle=90
-    },]]
     {
         name='cpu',
         arg='cpu0',
@@ -225,34 +197,6 @@ settings_table = {
         fg_alpha=0.8,
         x=100, y=350,
         radius=15,
-        thickness=4,
-        start_angle=-90,
-        end_angle=180
-    },
-    {
-        name='downspeedf',
-        arg='wlo1',
-        max=100,
-        bg_color=0x000000,
-        bg_alpha=0.3,
-        fg_color=0x1793D0,
-        fg_alpha=0.8,
-        x=125, y=400,
-        radius=25,
-        thickness=4,
-        start_angle=-90,
-        end_angle=180
-    },
-    {
-        name='upspeedf',
-        arg='wlo1',
-        max=100,
-        bg_color=0x000000,
-        bg_alpha=0.3,
-        fg_color=0xff3300,
-        fg_alpha=0.8,
-        x=125, y=400,
-        radius=20,
         thickness=4,
         start_angle=-90,
         end_angle=180
