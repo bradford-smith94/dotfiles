@@ -1,6 +1,5 @@
 #!/bin/bash
 ############################
-# .make.sh
 # This script creates symlinks from the home directory to any desired dotfiles
 #   in ~/dotfiles
 # Credit: github.com/michaeljsmalley/dotfiles/makesymlinks.sh
@@ -11,6 +10,7 @@
 ############################
 
 ########## Variables
+
 # dotfiles directory
 dir=$HOME/.dotfiles
 config=$HOME/.dotfiles/config
@@ -20,23 +20,32 @@ olddir=$HOME/.dotfiles_old
 oldconfig=$HOME/.config_old
 
 # list of files/folders to symlink in homedir
-files="bashrc bash_aliases vimrc vim gitconfig gitmessage conkyrc conky"
+files="bashrc\
+ bash_aliases\
+ vimrc\
+ vim\
+ gitconfig\
+ gitmessage\
+ conkyrc\
+ conky\
+ tmux.conf"
+
+# list of files/folders to symlink in homedir/.config
 config_files="redshift.conf"
 
-##########
+################################
 
 # create dotfiles_old in homedir
-echo -n "Creating $olddir for backup of any existing dotfiles in $HOME ..."
+echo "Creating $olddir for backup of any existing dotfiles in $HOME"
 mkdir -p $olddir
-echo "done"
 
 # create config_old in homedir
-echo -n "Creating $oldconfig for backup of any existing files in $HOME/.config ..."
+echo "Creating $oldconfig for backup of any existing files in $HOME/.config"
 mkdir -p $oldconfig
-echo "done"
 
 # change to the dotfiles directory
 echo ""
+echo "#########################################"
 echo "Changing to the $dir directory ..."
 cd $dir
 
@@ -55,6 +64,7 @@ done
 
 # change to config directory
 echo ""
+echo "#########################################"
 echo "Changing to the $config directory ..."
 cd $config
 
@@ -72,16 +82,15 @@ for file in $config_files; do
 done
 
 echo ""
+echo "#########################################"
 
 # check if backup dirs are empty
 if [ ! "$(ls -A $olddir)" ]; then
-	echo -n "$olddir is empty, removing..."
+	echo "$olddir is empty, removing..."
 	rmdir $olddir
-	echo "done"
 fi
 
 if [ ! "$(ls -A $oldconfig)" ]; then
-	echo -n "$oldconfig is empty, removing..."
+	echo "$oldconfig is empty, removing..."
 	rmdir $oldconfig
-	echo "done"
 fi
