@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 4/8/15
+"updated: 4/22/15
 """"""""""""""""""
 
 "---basic stuff
@@ -38,6 +38,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky' "adds function searching to ctrlp (:CtrlPFunky)
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
+Plugin 'Valloric/YouCompleteMe' "autocomplete
 call vundle#end()
 "quit after installing for the first time
 if has_vundle == 0
@@ -94,6 +95,7 @@ set tabstop=4
 set autoindent
 set shiftwidth=4
 set noexpandtab "don't use softabs by default (:set expandtab)
+autocmd Filetype python set expandtab "use softtabs for python
 set softtabstop=4 "softtabs (tab key types spaces)
 set nowrap "don't wrap text
 

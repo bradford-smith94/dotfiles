@@ -15,7 +15,7 @@ Changelog:
 *v 2011mint -- reEdit despot77 (18.02.2011)
 
 Edited by Bradford Smith
-updated: 4/11/2015
+updated: 4/20/2015
 ]]
 
 settings_table = {
@@ -77,7 +77,7 @@ settings_table = {
     },
     {
         name='cpu',
-        arg='cpu0',
+        arg='cpu1',
         max=100,
         bg_color=0x000000,
         bg_alpha=0.3,
@@ -91,7 +91,7 @@ settings_table = {
     },
 	{
         name='cpu',
-        arg='cpu1',
+        arg='cpu2',
         max=100,
         bg_color=0x000000,
         bg_alpha=0.3,
@@ -105,7 +105,7 @@ settings_table = {
     },
 	{
         name='cpu',
-        arg='cpu2',
+        arg='cpu3',
         max=100,
         bg_color=0x000000,
         bg_alpha=0.3,
@@ -119,7 +119,7 @@ settings_table = {
     },
 	{
         name='cpu',
-        arg='cpu3',
+        arg='cpu4',
         max=100,
         bg_color=0x000000,
         bg_alpha=0.3,

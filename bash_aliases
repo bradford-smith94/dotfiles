@@ -7,6 +7,8 @@
 ##########
 alias sudo='sudo ' #allows sudo to work with aliases, the internet says so
 alias unmount='umount' #because sometimes I forget
+alias srm='srm -vz' #default srm to verbose and write zeros on last pass
+alias sfill='sfill -vz' #same as srm but works on free partition space
 
 ## File Navigation
 alias ls='ls --color=auto --group-directories-first'
