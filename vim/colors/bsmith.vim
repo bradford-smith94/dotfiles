@@ -1,7 +1,7 @@
 " Vim color file
 " Author: Bradford Smith
 " <bradford.smith94@gmail.com>
-" Date: 4/2/15
+" Date: 4/27/15
 "=============================
 
 "these lines are suggested to be at the top of every colorscheme
@@ -17,6 +17,10 @@ runtime colors/molokai.vim
 let g:colors_name = "bsmith"
 
 "Clear the colors for any items that you don't like
+"slowly making this a standalone colorscheme
+hi clear Normal
+hi clear Cursor
+hi clear CursorLine
 hi clear Comment
 hi clear String
 hi clear Character
@@ -32,10 +36,14 @@ hi clear PreCondit
 hi clear PreProc
 hi clear Type
 hi clear SpecialKey
+hi clear LineNR
 hi clear CursorLineNR
 hi clear Visual
 
 "Set up your new & improved colors
+hi Normal ctermfg=252 ctermbg=233
+hi Cursor ctermfg=16 ctermbg=253
+hi CursorLine term=bold cterm=bold
 hi Comment ctermfg=darkcyan
 hi String ctermfg=darkgreen
 hi Character ctermfg=red
@@ -50,5 +58,6 @@ hi PreCondit cterm=bold ctermfg=darkcyan
 hi PreProc cterm=bold ctermfg=161
 hi Type cterm=bold ctermfg=green
 hi SpecialKey ctermfg=lightgreen
-hi CursorLineNR cterm=bold ctermfg=208
+hi LineNR ctermfg=250 ctermbg=236
+hi CursorLineNR cterm=bold ctermfg=208 ctermbg=233
 hi Visual term=reverse cterm=reverse

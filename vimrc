@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 4/22/15
+"updated: 4/27/15
 """"""""""""""""""
 
 "---basic stuff
@@ -58,7 +58,8 @@ set wildmenu
 set wildmode=longest:full,full
 set wildignore+=*.a,*.o,*~,*.swp,*.tmp,.git "ignore binaries, swaps and git
 set laststatus=2 "always show statusline
-"let g:airline#extensions#tabline#enabled = 1
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '◀'
 
 "make splits feel more correct
 set splitbelow "instead of above
