@@ -25,3 +25,4 @@ alias public-ip='curl icanhazip.com'
 ##################
 ## TLP Powersaving: check to make sure it's running
 alias check-tlp="sudo tlp-stat | grep 'TLP_ENABLE\|TLP power save\|power source'"
+alias check-batt="cat /sys/class/power_supply/BAT0/capacity"
