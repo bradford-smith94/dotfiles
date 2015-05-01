@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 4/27/15
+"updated: 4/30/15
 """"""""""""""""""
 
 "---basic stuff
@@ -105,6 +105,15 @@ autocmd BufWritePre * :%s/\s\+$//e "trim trailing whitespaces before saving
 "enable folding of code blocks([z][a] and [z][R] and [z][M])
 set foldmethod=syntax
 set nofoldenable "do not start folded
+
+"useful function for making colorschemes
+"see: vim.wikia.com/wiki/Showing_syntax_highlight_group_in_statusline
+function! SyntaxItem()
+	echo synIDattr(synID(line("."),col("."),1),"name")
+endfunction
+
+"map it to command to make it easier
+:command HighlightGroup call SyntaxItem()
 
 "---my mappings
 "[F8] enables spell-check, [F9] disables
