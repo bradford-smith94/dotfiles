@@ -22,6 +22,7 @@ hi clear Normal
 hi clear Cursor
 hi clear CursorLine
 hi clear Comment
+hi clear TODO
 hi clear String
 hi clear Character
 hi clear Constant
@@ -46,6 +47,7 @@ hi Normal ctermfg=252 ctermbg=233
 hi Cursor ctermfg=16 ctermbg=253
 hi CursorLine cterm=bold ctermbg=234
 hi Comment ctermfg=6
+hi TODO cterm=bold ctermfg=11 ctermbg=232
 hi String ctermfg=28
 hi Character ctermfg=9
 hi Constant ctermfg=133
