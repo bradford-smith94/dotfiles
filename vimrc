@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 4/30/15
+"updated: 5/6/15
 """"""""""""""""""
 
 "---basic stuff
@@ -67,8 +67,6 @@ set splitright "instead of left
 
 "highlight the line the cursor is on
 set cursorline
-hi CursorLine term=bold cterm=bold
-hi CursorLineNR term=bold cterm=bold
 
 "searching
 set incsearch
@@ -78,7 +76,6 @@ set hlsearch "highlight all matches (:nohlsearch or :noh to stop)
 
 "highlight matching brackets
 set showmatch
-hi MatchParen cterm=none term=none ctermbg=none ctermfg=red
 
 "---ignore accidental capitalizations
 :command WQA wqa

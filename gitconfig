@@ -1,13 +1,17 @@
 #Bradford Smith
 #.gitconfig (global git settings)
-#updated: 4/6/2015
+#updated: 5/6/2015
 #################################
 
 [user]
 	name = Bradford Smith
 	#set user.email in per repository config files
 [merge]
-	tool = meld
+	tool = vimdiff
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
 [core]
 	editor = vim
 [commit] #commits start with prefilled text provided in:
