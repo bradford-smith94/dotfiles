@@ -1,7 +1,7 @@
 " Vim color file
 " Author: Bradford Smith
 " <bradford.smith94@gmail.com>
-" Date: 5/6/15
+" Date: 5/11/2015
 "=============================
 
 "these lines are suggested to be at the top of every colorscheme
@@ -15,6 +15,7 @@ runtime colors/molokai.vim
 
 "Override the name of the base colorscheme
 let g:colors_name = "bsmith"
+let g:airline_theme = "bsmith_airline" "custom airline theme
 
 "--clear the colors for items that will be changed
 "slowly making this a standalone colorscheme
