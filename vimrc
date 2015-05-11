@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 5/6/15
+"updated: 5/10/15
 """"""""""""""""""
 
 "---basic stuff
@@ -15,6 +15,7 @@ set visualbell
 set viminfo="none"
 set ttyfast
 set nomodeline "disable modelines
+set timeout timeoutlen=50 "esc reacts quicker
 
 "---setup vundle to manage plugins
 "automatically install vundle if not present
@@ -52,12 +53,15 @@ set number "line numbers
 set relativenumber "and relative numbers (current line is exact)
 autocmd InsertEnter * :set norelativenumber "don't need relatives in insert
 autocmd InsertLeave * :set relativenumber "back on for everything else
+set cursorline "highlight the line the cursor is on
+set showmatch "highlight matching brackets
 set ruler
 set showcmd "show hanging command while typing
 set wildmenu
 set wildmode=longest:full,full
 set wildignore+=*.a,*.o,*~,*.swp,*.tmp,.git "ignore binaries, swaps and git
 set laststatus=2 "always show statusline
+set noshowmode "airline does this better
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 
@@ -65,17 +69,11 @@ let g:airline_right_sep = '◀'
 set splitbelow "instead of above
 set splitright "instead of left
 
-"highlight the line the cursor is on
-set cursorline
-
 "searching
 set incsearch
 set ignorecase "case insensitive search
 set smartcase "unless I searched for capitalized letters
 set hlsearch "highlight all matches (:nohlsearch or :noh to stop)
-
-"highlight matching brackets
-set showmatch
 
 "---ignore accidental capitalizations
 :command WQA wqa
