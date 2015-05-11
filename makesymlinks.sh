@@ -28,7 +28,8 @@ files="bashrc\
  gitmessage\
  conkyrc\
  conky\
- tmux.conf"
+ tmux.conf\
+ scripts"
 
 # list of files/folders to symlink in homedir/.config
 config_files="redshift.conf"

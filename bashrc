@@ -1,6 +1,6 @@
 #Bradford Smith
 #.bashrc
-#updated: 4/27/2015
+#updated: 5/11/2015
 ####################
 
 # If not running interactively, don't do anything
@@ -27,6 +27,16 @@ shopt -s checkwinsize
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
+fi
+
+# if ~/bin exists add it to the beginning of the path
+if [ -d ~/bin ]; then
+	PATH=~/bin:$PATH
+fi
+
+# if ~/.scripts exists add it to the path
+if [ -d ~/.scripts ]; then
+	PATH=$PATH:~/.scripts
 fi
 
 # Prompt.
