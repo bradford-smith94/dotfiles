@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 5/10/15
+"updated: 5/20/15
 """"""""""""""""""
 
 "---basic stuff
@@ -90,9 +90,9 @@ set hlsearch "highlight all matches (:nohlsearch or :noh to stop)
 set tabstop=4
 set autoindent
 set shiftwidth=4
-set noexpandtab "don't use softabs by default (:set expandtab)
-autocmd Filetype python set expandtab "use softtabs for python
+set expandtab "use softabs by default (:set noexpandtab)
 set softtabstop=4 "softtabs (tab key types spaces)
+autocmd FileType make setlocal noexpandtab "Makefiles need tabs
 set nowrap "don't wrap text
 
 autocmd BufWritePre * :%s/\s\+$//e "trim trailing whitespaces before saving
