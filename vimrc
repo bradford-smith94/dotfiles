@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 5/20/15
+"updated: 5/23/15
 """"""""""""""""""
 
 "---basic stuff
@@ -60,10 +60,11 @@ set showcmd "show hanging command while typing
 set wildmenu
 set wildmode=longest:full,full
 set wildignore+=*.a,*.o,*~,*.swp,*.tmp,.git "ignore binaries, swaps and git
-set laststatus=2 "always show statusline
+set laststatus=2 "always show statusline, for airline
 set noshowmode "airline does this better
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
+set scrolloff=5 "keep 5 lines visible above or below cursor
 
 "make splits feel more correct
 set splitbelow "instead of above
