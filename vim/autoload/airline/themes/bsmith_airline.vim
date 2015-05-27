@@ -1,6 +1,6 @@
 " Bradford Smith
 " bsmith_airline theme for vim-airline
-" updated: 5/11/2015
+" updated: 5/27/2015
 """"""""""""""""""""""""""""""""""""""
 
 " to set this add `:let g:airline_theme='bsmith_airline' to vimrc
@@ -55,9 +55,9 @@ let g:airline#themes#bsmith_airline#palette.visual_modified = {
       \ }
 
 "INACTIVE
-let s:IA1 = [ '#4e4e4e' , '#1c1c1c' , 239 , 234 , '' ]
-let s:IA2 = [ '#4e4e4e' , '#262626' , 239 , 235 , '' ]
-let s:IA3 = [ '#4e4e4e' , '#303030' , 239 , 236 , '' ]
+let s:IA1 = [ '#58d7ad' , '#1c1c1c' , 115 , 234 , '' ]
+let s:IA2 = [ '#58d7ad' , '#262626' , 115 , 235 , '' ]
+let s:IA3 = [ '#58d7ad' , '#303030' , 115 , 236 , '' ]
 let g:airline#themes#bsmith_airline#palette.inactive = airline#themes#generate_color_map(s:IA1, s:IA2, s:IA3)
 let g:airline#themes#bsmith_airline#palette.inactive_modified = {
       \ 'airline_c': [ '#875faf' , '' , 97 , '' , '' ] ,
