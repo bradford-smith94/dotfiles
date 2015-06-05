@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 5/23/15
+"updated: 6/5/15
 """"""""""""""""""
 
 "---basic stuff
@@ -15,7 +15,9 @@ set visualbell
 set viminfo="none"
 set ttyfast
 set nomodeline "disable modelines
-set timeout timeoutlen=50 "esc reacts quicker
+set notimeout "don't timeout on :mappings
+set ttimeout "timout on key codes
+set timeoutlen=50 "esc and arrows timeout
 
 "---setup vundle to manage plugins
 "automatically install vundle if not present
@@ -112,6 +114,13 @@ endfunction
 :command HighlightGroup call SyntaxItem()
 
 "---my mappings
+nmap <space> <nop>
+let mapleader=" "
+
+nmap <leader>o :CtrlP<CR>
+nmap <leader>f :CtrlPFunky<CR>
+nmap <leader>b :CtrlPBuffer<CR>
+
 "[F8] enables spell-check, [F9] disables
 map <F8> <Esc>:setlocal spell spelllang=en_us<CR>
 map <F9> <Esc>:setlocal nospell<CR>
