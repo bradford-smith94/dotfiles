@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 6/5/15
+"updated: 6/8/15
 """"""""""""""""""
 
 "---basic stuff
@@ -39,6 +39,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky' "adds function searching to ctrlp (:CtrlPFunky)
+Plugin 'nixprime/cpsm' "better matcher for CtrlP
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe' "autocomplete
