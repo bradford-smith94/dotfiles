@@ -1,6 +1,6 @@
 #Bradford Smith
 #.gitconfig (global git settings)
-#updated: 5/6/2015
+#updated: 6/8/2015
 #################################
 
 [user]
@@ -15,7 +15,7 @@
 [core]
 	editor = vim
 [commit] #commits start with prefilled text provided in:
-	template = /home/bradford/.gitmessage
+	template = ~/.gitmessage
 [color]
 	ui = auto
 	branch = true

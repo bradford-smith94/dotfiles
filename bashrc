@@ -1,6 +1,6 @@
 #Bradford Smith
 #.bashrc
-#updated: 5/11/2015
+#updated: 6/8/2015
 ####################
 
 # If not running interactively, don't do anything
@@ -41,8 +41,15 @@ fi
 
 # Prompt.
 # user@host: dir$
-#   | user - green        | @host - bright green  | dir - blue           | $ - green           |
-PS1='\[\e[0;32m\]\u\[\e[m\]\[\e[1;32m\]@\h:\[\e[m\] \[\e[1;34m\]\w\[\e[m\]\[\e[0;32m\]\$\[\e[m\] '
+if [[ $EUID -ne 0 ]]; then
+    #if not root
+    #   | user - green        | @host - bright green  | dir - blue           | $ - green           |
+    PS1='\[\e[0;32m\]\u\[\e[m\]\[\e[1;32m\]@\h:\[\e[m\] \[\e[1;34m\]\w\[\e[m\]\[\e[0;32m\]\$\[\e[m\] '
+else
+    #else root
+    #   | user - red          | @host - bright red    | dir - blue           | # - red             |
+    PS1='\[\e[0;31m\]\u\[\e[m\]\[\e[1;31m\]@\h:\[\e[m\] \[\e[1;34m\]\w\[\e[m\]\[\e[0;31m\]\$\[\e[m\] '
+fi
 
 # use vim as the default editor
 if [ -f /usr/bin/vim ]; then
