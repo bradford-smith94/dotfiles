@@ -1,7 +1,7 @@
 " Vim color file
 " Author: Bradford Smith
 " <bradford.smith94@gmail.com>
-" Date: 6/9/2015
+" Date: 6/10/2015
 "=============================
 
 "these lines are suggested to be at the top of every colorscheme
@@ -47,6 +47,7 @@ hi clear Type
 
 "other language constructs
 hi clear Keyword
+hi clear Identifier
 hi clear Conditional
 hi clear Repeat
 hi clear Statement
@@ -91,6 +92,7 @@ hi Type ctermfg=10
 
 "other language constructs
 hi Keyword ctermfg=172
+hi Identifier ctermfg=10
 hi Conditional cterm=bold ctermfg=172
 hi link Repeat Conditional
 hi Statement ctermfg=9
