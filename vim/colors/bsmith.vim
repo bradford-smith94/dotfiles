@@ -1,7 +1,7 @@
 " Vim color file
 " Author: Bradford Smith
 " <bradford.smith94@gmail.com>
-" Date: 5/11/2015
+" Date: 6/9/2015
 "=============================
 
 "these lines are suggested to be at the top of every colorscheme
@@ -29,6 +29,7 @@ hi clear CursorLineNR
 hi clear Visual
 hi clear MatchParen
 hi clear Error
+hi clear ErrorMsg
 hi clear SpecialKey
 hi clear NonText
 
@@ -72,6 +73,7 @@ hi CursorLineNR cterm=bold ctermfg=208 ctermbg=233
 hi Visual cterm=reverse
 hi MatchParen cterm=bold ctermfg=233 ctermbg=1
 hi Error ctermbg=9
+hi link ErrorMsg Error
 hi SpecialKey ctermfg=120
 hi NonText ctermfg=59
 
