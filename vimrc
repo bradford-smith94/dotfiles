@@ -52,7 +52,8 @@ call vundle#end()
 "if this is the first time vundle is installed
 if has_vundle == 0
     :echo "Initial Plugin install please wait..."
-    :silent! PluginInstall "install the plugins
+    "install the plugins
+    :silent! PluginInstall
 
     "YCM and cpsm require running a install.sh script
     :chdir $HOME/.vim/bundle/YouCompleteMe
