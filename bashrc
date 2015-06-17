@@ -1,6 +1,6 @@
 #Bradford Smith
 #.bashrc
-#updated: 6/8/2015
+#updated: 6/17/2015
 ####################
 
 # If not running interactively, don't do anything
@@ -8,7 +8,7 @@
 
 # Source global definitions
 if [ -f /etc/bash.bashrc ]; then
-	. /etc/bash.bashrc
+    . /etc/bash.bashrc
 fi
 
 # unset bash_history file
@@ -26,17 +26,17 @@ shopt -s checkwinsize
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 if [ -f ~/.bash_aliases ]; then
-	. ~/.bash_aliases
+    . ~/.bash_aliases
 fi
 
 # if ~/bin exists add it to the beginning of the path
 if [ -d ~/bin ]; then
-	PATH=~/bin:$PATH
+    PATH=~/bin:$PATH
 fi
 
 # if ~/.scripts exists add it to the path
 if [ -d ~/.scripts ]; then
-	PATH=$PATH:~/.scripts
+    PATH=$PATH:~/.scripts
 fi
 
 # Prompt.
@@ -53,16 +53,18 @@ fi
 
 # use vim as the default editor
 if [ -f /usr/bin/vim ]; then
-	export EDITOR=/usr/bin/vim
+    export EDITOR=/usr/bin/vim
 fi
 
 # for ruby gems
-PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+if [ `command -v ruby` ]; then
+    PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+fi
 
 #if not in SSH
 if [ "x${SSH_TTY}" = "x" ]; then
 #   and screenfetch is installed
-	if [ -f /usr/bin/screenfetch ]; then
-		screenfetch
-	fi
+    if [ -f /usr/bin/screenfetch ]; then
+        screenfetch
+    fi
 fi
