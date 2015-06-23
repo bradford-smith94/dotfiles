@@ -10,6 +10,11 @@
 ############################
 
 ########## Variables
+if [[ $EUID -eq 0 ]]; then
+    isRoot=1
+else
+    isRoot=0
+fi
 
 # dotfiles directory
 dir=$HOME/.dotfiles
