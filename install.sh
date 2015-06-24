@@ -1,15 +1,12 @@
 #!/bin/bash
-############################
-# This script creates symlinks from the home directory to any desired dotfiles
-#   in ~/dotfiles
-# Credit: github.com/michaeljsmalley/dotfiles/makesymlinks.sh
+################################################################################
+# This script can be run to install my dotfiles.
 #
-# Updated by: Bradford Smith
-# Now also copies files to ~/.config/ and symlinks them here
-#  and a few other improvements
-############################
+# Inspired by: github.com/michaeljsmalley/dotfiles/makesymlinks.sh
+#
+################################################################################
 
-########## Variables
+########## Variables ###########################################################
 if [[ $EUID -eq 0 ]]; then
     isRoot=1
 else
@@ -38,65 +35,72 @@ files="bashrc\
 
 # list of files/folders to symlink in homedir/.config
 config_files="redshift.conf"
+################################################################################
 
-################################
+########## Basic ###############################################################
+basic ()
+{
+    # create dotfiles_old in homedir
+    echo "Creating $olddir for backup of any existing dotfiles in $HOME"
+    mkdir -p $olddir
 
-# create dotfiles_old in homedir
-echo "Creating $olddir for backup of any existing dotfiles in $HOME"
-mkdir -p $olddir
+    # create config_old in homedir
+    echo "Creating $oldconfig for backup of any existing files in $HOME/.config"
+    mkdir -p $oldconfig
 
-# create config_old in homedir
-echo "Creating $oldconfig for backup of any existing files in $HOME/.config"
-mkdir -p $oldconfig
+    # change to the dotfiles directory
+    echo ""
+    echo "#########################################"
+    echo "Changing to the $dir directory ..."
+    cd $dir
 
-# change to the dotfiles directory
-echo ""
-echo "#########################################"
-echo "Changing to the $dir directory ..."
-cd $dir
+    # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the $HOME/dotfiles directory specified in $files
+    echo "Moving any existing dotfiles from $HOME to $olddir"
+    for file in $files; do
+        if [ "$(readlink $HOME/.$file)" = $dir/$file ]
+        then
+            echo "$file is already linked here, skipping..."
+        else
+            mv $HOME/.$file $olddir/
+            echo "Creating symlink to $file in home directory."
+            ln -s $dir/$file $HOME/.$file
+        fi
+    done
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the $HOME/dotfiles directory specified in $files
-echo "Moving any existing dotfiles from $HOME to $olddir"
-for file in $files; do
-	if [ "$(readlink $HOME/.$file)" = $dir/$file ]
-	then
-		echo "$file is already linked here, skipping..."
-	else
-		mv $HOME/.$file $olddir/
-		echo "Creating symlink to $file in home directory."
-		ln -s $dir/$file $HOME/.$file
-	fi
-done
+    # change to config directory
+    echo ""
+    echo "#########################################"
+    echo "Changing to the $config directory ..."
+    cd $config
 
-# change to config directory
-echo ""
-echo "#########################################"
-echo "Changing to the $config directory ..."
-cd $config
+    # move existing and make symlinks
+    echo "Moving any existing files from $HOME/.config to $oldconfig"
+    for file in $config_files; do
+        if [ "$(readlink $HOME/.config/$file)" = $config/$file ]
+        then
+            echo "$file is already linked here, skipping..."
+        else
+            mv $HOME/.config/$file $oldconfig/
+            echo "Creating symlink to $file in $HOME/.config directory."
+            ln -s $config/$file $HOME/.config/$file
+        fi
+    done
 
-# move existing and make symlinks
-echo "Moving any existing files from $HOME/.config to $oldconfig"
-for file in $config_files; do
-	if [ "$(readlink $HOME/.config/$file)" = $config/$file ]
-	then
-		echo "$file is already linked here, skipping..."
-	else
-		mv $HOME/.config/$file $oldconfig/
-		echo "Creating symlink to $file in $HOME/.config directory."
-		ln -s $config/$file $HOME/.config/$file
-	fi
-done
+    echo ""
+    echo "#########################################"
 
-echo ""
-echo "#########################################"
+    # check if backup dirs are empty
+    if [ ! "$(ls -A $olddir)" ]; then
+        echo "$olddir is empty, removing..."
+        rmdir $olddir
+    fi
 
-# check if backup dirs are empty
-if [ ! "$(ls -A $olddir)" ]; then
-	echo "$olddir is empty, removing..."
-	rmdir $olddir
-fi
+    if [ ! "$(ls -A $oldconfig)" ]; then
+        echo "$oldconfig is empty, removing..."
+        rmdir $oldconfig
+    fi
+}
+################################################################################
 
-if [ ! "$(ls -A $oldconfig)" ]; then
-	echo "$oldconfig is empty, removing..."
-	rmdir $oldconfig
-fi
+basic
+
