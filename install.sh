@@ -6,38 +6,9 @@
 #
 ################################################################################
 
-########## Variables ###########################################################
-if [[ $EUID -eq 0 ]]; then
-    isRoot=1
-else
-    isRoot=0
-fi
+########## Functions ###########################################################
 
-# dotfiles directory
-dir=$HOME/.dotfiles
-config=$HOME/.dotfiles/config
-
-# old dotfiles backup directory
-olddir=$HOME/.dotfiles_old
-oldconfig=$HOME/.config_old
-
-# list of files/folders to symlink in homedir
-files="bashrc\
- bash_aliases\
- vimrc\
- vim\
- gitconfig\
- gitmessage\
- conkyrc\
- conky\
- tmux.conf\
- scripts"
-
-# list of files/folders to symlink in homedir/.config
-config_files="redshift.conf"
-################################################################################
-
-########## Basic ###############################################################
+##### Basic ####################################################################
 basic ()
 {
     # create dotfiles_old in homedir
@@ -100,7 +71,71 @@ basic ()
         rmdir $oldconfig
     fi
 }
-################################################################################
+##### End basic ################################################################
 
-basic
+##### HELP #####################################################################
+HELP ()
+{
+    echo "HELP"
+}
+##### End HELP #################################################################
+
+########## End Functions #######################################################
+
+########## Variables ###########################################################
+# dotfiles directory
+dir=$HOME/.dotfiles
+config=$HOME/.dotfiles/config
+
+# old dotfiles backup directory
+olddir=$HOME/.dotfiles_old
+oldconfig=$HOME/.config_old
+
+# list of files/folders to symlink in homedir
+files="bashrc\
+ bash_aliases\
+ vimrc\
+ vim\
+ gitconfig\
+ gitmessage\
+ conkyrc\
+ conky\
+ tmux.conf\
+ scripts"
+
+# list of files/folders to symlink in homedir/.config
+config_files="redshift.conf"
+########## End Variables #######################################################
+
+########## getopts #############################################################
+while getopts :a:h:i:r FLAG; do
+    case $FLAG in
+        a) #all
+            basic
+            ;;
+        h) #help
+            HELP
+            exit
+            ;;
+        i) #interactive
+            #stuff
+            ;;
+        r) #root
+            if [[ $EUID -eq 0 ]]; then
+                isRoot=1
+            else
+                echo "When running with \"-r\" you must use \"sudo\""
+                exit
+            fi
+            ;;
+        \?) #unrecognized flag
+            echo "Unrecognized option $OPTARG"
+            HELP
+            exit
+            ;;
+    esac
+done
+
+shift $((OPTIND-1)) #Moves getopts to the next argument
+########## End getopts #########################################################
 
