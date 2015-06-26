@@ -9,7 +9,7 @@
 ########## Functions ###########################################################
 
 ##### Basic ####################################################################
-basic ()
+function basic
 {
     # create dotfiles_old in homedir
     echo "Creating $olddir for backup of any existing dotfiles in $HOME"
@@ -74,15 +74,18 @@ basic ()
 ##### End basic ################################################################
 
 ##### HELP #####################################################################
-HELP ()
+function _help
 {
-    echo "HELP"
+    echo "$usage"
+    echo "HELP Text"
 }
 ##### End HELP #################################################################
 
 ########## End Functions #######################################################
 
 ########## Variables ###########################################################
+usage="usage: \"$0 -[ahir]\""
+
 # dotfiles directory
 dir=$HOME/.dotfiles
 config=$HOME/.dotfiles/config
@@ -108,14 +111,13 @@ config_files="redshift.conf"
 ########## End Variables #######################################################
 
 ########## getopts #############################################################
-while getopts :a:h:i:r FLAG; do
+while getopts ahir: FLAG; do
     case $FLAG in
         a) #all
             basic
             ;;
         h) #help
-            HELP
-            exit
+            _help
             ;;
         i) #interactive
             #stuff
@@ -129,8 +131,7 @@ while getopts :a:h:i:r FLAG; do
             fi
             ;;
         \?) #unrecognized flag
-            echo "Unrecognized option $OPTARG"
-            HELP
+            echo "$usage"
             exit
             ;;
     esac
