@@ -1,6 +1,6 @@
 #Bradford Smith
 #.gitconfig (global git settings)
-#updated: 6/8/2015
+#updated: 6/29/2015
 #################################
 
 [user]
@@ -22,3 +22,5 @@
 	diff = true
 	interactive = true
 	status = true
+[push]
+	default = simple

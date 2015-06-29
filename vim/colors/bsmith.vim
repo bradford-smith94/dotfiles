@@ -1,7 +1,7 @@
 " Vim color file
 " Author: Bradford Smith
 " <bradford.smith94@gmail.com>
-" Date: 6/10/2015
+" Date: 6/29/2015
 "=============================
 
 "these lines are suggested to be at the top of every colorscheme
@@ -32,6 +32,11 @@ hi clear Error
 hi clear ErrorMsg
 hi clear SpecialKey
 hi clear NonText
+hi clear WildMenu
+hi clear PMenu
+hi clear PMenuSel
+hi clear PMenuSBar
+hi clear PMenuThumb
 
 "comments
 hi clear Comment
@@ -77,6 +82,11 @@ hi Error ctermbg=9
 hi link ErrorMsg Error
 hi SpecialKey ctermfg=120
 hi NonText ctermfg=59
+hi WildMenu ctermfg=156 ctermbg=16
+hi PMenu ctermfg=156 ctermbg=240
+hi PMenuSel cterm=bold ctermfg=156 ctermbg=235
+hi PMenuSBar ctermfg=255 ctermbg=237
+hi PMenuThumb ctermfg=156 ctermbg=237
 
 "comments
 hi Comment ctermfg=6

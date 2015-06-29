@@ -1,7 +1,7 @@
 #Bradford Smith
 #.bash_aliases
-#updated: 4/6/2015
-##################
+#updated: 6/26/2015
+####################
 
 ## Overall
 ##########
@@ -17,7 +17,10 @@ alias ll='ls -l'
 alias grep='grep --color=auto'
 alias cdl='cd -' #cd to last directory
 
-## IP Addresses
+## Ghostscript combine pdfs (usage: `gs-pdf in1.pdf in2.pdf ...`)
+alias gs-pdf='gs -q -dBATCH -dNOPAUSE -dPDFSETTINGS=/prepress -sPAPERSIZE=letter -sDEVICE=pdfwrite -sOutputFile=merged.pdf'
+
+## IP Addresses (replace wlo1 with correct interface)
 alias local-ip="ip addr show wlo1 | grep 'inet' | awk '{print \$2}'"
 alias public-ip='curl icanhazip.com'
 
