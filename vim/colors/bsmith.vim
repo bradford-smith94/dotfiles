@@ -1,13 +1,14 @@
 " Vim color file
 " Author: Bradford Smith
-" <bradford.smith94@gmail.com>
-" Date: 6/29/2015
-"=============================
+" Email: <bradford.smith94@gmail.com>
+" See: vim.wikia.com/wiki/Create_a_color_scheme_based_on_another
+" Date: 7/2/2015
+"=====================================
 
 "these lines are suggested to be at the top of every colorscheme
 hi clear
 if exists("syntax_on")
-	syntax reset
+    syntax reset
 endif
 
 "Load the 'base' colorscheme
@@ -37,6 +38,7 @@ hi clear PMenu
 hi clear PMenuSel
 hi clear PMenuSBar
 hi clear PMenuThumb
+hi clear vimCommentTitle
 
 "comments
 hi clear Comment
@@ -48,6 +50,7 @@ hi clear Character
 hi clear Constant
 hi clear Boolean
 hi clear Number
+hi clear Float
 hi clear Type
 
 "other language constructs
@@ -87,6 +90,7 @@ hi PMenu ctermfg=156 ctermbg=240
 hi PMenuSel cterm=bold ctermfg=156 ctermbg=235
 hi PMenuSBar ctermfg=255 ctermbg=237
 hi PMenuThumb ctermfg=156 ctermbg=237
+hi link vimCommentTitle SpecialComment
 
 "comments
 hi Comment ctermfg=6
@@ -95,9 +99,10 @@ hi TODO cterm=bold ctermfg=11 ctermbg=232
 "types
 hi String ctermfg=28
 hi Character ctermfg=9
-hi Constant ctermfg=133
+hi Constant ctermfg=227
 hi link Boolean Constant
-hi link Number Constant
+hi Number ctermfg=133
+hi link Float Number
 hi Type ctermfg=10
 
 "other language constructs
