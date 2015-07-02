@@ -2,7 +2,7 @@
 ################################################################################
 # Bradford Smith
 # install.sh
-# updated: 7/1/2015
+# updated: 7/2/2015
 #
 # This script can be run to install my dotfiles.
 #
@@ -13,7 +13,7 @@
 ########## Variables ###########################################################
 usage="usage: \"$0 -[hir]\""
 
-isRoot=0
+root=0
 interactive=0
 
 # directories
@@ -66,6 +66,19 @@ function makeSymLinks
 
     echo "Moving any existing dotfiles from $dest to $backup"
     for file in $files; do
+        if [ $interactive -eq 1 ]; then
+            echo -n "Link $file to $dest?(y|n) "
+            read -n 1 choice
+            echo ""
+            while [[ "$choice" != "n" && "$choice" != "y" ]]; do
+                echo -n "Type 'y' or 'n': "
+                read -n 1 choice
+                echo ""
+            done
+            if [ $choice == "n" ]; then
+                continue
+            fi
+        fi # end if interactive
         if [ $useDot -eq 1 ]; then
             if [ "$(readlink $dest/.$file)" = $src/$file ]; then
                 echo "$file is already linked here, skipping..."
@@ -82,7 +95,7 @@ function makeSymLinks
                 echo "Creating symlink to $file in $dest"
                 ln -s $src/$file $dest/$file
             fi
-        fi
+        fi # end if useDot
     done
 }
 ##### End makeSymLinks #########################################################
@@ -100,12 +113,7 @@ while getopts hir: FLAG; do
             interactive=1
             ;;
         r) #root
-            if [[ $EUID -eq 0 ]]; then
-                isRoot=1
-            else
-                echo "When running with \"-r\" you must use \"sudo\""
-                exit
-            fi
+            root=1
             ;;
         \?) #unrecognized flag
             echo "$usage"
@@ -146,7 +154,7 @@ makeSymLinks $HOME/.config $config $oldconfig 0 $config_files
 echo ""
 echo "#########################################"
 
-# check if backup dirs are empty
+# check if backup dirs are empty and clean if they are
 if [ ! "$(ls -A $olddir)" ]; then
     echo "$olddir is empty, removing..."
     rmdir $olddir
