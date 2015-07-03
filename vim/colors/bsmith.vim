@@ -2,7 +2,7 @@
 " Author: Bradford Smith
 " Email: <bradford.smith94@gmail.com>
 " See: vim.wikia.com/wiki/Create_a_color_scheme_based_on_another
-" Date: 7/2/2015
+" Date: 7/3/2015
 "=====================================
 
 "these lines are suggested to be at the top of every colorscheme
@@ -32,17 +32,25 @@ hi clear MatchParen
 hi clear Error
 hi clear ErrorMsg
 hi clear SpecialKey
-hi clear NonText
 hi clear WildMenu
 hi clear PMenu
 hi clear PMenuSel
 hi clear PMenuSBar
 hi clear PMenuThumb
-hi clear vimCommentTitle
+hi clear VertSplit
+hi clear Search
+hi clear IncSearch
+
+"vimdiff colors
+hi clear DiffAdd
+hi clear DiffChange
+hi clear DiffDelete
+hi clear DiffText
 
 "comments
 hi clear Comment
 hi clear TODO
+hi clear NonText
 
 "types
 hi clear String
@@ -65,12 +73,6 @@ hi clear PreProc
 hi clear Structure
 hi clear Typedef
 
-"vimdiff colors
-hi clear DiffAdd
-hi clear DiffChange
-hi clear DiffDelete
-hi clear DiffText
-
 "--set new colors to cleared items
 
 "vim things
@@ -84,17 +86,25 @@ hi MatchParen cterm=bold ctermfg=233 ctermbg=1
 hi Error ctermbg=9
 hi link ErrorMsg Error
 hi SpecialKey ctermfg=120
-hi NonText ctermfg=59
 hi WildMenu ctermfg=156 ctermbg=16
 hi PMenu ctermfg=156 ctermbg=240
 hi PMenuSel cterm=bold ctermfg=156 ctermbg=235
 hi PMenuSBar ctermfg=255 ctermbg=237
 hi PMenuThumb ctermfg=156 ctermbg=237
-hi link vimCommentTitle SpecialComment
+hi VertSplit cterm=bold ctermfg=244
+hi Search ctermfg=0 ctermbg=222
+hi IncSearch ctermfg=16 ctermbg=193
+
+"vimdiff colors
+hi DiffAdd ctermfg=174 ctermbg=28
+hi DiffChange ctermfg=174 ctermbg=24
+hi DiffDelete ctermbg=52
+hi DiffText ctermfg=24 ctermbg=244
 
 "comments
 hi Comment ctermfg=6
 hi TODO cterm=bold ctermfg=11 ctermbg=232
+hi NonText ctermfg=59
 
 "types
 hi String ctermfg=28
@@ -115,9 +125,3 @@ hi PreCondit cterm=bold ctermfg=4
 hi PreProc ctermfg=161
 hi Structure cterm=bold ctermfg=4
 hi link Typedef Structure
-
-"vimdiff colors
-hi DiffAdd ctermfg=174 ctermbg=28
-hi DiffChange ctermfg=174 ctermbg=24
-hi DiffDelete ctermbg=52
-hi DiffText ctermfg=24 ctermbg=244

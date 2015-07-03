@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 6/9/15
+"updated: 7/3/15
 """"""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -10,6 +10,7 @@ set background=dark
 color bsmith "custom colorscheme
 set helplang=en
 set backspace=indent,eol,start
+set encoding=utf-8
 set noerrorbells
 set visualbell
 set viminfo="none"
@@ -72,7 +73,7 @@ filetype indent plugin on "turn filetype back on (turned off to do Vundle things
 syntax on
 set number "line numbers
 set relativenumber "and relative numbers (current line is exact)
-autocmd InsertEnter * :set norelativenumber "don't need relatives in insert
+autocmd InsertEnter * :set number "don't need relatives in insert
 autocmd InsertLeave * :set relativenumber "back on for everything else
 set cursorline "highlight the line the cursor is on
 set showmatch "highlight matching brackets
@@ -84,6 +85,7 @@ set wildignore+=*.a,*.o,*~,*.swp,*.tmp,.git "ignore binaries, swaps and git
 set laststatus=2 "always show statusline, for airline
 set noshowmode "airline does this better
 set scrolloff=5 "keep 5 lines visible above or below cursor
+set fillchars+=vert:│
 
 "make splits feel more correct
 set splitbelow "instead of above
