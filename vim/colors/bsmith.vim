@@ -40,6 +40,10 @@ hi clear PMenuThumb
 hi clear VertSplit
 hi clear Search
 hi clear IncSearch
+hi clear SpellBad
+hi clear SpellCap
+hi clear SpellRare
+hi clear SpellLocal
 
 "vimdiff colors
 hi clear DiffAdd
@@ -62,6 +66,7 @@ hi clear Float
 hi clear Type
 
 "other language constructs
+hi clear Function
 hi clear Keyword
 hi clear Identifier
 hi clear Conditional
@@ -70,6 +75,7 @@ hi clear Statement
 hi clear Operator
 hi clear PreCondit
 hi clear PreProc
+hi clear Exception
 hi clear Structure
 hi clear Typedef
 
@@ -94,6 +100,10 @@ hi PMenuThumb ctermfg=156 ctermbg=237
 hi VertSplit cterm=bold ctermfg=244
 hi Search ctermfg=0 ctermbg=222
 hi IncSearch ctermfg=16 ctermbg=193
+hi SpellBad ctermbg=52
+hi SpellCap ctermbg=17
+hi SpellRare cterm=reverse ctermbg=17
+hi SpellLocal cterm=underline ctermbg=17
 
 "vimdiff colors
 hi DiffAdd ctermfg=174 ctermbg=28
@@ -116,6 +126,7 @@ hi link Float Number
 hi Type ctermfg=10
 
 "other language constructs
+hi Function ctermfg=112
 hi Keyword ctermfg=172
 hi Identifier ctermfg=10
 hi Conditional cterm=bold ctermfg=172
@@ -123,5 +134,6 @@ hi link Repeat Conditional
 hi Statement ctermfg=9
 hi PreCondit cterm=bold ctermfg=4
 hi PreProc ctermfg=161
+hi Exception ctermfg=21
 hi Structure cterm=bold ctermfg=4
 hi link Typedef Structure

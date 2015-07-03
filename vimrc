@@ -47,6 +47,7 @@ Plugin 'tacahiroy/ctrlp-funky' "adds function searching to CtrlP (:CtrlPFunky)
 Plugin 'nixprime/cpsm' "better matcher for CtrlP
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'Valloric/YouCompleteMe' "autocomplete
 call vundle#end()
 
