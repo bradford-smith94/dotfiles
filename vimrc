@@ -159,6 +159,10 @@ nmap <leader>o :CtrlP<CR>
 nmap <leader>f :CtrlPFunky<CR>
 nmap <leader>b :CtrlPBuffer<CR>
 
+"use Ctrl + w then Tab and Ctrl + w then Shift + Tab to cycle between splits
+nnoremap <c-w><Tab> <c-w>w
+nnoremap <c-w><s-Tab> <c-w>W
+
 "[F8] enables spell-check, [F9] disables
 map <F8> <Esc>:setlocal spell spelllang=en_us<CR>
 map <F9> <Esc>:setlocal nospell<CR>
