@@ -29,7 +29,9 @@ files="bashrc\
  conkyrc\
  conky\
  tmux.conf\
- scripts"
+ scripts\
+ Xresources\
+ Xresources.d"
 
 # list of files/folders to symlink in homedir/.config
 config_files="redshift.conf"
