@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 7/3/15
+"updated: 7/6/15
 """"""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -10,7 +10,7 @@ set background=dark
 color bsmith "custom colorscheme
 set helplang=en
 set backspace=indent,eol,start
-set encoding=utf-8
+set encoding=utf-8 "use UTF-8 internally
 set noerrorbells
 set visualbell
 set viminfo="none"
@@ -30,7 +30,8 @@ if !filereadable($HOME."/.vim/bundle/Vundle.vim/README.md")
     echo "Installing Vundle..."
     echo ""
     silent !mkdir -p $HOME/.vim/bundle
-    silent !git clone https://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/Vundle.vim
+    silent !git clone
+        \ https://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/Vundle.vim
     let has_vundle=0
 endif
 
@@ -70,11 +71,11 @@ endif
 
 
 "---visual stuff----------------------------------------------------------------
-filetype indent plugin on "turn filetype back on (turned off to do Vundle things)
 syntax on
 set number "line numbers
 set relativenumber "and relative numbers (current line is exact)
-autocmd InsertEnter * :set number "don't need relatives in insert
+autocmd InsertEnter * :set norelativenumber "don't need relatives in insert
+autocmd InsertEnter * :set number "turn numbers back on (supports old versions)
 autocmd InsertLeave * :set relativenumber "back on for everything else
 set cursorline "highlight the line the cursor is on
 set showmatch "highlight matching brackets
@@ -83,20 +84,23 @@ set showcmd "show hanging command while typing
 set wildmenu
 set wildmode=longest:full,full
 set wildignore+=*.a,*.o,*~,*.swp,*.tmp,.git "ignore binaries, swaps and git
-set laststatus=2 "always show statusline, for airline
+set laststatus=2 "always show statusline (for airline)
 set noshowmode "airline does this better
+set lazyredraw "don't redraw the screen when executing macros (for speed)
 set scrolloff=5 "keep 5 lines visible above or below cursor
+set scrolljump=5 "scrolls 5 lines instead of 1
 set fillchars+=vert:│
+set listchars=tab:▶-,space:∙,trail:∙,eol:$
 
 "make splits feel more correct
-set splitbelow "instead of above
-set splitright "instead of left
+set splitbelow "splits open below instead of above
+set splitright "splits open right instead of left
 
 "plugin options
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
+let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'} "use cpsm as the matcher
 
 "searching
 set incsearch
@@ -106,20 +110,8 @@ set hlsearch "highlight all matches (:nohlsearch or :noh to stop)
 "-------------------------------------------------------------------------------
 
 
-"---ignore accidental capitalizations-------------------------------------------
-:command! WQA wqa
-:command! WQa wqa
-:command! Wqa wqa
-:command! WQ wq
-:command! Wq wq
-:command! WA wa
-:command! Wa wa
-:command! W w
-:command! Q q
-"-------------------------------------------------------------------------------
-
-
 "---text formatting-------------------------------------------------------------
+filetype indent plugin on "turn filetype back on (was off to do Vundle things)
 set tabstop=4
 set autoindent
 set shiftwidth=4
@@ -136,6 +128,19 @@ set nofoldenable "do not start folded
 "-------------------------------------------------------------------------------
 
 
+"---ignore accidental capitalizations-------------------------------------------
+:command! WQA wqa
+:command! WQa wqa
+:command! Wqa wqa
+:command! WQ wq
+:command! Wq wq
+:command! WA wa
+:command! Wa wa
+:command! W w
+:command! Q q
+"-------------------------------------------------------------------------------
+
+
 "---my functions----------------------------------------------------------------
 "useful function for making colorschemes
 "see: vim.wikia.com/wiki/Showing_syntax_highlight_group_in_statusline
@@ -148,6 +153,9 @@ endfunction
 
 "Reload vimrc
 :command! Reload source $MYVIMRC
+
+"Clear the last used search pattern
+:command! ClearSearch let @/=""
 "-------------------------------------------------------------------------------
 
 
@@ -175,5 +183,7 @@ map <F5> <Esc>:w<CR>:make<CR>
 map <F2> <Esc>:NERDTreeToggle<CR>
 
 "[F3] greps current project directory for word under cursor (results in buffer)
-map <F3> :execute " grep -srnw --binary-files=without-match --exclude-dir=.git . -e " . expand("<cword>") . " " <bar> cwindow<CR><CR><CR>
+map <F3> :execute " grep -srnw --binary-files=without-match
+    \ --exclude-dir=.git . -e " . expand("<cword>") . " "
+    \ <bar> cwindow<CR><CR><CR>
 "-------------------------------------------------------------------------------
