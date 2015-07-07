@@ -34,7 +34,11 @@ files="bashrc\
  conkyrc\
  conky\
  tmux.conf\
- scripts"
+ scripts\
+ Xresources"
+
+# list of files/folders to symlink in homedir without dot
+files2="Xresources.d"
 
 # list of files/folders to symlink in homedir/.config
 config_files="redshift.conf"
@@ -141,6 +145,7 @@ cd $dir
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the $HOME/dotfiles directory specified in $files
 makeSymLinks $HOME $dir $olddir 1 $files
+makeSymLinks $HOME $dir $olddir 0 $files2
 
 # change to config directory
 echo ""
