@@ -1,6 +1,6 @@
 " Bradford Smith
 " bsmith_airline theme for vim-airline
-" updated: 5/27/2015
+" updated: 7/7/2015
 """"""""""""""""""""""""""""""""""""""
 
 " to set this add `:let g:airline_theme='bsmith_airline' to vimrc
@@ -20,16 +20,16 @@ let s:N2   = [ '#ffffff' , '#444444' , 255 , 238 ]
 let s:N3   = [ '#2bfc6f' , '#202020' , 83  , 234 ]
 let g:airline#themes#bsmith_airline#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
 let g:airline#themes#bsmith_airline#palette.normal_modified = {
-      \ 'airline_c': [ '#ffffff' , '#5f005f' , 255     , 53      , ''     ] ,
+      \ 'airline_c': [ '#006006' , '#bcbcbc' , 22      , 250     , ''     ] ,
       \ }
 
 "INSERT
 let s:I1 = [ '#00005f' , '#00dfff' , 17  , 45  ]
 let s:I2 = [ '#ffffff' , '#005fff' , 255 , 27  ]
-let s:I3 = [ '#ffffff' , '#000080' , 15  , 17  ]
+let s:I3 = [ '#ffffff' , '#00005f' , 255 , 17  ]
 let g:airline#themes#bsmith_airline#palette.insert = airline#themes#generate_color_map(s:I1, s:I2, s:I3)
 let g:airline#themes#bsmith_airline#palette.insert_modified = {
-      \ 'airline_c': [ '#ffffff' , '#5f005f' , 255     , 53      , ''     ] ,
+      \ 'airline_c': [ '#00005f' , '#bcbcbc' , 17      , 250     , ''     ] ,
       \ }
 let g:airline#themes#bsmith_airline#palette.insert_paste = {
       \ 'airline_a': [ s:I1[0]   , '#d78700' , s:I1[2] , 172     , ''     ] ,
@@ -38,20 +38,20 @@ let g:airline#themes#bsmith_airline#palette.insert_paste = {
 "REPLACE
 let s:R1 = [ 'ffffff' , 'ff0000' , 255 , 196 ]
 let s:R2 = [ 'ffffff' , 'af0000' , 255 , 124 ]
-let s:R3 = [ 'ffffff' , '000000' , 255 , 52  ]
+let s:R3 = [ 'ffffff' , '5f0000' , 255 , 52  ]
 let g:airline#themes#bsmith_airline#palette.replace = airline#themes#generate_color_map(s:R1, s:R2, s:R3)
 let g:airline#themes#bsmith_airline#palette.replace_modified = {
-      \ 'airline_c': [ '#ffffff' , '#5f005f' , 255     , 53      , ''     ] ,
+      \ 'airline_c': [ '#5f0000' , '#bcbcbc' , 52      , 250     , ''     ] ,
       \ }
 
 
 "VISUAL
-let s:V1 = [ '#000000' , '#ffaf00' , 232 , 214 ]
-let s:V2 = [ '#000000' , '#ff5f00' , 232 , 202 ]
-let s:V3 = [ '#ffffff' , '#5f0000' , 15  , 52  ]
+let s:V1 = [ '#5f0000' , '#ffaf00' , 52  , 214 ]
+let s:V2 = [ '#5f0000' , '#ff5f00' , 52  , 202 ]
+let s:V3 = [ '#ffffff' , '#5f0000' , 255 , 52  ]
 let g:airline#themes#bsmith_airline#palette.visual = airline#themes#generate_color_map(s:V1, s:V2, s:V3)
 let g:airline#themes#bsmith_airline#palette.visual_modified = {
-      \ 'airline_c': [ '#ffffff' , '#5f005f' , 255     , 53      , ''     ] ,
+      \ 'airline_c': [ '#5f0000' , '#bcbcbc' , 52      , 250     , ''     ] ,
       \ }
 
 "INACTIVE

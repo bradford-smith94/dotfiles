@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 7/6/15
+"updated: 7/7/15
 """"""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -70,6 +70,10 @@ endif
 "-------------------------------------------------------------------------------
 
 
+"turn filetype back on (was off to do Vundle things)
+filetype indent plugin on
+
+
 "---visual stuff----------------------------------------------------------------
 syntax on
 set number "line numbers
@@ -111,7 +115,6 @@ set hlsearch "highlight all matches (:nohlsearch or :noh to stop)
 
 
 "---text formatting-------------------------------------------------------------
-filetype indent plugin on "turn filetype back on (was off to do Vundle things)
 set tabstop=4
 set autoindent
 set shiftwidth=4
