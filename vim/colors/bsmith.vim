@@ -2,7 +2,7 @@
 " Author: Bradford Smith
 " Email: <bradford.smith94@gmail.com>
 " See: vim.wikia.com/wiki/Create_a_color_scheme_based_on_another
-" Date: 7/6/2015
+" Date: 7/7/2015
 "=====================================
 
 "these lines are suggested to be at the top of every colorscheme
@@ -102,7 +102,7 @@ hi clear Typedef
 hi Normal ctermfg=252 ctermbg=233
 hi Cursor ctermfg=16 ctermbg=253
 hi LineNR ctermfg=250 ctermbg=236
-hi CursorLine cterm=bold ctermbg=234
+hi CursorLine ctermbg=235
 hi CursorLineNR cterm=bold ctermfg=208 ctermbg=233
 hi Visual cterm=reverse
 hi VisualNOS ctermbg=239
