@@ -2,7 +2,7 @@
 ################################################################################
 # Bradford Smith
 # install.sh
-# updated: 7/2/2015
+# updated: 7/6/2015
 #
 # This script can be run to install my dotfiles.
 #
@@ -15,6 +15,7 @@ usage="usage: \"$0 -[hir]\""
 
 root=0
 interactive=0
+force=0
 
 # directories
 dir=$HOME/.dotfiles
@@ -107,8 +108,11 @@ function makeSymLinks
 
 ########## Code ################################################################
 ##### getopts ##################################################################
-while getopts hir: FLAG; do
+while getopts fhir: FLAG; do
     case $FLAG in
+        f) #force
+            force=1
+            ;;
         h) #help
             _help
             exit
@@ -143,7 +147,9 @@ echo "#########################################"
 echo "Changing to the $dir directory ..."
 cd $dir
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the $HOME/dotfiles directory specified in $files
+# move any existing dotfiles in $HOME to $dotfiles_old directory, then create
+# symlinks from the $HOME to any files in the $HOME/.dotfiles directory
+# specified in $files
 makeSymLinks $HOME $dir $olddir 1 $files
 makeSymLinks $HOME $dir $olddir 0 $files2
 
@@ -153,7 +159,7 @@ echo "#########################################"
 echo "Changing to the $config directory ..."
 cd $config
 
-# move existing and make symlinks
+# move existing and make symlinks in $HOME/.config
 makeSymLinks $HOME/.config $config $oldconfig 0 $config_files
 
 echo ""
