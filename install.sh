@@ -2,7 +2,7 @@
 ################################################################################
 # Bradford Smith
 # install.sh
-# updated: 7/6/2015
+# updated: 7/8/2015
 #
 # This script can be run to install my dotfiles.
 #
@@ -86,7 +86,12 @@ function makeSymLinks
         fi # end if interactive
         if [ $useDot -eq 1 ]; then
             if [ "$(readlink $dest/.$file)" = $src/$file ]; then
-                echo "$file is already linked here, skipping..."
+                if [ $force -eq 1 ]; then
+                    echo "Creating symlink to $file in $dest"
+                    ln -sf $src/$file $dest/.$file
+                else
+                    echo "$file is already linked here, skipping..."
+                fi
             else
                 mv $dest/.$file $backup/
                 echo "Creating symlink to $file in $dest"
@@ -94,7 +99,12 @@ function makeSymLinks
             fi
         else
             if [ "$(readlink $dest/$file)" = $src/$file ]; then
-                echo "$file is already linked here, skipping..."
+                if [ $force -eq 1 ]; then
+                    echo "Creating symlink to $file in $dest"
+                    ln -sf $src/$file $dest/$file
+                else
+                    echo "$file is already linked here, skipping..."
+                fi
             else
                 mv $dest/$file $backup/
                 echo "Creating symlink to $file in $dest"
