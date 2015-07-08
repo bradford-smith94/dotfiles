@@ -11,7 +11,7 @@
 ################################################################################
 
 ########## Variables ###########################################################
-usage="usage: \"$0 -[hir]\""
+usage="usage: \"$0 -[fhir]\""
 
 root=0
 interactive=0
@@ -50,7 +50,12 @@ config_files="redshift.conf"
 function _help
 {
     echo "$usage"
-    echo "HELP Text"
+    printf "\nArguments:\n\
+    -f      Force, relink (unlink then link) any alreay linked files\n\
+    -h      Show this help text\n\
+    -i      Interactive, ask for each file whether or not to link it\n\
+    -r      Root, install these files for root also\n\
+\nNote: the '-r' option does not currently do anything\n"
 }
 ##### End _help ################################################################
 
