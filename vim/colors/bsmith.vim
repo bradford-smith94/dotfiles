@@ -1,7 +1,7 @@
 " Vim colorscheme file
 " Author: Bradford Smith
 " Email: <bradford.smith94@gmail.com>
-" Date: 7/7/2015
+" Date: 7/8/2015
 "=====================================
 
 "This was started by following the guide at:
@@ -23,11 +23,100 @@ let g:colors_name = "bsmith"
 "use my custom airline theme too
 let g:airline_theme = "bsmith_airline"
 
+"--clear everything manually (fixes some errors with things being defaulted)
+hi clear Normal
+hi clear Cursor
+hi clear CursorLine
+hi clear CursorColumn
+hi clear LineNr
+hi clear CursorLineNR
+hi clear ColorColumn
+hi clear Visual
+hi clear VisualNOS
+hi clear SignColumn
+hi clear Title
+hi clear Label
+hi clear Directory
+hi clear MatchParen
+hi clear Special
+hi clear SpecialChar
+hi clear SpecialKey
+hi clear Tag
+hi clear Delimiter
+hi clear Question
+hi clear Underlined
+
+hi clear Error
+hi clear ErrorMsg
+hi clear WarningMsg
+hi clear MoreMsg
+hi clear ModeMsg
+hi clear StatusLine
+hi clear StatusLineNC
+hi clear TabLine
+hi clear TabLineSel
+hi clear TabLineFill
+
+hi clear WildMenu
+hi clear Folded
+hi clear FoldColumn
+hi clear PMenu
+hi clear PMenuSel
+hi clear PMenuSBar
+hi clear PMenuThumb
+hi clear VertSplit
+
+hi clear Search
+hi clear IncSearch
+hi clear SpellBad
+hi clear SpellCap
+hi clear SpellRare
+hi clear SpellLocal
+
+hi clear DiffAdd
+hi clear DiffChange
+hi clear DiffDelete
+hi clear DiffText
+
+hi clear Comment
+hi clear SpecialComment
+hi clear TODO
+hi clear NonText
+hi clear Ignore
+hi clear Conceal
+
+hi clear Type
+hi clear String
+hi clear Character
+hi clear Constant
+hi clear Boolean
+hi clear Number
+hi clear Float
+hi clear Structure
+hi clear Typedef
+hi clear StorageClass
+
+hi clear Function
+hi clear Keyword
+hi clear Identifier
+hi clear Conditional
+hi clear Repeat
+hi clear Statement
+hi clear Operator
+hi clear Debug
+hi clear Define
+hi clear Macro
+hi clear PreCondit
+hi clear PreProc
+hi clear Exception
+
 "dark theme colors
 if &background == "dark"
     if has("gui_running") "if this is gvim
         echo "bsmith.vim does not currently support GVim"
     elseif &t_Co >= 256 "this is a 256 or greater color terminal
+        let my_bg=233
+
         "vim things
         hi Normal ctermfg=252 ctermbg=233
         hi Cursor ctermfg=16 ctermbg=253
@@ -114,6 +203,7 @@ if &background == "dark"
         hi Conditional cterm=bold ctermfg=172
         hi link Repeat Conditional
         hi Statement ctermfg=9
+        hi link Operator Normal
         hi Debug ctermfg=219
         hi Define cterm=bold ctermfg=81
         hi link Macro Define
