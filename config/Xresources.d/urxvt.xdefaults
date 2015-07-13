@@ -15,14 +15,17 @@ URxvt*scrollstyle:                   plain
 URxvt*scrollBar_right:               true
 URxvt*scrollBar_floating:            true
 ! URxvt*scrollBar_align:               mode
-! URxvt*thickness:                     number
+URxvt*thickness:                     5
 URxvt*scrollTtyOutput:               true
 URxvt*scrollTtyKeypress:             true
 URxvt*scrollWithBuffer:              true
 ! URxvt*inheritPixmap:                 boolean
-! URxvt*transparent:                   boolean
+
+! -- for Native transparency
+! URxvt*transparent:                   true
 ! URxvt*tintColor:                     color
 ! URxvt*shading:                       number
+
 ! URxvt*blurRadius:                    HxV
 ! URxvt*fading:                        number
 ! URxvt*fadeColor:                     color
@@ -38,7 +41,9 @@ URxvt*scrollWithBuffer:              true
 URxvt*cursorBlink:                   true
 ! URxvt*pointerBlank:                  boolean
 ! -- Tango Colorscheme --
-URxvt*background:                    #292929
+! -- with True transparency
+URxvt*depth:                         32
+URxvt*background:                    [95]#292929
 URxvt*foreground:                    #d3d7cf
 !black
 URxvt*color0:                        #000000
@@ -92,7 +97,6 @@ URxvt*color15:                       #eeeeec
 ! URxvt*iconName:                      string
 ! URxvt*saveLines:                     number
 ! URxvt*buffered:                      boolean
-! URxvt*depth:                         number
 ! URxvt*visual:                        number
 ! URxvt*transient-for:                 windowid
 ! URxvt*override-redirect:             boolean
