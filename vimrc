@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 7/7/15
+"updated: 7/15/15
 """"""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -9,6 +9,7 @@ set background=dark
 "let &t_Co=256 "force full 256 color support (should auto detect)
 color bsmith "custom colorscheme
 set helplang=en
+set spelllang=en_us
 set backspace=indent,eol,start
 set encoding=utf-8 "use UTF-8 internally
 set noerrorbells
@@ -176,14 +177,18 @@ nnoremap <c-w><Tab> <c-w>w
 nnoremap <c-w><s-Tab> <c-w>W
 
 "[F8] enables spell-check, [F9] disables
-map <F8> <Esc>:setlocal spell spelllang=en_us<CR>
-map <F9> <Esc>:setlocal nospell<CR>
+map <F8> :setlocal spell<CR>
+imap <F8> <Esc>:setlocal spell<CR>a
+map <F9> :setlocal nospell<CR>
+imap <F9> <Esc>:setlocal nospell<CR>a
 
 "[F5] saves and compiles using Makefile
-map <F5> <Esc>:w<CR>:make<CR>
+map <F5> :w<CR>:make<CR>
+imap <F5> <Esc>:w<Cr>:make<CR>
 
 "[F2] toggles NERDTree
-map <F2> <Esc>:NERDTreeToggle<CR>
+map <F2> :NERDTreeToggle<CR>
+imap <F2> <Esc>:NERDTreeToggle<CR>
 
 "[F3] greps current project directory for word under cursor (results in buffer)
 map <F3> :execute " grep -srnw --binary-files=without-match
