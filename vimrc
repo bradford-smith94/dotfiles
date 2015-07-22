@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 7/15/15
+"updated: 7/22/15
 """"""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -125,6 +125,10 @@ set nowrap "don't wrap text
 
 "see: vim.wikia.com/wiki/Remove_unwanted_spaces
 autocmd BufWritePre * :%s/\s\+$//e "trim trailing whitespaces before saving
+
+"open epub files for editing (can use this for zip files too)
+"see: www.albertopettarin.it/blog/2014/06/03/open-epub-files-with-vim.html
+autocmd BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
 
 "enable folding of code blocks
 set foldmethod=syntax
