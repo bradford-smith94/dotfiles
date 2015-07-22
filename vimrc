@@ -123,12 +123,20 @@ set expandtab "use softabs by default (:set noexpandtab)
 set softtabstop=4 "softtabs (tab key types spaces)
 set nowrap "don't wrap text
 
+"set wrapping for certain files
+autocmd FileType markdown setlocal wrap
+autocmd FileType html setlocal wrap
+
 "see: vim.wikia.com/wiki/Remove_unwanted_spaces
 autocmd BufWritePre * :%s/\s\+$//e "trim trailing whitespaces before saving
 
 "open epub files for editing (can use this for zip files too)
 "see: www.albertopettarin.it/blog/2014/06/03/open-epub-files-with-vim.html
 autocmd BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
+
+"set spell on for certain files
+autocmd FileType gitcommit setlocal spell
+autocmd FileType markdown setlocal spell
 
 "enable folding of code blocks
 set foldmethod=syntax
@@ -156,7 +164,6 @@ function! SyntaxItem()
     echo synIDattr(synID(line("."),col("."),1),"name")
 endfunction
 
-"map it to command to make it easier
 :command! HighlightGroup call SyntaxItem()
 
 "Reload vimrc
@@ -180,11 +187,13 @@ nmap <leader>b :CtrlPBuffer<CR>
 nnoremap <c-w><Tab> <c-w>w
 nnoremap <c-w><s-Tab> <c-w>W
 
-"[F8] enables spell-check, [F9] disables
-map <F8> :setlocal spell<CR>
-imap <F8> <Esc>:setlocal spell<CR>a
-map <F9> :setlocal nospell<CR>
-imap <F9> <Esc>:setlocal nospell<CR>a
+"[F8] toggles spellcheck
+map <F8> :setlocal spell!<CR>
+imap <F8> <Esc>:setlocal spell!<CR>a
+
+"[F9] opens suggestions for next misspelled word
+map <F9> ]sz=
+imap <F9> <Esc>]sz=
 
 "[F5] saves and compiles using Makefile
 map <F5> :w<CR>:make<CR>

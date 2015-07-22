@@ -1,7 +1,7 @@
 " Vim colorscheme file
 " Author: Bradford Smith
 " Email: <bradford.smith94@gmail.com>
-" Date: 7/8/2015
+" Date: 7/22/2015
 "=====================================
 
 "This was started by following the guide at:
@@ -165,10 +165,10 @@ if &background == "dark"
         "searching and spelling
         hi Search ctermfg=0 ctermbg=222
         hi IncSearch ctermfg=16 ctermbg=193
-        hi SpellBad ctermbg=52
-        hi SpellCap ctermbg=17
-        hi SpellRare cterm=reverse ctermbg=17
-        hi SpellLocal cterm=underline ctermbg=17
+        hi SpellBad cterm=underline ctermfg=160 ctermbg=253
+        hi SpellCap cterm=underline ctermfg=21 ctermbg=253
+        hi SpellRare cterm=underline ctermfg=165 ctermbg=253
+        hi SpellLocal cterm=underline ctermfg=91 ctermbg=253
 
         "vimdiff colors
         hi DiffAdd ctermfg=174 ctermbg=28
