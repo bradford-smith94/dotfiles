@@ -1,24 +1,27 @@
 "Bradford Smith
 ".vimrc
-"updated: 7/22/15
+"updated: 7/24/15
 """"""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
 set nocompatible "do not use vi compatible mode, we're better than that
+set encoding=utf-8 "use UTF-8 internally
 set background=dark
 "let &t_Co=256 "force full 256 color support (should auto detect)
 color bsmith "custom colorscheme
 set helplang=en
+set nospell "spelling off by default
 set spelllang=en_us
+set spellfile=~/.vim/spell/custom.utf-8.add
+silent! mkspell! ~/.vim/spell/custom.utf-8.add
 set backspace=indent,eol,start
-set encoding=utf-8 "use UTF-8 internally
 set noerrorbells
 set visualbell
 set viminfo="none"
 set ttyfast
 set nomodeline "disable modelines
 set notimeout "don't timeout on :mappings
-set ttimeout "timout on key codes
+set ttimeout "timeout on key codes
 set timeoutlen=50 "esc and arrows timeout
 "-------------------------------------------------------------------------------
 
@@ -71,7 +74,7 @@ endif
 "-------------------------------------------------------------------------------
 
 
-"turn filetype back on (was off to do Vundle things)
+"turn filetype back on (was turned off to do Vundle things)
 filetype indent plugin on
 
 
@@ -121,14 +124,16 @@ set autoindent
 set shiftwidth=4
 set expandtab "use softabs by default (:set noexpandtab)
 set softtabstop=4 "softtabs (tab key types spaces)
-set nowrap "don't wrap text
+set textwidth=80 "wrap at 80 columns by default
+set nowrap "don't wrap text by default
 
 "set wrapping for certain files
 autocmd FileType markdown setlocal wrap
 autocmd FileType html setlocal wrap
 
+"trim trailing whitespaces before saving
 "see: vim.wikia.com/wiki/Remove_unwanted_spaces
-autocmd BufWritePre * :%s/\s\+$//e "trim trailing whitespaces before saving
+autocmd BufWritePre * :%s/\s\+$//e
 
 "open epub files for editing (can use this for zip files too)
 "see: www.albertopettarin.it/blog/2014/06/03/open-epub-files-with-vim.html
