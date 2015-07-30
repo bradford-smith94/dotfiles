@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 7/24/15
+"updated: 7/30/15
 """"""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -53,7 +53,8 @@ Plugin 'nixprime/cpsm' "better matcher for CtrlP
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'Valloric/YouCompleteMe' "autocomplete
+Plugin 'shougo/neocomplete' "autocomplete
+"Plugin 'othree/vim-autocomplpop' "autocomplete
 call vundle#end()
 
 "if this is the first time vundle is installed
@@ -62,15 +63,29 @@ if has_vundle == 0
     "install the plugins
     :silent! PluginInstall
 
-    "YCM and cpsm require running a install.sh script
-    :chdir $HOME/.vim/bundle/YouCompleteMe
-    :!$HOME/.vim/bundle/YouCompleteMe/install.sh
-
+    "cpsm requires running a install.sh script
     :chdir $HOME/.vim/bundle/cpsm
     :!$HOME/.vim/bundle/cpsm/install.sh
 
     :qa "quit after installing everything
 endif
+"-------------------------------------------------------------------------------
+
+
+"---plugin options--------------------------------------------------------------
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '◀'
+
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'} "use cpsm as the matcher
+
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+"use TAB for completion
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+"Backspace closes popup
+inoremap <expr><BS> neocomplete#smart_close_popup() ."\<C-h>"
 "-------------------------------------------------------------------------------
 
 
@@ -104,12 +119,6 @@ set listchars=tab:▶-,space:∙,trail:∙,eol:$
 set splitbelow "splits open below instead of above
 set splitright "splits open right instead of left
 
-"plugin options
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '◀'
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'} "use cpsm as the matcher
-
 "searching
 set incsearch
 set ignorecase "case insensitive search
@@ -127,10 +136,6 @@ set softtabstop=4 "softtabs (tab key types spaces)
 set textwidth=80 "wrap at 80 columns by default
 set nowrap "don't wrap text by default
 
-"set wrapping for certain files
-autocmd FileType markdown setlocal wrap
-autocmd FileType html setlocal wrap
-
 "trim trailing whitespaces before saving
 "see: vim.wikia.com/wiki/Remove_unwanted_spaces
 autocmd BufWritePre * :%s/\s\+$//e
@@ -139,13 +144,27 @@ autocmd BufWritePre * :%s/\s\+$//e
 "see: www.albertopettarin.it/blog/2014/06/03/open-epub-files-with-vim.html
 autocmd BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
 
-"set spell on for certain files
-autocmd FileType gitcommit setlocal spell
-autocmd FileType markdown setlocal spell
-
 "enable folding of code blocks
 set foldmethod=syntax
 set nofoldenable "do not start folded
+"-------------------------------------------------------------------------------
+
+
+"---filetype settings-----------------------------------------------------------
+"set wrapping
+autocmd FileType markdown setlocal wrap
+autocmd FileType html setlocal wrap
+
+"set spell
+autocmd FileType gitcommit setlocal spell
+autocmd FileType markdown setlocal spell
+
+"set completion
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "-------------------------------------------------------------------------------
 
 
