@@ -47,7 +47,7 @@ call vundle#begin()
 "plugins '<github_user>/<repo>' or full git path
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim' "kien/ctrlp.vim is unmaintained
 Plugin 'tacahiroy/ctrlp-funky' "adds function searching to CtrlP (:CtrlPFunky)
 Plugin 'nixprime/cpsm' "better matcher for CtrlP
 Plugin 'bling/vim-airline'
