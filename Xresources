@@ -1,2 +1,3 @@
 !if this fails to load use: `xrdb -I$HOME ~/.Xresources`
 #include ".config/Xresources.d/urxvt.xdefaults"
+#include ".config/Xresources.d/xterm.xdefaults"
