@@ -1,6 +1,6 @@
 # Bradford Smith
 # .conkyrc
-# updated: 4/9/2015
+# updated: 8/3/2015
 ####################
 
 ##Basic Conky Settings##
@@ -26,7 +26,7 @@ minimum_size 180 700
 
 alignment top_right
 gap_x 5
-gap_y 60
+gap_y 5
 
 ##Graphics Settings##
 default_outline_color white
@@ -51,9 +51,6 @@ default_color white
 
 #archlinux blue
 color1 1793D0
-
-##Lua Section##
-#lua_load ~/.conky/lua/<file>
 
 ##Text Section##
 TEXT
