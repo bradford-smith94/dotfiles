@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 7/30/15
+"updated: 8/3/15
 """"""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -82,8 +82,10 @@ let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'} "use cpsm as the matcher
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
-"use TAB for completion
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+"use Tab for completion
+inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "Backspace closes popup
 inoremap <expr><BS> neocomplete#smart_close_popup() ."\<C-h>"
 "-------------------------------------------------------------------------------
