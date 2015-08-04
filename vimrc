@@ -190,6 +190,14 @@ function! SyntaxItem()
     echo synIDattr(synID(line("."),col("."),1),"name")
 endfunction
 
+function! ToggleBackground()
+    if &background == "dark"
+        set background=light
+    else
+        set background=dark
+    endif
+endfunction
+
 :command! HighlightGroup call SyntaxItem()
 
 "Reload vimrc
@@ -233,4 +241,7 @@ imap <F2> <Esc>:NERDTreeToggle<CR>
 map <F3> :execute " grep -srnw --binary-files=without-match
     \ --exclude-dir=.git . -e " . expand("<cword>") . " "
     \ <bar> cwindow<CR><CR><CR>
+
+"[F1] toggles the background light/dark
+map <F1> :call ToggleBackground()<CR>
 "-------------------------------------------------------------------------------
