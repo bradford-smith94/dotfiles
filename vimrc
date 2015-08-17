@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 8/3/15
+"updated: 8/17/15
 """"""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -54,7 +54,7 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'shougo/neocomplete' "autocomplete
-"Plugin 'othree/vim-autocomplpop' "autocomplete
+"Plugin 'suan/vim-instant-markdown'
 call vundle#end()
 
 "if this is the first time vundle is installed
@@ -155,7 +155,7 @@ set nofoldenable "do not start folded
 "---filetype settings-----------------------------------------------------------
 "set wrapping
 autocmd FileType markdown setlocal wrap
-autocmd FileType html setlocal wrap
+autocmd FileType html,xhtml setlocal wrap
 
 "set spell
 autocmd FileType gitcommit setlocal spell
