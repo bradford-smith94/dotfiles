@@ -202,7 +202,7 @@ endfunction
 
 function! Compile()
     if &ft == "c" || &ft == "cpp"
-        execute make
+        execute ":make"
     elseif &ft == "tex"
         execute "!pdflatex " . bufname("%")
     else
