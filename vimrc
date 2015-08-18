@@ -136,6 +136,7 @@ set shiftwidth=4
 set expandtab "use softabs by default (:set noexpandtab)
 set softtabstop=4 "softtabs (tab key types spaces)
 set textwidth=80 "wrap at 80 columns by default
+set formatoptions-=t "turn off auto-formatting of text
 set nowrap "don't wrap text by default
 
 "trim trailing whitespaces before saving
