@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 8/17/15
+"updated: 8/18/15
 """"""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -156,10 +156,12 @@ set nofoldenable "do not start folded
 "set wrapping
 autocmd FileType markdown setlocal wrap
 autocmd FileType html,xhtml setlocal wrap
+autocmd FileType tex setlocal wrap
 
 "set spell
 autocmd FileType gitcommit setlocal spell
 autocmd FileType markdown setlocal spell
+autocmd FileType tex setlocal spell
 
 "set completion
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -198,6 +200,16 @@ function! ToggleBackground()
     endif
 endfunction
 
+function! Compile()
+    if &ft == "c" || &ft == "cpp"
+        execute make
+    elseif &ft == "tex"
+        execute "!pdflatex " . bufname("%")
+    else
+        echo "No compile method set for filetype: " . &ft
+    endif
+endfunction
+
 :command! HighlightGroup call SyntaxItem()
 
 "Reload vimrc
@@ -229,9 +241,9 @@ imap <F8> <Esc>:setlocal spell!<CR>a
 map <F9> ]sz=
 imap <F9> <Esc>]sz=
 
-"[F5] saves and compiles using Makefile
-map <F5> :w<CR>:make<CR>
-imap <F5> <Esc>:w<Cr>:make<CR>
+"[F5] saves and compiles using my Compile function
+map <F5> :w<CR>:call Compile()<CR>
+imap <F5> <Esc>:w<Cr>:call Compile()<CR>
 
 "[F2] toggles NERDTree
 map <F2> :NERDTreeToggle<CR>
