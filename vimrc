@@ -1,6 +1,6 @@
 "Bradford Smith
 ".vimrc
-"updated: 8/18/15
+"updated: 8/19/15
 """"""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -204,6 +204,8 @@ endfunction
 function! Compile()
     if &ft == "c" || &ft == "cpp"
         execute ":make"
+    elseif &ft == "markdown"
+        execute "!pandoc -s -t latex -o " . expand("%:r") . ".pdf " . bufname("%")
     elseif &ft == "tex"
         execute "!pdflatex " . bufname("%")
     else
