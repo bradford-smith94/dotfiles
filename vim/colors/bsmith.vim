@@ -1,7 +1,7 @@
 " Vim colorscheme file
 " Author: Bradford Smith
 " Email: <bradford.smith94@gmail.com>
-" Date: 8/3/2015
+" Date: 8/20/2015
 "=====================================
 
 "This was started by following the guide at:
@@ -109,11 +109,10 @@ hi clear PreCondit
 hi clear PreProc
 hi clear Exception
 
-"dark theme colors
-if &background == "dark"
-    if has("gui_running") "if this is gvim
-        echo "bsmith.vim does not currently support GVim"
-    elseif &t_Co >= 256 "this is a 256 or greater color terminal
+if has("gui_running")
+    echo "bsmith.vim does not currently support GVim"
+elseif &t_Co >= 256 "this is a 256 or greater color terminal
+    if &background == "dark" "dark theme colors
 
         "vim things
         hi Normal ctermfg=252 ctermbg=233
@@ -163,10 +162,10 @@ if &background == "dark"
         "searching and spelling
         hi Search ctermfg=0 ctermbg=222
         hi IncSearch ctermfg=16 ctermbg=193
-        hi SpellBad cterm=underline ctermfg=160 ctermbg=253
-        hi SpellCap cterm=underline ctermfg=21 ctermbg=253
-        hi SpellRare cterm=underline ctermfg=165 ctermbg=253
-        hi SpellLocal cterm=underline ctermfg=91 ctermbg=253
+        hi SpellBad cterm=underline ctermfg=160
+        hi SpellCap cterm=underline ctermfg=21
+        hi SpellRare cterm=underline ctermfg=165
+        hi SpellLocal cterm=underline ctermfg=91
 
         "vimdiff colors
         hi DiffAdd ctermfg=174 ctermbg=28
@@ -208,16 +207,11 @@ if &background == "dark"
         hi PreCondit cterm=bold ctermfg=4
         hi PreProc ctermfg=161
         hi Exception ctermfg=21 ctermbg=237
-    endif
 
-    "work around for background getting set to light
-    set background=dark
+        "work around for background getting set to light
+        set background=dark
 
-"light theme colors
-else
-    if has("gui_running") "if this is gvim
-        echo "bsmith.vim does not currently support GVim"
-    elseif &t_Co >= 256 "this is a 256 or greater color terminal
+    else "light theme colors
 
         "vim things
         hi Normal ctermfg=16 ctermbg=230
@@ -287,12 +281,12 @@ else
         hi Conceal ctermfg=7 ctermbg=242
 
         "types
-        hi Type ctermfg=112
+        hi Type ctermfg=34
         hi String ctermfg=28
         hi Character ctermfg=9
         hi Constant ctermfg=227
         hi link Boolean Constant
-        hi Number ctermfg=133
+        hi Number ctermfg=91
         hi link Float Number
         hi Structure cterm=bold ctermfg=4
         hi link Typedef Structure
@@ -312,5 +306,6 @@ else
         hi PreCondit cterm=bold ctermfg=4
         hi PreProc ctermfg=161
         hi Exception ctermfg=21 ctermbg=237
-    endif
-endif
+
+    endif "end if background dark/light
+endif "end if colors gui/256

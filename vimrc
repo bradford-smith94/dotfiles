@@ -1,7 +1,7 @@
-"Bradford Smith
-".vimrc
-"updated: 8/19/15
-""""""""""""""""""
+" Bradford Smith
+" .vimrc
+" updated: 8/20/15
+"""""""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
 set nocompatible "do not use vi compatible mode, we're better than that
@@ -208,6 +208,8 @@ function! Compile()
         execute "!pandoc -s -t latex -o " . expand("%:r") . ".pdf " . bufname("%")
     elseif &ft == "tex"
         execute "!pdflatex " . bufname("%")
+    elseif &ft == "vim"
+        execute ":silent! Reload"
     else
         echo "No compile method set for filetype: " . &ft
     endif
@@ -227,6 +229,8 @@ endfunction
 "space defaults to <left> (l)
 nmap <space> <nop>
 let mapleader=" " "set <leader> as space
+
+nmap <bs> :ClearSearch<CR>
 
 nmap <leader>o :CtrlP<CR>
 nmap <leader>f :CtrlPFunky<CR>
