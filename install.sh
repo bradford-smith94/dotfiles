@@ -2,13 +2,15 @@
 ################################################################################
 # Bradford Smith
 # install.sh
-# updated: 7/8/2015
+# updated: 9/8/2015
 #
 # This script can be run to install my dotfiles.
 #
 # Inspired by: github.com/michaeljsmalley/dotfiles/makesymlinks.sh
 #
 ################################################################################
+#TODO: make -i default and override with -a
+#TODO: install custom terminfos with -t
 
 ########## Variables ###########################################################
 usage="usage: \"$0 -[fhir]\""
@@ -36,7 +38,8 @@ files="bashrc\
  conky\
  tmux.conf\
  scripts\
- Xresources"
+ Xresources\
+ dir_colors"
 
 # list of files/folders to symlink in homedir/.config
 config_files="redshift.conf\

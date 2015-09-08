@@ -1,6 +1,6 @@
 #Bradford Smith
 #.bashrc
-#updated: 6/17/2015
+#updated: 9/8/2015
 ####################
 
 # If not running interactively, don't do anything
@@ -20,6 +20,13 @@ shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# use dircolors to set $LC_COLORS
+if [ -f /usr/bin/dircolors ]; then
+    [ -e "$HOME/.dir_colors" ] && DIR_COLORS="$HOME/.dir_colors"
+    [ -e "$DIR_COLORS" ] || DIR_COLORS=""
+    eval "`dircolors -b $DIR_COLORS`"
+fi
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -61,10 +68,15 @@ if [ `command -v ruby` ]; then
     PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 fi
 
-#if not in SSH
+# if not in SSH
 if [ "x${SSH_TTY}" = "x" ]; then
 #   and screenfetch is installed
     if [ -f /usr/bin/screenfetch ]; then
         screenfetch
     fi
+fi
+
+# override xterm-256color with custom terminfo for italics
+if [ "$TERM" = "xterm-256color" ]; then
+    TERM=xterm-256color-italic
 fi
