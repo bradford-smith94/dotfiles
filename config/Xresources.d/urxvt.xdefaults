@@ -40,6 +40,7 @@ URxvt*scrollWithBuffer:              true
 ! URxvt*cursorUnderline:               boolean
 URxvt*cursorBlink:                   true
 ! URxvt*pointerBlank:                  boolean
+
 ! -- Tango Colorscheme --
 ! -- with True transparency
 URxvt*depth:                         32
@@ -84,10 +85,12 @@ URxvt*color15:                       #eeeeec
 ! URxvt*pointerColor2:                 color
 ! URxvt*borderColor:                   color
 ! URxvt*iconFile:                      file
-! URxvt*font:                          fontname
-! URxvt*boldFont:                      fontname
-! URxvt*italicFont:                    fontname
-! URxvt*boldItalicFont:                fontname
+URxvt*font:                          xft:DejaVu Sans Mono:size=10:antialias=true
+URxvt*boldFont:                      xft:DejaVu Sans Mono:style=Bold:size=10:antialias=true
+URxvt*italicFont:                    xft:DejaVu Sans Mono:style=Oblique:size=10:antialias=true
+URxvt*boldItalicFont:                xft:DejaVu Sans Mono:style=BoldOblique:size=10:antialias=true
+! double buffering for xft
+URxvt*buffered:                      true
 ! URxvt*intensityStyles:               boolean
 ! URxvt*inputMethod:                   name
 ! URxvt*preeditType:                   style
@@ -96,7 +99,6 @@ URxvt*color15:                       #eeeeec
 ! URxvt*title:                         string
 ! URxvt*iconName:                      string
 ! URxvt*saveLines:                     number
-! URxvt*buffered:                      boolean
 ! URxvt*visual:                        number
 ! URxvt*transient-for:                 windowid
 ! URxvt*override-redirect:             boolean
