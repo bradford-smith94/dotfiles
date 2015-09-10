@@ -1,0 +1,5 @@
+# Custom udev rule to rename external Alfa wireless card to "alfa"
+# This could be a problem if multiple are plugged in with the same MAC
+# This file should be placed at `/etc/udev/rules.d/10-network.rules`
+
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:c0:ca:5a:1e:20", NAME="alfa"
