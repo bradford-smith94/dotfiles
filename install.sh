@@ -2,7 +2,7 @@
 ################################################################################
 # Bradford Smith
 # install.sh
-# updated: 9/8/2015
+# updated: 9/9/2015
 #
 # This script can be run to install my dotfiles.
 #
@@ -13,7 +13,7 @@
 #TODO: install custom terminfos with -t
 
 ########## Variables ###########################################################
-usage="usage: \"$0 -[fhir]\""
+usage="usage: \"$0 -[fhirt]\""
 
 root=0
 interactive=0
@@ -52,10 +52,12 @@ function _help
 {
     echo "$usage"
     printf "\nArguments:\n\
-    -f      Force, relink (unlink then link) any alreay linked files\n\
-    -h      Show this help text\n\
-    -i      Interactive, ask for each file whether or not to link it\n\
-    -r      Root, install these files for root also\n\
+\t-f\tForce, relink (unlink then link) any alreay linked files\n\
+\t-h\tShow this help text\n\
+\t-i\tInteractive, ask for each file whether or not to link it\n\
+\t-r\tRoot, install these files for root also\n\
+\t-t\tTerminfos, install custom terminfo files from \
+~/.dotfiles/system/terminfo/\n\
 \nNote: the '-r' option does not currently do anything\n"
 }
 ##### End _help ################################################################
@@ -124,7 +126,7 @@ function makeSymLinks
 
 ########## Code ################################################################
 ##### getopts ##################################################################
-while getopts fhir: FLAG; do
+while getopts fhirt: FLAG; do
     case $FLAG in
         f) #force
             force=1
@@ -138,6 +140,8 @@ while getopts fhir: FLAG; do
             ;;
         r) #root
             root=1
+            ;;
+        t) #terminfos
             ;;
         \?) #unrecognized flag
             echo "$usage"
