@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 8/22/15
+" updated: 9/14/15
 """""""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -136,7 +136,7 @@ set shiftwidth=4
 set expandtab "use softabs by default (:set noexpandtab)
 set softtabstop=4 "softtabs (tab key types spaces)
 set textwidth=80 "wrap at 80 columns by default
-set formatoptions-=t "turn off auto-formatting of text
+set formatoptions-=t "turn off auto-formatting of text by default
 set nowrap "don't wrap text by default
 
 "trim trailing whitespaces before saving
@@ -160,9 +160,13 @@ autocmd FileType html,xhtml setlocal wrap
 autocmd FileType tex setlocal wrap
 
 "set spell
+autocmd FileType text setlocal spell
 autocmd FileType gitcommit setlocal spell
 autocmd FileType markdown setlocal spell
 autocmd FileType tex setlocal spell
+
+"set formatoptions
+autocmd FileType markdown setlocal formatoptions-=tc
 
 "set completion
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -170,6 +174,9 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+"auto headers
+autocmd bufnewfile Makefile source ~/.vim/headers/Makefile.vim
 "-------------------------------------------------------------------------------
 
 
