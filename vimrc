@@ -175,8 +175,9 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-"auto headers
-autocmd bufnewfile Makefile source ~/.vim/headers/Makefile.vim
+"auto headers and/or templates
+autocmd BufNewFile Makefile source ~/.vim/headers/Makefile.vim
+autocmd BufNewFile *.c source ~/.vim/headers/c.vim
 "-------------------------------------------------------------------------------
 
 

@@ -1,5 +1,8 @@
 " this is a file sourced when creating a new Makefile
 " in order to prefill it with a desired default Makefile
+
+" :insert will insert all following lines until it reaches a line with just a
+" "." on it
 :insert
 # Bradford Smith
 # Makefile for
@@ -44,6 +47,8 @@ tar: fclean
 	tar -cvzf $(AUTHOR)_$(PROJECT).tar.gz ./*
 
 .
+" ended inserting, update "Date:" with the current date as mm/dd/yyyy
 :%s/Date:/\=strftime("%m\/%d\/%Y", localtime())/g
+" start on second line after "Makefile for"
 :execute "normal! ggj$"
 

@@ -2,7 +2,7 @@
 ################################################################################
 # Bradford Smith
 # install.sh
-# updated: 9/9/2015
+# updated: 09/14/2015
 #
 # This script can be run to install my dotfiles.
 #
@@ -10,10 +10,10 @@
 #
 ################################################################################
 #TODO: make -i default and override with -a
-#TODO: install custom terminfos with -t
+#TODO: install terminfos properly using tic (possibly with -t option)
 
 ########## Variables ###########################################################
-usage="usage: \"$0 -[fhirt]\""
+usage="usage: \"$0 -[fhir]\""
 
 root=0
 interactive=0
@@ -39,7 +39,8 @@ files="bashrc\
  tmux.conf\
  scripts\
  Xresources\
- dir_colors"
+ dir_colors\
+ terminfo"
 
 # list of files/folders to symlink in homedir/.config
 config_files="redshift.conf\
@@ -56,8 +57,6 @@ function _help
 \t-h\tShow this help text\n\
 \t-i\tInteractive, ask for each file whether or not to link it\n\
 \t-r\tRoot, install these files for root also\n\
-\t-t\tTerminfos, install custom terminfo files from \
-~/.dotfiles/system/terminfo/\n\
 \nNote: the '-r' option does not currently do anything\n"
 }
 ##### End _help ################################################################
@@ -126,7 +125,7 @@ function makeSymLinks
 
 ########## Code ################################################################
 ##### getopts ##################################################################
-while getopts fhirt: FLAG; do
+while getopts fhir: FLAG; do
     case $FLAG in
         f) #force
             force=1
@@ -140,8 +139,6 @@ while getopts fhirt: FLAG; do
             ;;
         r) #root
             root=1
-            ;;
-        t) #terminfos
             ;;
         \?) #unrecognized flag
             echo "$usage"
