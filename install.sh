@@ -2,7 +2,7 @@
 ################################################################################
 # Bradford Smith
 # install.sh
-# updated: 09/14/2015
+# updated: 09/15/2015
 #
 # This script can be run to install my dotfiles.
 #
@@ -44,7 +44,8 @@ files="bashrc\
 
 # list of files/folders to symlink in homedir/.config
 config_files="redshift.conf\
- Xresources.d"
+ Xresources.d\
+ cower"
 ########## End Variables #######################################################
 
 ########## Functions ###########################################################
