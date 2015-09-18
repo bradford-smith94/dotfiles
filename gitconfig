@@ -1,6 +1,6 @@
 #Bradford Smith
 #.gitconfig (global git settings)
-#updated: 6/29/2015
+#updated: 09/18/2015
 #################################
 
 [user]
@@ -23,4 +23,4 @@
 	interactive = true
 	status = true
 [push]
-	default = simple
+	default = upstream
