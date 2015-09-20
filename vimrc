@@ -1,7 +1,7 @@
 " Bradford Smith
 " .vimrc
-" updated: 9/14/15
-"""""""""""""""""""
+" updated: 09/20/2015
+"""""""""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
 set nocompatible "do not use vi compatible mode, we're better than that
@@ -54,7 +54,6 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'shougo/neocomplete' "autocomplete requires +lua
-"Plugin 'suan/vim-instant-markdown'
 call vundle#end()
 
 "if this is the first time vundle is installed
@@ -271,4 +270,12 @@ map <F3> :execute " grep -srnw --binary-files=without-match
 
 "[F1] toggles the background light/dark
 map <F1> :call ToggleBackground()<CR>
+"-------------------------------------------------------------------------------
+
+
+"---other files-----------------------------------------------------------------
+" use ~/.vimrc.local for machine local changes
+if filereadable(glob("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
 "-------------------------------------------------------------------------------

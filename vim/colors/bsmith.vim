@@ -1,8 +1,7 @@
 " Vim colorscheme file
-" Author: Bradford Smith
-" Email: <bradford.smith94@gmail.com>
-" Date: 8/20/2015
-"=====================================
+" Bradford Smith
+" updated: 09/20/2015
+"=====================
 
 "This was started by following the guide at:
 "http://vim.wikia.com/wiki/Create_a_color_scheme_based_on_another
@@ -71,6 +70,10 @@ hi clear SpellBad
 hi clear SpellCap
 hi clear SpellRare
 hi clear SpellLocal
+hi clear SyntasticError
+hi clear SyntasticWarning
+hi clear SyntasticStyleError
+hi clear SyntasticStyleWarning
 
 hi clear DiffAdd
 hi clear DiffChange
@@ -166,6 +169,10 @@ elseif &t_Co >= 256 "this is a 256 or greater color terminal
         hi SpellCap cterm=underline ctermfg=21
         hi SpellRare cterm=underline ctermfg=165
         hi SpellLocal cterm=underline ctermfg=91
+        hi link SyntasticError SpellBad
+        hi link SyntasticWarning WarningMsg
+        hi link SyntasticStyleError SyntasticError
+        hi link SyntasticStyleWarning SyntasticWarning
 
         "vimdiff colors
         hi DiffAdd ctermfg=174 ctermbg=28
@@ -265,6 +272,10 @@ elseif &t_Co >= 256 "this is a 256 or greater color terminal
         hi SpellCap cterm=underline ctermfg=21 ctermbg=253
         hi SpellRare cterm=underline ctermfg=165 ctermbg=253
         hi SpellLocal cterm=underline ctermfg=91 ctermbg=253
+        hi link SyntasticError SpellBad
+        hi link SyntasticWarning WarningMsg
+        hi link SyntasticStyleError SyntasticError
+        hi link SyntasticStyleWarning SyntasticWarning
 
         "vimdiff colors
         hi DiffAdd ctermfg=174 ctermbg=28
