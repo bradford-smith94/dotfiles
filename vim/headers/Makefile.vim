@@ -19,6 +19,9 @@ SRC=
 # C: CC=gcc
 RM=rm -f
 INCLPATH=
+LIBPATH=
+LDLIBS=
+LDFLAGS+=
 # implicit compiling rules:
 # C++ compiled with: `$(CXX) -c $(CPPFLAGS) $(CXXFLAGS)`
 # C complied with: `$(CC) -c $(CPPFLAGS) $(CFLAGS)`
@@ -28,8 +31,8 @@ CXXFLAGS+=
 DBFLGS= -g -DDEBUG
 
 all: $(OBJ)
-	#$(CXX) -o $(PRG) $(OBJ)
-	#$(CC) -o $(PRG) $(OBJ)
+	#$(CXX) $(LDFLAGS) $(OBJ) $(LDLIBS) -o $(PRG)
+	#$(CC) $(LDFLAGS) $(OBJ) $(LDLIBS) -o $(PRG)
 
 debug: fclean
 debug: CPPFLAGS+= $(DBFLGS)
