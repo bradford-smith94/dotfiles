@@ -1,6 +1,6 @@
 #Bradford Smith
-#.bash_aliases
-#updated: 6/26/2015
+#.shell_aliases
+#updated: 09/20/2015
 ####################
 
 ## Overall
@@ -23,6 +23,8 @@ alias gs-pdf='gs -q -dBATCH -dNOPAUSE -dPDFSETTINGS=/prepress -sPAPERSIZE=letter
 ## IP Addresses (replace wlo1 with correct interface)
 alias local-ip="ip addr show wlo1 | grep 'inet' | awk '{print \$2}'"
 alias public-ip='curl icanhazip.com'
+
+alias chrome="google-chrome-stable"
 
 ## Laptop Specific
 ##################

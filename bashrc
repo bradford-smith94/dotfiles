@@ -1,7 +1,7 @@
-#Bradford Smith
-#.bashrc
-#updated: 9/8/2015
-####################
+# Bradford Smith
+# .bashrc
+# updated: 09/20/2015
+#####################
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -32,8 +32,8 @@ fi
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.shell_aliases ]; then
+    . ~/.shell_aliases
 fi
 
 # if ~/bin exists add it to the beginning of the path
