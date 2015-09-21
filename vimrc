@@ -30,7 +30,7 @@ set timeoutlen=50 "esc and arrows timeout
 "automatically install vundle if not present
 "credit: github.com/timss/vimconf
 let has_vundle=1
-if !filereadable($HOME."/.vim/bundle/Vundle.vim/README.md")
+if !filereadable(glob("~/.vim/bundle/Vundle.vim/README.md"))
     echo "Installing Vundle..."
     echo ""
     silent !mkdir -p $HOME/.vim/bundle
@@ -98,9 +98,13 @@ filetype indent plugin on
 syntax on
 set number "line numbers
 set relativenumber "and relative numbers (current line is exact)
-autocmd InsertEnter * :set norelativenumber "don't need relatives in insert
-autocmd InsertEnter * :set number "turn numbers back on (supports old versions)
-autocmd InsertLeave * :set relativenumber "back on for everything else
+augroup numbering_group
+    "clear this autocmd group to protect from re-sourcing this file
+    autocmd!
+    autocmd InsertEnter * :set norelativenumber "don't need relatives in insert
+    autocmd InsertEnter * :set number "turn numbers back on (supports old versions)
+    autocmd InsertLeave * :set relativenumber "back on for everything else
+augroup END
 set cursorline "highlight the line the cursor is on
 set showmatch "highlight matching brackets
 set ruler
@@ -138,13 +142,17 @@ set textwidth=80 "wrap at 80 columns by default
 set formatoptions-=t "turn off auto-formatting of text by default
 set nowrap "don't wrap text by default
 
-"trim trailing whitespaces before saving
-"see: vim.wikia.com/wiki/Remove_unwanted_spaces
-autocmd BufWritePre * :%s/\s\+$//e
+augroup misc_group
+    "clear this autocmd group to protect from re-sourcing this file
+    autocmd!
+    "trim trailing whitespaces before saving
+    "see: vim.wikia.com/wiki/Remove_unwanted_spaces
+    autocmd BufWritePre * :%s/\s\+$//e
 
-"open epub files for editing (can use this for zip files too)
-"see: www.albertopettarin.it/blog/2014/06/03/open-epub-files-with-vim.html
-autocmd BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
+    "open epub files for editing (can use this for zip files too)
+    "see: www.albertopettarin.it/blog/2014/06/03/open-epub-files-with-vim.html
+    autocmd BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
+augroup END
 
 "enable folding of code blocks
 set foldmethod=syntax
@@ -153,30 +161,34 @@ set nofoldenable "do not start folded
 
 
 "---filetype settings-----------------------------------------------------------
-"set wrapping
-autocmd FileType markdown setlocal wrap
-autocmd FileType html,xhtml setlocal wrap
-autocmd FileType tex setlocal wrap
+augroup filetype_group
+    "clear this autocmd group to protect from re-sourcing this file
+    autocmd!
+    "set wrapping
+    autocmd FileType markdown setlocal wrap
+    autocmd FileType html,xhtml setlocal wrap
+    autocmd FileType tex setlocal wrap
 
-"set spell
-autocmd FileType text setlocal spell
-autocmd FileType gitcommit setlocal spell
-autocmd FileType markdown setlocal spell
-autocmd FileType tex setlocal spell
+    "set spell
+    autocmd FileType text setlocal spell
+    autocmd FileType gitcommit setlocal spell
+    autocmd FileType markdown setlocal spell
+    autocmd FileType tex setlocal spell
 
-"set formatoptions
-autocmd FileType markdown setlocal formatoptions-=tc
+    "set formatoptions
+    autocmd FileType markdown setlocal formatoptions-=tc
 
-"set completion
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    "set completion
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-"auto headers and/or templates
-autocmd BufNewFile Makefile source ~/.vim/headers/Makefile.vim
-autocmd BufNewFile *.c source ~/.vim/headers/c.vim
+    "auto headers and/or templates
+    autocmd BufNewFile Makefile source ~/.vim/headers/Makefile.vim
+    autocmd BufNewFile *.c source ~/.vim/headers/c.vim
+augroup END
 "-------------------------------------------------------------------------------
 
 
@@ -212,13 +224,13 @@ function! Compile()
     if &ft == "c" || &ft == "cpp"
         execute ":make"
     elseif &ft == "markdown"
-        execute "!pandoc -s -t latex -o " . expand("%:r") . ".pdf " . bufname("%")
+        execute "!pandoc -s -t latex -o ".expand("%:r").".pdf ".bufname("%")
     elseif &ft == "tex"
         execute "!pdflatex " . bufname("%")
     elseif &ft == "vim"
         execute ":silent! Reload"
     else
-        echo "No compile method set for filetype: " . &ft
+        echo "No compile method set for filetype: ".&ft
     endif
 endfunction
 
