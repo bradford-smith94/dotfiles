@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 09/20/2015
+" updated: 09/23/2015
 """""""""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -187,7 +187,7 @@ augroup filetype_group
 
     "auto headers and/or templates
     autocmd BufNewFile Makefile source ~/.vim/headers/Makefile.vim
-    autocmd BufNewFile *.c source ~/.vim/headers/c.vim
+    autocmd BufNewFile *.c,*.cpp source ~/.vim/headers/c.vim
 augroup END
 "-------------------------------------------------------------------------------
 
