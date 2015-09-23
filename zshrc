@@ -1,6 +1,6 @@
 # Bradford Smith
 # .zshrc
-# updated: 09/20/2015
+# updated: 09/22/2015
 #####################
 
 # unset history file
@@ -15,6 +15,8 @@ zstyle :compinstall filename '/home/bradford/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+autoload -U zmv
 
 # source aliases
 if [ -f "$HOME/.shell_aliases" ]; then

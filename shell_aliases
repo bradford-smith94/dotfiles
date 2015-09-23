@@ -1,7 +1,7 @@
-#Bradford Smith
-#.shell_aliases
-#updated: 09/20/2015
-####################
+# Bradford Smith
+# .shell_aliases
+# updated: 09/22/2015
+#####################
 
 ## Overall
 ##########
@@ -31,3 +31,10 @@ alias chrome="google-chrome-stable"
 ## TLP Powersaving: check to make sure it's running
 alias check-tlp="sudo tlp-stat | grep 'TLP_ENABLE\|TLP power save\|power source'"
 alias check-batt="cat /sys/class/power_supply/BAT0/capacity"
+
+## Shell Specific
+#################
+## ZSH Specific aliases
+if [ -n $ZSH_VERSION ]; then
+    alias mmv='noglob zmv -W'
+fi
