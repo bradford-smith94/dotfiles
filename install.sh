@@ -2,7 +2,7 @@
 ################################################################################
 # Bradford Smith
 # install.sh
-# updated: 09/20/2015
+# updated: 09/24/2015
 #
 # This script can be run to install my dotfiles.
 #
@@ -34,6 +34,7 @@ files="bashrc\
  vim\
  gitconfig\
  gitmessage\
+ gdbinit\
  conkyrc\
  conky\
  tmux.conf\
