@@ -1,6 +1,6 @@
 # Bradford Smith
 # .bashrc
-# updated: 09/20/2015
+# updated: 09/25/2015
 #####################
 
 # If not running interactively, don't do anything
@@ -74,9 +74,4 @@ if [ "x${SSH_TTY}" = "x" ]; then
     if [ -f /usr/bin/screenfetch ]; then
         screenfetch
     fi
-fi
-
-# override xterm-256color with custom terminfo for italics
-if [ "$TERM" = "xterm-256color" ]; then
-    TERM=xterm-256color-italic
 fi

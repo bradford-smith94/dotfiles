@@ -46,7 +46,6 @@ TERM rxvt-unicode-256color
 TERM rxvt-unicode256
 TERM screen
 TERM screen-256color
-TERM screen-256color-italic
 TERM screen-256color-bce
 TERM screen-bce
 TERM screen-w
@@ -60,7 +59,6 @@ TERM vt100
 TERM xterm
 TERM xterm-16color
 TERM xterm-256color
-TERM xterm-256color-italic
 TERM xterm-88color
 TERM xterm-color
 TERM xterm-debian

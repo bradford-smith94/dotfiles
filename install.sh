@@ -10,7 +10,6 @@
 #
 ################################################################################
 #TODO: make -i default and override with -a
-#TODO: install terminfos properly using tic (possibly with -t option)
 
 ########## Variables ###########################################################
 usage="usage: \"$0 -[fhir]\""
