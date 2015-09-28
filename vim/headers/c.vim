@@ -12,5 +12,6 @@
 " ended inserting, update "Date:" with the current date as mm/dd/yyyy
 :%s/Date:/\=strftime("%m\/%d\/%Y", localtime())/g
 " start on second line at "<Project>"
+:execute "normal! ggjfFca<".expand('%:t')
 :execute "normal! ggjf<"
 
