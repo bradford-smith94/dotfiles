@@ -2,7 +2,7 @@
 ################################################################################
 # Bradford Smith
 # install.sh
-# updated: 09/24/2015
+# updated: 09/28/2015
 #
 # This script can be run to install my dotfiles.
 #
@@ -40,7 +40,6 @@ files="bashrc\
  scripts\
  Xresources\
  dir_colors\
- terminfo\
  zshrc"
 
 # list of files/folders to symlink in homedir/.config
