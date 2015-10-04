@@ -1,6 +1,6 @@
 # Bradford Smith
 # .zshrc
-# updated: 09/22/2015
+# updated: 10/04/2015
 #####################
 
 # unset history file
@@ -8,6 +8,12 @@ HISTFILE=
 
 # use vim-like keybindings
 bindkey -v
+export KEYTIMEOUT=1
+
+# use vim as the default editor
+if [ -f /usr/bin/vim ]; then
+    export EDITOR=/usr/bin/vim
+fi
 
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/bradford/.zshrc'
@@ -29,6 +35,11 @@ if [ -f /usr/bin/dircolors ]; then
     [ -e "$DIR_COLORS" ] || DIR_COLORS=""
     eval "`dircolors -b $DIR_COLORS`"
 fi
+
+setopt autocd
+
+# theme it
+source ~/.zsh/bsmith.zsh-theme
 
 # if not in SSH
 if [ "x${SSH_TTY}" = "x" ]; then

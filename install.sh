@@ -2,20 +2,19 @@
 ################################################################################
 # Bradford Smith
 # install.sh
-# updated: 09/28/2015
+# updated: 10/04/2015
 #
 # This script can be run to install my dotfiles.
 #
 # Inspired by: github.com/michaeljsmalley/dotfiles/makesymlinks.sh
 #
 ################################################################################
-#TODO: make -i default and override with -a
 
 ########## Variables ###########################################################
-usage="usage: \"$0 -[fhir]\""
+usage="usage: \"$0 -[afhr]\""
 
 root=0
-interactive=0
+interactive=1
 force=0
 
 # directories
@@ -39,7 +38,8 @@ files="bashrc\
  scripts\
  Xresources\
  dir_colors\
- zshrc"
+ zshrc\
+ zsh"
 
 # list of files/folders to symlink in homedir/.config
 config_files="redshift.conf\
@@ -53,9 +53,9 @@ function _help
 {
     echo "$usage"
     printf "\nArguments:\n\
+\t-a\tAll, skip the default interactive mode and link all files\n\
 \t-f\tForce, relink (unlink then link) any alreay linked files\n\
 \t-h\tShow this help text\n\
-\t-i\tInteractive, ask for each file whether or not to link it\n\
 \t-r\tRoot, install these files for root also\n\
 \nNote: the '-r' option does not currently do anything\n"
 }
@@ -125,17 +125,17 @@ function makeSymLinks
 
 ########## Code ################################################################
 ##### getopts ##################################################################
-while getopts fhir: FLAG; do
+while getopts afhr: FLAG; do
     case $FLAG in
+        a) #all (skip interactive)
+            interactive=0
+            ;;
         f) #force
             force=1
             ;;
         h) #help
             _help
             exit
-            ;;
-        i) #interactive
-            interactive=1
             ;;
         r) #root
             root=1
