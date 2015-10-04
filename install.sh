@@ -33,7 +33,6 @@ files="bashrc\
  vim\
  gitconfig\
  gitmessage\
- gdbinit\
  conkyrc\
  conky\
  tmux.conf\
