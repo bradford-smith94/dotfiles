@@ -3,6 +3,9 @@
 # updated: 10/04/2015
 #####################
 
+# theme it
+source ~/.zsh/bsmith.zsh-theme
+
 # unset history file
 HISTFILE=
 
@@ -37,9 +40,6 @@ if [ -f /usr/bin/dircolors ]; then
 fi
 
 setopt autocd
-
-# theme it
-source ~/.zsh/bsmith.zsh-theme
 
 # if not in SSH
 if [ "x${SSH_TTY}" = "x" ]; then
