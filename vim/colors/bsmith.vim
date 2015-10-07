@@ -1,12 +1,11 @@
 " Vim colorscheme file
 " Bradford Smith
 " bsmith.vim
-" updated: 09/25/2015
+" updated: 10/07/2015
 "=====================
 
 "This was started by following the guide at:
 "http://vim.wikia.com/wiki/Create_a_color_scheme_based_on_another
-"TODO: move color count checks to dark/light files
 "TODO: maybe add 16/8-color terminal support
 "TODO: add non-color terminal support
 "TODO: add GVim support
@@ -114,12 +113,8 @@ hi clear PreCondit
 hi clear PreProc
 hi clear Exception
 
-if has("gui_running")
-    echo "bsmith.vim does not currently support GVim"
-elseif &t_Co >= 256 "this is a 256 or greater color terminal
-    if &background == "dark" "dark theme colors
-        source ~/.vim/colors/bsmith_dark.vim
-    else "light theme colors
-        source ~/.vim/colors/bsmith_light.vim
-    endif "end if background dark/light
-endif "end if colors gui/256
+if &background == "dark" "dark theme colors
+    source ~/.vim/colors/bsmith_dark.vim
+else "light theme colors
+    source ~/.vim/colors/bsmith_light.vim
+endif "end if background dark/light
