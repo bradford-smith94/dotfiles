@@ -188,6 +188,7 @@ augroup filetype_group
     "auto headers and/or templates
     autocmd BufNewFile Makefile source ~/.vim/headers/Makefile.vim
     autocmd BufNewFile *.c,*.cpp source ~/.vim/headers/c.vim
+    autocmd BufNewFile *.h source ~/.vim/headers/h.vim
 augroup END
 "-------------------------------------------------------------------------------
 
