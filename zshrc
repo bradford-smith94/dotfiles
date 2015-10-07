@@ -13,6 +13,10 @@ HISTFILE=
 bindkey -v
 export KEYTIMEOUT=1
 
+zmodload zsh/terminfo
+# rebind backtab (shift-tab) to avoid switching to vicmd mode
+bindkey -M viins "$terminfo[kcbt]" reverse-menu-complete
+
 # use vim as the default editor
 if [ -f /usr/bin/vim ]; then
     export EDITOR=/usr/bin/vim
