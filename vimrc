@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 09/23/2015
+" updated: 10/08/2015
 """""""""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -23,6 +23,8 @@ set nomodeline "disable modelines
 set notimeout "don't timeout on :mappings
 set ttimeout "timeout on key codes
 set timeoutlen=50 "esc and arrows timeout
+set mouse=nr "normal and "Hit Enter" messages (useful for switching windows)
+let $PAGER='' "all Vim to be used for viewing man pages
 "-------------------------------------------------------------------------------
 
 
@@ -55,6 +57,9 @@ Plugin 'scrooloose/syntastic'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'shougo/neocomplete' "autocomplete requires +lua
 call vundle#end()
+
+"felt like this belonged with plugin initialization
+source $VIMRUNTIME/ftplugin/man.vim "initializes the :Man command
 
 "if this is the first time vundle is installed
 if has_vundle == 0
