@@ -1,6 +1,6 @@
 # Bradford Smith
 # .bashrc
-# updated: 09/25/2015
+# updated: 10/08/2015
 #####################
 
 # If not running interactively, don't do anything
@@ -58,9 +58,10 @@ else
     PS1='\[\e[0;31m\]\u\[\e[m\]\[\e[1;31m\]@\h:\[\e[m\] \[\e[1;34m\]\w\[\e[m\]\[\e[0;31m\]\$\[\e[m\] '
 fi
 
-# use vim as the default editor
+# use vim as the default editor and man pager
 if [ -f /usr/bin/vim ]; then
     export EDITOR=/usr/bin/vim
+    export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man' -\""
 fi
 
 # for ruby gems

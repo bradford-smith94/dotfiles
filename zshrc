@@ -1,6 +1,6 @@
 # Bradford Smith
 # .zshrc
-# updated: 10/05/2015
+# updated: 10/08/2015
 #####################
 
 # theme it
@@ -17,9 +17,10 @@ zmodload zsh/terminfo
 # rebind backtab (shift-tab) to avoid switching to vicmd mode
 bindkey -M viins "$terminfo[kcbt]" reverse-menu-complete
 
-# use vim as the default editor
+# use vim as the default editor and man pager
 if [ -f /usr/bin/vim ]; then
     export EDITOR=/usr/bin/vim
+    export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man' -\""
 fi
 
 # The following lines were added by compinstall

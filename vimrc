@@ -24,7 +24,7 @@ set notimeout "don't timeout on :mappings
 set ttimeout "timeout on key codes
 set timeoutlen=50 "esc and arrows timeout
 set mouse=nr "normal and "Hit Enter" messages (useful for switching windows)
-let $PAGER='' "all Vim to be used for viewing man pages
+let $MANPAGER='' "allows Vim's :Man command to be used without conflict
 "-------------------------------------------------------------------------------
 
 
