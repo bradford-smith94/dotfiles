@@ -1,13 +1,13 @@
 " Bradford Smith
 " man.vim
-" 10/08/2015
+" 10/10/2015
 """""""""""""""""
 
 "set buffer not modifiable, not modified and no numbers
-set noma
-set nomod
-set nonumber
-set norelativenumber
+setlocal noma
+setlocal nomod
+setlocal nonumber
+setlocal norelativenumber
 
 "some mappings that make navigating man pages easier
 
