@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 10/08/2015
+" updated: 10/10/2015
 """""""""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -190,10 +190,10 @@ augroup filetype_group
     autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-    "auto headers and/or templates
-    autocmd BufNewFile Makefile source ~/.vim/headers/Makefile.vim
-    autocmd BufNewFile *.c,*.cpp source ~/.vim/headers/c.vim
-    autocmd BufNewFile *.h source ~/.vim/headers/h.vim
+    "autofilled templates
+    autocmd BufNewFile Makefile source ~/.vim/templates/Makefile.vim
+    autocmd BufNewFile *.c,*.cpp source ~/.vim/templates/c.vim
+    autocmd BufNewFile *.h source ~/.vim/templates/h.vim
 augroup END
 "-------------------------------------------------------------------------------
 
@@ -256,6 +256,7 @@ nmap <space> <nop>
 let mapleader=" " "set <leader> as space
 
 nmap <bs> :ClearSearch<CR>
+nmap <CR> <nop>
 
 nmap <leader>o :CtrlP<CR>
 nmap <leader>f :CtrlPFunky<CR>

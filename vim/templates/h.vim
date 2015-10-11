@@ -19,10 +19,7 @@
 :execute "normal! ggjfFca<".expand('%:t')
 " expand <lock> with _<FILENAME>_H_
 :silent! %s/<lock>/_<FILENAME>_H_/g
-:silent! %s/<FILENAME>/\=expand('%:t:r')/g
-:execute "normal! gg5jf_gUw"
-:execute "normal! ^jf_gUw"
-:execute "normal! ^2jf_gUw"
+:silent! %s/<FILENAME>/\=toupper(expand('%:t:r'))/g
 " start on second line at "<Project>"
 :execute "normal! ggjf<"
 

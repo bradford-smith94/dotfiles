@@ -8,6 +8,8 @@
  * Date:
  */
 
+#include "<header>"
+
 .
 " ended inserting, update "Date:" with the current date as mm/dd/yyyy
 :%s/Date:/\=strftime("%m\/%d\/%Y", localtime())/
