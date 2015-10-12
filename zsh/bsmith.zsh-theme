@@ -1,6 +1,6 @@
 # Bradford Smith
 # bsmith.zsh-theme
-# updated: 10/04/2015
+# updated: 10/12/2015
 #####################
 
 autoload -U colors && colors
@@ -18,15 +18,13 @@ local YELLOW="%{$fg[yellow]%}"
 local CYAN="%{$fg[cyan]%}"
 local MAGENTA="%{$fg[magenta]%}"
 
+#red # if root, else green $
 PROMPT_CHAR="%(!.${RED}#${RESET}.${GREEN}$ ${RESET})"
 
 function user()
 {
-    if [[ $EUID -ne 0 ]]; then #not root -> green
-        echo "${GREEN}%n${RESET}"
-    else #root -> red
-        echo "${RED}%n${RESET}"
-    fi
+    #echo name in red if root, else name in green
+    echo "%(!.${RED}%n${RESET}.${GREEN}%n${RESET})"
 }
 
 function host()
@@ -36,7 +34,10 @@ function host()
 
 function dir()
 {
-    echo "%B${BLUE}%~${RESET}%b"
+    #if directory has at least 5 parts show the front 2 and last 1
+    #else show the full cwd
+    local dir="%(5C.%-2~/***/%1~.%~)"
+    echo "%B${BLUE}$dir${RESET}%b"
 }
 
 # from github.com/SicK94/minimal/minimal.zsh-theme

@@ -1,6 +1,6 @@
 # Bradford Smith
 # .zshrc
-# updated: 10/08/2015
+# updated: 10/12/2015
 #####################
 
 # theme it
@@ -24,6 +24,9 @@ if [ -f /usr/bin/vim ]; then
 fi
 
 # The following lines were added by compinstall
+
+zstyle ':completion:*' completer _expand _complete _ignored
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|=**' 'l:|=* r:|=*'
 zstyle :compinstall filename '/home/bradford/.zshrc'
 
 autoload -Uz compinit
@@ -34,6 +37,7 @@ compinit
 zstyle -s ':completion:*:hosts' hosts _ssh_config
 [[ -r ~/.ssh/config ]] && _ssh_config+=($(cat ~/.ssh/config | sed -ne 's/Host[=\t ]//p'))
 zstyle ':completion:*:hosts' hosts $_ssh_config
+
 
 autoload -U zmv
 
