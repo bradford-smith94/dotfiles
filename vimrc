@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 10/10/2015
+" updated: 10/14/2015
 """""""""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -14,16 +14,16 @@ set nospell "spelling off by default
 set spelllang=en_us
 set spellfile=~/.vim/spell/custom.utf-8.add
 silent! mkspell! ~/.vim/spell/custom.utf-8.add
-set backspace=indent,eol,start
+set backspace=indent,eol,start "makes backspace work like expected
 set noerrorbells
 set visualbell
 set viminfo="none"
-set ttyfast
 set nomodeline "disable modelines
+set ttyfast
 set notimeout "don't timeout on :mappings
 set ttimeout "timeout on key codes
 set timeoutlen=50 "esc and arrows timeout
-set mouse=nr "normal and "Hit Enter" messages (useful for switching windows)
+set mouse=nr "normal and 'Hit Enter' messages (useful for switching windows)
 let $MANPAGER='' "allows Vim's :Man command to be used without conflict
 "-------------------------------------------------------------------------------
 
@@ -226,6 +226,22 @@ function! ToggleBackground()
     endif
 endfunction
 
+"function to easily toggle into a 'hex editor mode' which pipes the buffer
+"   through xxd
+function! ToggleHexMode()
+    if !exists("b:hexMode") || !b:hexMode
+        setlocal binary
+        setlocal noeol
+        execute ":%!xxd"
+        let b:hexMode=1
+    else
+        setlocal nobinary
+        setlocal eol
+        execute ":%!xxd -r"
+        let b:hexMode=0
+    endif
+endfunction
+
 function! Compile()
     if &ft == "c" || &ft == "cpp"
         execute ":make"
@@ -247,6 +263,9 @@ endfunction
 
 "Clear the last used search pattern
 :command! ClearSearch let @/=""
+
+"Toggle editing in Hex mode
+:command! Hex call ToggleHexMode()
 "-------------------------------------------------------------------------------
 
 
