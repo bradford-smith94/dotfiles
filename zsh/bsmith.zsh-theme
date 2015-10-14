@@ -1,6 +1,6 @@
 # Bradford Smith
 # bsmith.zsh-theme
-# updated: 10/12/2015
+# updated: 10/13/2015
 #####################
 
 autoload -U colors && colors
@@ -55,9 +55,9 @@ function git_repo_status()
     if $(echo "$rs" | grep -v '^##' &> /dev/null); then #dirty
         echo "${RED}"
     elif $(echo "$rs" | grep "^##.*diverged" &> /dev/null); then #diverged
-        echo "${YELLOW}"
+        echo "${BLUE}"
     elif $(echo "$rs" | grep "^##.*behind" &> /dev/null); then #behind
-        echo "${RED}"
+        echo "${YELLOW}"
     elif $(echo "$rs" | grep "^##.*ahead" &> /dev/null); then #ahead
         echo "${GREEN}"
     else #clean
