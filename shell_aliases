@@ -1,6 +1,6 @@
 # Bradford Smith
 # .shell_aliases
-# updated: 09/22/2015
+# updated: 10/16/2015
 #####################
 
 ## Overall
@@ -11,7 +11,7 @@ alias srm='srm -vz' #default srm to verbose and write zeros on last pass
 alias sfill='sfill -vz' #same as srm but works on free partition space
 
 ## File Navigation
-alias ls='ls --color=auto --group-directories-first'
+alias ls='ls --color=auto --group-directories-first -v'
 alias la='ls -lLah'
 alias ll='ls -l'
 alias grep='grep --color=auto'
