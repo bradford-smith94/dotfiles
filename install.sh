@@ -39,7 +39,8 @@ files="bashrc\
  Xresources\
  dir_colors\
  zshrc\
- zsh"
+ zsh\
+ w3m"
 
 # list of files/folders to symlink in homedir/.config
 config_files="redshift.conf\
