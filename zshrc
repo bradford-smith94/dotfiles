@@ -1,6 +1,6 @@
 # Bradford Smith
 # .zshrc
-# updated: 10/12/2015
+# updated: 10/17/2015
 #####################
 
 # theme it
@@ -51,6 +51,16 @@ if [ -f /usr/bin/dircolors ]; then
     [ -e "$HOME/.dir_colors" ] && DIR_COLORS="$HOME/.dir_colors"
     [ -e "$DIR_COLORS" ] || DIR_COLORS=""
     eval "`dircolors -b $DIR_COLORS`"
+fi
+
+# if ~/bin exists add it to the beginning of the path
+if [ -d ~/bin ]; then
+    PATH=~/bin:$PATH
+fi
+
+# if ~/.scripts exists add it to the path
+if [ -d ~/.scripts ]; then
+    PATH=$PATH:~/.scripts
 fi
 
 setopt autocd
