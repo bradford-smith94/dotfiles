@@ -20,16 +20,16 @@ keymap ,        NULL
 keymap ^        NULL
 keymap C-a      NULL
 keymap W        NULL
-keymap ^[[6~    NULL
-keymap ^[[5~    NULL
+keymap ^[[6~    NULL    #PgDn
+keymap ^[[5~    NULL    #PgUp
 keymap g        NULL
-keymap ^[[1~    NULL
-keymap ^[[4~    NULL
+keymap ^[[1~    NULL    #Home
+keymap ^[[4~    NULL    #End
 keymap ESC-<    NULL
 keymap ESC->    NULL
 keymap [        NULL
 keymap ]        NULL
-keymap ^[[Z     NULL
+keymap ^[[Z     NULL    #Backtab (Shift-Tab)
 keymap  ESC-m   NULL
 keymap (        NULL
 keymap )        NULL
@@ -133,8 +133,8 @@ keymap C-@      NULL
 keymap ESC-n    NULL
 keymap ESC-p    NULL
 keymap \"       NULL
-keymap ^[[2~    NULL
-keymap ^[[28~   NULL
+keymap ^[[2~    NULL    #Ins
+keymap ^[[28~   NULL    #Enter?
 keymap ^[[E     NULL
 keymap ^[[L     NULL
 keymap o        NULL
