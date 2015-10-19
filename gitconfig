@@ -1,26 +1,33 @@
 #Bradford Smith
 #.gitconfig (global git settings)
-#updated: 09/18/2015
+#updated: 10/19/2015
 #################################
 
 [user]
-	name = Bradford Smith
-	#set user.email in per repository config files
-[merge]
-	tool = vimdiff
-[diff]
-	tool = vimdiff
-[difftool]
-	prompt = false
+    name = Bradford Smith
+    #set user.email in per repository config files
 [core]
-	editor = vim
+    editor = vim
+    excludesfile = ~/.gitignore
+[merge]
+    tool = vimdiff
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
 [commit] #commits start with prefilled text provided in:
-	template = ~/.gitmessage
+    template = ~/.gitmessage
 [color]
-	ui = auto
-	branch = true
-	diff = true
-	interactive = true
-	status = true
+    ui = auto
+    branch = true
+    diff = true
+    interactive = true
+    status = true
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = red
 [push]
-	default = upstream
+    default = upstream
+[alias]
+    graph = "log --graph"

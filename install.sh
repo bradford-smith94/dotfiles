@@ -2,7 +2,7 @@
 ################################################################################
 # Bradford Smith
 # install.sh
-# updated: 10/04/2015
+# updated: 10/19/2015
 #
 # This script can be run to install my dotfiles.
 #
@@ -31,6 +31,7 @@ files="bashrc\
  vimrc\
  vim\
  gitconfig\
+ gitignore\
  gitmessage\
  conkyrc\
  conky\
