@@ -1,19 +1,21 @@
 #Bradford Smith
 #.gitconfig (global git settings)
-#updated: 09/18/2015
+#updated: 10/19/2015
 #################################
+#TODO: checkout scrubbers and cleaners
 
 [user]
 	name = Bradford Smith
 	#set user.email in per repository config files
+[core]
+	editor = vim
+    excludesfile = ~/.gitignore
 [merge]
 	tool = vimdiff
 [diff]
 	tool = vimdiff
 [difftool]
 	prompt = false
-[core]
-	editor = vim
 [commit] #commits start with prefilled text provided in:
 	template = ~/.gitmessage
 [color]
@@ -22,5 +24,11 @@
 	diff = true
 	interactive = true
 	status = true
-[push]
-	default = upstream
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = red
+[push] #if version is greater than 1.7.11 this should be simple
+	default = simple
+[alias]
+    graph = "log --graph"

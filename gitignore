@@ -1,0 +1,11 @@
+# Bradford Smith
+# ~/.gitignore
+# updated: 10/19/2015
+# Global Git ignore file
+########################
+
+## Linux ##
+*~
+
+## Vim ##
+*.swp
