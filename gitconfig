@@ -2,7 +2,6 @@
 #.gitconfig (global git settings)
 #updated: 10/19/2015
 #################################
-#TODO: checkout scrubbers and cleaners
 
 [user]
 	name = Bradford Smith
@@ -18,6 +17,9 @@
 	prompt = false
 [commit] #commits start with prefilled text provided in:
 	template = ~/.gitmessage
+[filter "gitignore_this"] #use a .gitattributes to apply filter
+	clean = "sed '/#gitignore this$/'d"
+    smudge = cat
 [color]
 	ui = auto
 	branch = true
@@ -29,6 +31,5 @@
     changed = yellow
     untracked = red
 [push] #if version is greater than 1.7.11 this should be simple
-	default = simple
 [alias]
     graph = "log --graph"

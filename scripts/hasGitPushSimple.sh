@@ -28,7 +28,7 @@ else
 fi
 
 if [ ${HASGITPUSHSIMPLE} ]; then
-    sed "s/push_default/simple/g" ~/.gitconfig > ~/.gitconfig
+    sed --follow-symlinks -i -e "s/push_default/simple/g" ~/.gitconfig
 else
-    sed "s/push_default/upstream/g" ~/.gitconfig > ~/.gitconfig
+    sed --follow-symlinks -i -e "s/push_default/upstream/g" ~/.gitconfig
 fi
