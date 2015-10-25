@@ -11,6 +11,18 @@
 #ifndef <lock>
 #define <lock>
 
+/* C: defaults
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+*/
+/* C++: defaults
+#include <string>
+#include <iostream>
+#include <algorithm>
+*/
+
 #endif /* <lock> */
 .
 " ended inserting, update "Date:" with the current date as mm/dd/yyyy
