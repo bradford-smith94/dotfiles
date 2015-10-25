@@ -1,7 +1,7 @@
 " Vim coloscheme file
 " Bradford Smith
 " bsmith_dark.vim
-" updated: 10/07/2015
+" updated: 10/25/2015
 "=====================
 
 "This is the dark colors variant of my custom colorscheme
@@ -88,7 +88,7 @@ elseif &t_Co >= 256 "this is a 256 or greater color terminal
     hi link Boolean Constant
     hi Number ctermfg=133
     hi link Float Number
-    hi Structure cterm=bold ctermfg=4
+    hi Structure cterm=bold ctermfg=112
     hi link Typedef Structure
     hi StorageClass ctermfg=208
 

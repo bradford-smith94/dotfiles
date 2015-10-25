@@ -1,7 +1,7 @@
 " Vim coloscheme file
 " Bradford Smith
 " bsmith_light.vim
-" updated: 10/24/2015
+" updated: 10/25/2015
 "=====================
 "TODO: airline colors light
 
@@ -89,7 +89,7 @@ elseif &t_Co >= 256 "this is a 256 or greater color terminal
     hi link Boolean Constant
     hi Number ctermfg=91
     hi link Float Number
-    hi Structure cterm=bold ctermfg=4
+    hi Structure cterm=bold ctermfg=34
     hi link Typedef Structure
     hi StorageClass ctermfg=208
 
@@ -102,7 +102,7 @@ elseif &t_Co >= 256 "this is a 256 or greater color terminal
     hi Statement ctermfg=9
     hi link Operator Normal
     hi Debug ctermfg=219
-    hi Define cterm=bold ctermfg=81
+    hi Define cterm=bold ctermfg=75
     hi link Macro Define
     hi PreCondit cterm=bold ctermfg=4
     hi PreProc ctermfg=161
