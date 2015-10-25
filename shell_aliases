@@ -1,6 +1,6 @@
 # Bradford Smith
 # .shell_aliases
-# updated: 10/16/2015
+# updated: 10/24/2015
 #####################
 
 ## Overall
@@ -24,13 +24,16 @@ alias gs-pdf='gs -q -dBATCH -dNOPAUSE -dPDFSETTINGS=/prepress -sPAPERSIZE=letter
 alias local-ip="ip addr show wlo1 | grep 'inet' | awk '{print \$2}'"
 alias public-ip='curl icanhazip.com'
 
-alias chrome="google-chrome-stable"
+alias chrome='google-chrome-stable'
+
+# if I remember to do watch I probably want `watch -g`
+alias watch='watch -g'
 
 ## Laptop Specific
 ##################
 ## TLP Powersaving: check to make sure it's running
 alias check-tlp="sudo tlp-stat | grep 'TLP_ENABLE\|TLP power save\|power source'"
-alias check-batt="cat /sys/class/power_supply/BAT0/capacity"
+alias check-batt='cat /sys/class/power_supply/BAT0/capacity'
 
 ## Shell Specific
 #################

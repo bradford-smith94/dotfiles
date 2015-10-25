@@ -1,8 +1,9 @@
 " Vim coloscheme file
 " Bradford Smith
 " bsmith_light.vim
-" updated: 10/07/2015
+" updated: 10/24/2015
 "=====================
+"TODO: airline colors light
 
 "This is the light colors variant of my custom colorscheme
 
@@ -35,7 +36,7 @@ elseif &t_Co >= 256 "this is a 256 or greater color terminal
     "messages
     hi Error ctermbg=9
     hi link ErrorMsg Error
-    hi WarningMsg ctermfg=11
+    hi WarningMsg ctermfg=165 ctermbg=253
     hi MoreMsg ctermfg=243
     hi link ModeMsg MoreMsg
     hi StatusLine ctermfg=253 ctermbg=238
