@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 10/14/2015
+" updated: 10/25/2015
 """""""""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -280,6 +280,9 @@ nmap <CR> <nop>
 nmap <leader>o :CtrlP<CR>
 nmap <leader>f :CtrlPFunky<CR>
 nmap <leader>b :CtrlPBuffer<CR>
+
+"make Y behave like C and D
+map Y y$
 
 "use Ctrl + w then Tab and Ctrl + w then Shift + Tab to cycle between splits
 nnoremap <c-w><Tab> <c-w>w

@@ -85,7 +85,7 @@ URxvt*color15:                       #eeeeec
 ! URxvt*pointerColor2:                 color
 ! URxvt*borderColor:                   color
 ! URxvt*iconFile:                      file
-URxvt*font:                          xft:DejaVu Sans Mono:size=11:antialias=true
+URxvt*font:                          xft:DejaVu Sans Mono:style=Book:size=11:antialias=true
 URxvt*boldFont:                      xft:DejaVu Sans Mono:style=Bold:size=11:antialias=true
 URxvt*italicFont:                    xft:DejaVu Sans Mono:style=Oblique:size=11:antialias=true
 URxvt*boldItalicFont:                xft:DejaVu Sans Mono:style=BoldOblique:size=11:antialias=true
