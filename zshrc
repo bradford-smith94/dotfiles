@@ -64,6 +64,7 @@ if [ -d ~/.scripts ]; then
 fi
 
 setopt autocd
+setopt no_hup #prevent zsh from killing background processes
 
 # if not in SSH
 if [ "x${SSH_TTY}" = "x" ]; then
