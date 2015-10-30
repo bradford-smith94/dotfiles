@@ -1,6 +1,6 @@
 # Bradford Smith
 # .shell_aliases
-# updated: 10/24/2015
+# updated: 10/28/2015
 #####################
 
 ## Overall
@@ -40,4 +40,5 @@ alias check-batt='cat /sys/class/power_supply/BAT0/capacity'
 ## ZSH Specific aliases
 if [ -n $ZSH_VERSION ]; then
     alias mmv='noglob zmv -W'
+    alias -s pdf='evince'
 fi

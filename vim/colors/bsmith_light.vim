@@ -1,7 +1,7 @@
 " Vim coloscheme file
 " Bradford Smith
 " bsmith_light.vim
-" updated: 10/25/2015
+" updated: 10/29/2015
 "=====================
 "TODO: airline colors light
 
@@ -106,6 +106,6 @@ elseif &t_Co >= 256 "this is a 256 or greater color terminal
     hi link Macro Define
     hi PreCondit cterm=bold ctermfg=4
     hi PreProc ctermfg=161
-    hi Exception ctermfg=21 ctermbg=237
+    hi Exception ctermfg=21
 
 endif

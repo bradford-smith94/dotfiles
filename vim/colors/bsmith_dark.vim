@@ -1,7 +1,7 @@
 " Vim coloscheme file
 " Bradford Smith
 " bsmith_dark.vim
-" updated: 10/25/2015
+" updated: 10/29/2015
 "=====================
 
 "This is the dark colors variant of my custom colorscheme
@@ -105,7 +105,7 @@ elseif &t_Co >= 256 "this is a 256 or greater color terminal
     hi link Macro Define
     hi PreCondit cterm=bold ctermfg=4
     hi PreProc ctermfg=161
-    hi Exception ctermfg=21 ctermbg=237
+    hi Exception ctermfg=27
 
     "work around for background getting set to light
     set background=dark
