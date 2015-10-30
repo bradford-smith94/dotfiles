@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 10/25/2015
+" updated: 10/30/2015
 """""""""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -245,6 +245,8 @@ endfunction
 function! Compile()
     if &ft == "c" || &ft == "cpp"
         execute ":make"
+    elseif &ft == "java"
+        execute ":!javac " . bufname("%")
     elseif &ft == "markdown"
         execute "!pandoc -s -t latex -o ".expand("%:r").".pdf ".bufname("%")
     elseif &ft == "tex"
@@ -288,17 +290,8 @@ map Y y$
 nnoremap <c-w><Tab> <c-w>w
 nnoremap <c-w><s-Tab> <c-w>W
 
-"[F8] toggles spellcheck
-map <F8> :setlocal spell!<CR>
-imap <F8> <Esc>:setlocal spell!<CR>a
-
-"[F9] opens suggestions for next misspelled word
-map <F9> ]sz=
-imap <F9> <Esc>]sz=
-
-"[F5] saves and compiles using my Compile function
-map <F5> :w<CR>:call Compile()<CR>
-imap <F5> <Esc>:w<Cr>:call Compile()<CR>
+"[F1] toggles the background light/dark
+map <F1> :call ToggleBackground()<CR>
 
 "[F2] toggles NERDTree
 map <F2> :NERDTreeToggle<CR>
@@ -309,8 +302,17 @@ map <F3> :execute " grep -srnw --binary-files=without-match
     \ --exclude-dir=.git . -e " . expand("<cword>") . " "
     \ <bar> cwindow<CR><CR><CR>
 
-"[F1] toggles the background light/dark
-map <F1> :call ToggleBackground()<CR>
+"[F5] saves and 'compiles' using my Compile function
+map <F5> :w<CR>:call Compile()<CR>
+imap <F5> <Esc>:w<Cr>:call Compile()<CR>
+
+"[F8] toggles spellcheck
+map <F8> :setlocal spell!<CR>
+imap <F8> <Esc>:setlocal spell!<CR>a
+
+"[F9] opens suggestions for next misspelled word
+map <F9> ]sz=
+imap <F9> <Esc>]sz=
 "-------------------------------------------------------------------------------
 
 
