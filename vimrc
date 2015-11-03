@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 10/30/2015
+" updated: 11/03/2015
 """""""""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -123,7 +123,7 @@ set lazyredraw "don't redraw the screen when executing macros (for speed)
 set scrolloff=5 "keep 5 lines visible above or below cursor
 set scrolljump=5 "scrolls 5 lines instead of 1
 set fillchars+=vert:│
-set listchars=tab:▶-,space:∙,trail:∙,eol:$
+set listchars=tab:▶-,space:∙,nbsp:␣,trail:∙,eol:↵
 
 "make splits feel more correct
 set splitbelow "splits open below instead of above
@@ -285,6 +285,9 @@ nmap <leader>b :CtrlPBuffer<CR>
 
 "make Y behave like C and D
 map Y y$
+
+"make Q execute and insert a shell command on the current line
+noremap Q !!$SHELL<CR>
 
 "use Ctrl + w then Tab and Ctrl + w then Shift + Tab to cycle between splits
 nnoremap <c-w><Tab> <c-w>w
