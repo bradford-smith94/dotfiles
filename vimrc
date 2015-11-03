@@ -194,6 +194,7 @@ augroup filetype_group
     autocmd BufNewFile Makefile source ~/.vim/templates/Makefile.vim
     autocmd BufNewFile *.c,*.cpp source ~/.vim/templates/c.vim
     autocmd BufNewFile *.h source ~/.vim/templates/h.vim
+    autocmd BufNewFile *.java source ~/.vim/templates/java.vim
 augroup END
 "-------------------------------------------------------------------------------
 
