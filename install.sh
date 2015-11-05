@@ -6,7 +6,7 @@
 #
 # This script can be run to install my dotfiles.
 #
-# Inspired by: github.com/michaeljsmalley/dotfiles/makesymlinks.sh
+# Inspired by: github.com/michaeljsmalley/dotfiles/blob/master/makesymlinks.sh
 #
 ################################################################################
 
