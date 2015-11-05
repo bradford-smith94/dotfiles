@@ -17,8 +17,8 @@
     prompt = false
 [commit] #commits start with prefilled text provided in:
     template = ~/.gitmessage
-[filter "gitignore_this"] #use a .gitattributes to apply filter
-    clean = cat #"sed '/#gitignore this$/'d"
+[filter "push_default"] #use a .gitattributes to apply filter
+    clean = "sed 's/#push_default$/^   default = <push> #push_default$/'"
     smudge = cat
 [color]
     ui = auto
@@ -31,6 +31,6 @@
     changed = yellow
     untracked = red
 [push] #if version is greater than 1.7.11 this should be simple
-    default = simple #gitignore this
+    default = simple ^   default = <push> #push_default$
 [alias]
     graph = "log --graph"
