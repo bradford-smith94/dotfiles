@@ -1,6 +1,6 @@
 #Bradford Smith
 #.gitconfig (global git settings)
-#updated: 10/19/2015
+#updated: 11/05/2015
 #################################
 
 [user]
@@ -15,8 +15,13 @@
     tool = vimdiff
 [difftool]
     prompt = false
+[core]
+    editor = vim
 [commit] #commits start with prefilled text provided in:
     template = ~/.gitmessage
+[filter "push_default"] #use a .gitattributes to apply filter
+    clean = "sed 's/= .* #push_default$/= <push> #push_default/'"
+    smudge = cat
 [color]
     ui = auto
     branch = true
@@ -27,7 +32,10 @@
     added = green
     changed = yellow
     untracked = red
-[push]
-    default = upstream
+[push] #if version is greater than 1.7.11 this should be simple
+    default = <push> #push_default
 [alias]
-    graph = "log --graph"
+    #from github.com/tsu-complete/dot/blob/master/git/_gitconfig
+    graph = "log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+    lines = "!git ls-files | xargs wc -l"
+    lines-authored = "!git ls-tree -r -z --name-only HEAD -- $1 | xargs -0 -n1 git blame --line-porcelain HEAD | grep \"^author \"|sort|uniq -c|sort -nr"
