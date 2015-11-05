@@ -1,1 +1,3 @@
+# apply git filters
+###################
 gitconfig filter=push_default

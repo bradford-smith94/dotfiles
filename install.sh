@@ -2,7 +2,7 @@
 ################################################################################
 # Bradford Smith
 # install.sh
-# updated: 10/19/2015
+# updated: 11/05/2015
 #
 # This script can be run to install my dotfiles.
 #
@@ -93,33 +93,29 @@ function makeSymLinks
                 continue
             fi
         fi # end if interactive
+        target=$dest/$file
         if [ $useDot -eq 1 ]; then
-            if [ "$(readlink $dest/.$file)" = $src/$file ]; then
-                if [ $force -eq 1 ]; then
-                    echo "Creating symlink to $file in $dest"
-                    ln -sf $src/$file $dest/.$file
-                else
-                    echo "$file is already linked here, skipping..."
+            target=$dest/.$file
+        fi # end if useDot
+        if [ "$(readlink $target)" = $src/$file ]; then
+            if [ $force -eq 1 ]; then
+                echo "Creating symlink to $file in $dest"
+                unlink $target
+                ln -s $src/$file $target
+                if [ $file = "gitconfig" ]; then
+                    source $dir/scripts/hasGitPushSimple.sh
                 fi
             else
-                mv $dest/.$file $backup/
-                echo "Creating symlink to $file in $dest"
-                ln -s $src/$file $dest/.$file
+                echo "$file is already linked here, skipping..."
             fi
         else
-            if [ "$(readlink $dest/$file)" = $src/$file ]; then
-                if [ $force -eq 1 ]; then
-                    echo "Creating symlink to $file in $dest"
-                    ln -sf $src/$file $dest/$file
-                else
-                    echo "$file is already linked here, skipping..."
-                fi
-            else
-                mv $dest/$file $backup/
-                echo "Creating symlink to $file in $dest"
-                ln -s $src/$file $dest/$file
+            mv $dest/$file $backup/
+            echo "Creating symlink to $file in $dest"
+            ln -s $src/$file $target
+            if [ $file = "gitconfig" ]; then
+                source $dir/scripts/hasGitPushSimple.sh
             fi
-        fi # end if useDot
+        fi
     done
 }
 ##### End makeSymLinks #########################################################
