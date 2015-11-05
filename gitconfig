@@ -18,7 +18,7 @@
 [commit] #commits start with prefilled text provided in:
     template = ~/.gitmessage
 [filter "gitignore_this"] #use a .gitattributes to apply filter
-    clean = "sed '/#gitignore this$/'d"
+    clean = cat #"sed '/#gitignore this$/'d"
     smudge = cat
 [color]
     ui = auto
@@ -31,5 +31,6 @@
     changed = yellow
     untracked = red
 [push] #if version is greater than 1.7.11 this should be simple
+    default = simple #gitignore this
 [alias]
     graph = "log --graph"
