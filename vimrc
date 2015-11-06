@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 11/03/2015
+" updated: 11/06/2015
 """""""""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -200,15 +200,15 @@ augroup END
 
 
 "---ignore accidental capitalizations-------------------------------------------
-:command! WQA wqa
-:command! WQa wqa
-:command! Wqa wqa
-:command! WQ wq
-:command! Wq wq
-:command! WA wa
-:command! Wa wa
-:command! W w
-:command! Q q
+cabbrev WQA wqa
+cabbrev WQa wqa
+cabbrev Wqa wqa
+cabbrev WQ wq
+cabbrev Wq wq
+cabbrev WA wa
+cabbrev Wa wa
+cabbrev W w
+cabbrev Q q
 "-------------------------------------------------------------------------------
 
 
