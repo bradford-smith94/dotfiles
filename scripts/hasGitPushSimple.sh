@@ -12,22 +12,27 @@ MINOR="$(echo "${GITVERSION}" | awk -F'.' '{print $2}')"
 UPDATE="$(echo "${GITVERSION}" | awk -F'.' '{print $3}')"
 
 HASGITPUSHSIMPLE=0
-
-if [ ${MAJOR} -le 1 ]; then
-    if [ ${MINOR} -le 7 ]; then
-        if [ ${UPDATE} -le 10]; then
-            HASGITPUSHSIMPLE=0
-        else
+if [ ${MAJOR} -gt 1 ]; then
+    HASGITPUSHSIMPLE=1
+elif [ ${MAJOR} -eq 1 ]; then
+    if [ ${MINOR} -gt 7 ]; then
+        HASGITPUSHSIMPLE=1
+    elif [ ${MINOR} -eq 7 ]; then
+        if [ ${UPDATE} -gt 11 ]; then
             HASGITPUSHSIMPLE=1
+        elif [ ${UPDATE} -eq 11 ]; then
+            HASGITPUSHSIMPLE=1
+        else
+            HASGITPUSHSIMPLE=0
         fi
     else
-        HASGITPUSHSIMPLE=1
+        HASGITPUSHSIMPLE=0
     fi
 else
-    HASGITPUSHSIMPLE=1
+    HASGITPUSHSIMPLE=0
 fi
 
-if [ ${HASGITPUSHSIMPLE} ]; then
+if [ ${HASGITPUSHSIMPLE} -eq 1 ]; then
     sed --follow-symlinks -i -e "s/<push> #push_default$/simple #push_default/g" ~/.gitconfig
 else #upstream is next best thing to simple
     sed --follow-symlinks -i -e "s/<push> #push_default$/upstream #push_default/g" ~/.gitconfig
