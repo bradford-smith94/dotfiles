@@ -12,7 +12,3 @@ vim/bundle/*
 
 # .spl files are the binary spell files
 vim/spell/*.spl
-
-# Any compiled terminfo files but not their plaintext definitions
-terminfo/*/*
-!terminfo/*/*.terminfo
