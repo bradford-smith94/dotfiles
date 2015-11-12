@@ -1,8 +1,9 @@
 " Vim colorscheme file
 " Bradford Smith
 " bsmith.vim
-" updated: 10/07/2015
+" updated: 11/09/2015
 "=====================
+" This file requires bsmith_dark.vim and bsmith_light.vim
 
 "This was started by following the guide at:
 "http://vim.wikia.com/wiki/Create_a_color_scheme_based_on_another

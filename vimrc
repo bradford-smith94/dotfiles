@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 11/09/2015
+" updated: 11/12/2015
 """""""""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -56,6 +56,7 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'shougo/neocomplete' "autocomplete requires +lua
+Plugin 'tpope/vim-surround' "surroundings motion
 call vundle#end()
 
 "felt like this belonged with plugin initialization
@@ -181,6 +182,7 @@ augroup filetype_group
     autocmd FileType tex setlocal spell
 
     "set formatoptions
+    autocmd FileType text setlocal formatoptions+=t
     autocmd FileType markdown setlocal formatoptions-=tc
 
     "set completion
@@ -215,6 +217,7 @@ cabbrev Q q
 "---abbreviations to fix typos--------------------------------------------------
 iabbrev teh the
 iabbrev ahve have
+iabbrev waht what
 "--------------------------------------------------------------------------------
 
 
@@ -285,6 +288,8 @@ let mapleader=" " "set <leader> as space
 
 nmap <bs> :ClearSearch<CR>
 nmap <CR> <nop>
+nmap - <nop>
+nmap + <nop>
 
 nmap <leader>o :CtrlP<CR>
 nmap <leader>f :CtrlPFunky<CR>
@@ -296,7 +301,7 @@ map Y y$
 "make Q execute and insert a shell command on the current line
 noremap Q !!$SHELL<CR>
 
-"use Ctrl + w then Tab and Ctrl + w then Shift + Tab to cycle between splits
+"use <Ctrl + w then Tab> and <Ctrl + w then Shift + Tab> to cycle between splits
 nnoremap <c-w><Tab> <c-w>w
 nnoremap <c-w><s-Tab> <c-w>W
 

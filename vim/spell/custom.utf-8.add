@@ -2,7 +2,7 @@
 ## custom.utf-8.add Vim spellfile
 /encoding=utf-8
 
-## Contractions
+## English Contractions
 I'm/=
 I’m/=
 I'll/=
@@ -166,20 +166,30 @@ crypto
 NSA
 Facebook
 README
-SQL
-PHP
-pdf
-tex
-txt
 app
+apps
+metadata
+blog
+wiki
+XSS
+zsh
+## Languages
+sql
+php
 java
 Javascript
 JavaScript
-metadata
+## File Extensions/Types
+pdf
+htm
+html
+tex
+txt
+## TLDs
 www
-blog
-XSS
-zsh
+org
+uk
+co.uk
 
 okay
 a.m.

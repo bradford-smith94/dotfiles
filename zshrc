@@ -1,6 +1,6 @@
 # Bradford Smith
 # .zshrc
-# updated: 10/17/2015
+# updated: 11/10/2015
 #####################
 
 # theme it
@@ -62,6 +62,9 @@ fi
 if [ -d ~/.scripts ]; then
     PATH=$PATH:~/.scripts
 fi
+
+PATH=$PATH:/opt/android-sdk/tools/
+export PATH=$PATH
 
 setopt autocd
 setopt no_hup #prevent zsh from killing background processes
