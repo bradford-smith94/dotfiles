@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 11/13/2015
+" updated: 11/16/2015
 """""""""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -17,11 +17,11 @@ silent! mkspell! ~/.vim/spell/custom.utf-8.add
 set backspace=indent,eol,start "makes backspace work like expected
 set noerrorbells
 set visualbell
-set viminfo="none"
+set viminfo='100,<50,s10,h,!,n~/.vim/viminfo "see :help 'viminfo'
 set nomodeline "disable modelines
-set ttyfast
+set ttyfast "legacy setting to speed up output, probably useless
 set notimeout "don't timeout on :mappings
-set ttimeout "timeout on key codes
+set ttimeout "timeout on key codes (like esc and arrow keys)
 set timeoutlen=50 "esc and arrows timeout
 set mouse=nr "normal and 'Hit Enter' messages (useful for switching windows)
 let $MANPAGER='' "allows Vim's :Man command to be used without conflict
@@ -74,6 +74,10 @@ if has_vundle == 0
 
     :qa "quit after installing everything
 endif
+
+if exists("g:LAST_START")
+endif
+let g:LAST_START = "today"
 "-------------------------------------------------------------------------------
 
 

@@ -12,3 +12,6 @@ vim/bundle/*
 
 # .spl files are the binary spell files
 vim/spell/*.spl
+
+# the viminfo file
+vim/viminfo
