@@ -1,6 +1,6 @@
 # Bradford Smith
 # .zshrc
-# updated: 11/10/2015
+# updated: 11/16/2015
 #####################
 
 # theme it
@@ -56,11 +56,6 @@ fi
 # if ~/bin exists add it to the beginning of the path
 if [ -d ~/bin ]; then
     PATH=~/bin:$PATH
-fi
-
-# if ~/.scripts exists add it to the path
-if [ -d ~/.scripts ]; then
-    PATH=$PATH:~/.scripts
 fi
 
 PATH=$PATH:/opt/android-sdk/tools/

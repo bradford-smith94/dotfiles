@@ -36,7 +36,7 @@ files="bashrc\
  conkyrc\
  conky\
  tmux.conf\
- scripts\
+ bin\
  Xresources\
  dir_colors\
  zshrc\
@@ -103,7 +103,7 @@ function makeSymLinks
                 unlink $target
                 ln -s $src/$file $target
                 if [ $file = "gitconfig" ]; then
-                    source $dir/scripts/hasGitPushSimple.sh
+                    source $dir/bin/hasGitPushSimple.sh
                 fi
             else
                 echo "$file is already linked here, skipping..."
@@ -113,7 +113,7 @@ function makeSymLinks
             echo "Creating symlink to $file in $dest"
             ln -s $src/$file $target
             if [ $file = "gitconfig" ]; then
-                source $dir/scripts/hasGitPushSimple.sh
+                source $dir/bin/hasGitPushSimple.sh
             fi
         fi
     done

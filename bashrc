@@ -1,6 +1,6 @@
 # Bradford Smith
 # .bashrc
-# updated: 10/08/2015
+# updated: 11/16/2015
 #####################
 
 # If not running interactively, don't do anything
@@ -41,11 +41,6 @@ if [ -d ~/bin ]; then
     PATH=~/bin:$PATH
 fi
 
-# if ~/.scripts exists add it to the path
-if [ -d ~/.scripts ]; then
-    PATH=$PATH:~/.scripts
-fi
-
 # Prompt.
 # user@host: dir$
 if [[ $EUID -ne 0 ]]; then
@@ -62,11 +57,6 @@ fi
 if [ -f /usr/bin/vim ]; then
     export EDITOR=/usr/bin/vim
     export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man' -\""
-fi
-
-# for ruby gems
-if [ `command -v ruby` ]; then
-    PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 fi
 
 # if not in SSH
