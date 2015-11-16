@@ -2,7 +2,7 @@
 ################################################################################
 # Bradford Smith
 # install.sh
-# updated: 11/05/2015
+# updated: 11/16/2015
 #
 # This script can be run to install my dotfiles.
 #
@@ -36,12 +36,14 @@ files="bashrc\
  conkyrc\
  conky\
  tmux.conf\
- bin\
  Xresources\
  dir_colors\
  zshrc\
  zsh\
  w3m"
+
+# list of files/folders to symlink in homedir without dot
+no_dot_files="bin"
 
 # list of files/folders to symlink in homedir/.config
 config_files="redshift.conf\
@@ -166,6 +168,7 @@ cd $dir
 # symlinks from the $HOME to any files in the $HOME/.dotfiles directory
 # specified in $files
 makeSymLinks $HOME $dir $olddir 1 $files
+makeSymLinks $HOME $dir $olddir 0 $no_dot_files
 
 # change to config directory
 echo ""
