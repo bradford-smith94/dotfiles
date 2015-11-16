@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 11/12/2015
+" updated: 11/13/2015
 """""""""""""""""""""
 
 "---core stuff-----------------------------------------------------------------
@@ -82,7 +82,7 @@ let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'} "use cpsm as the matcher
+"let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'} "use cpsm as the matcher
 
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
@@ -182,6 +182,7 @@ augroup filetype_group
     autocmd FileType tex setlocal spell
 
     "set formatoptions
+    autocmd FileType text setlocal formatoptions-=cq
     autocmd FileType text setlocal formatoptions+=t
     autocmd FileType markdown setlocal formatoptions-=tc
 
@@ -282,18 +283,27 @@ endfunction
 
 
 "---my mappings-----------------------------------------------------------------
-"space defaults to <left> (l)
-nmap <space> <nop>
-let mapleader=" " "set <leader> as space
 
-nmap <bs> :ClearSearch<CR>
+"unbind keys
+nmap <space> <nop>
 nmap <CR> <nop>
 nmap - <nop>
 nmap + <nop>
 
+let mapleader=" " "set <leader> as space
+
+"leader mappings
 nmap <leader>o :CtrlP<CR>
 nmap <leader>f :CtrlPFunky<CR>
 nmap <leader>b :CtrlPBuffer<CR>
+
+"backspace in Normal clears search pattern
+nmap <bs> :ClearSearch<CR>
+
+"center screen when jumping to next
+"credit: blog.sanctum.geek.nz/vim-annoyances
+nnoremap n nzz
+nnoremap N Nzz
 
 "make Y behave like C and D
 map Y y$

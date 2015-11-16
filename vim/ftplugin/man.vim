@@ -1,7 +1,10 @@
 " Bradford Smith
 " man.vim
-" 10/10/2015
+" 11/16/2015
 """""""""""""""""
+
+"make sure that spelling is off
+setlocal nospell
 
 "set buffer not modifiable, not modified and no numbers
 setlocal noma

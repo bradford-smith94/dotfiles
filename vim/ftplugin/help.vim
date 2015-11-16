@@ -1,8 +1,11 @@
 " Bradford Smith
 " help.vim
 " see: vim.wikia.com/wiki/Learn_to_use_help
-" 8/20/15
+" 11/16/2015
 """""""""""""""""""""""""""""""""""""""""""
+
+"make sure that spelling is off
+setlocal nospell
 
 "some mappings to make navigating the help easier
 
