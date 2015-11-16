@@ -64,20 +64,27 @@ source $VIMRUNTIME/ftplugin/man.vim "initializes the :Man command
 
 "if this is the first time vundle is installed
 if has_vundle == 0
-    :echo "Initial Plugin install please wait..."
+    echo "Initial Plugin install please wait..."
     "install the plugins
-    :silent! PluginInstall
+    silent! PluginInstall
 
     "cpsm requires running a install.sh script
-    :chdir $HOME/.vim/bundle/cpsm
-    :!$HOME/.vim/bundle/cpsm/install.sh
+    chdir $HOME/.vim/bundle/cpsm
+    !$HOME/.vim/bundle/cpsm/install.sh
 
-    :qa "quit after installing everything
+    qa "quit after installing everything
 endif
 
-if exists("g:LAST_START")
-endif
-let g:LAST_START = "today"
+"if Vim hasn't been started in more than a week try to update plugins
+function! CheckPlugins()
+"sohua.xyz/questions/2190412/how-do-i-get-vim-to-test-if-user-input-is-an-integer
+    if ((str2nr(strftime("%Y%m%d")) - g:LAST_START) > 7)
+        PluginUpdate
+    endif
+    let g:LAST_START = str2nr(strftime("%Y%m%d")) "save today's date as YYYYMMDD
+endfunction
+
+autocmd VimEnter * call CheckPlugins()
 "-------------------------------------------------------------------------------
 
 
@@ -273,16 +280,16 @@ function! Compile()
     endif
 endfunction
 
-:command! HighlightGroup call SyntaxItem()
+command! HighlightGroup call SyntaxItem()
 
 "Reload vimrc
-:command! Reload source $MYVIMRC
+command! Reload source $MYVIMRC
 
 "Clear the last used search pattern
-:command! ClearSearch let @/=""
+command! ClearSearch let @/=""
 
 "Toggle editing in Hex mode
-:command! Hex call ToggleHexMode()
+command! Hex call ToggleHexMode()
 "-------------------------------------------------------------------------------
 
 
