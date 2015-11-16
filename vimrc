@@ -75,16 +75,25 @@ if has_vundle == 0
     qa "quit after installing everything
 endif
 
-"if Vim hasn't been started in more than a week try to update plugins
-function! CheckPlugins()
+"update Vim plugins weekly regardless of what I do
+function! AutoupdatePlugins()
 "sohua.xyz/questions/2190412/how-do-i-get-vim-to-test-if-user-input-is-an-integer
-    if ((str2nr(strftime("%Y%m%d")) - g:LAST_START) > 7)
-        PluginUpdate
+    if exists("g:LAST_UPDATE")
+        if ((str2nr(strftime("%Y%m%d")) - g:LAST_UPDATE) >= 7)
+            if (strftime("%a") == "Fri" ||
+                        \ strftime("%a") == "Sat" ||
+                        \ strftime("%a") == "Sun")
+                PluginUpdate
+                "save today's date as YYYYMMDD
+                let g:LAST_UPDATE = str2nr(strftime("%Y%m%d"))
+            endif
+        endif
+    else
+        let g:LAST_UPDATE = str2nr(strftime("%Y%m%d"))
     endif
-    let g:LAST_START = str2nr(strftime("%Y%m%d")) "save today's date as YYYYMMDD
 endfunction
 
-autocmd VimEnter * call CheckPlugins()
+autocmd VimEnter * call AutoupdatePlugins()
 "-------------------------------------------------------------------------------
 
 
