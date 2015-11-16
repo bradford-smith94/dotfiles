@@ -75,25 +75,11 @@ if has_vundle == 0
     qa "quit after installing everything
 endif
 
-"update Vim plugins weekly regardless of what I do
-function! AutoupdatePlugins()
-"sohua.xyz/questions/2190412/how-do-i-get-vim-to-test-if-user-input-is-an-integer
-    if exists("g:LAST_UPDATE")
-        if ((str2nr(strftime("%Y%m%d")) - g:LAST_UPDATE) >= 7)
-            if (strftime("%a") == "Fri" ||
-                        \ strftime("%a") == "Sat" ||
-                        \ strftime("%a") == "Sun")
-                PluginUpdate
-                "save today's date as YYYYMMDD
-                let g:LAST_UPDATE = str2nr(strftime("%Y%m%d"))
-            endif
-        endif
-    else
-        let g:LAST_UPDATE = str2nr(strftime("%Y%m%d"))
-    endif
-endfunction
-
-autocmd VimEnter * call AutoupdatePlugins()
+augroup plugin_updating
+    "clear this autocmd group to protect from re-sourcing this file
+    autocmd!
+    autocmd VimEnter * call AutoupdatePlugins()
+augroup END
 "-------------------------------------------------------------------------------
 
 
@@ -249,6 +235,7 @@ function! SyntaxItem()
     echo synIDattr(synID(line("."),col("."),1),"name")
 endfunction
 
+"function to toggle the background between light and dark
 function! ToggleBackground()
     if &background == "dark"
         set background=light
@@ -289,7 +276,31 @@ function! Compile()
     endif
 endfunction
 
+"function to check when the last time plugins were automatically updated and
+"update them if it has been more than a week and it is currently the weekend
+function! AutoupdatePlugins()
+"sohua.xyz/questions/2190412/how-do-i-get-vim-to-test-if-user-input-is-an-integer
+    if exists("g:LAST_UPDATE")
+        if ((str2nr(strftime("%Y%m%d")) - g:LAST_UPDATE) >= 7)
+            if (strftime("%a") == "Fri" ||
+                        \ strftime("%a") == "Sat" ||
+                        \ strftime("%a") == "Sun")
+                PluginUpdate
+                "save today's date as YYYYMMDD
+                let g:LAST_UPDATE = str2nr(strftime("%Y%m%d"))
+            endif
+        endif
+    else
+        let g:LAST_UPDATE = str2nr(strftime("%Y%m%d"))
+    endif
+endfunction
+"-------------------------------------------------------------------------------
+
+
+"---my mappings-----------------------------------------------------------------
+"call the SyntaxItem function
 command! HighlightGroup call SyntaxItem()
+command! HlGroup call SyntaxItem()
 
 "Reload vimrc
 command! Reload source $MYVIMRC
@@ -299,10 +310,6 @@ command! ClearSearch let @/=""
 
 "Toggle editing in Hex mode
 command! Hex call ToggleHexMode()
-"-------------------------------------------------------------------------------
-
-
-"---my mappings-----------------------------------------------------------------
 
 "unbind keys
 nmap <space> <nop>
