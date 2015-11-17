@@ -1,9 +1,9 @@
 " Bradford Smith
 " .vimrc
-" updated: 11/16/2015
+" updated: 11/17/2015
 """""""""""""""""""""
 
-"---core stuff-----------------------------------------------------------------
+"{{{-core stuff-----------------------------------------------------------------
 set nocompatible "do not use vi compatible mode, we're better than that
 set encoding=utf-8 "use UTF-8 internally
 set background=dark
@@ -25,10 +25,10 @@ set ttimeout "timeout on key codes (like esc and arrow keys)
 set timeoutlen=50 "esc and arrows timeout
 set mouse=nr "normal and 'Hit Enter' messages (useful for switching windows)
 let $MANPAGER='' "allows Vim's :Man command to be used without conflict
-"-------------------------------------------------------------------------------
+"}}}----------------------------------------------------------------------------
 
 
-"---setup vundle to manage plugins----------------------------------------------
+"{{{-setup vundle to manage plugins---------------------------------------------
 "automatically install vundle if not present
 "credit: github.com/timss/vimconf
 let has_vundle=1
@@ -80,10 +80,13 @@ augroup plugin_updating
     autocmd!
     autocmd VimEnter * call AutoupdatePlugins()
 augroup END
-"-------------------------------------------------------------------------------
+
+"turn filetype back on (was turned off to do Vundle things)
+filetype indent plugin on
+"}}}----------------------------------------------------------------------------
 
 
-"---plugin options--------------------------------------------------------------
+"{{{-plugin options-------------------------------------------------------------
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 
@@ -99,14 +102,10 @@ inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "Backspace closes popup
 inoremap <expr><BS> neocomplete#smart_close_popup() ."\<C-h>"
-"-------------------------------------------------------------------------------
+"}}}----------------------------------------------------------------------------
 
 
-"turn filetype back on (was turned off to do Vundle things)
-filetype indent plugin on
-
-
-"---visual stuff----------------------------------------------------------------
+"{{{-visual stuff---------------------------------------------------------------
 syntax on
 set number "line numbers
 set relativenumber "and relative numbers (current line is exact)
@@ -141,10 +140,10 @@ set incsearch
 set ignorecase "case insensitive search
 set smartcase "unless I searched for capitalized letters
 set hlsearch "highlight all matches (:nohlsearch or :noh to stop)
-"-------------------------------------------------------------------------------
+"}}}----------------------------------------------------------------------------
 
 
-"---text formatting-------------------------------------------------------------
+"{{{-text formatting------------------------------------------------------------
 set tabstop=4
 set autoindent
 set shiftwidth=4
@@ -169,10 +168,10 @@ augroup END
 "enable folding of code blocks
 set foldmethod=syntax
 set nofoldenable "do not start folded
-"-------------------------------------------------------------------------------
+"}}}----------------------------------------------------------------------------
 
 
-"---filetype settings-----------------------------------------------------------
+"{{{-filetype settings----------------------------------------------------------
 augroup filetype_group
     "clear this autocmd group to protect from re-sourcing this file
     autocmd!
@@ -180,6 +179,9 @@ augroup filetype_group
     autocmd FileType markdown setlocal wrap
     autocmd FileType html,xhtml setlocal wrap
     autocmd FileType tex setlocal wrap
+
+    "set foldmethod
+    autocmd FileType vim setlocal foldmethod=marker
 
     "set spell
     autocmd FileType text setlocal spell
@@ -205,10 +207,10 @@ augroup filetype_group
     autocmd BufNewFile *.h source ~/.vim/templates/h.vim
     autocmd BufNewFile *.java source ~/.vim/templates/java.vim
 augroup END
-"-------------------------------------------------------------------------------
+"}}}----------------------------------------------------------------------------
 
 
-"---ignore accidental capitalizations-------------------------------------------
+"{{{-ignore accidental capitalizations------------------------------------------
 cabbrev WQA wqa
 cabbrev WQa wqa
 cabbrev Wqa wqa
@@ -218,17 +220,17 @@ cabbrev WA wa
 cabbrev Wa wa
 cabbrev W w
 cabbrev Q q
-"-------------------------------------------------------------------------------
+"}}}----------------------------------------------------------------------------
 
 
-"---abbreviations to fix typos--------------------------------------------------
+"{{{-abbreviations to fix typos-------------------------------------------------
 iabbrev teh the
 iabbrev ahve have
 iabbrev waht what
-"--------------------------------------------------------------------------------
+"}}}-----------------------------------------------------------------------------
 
 
-"---my functions----------------------------------------------------------------
+"{{{-my functions---------------------------------------------------------------
 "useful function for making colorschemes
 "see: vim.wikia.com/wiki/Showing_syntax_highlight_group_in_statusline
 function! SyntaxItem()
@@ -294,10 +296,10 @@ function! AutoupdatePlugins()
         let g:LAST_UPDATE = str2nr(strftime("%Y%m%d"))
     endif
 endfunction
-"-------------------------------------------------------------------------------
+"}}}----------------------------------------------------------------------------
 
 
-"---my mappings-----------------------------------------------------------------
+"{{{-my mappings----------------------------------------------------------------
 "call the SyntaxItem function
 command! HighlightGroup call SyntaxItem()
 command! HlGroup call SyntaxItem()
@@ -365,12 +367,12 @@ imap <F8> <Esc>:setlocal spell!<CR>a
 "[F9] opens suggestions for next misspelled word
 map <F9> ]sz=
 imap <F9> <Esc>]sz=
-"-------------------------------------------------------------------------------
+"}}}----------------------------------------------------------------------------
 
 
-"---other files-----------------------------------------------------------------
+"{{{-other files----------------------------------------------------------------
 " use ~/.vimrc.local for machine local changes
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
-"-------------------------------------------------------------------------------
+"}}}----------------------------------------------------------------------------
