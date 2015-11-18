@@ -2,7 +2,7 @@
 ################################################################################
 # Bradford Smith
 # install.sh
-# updated: 11/16/2015
+# updated: 11/18/2015
 #
 # This script can be run to install my dotfiles.
 #
@@ -26,21 +26,29 @@ olddir=$HOME/.dotfiles_old
 oldconfig=$HOME/.config_old
 
 # list of files/folders to symlink in homedir
-files="bashrc\
- shell_aliases\
- vimrc\
- vim\
- gitconfig\
- gitignore\
- gitmessage\
- conkyrc\
- conky\
- tmux.conf\
+files="tmux.conf\
  Xresources\
- dir_colors\
- zshrc\
- zsh\
  w3m"
+
+# groups that have dependent files
+vim_group="vimrc\
+ vim"
+
+git_group="gitconfig\
+ gitignore\
+ gitmessage"
+
+bash_group="bashrc\
+ shell_aliases
+ dir_colors"
+
+zsh_group="zshrc\
+ zsh\
+ shell_aliases
+ dir_colors"
+
+conky_group="conkyrc\
+ conky"
 
 # list of files/folders to symlink in homedir without dot
 no_dot_files="bin"
@@ -104,9 +112,6 @@ function makeSymLinks
                 echo "Creating symlink to $file in $dest"
                 unlink $target
                 ln -s $src/$file $target
-                if [ $file = "gitconfig" ]; then
-                    source $dir/bin/hasGitPushSimple.sh
-                fi
             else
                 echo "$file is already linked here, skipping..."
             fi
@@ -114,13 +119,69 @@ function makeSymLinks
             mv $dest/$file $backup/
             echo "Creating symlink to $file in $dest"
             ln -s $src/$file $target
-            if [ $file = "gitconfig" ]; then
-                source $dir/bin/hasGitPushSimple.sh
-            fi
         fi
     done
 }
 ##### End makeSymLinks #########################################################
+
+##### makeSymLinksGroup ########################################################
+# Like makeSymLinks but for a group of dependent files (e.g. .vimrc and .vim/)
+# $1 group, $2 hook function, $3 destination, $4 source,
+# $5 destination backup, $6 use dot (0|1), $7 files (should be a list)
+function makeSymLinksGroup
+{
+    group=$1
+    shift
+    hook=$1
+    shift
+    dest=$1
+    shift
+    src=$1
+    shift
+    backup=$1
+    shift
+    useDot=$1
+    shift
+    files=$*
+
+    echo "Moving any existing $group dotfiles from $dest to $backup"
+    if [ $interactive -eq 1 ]; then
+        echo -n "Link $group to $dest?(y|n) "
+        read -n 1 choice
+        echo ""
+        while [[ "$choice" != "n" && "$choice" != "y" ]]; do
+            echo -n "Type 'y' or 'n': "
+            read -n 1 choice
+            echo ""
+        done
+        if [ $choice == "n" ]; then
+            break
+        fi
+    fi # end if interactive
+    for file in $files; do
+        target=$dest/$file
+        if [ $useDot -eq 1 ]; then
+            target=$dest/.$file
+        fi # end if useDot
+        if [ "$(readlink $target)" = $src/$file ]; then
+            if [ $force -eq 1 ]; then
+                echo "Creating symlink to $file in $dest"
+                unlink $target
+                ln -s $src/$file $target
+            else
+                echo "$file is already linked here, skipping..."
+            fi
+        else
+            mv $dest/$file $backup/
+            echo "Creating symlink to $file in $dest"
+            ln -s $src/$file $target
+        fi
+    done
+    if [ $hook != "" ]; then
+        $hook
+    fi
+}
+##### End makeSymLinksGroup ####################################################
 ########## End Functions #######################################################
 
 ########## Code ################################################################
@@ -169,6 +230,10 @@ cd $dir
 # specified in $files
 makeSymLinks $HOME $dir $olddir 1 $files
 makeSymLinks $HOME $dir $olddir 0 $no_dot_files
+makeSymLinksGroup "Vim Configuration" "vim" $HOME $dir $olddir 1 $vim_group
+makeSymLinksGroup "Git Configuration" "source $dir/bin/hasGitPushSimple.sh" $HOME $dir $olddir 1 $git_group
+makeSymLinksGroup "Bash Configuration" "" $HOME $dir $olddir 1 $bash_group
+makeSymLinksGroup "Conky Configuration" "" $HOME $dir $olddir 1 $conky_group
 
 # change to config directory
 echo ""
