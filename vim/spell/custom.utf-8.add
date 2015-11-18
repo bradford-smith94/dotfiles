@@ -173,6 +173,8 @@ blog
 wiki
 XSS
 zsh
+filesystem
+malware
 ## Languages
 sql
 php

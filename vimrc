@@ -296,6 +296,14 @@ function! AutoupdatePlugins()
         let g:LAST_UPDATE = str2nr(strftime("%Y%m%d"))
     endif
 endfunction
+
+"function to reload the vimrc
+if !exists("*Reload()")
+    function! Reload()
+        source $MYVIMRC
+        filetype detect
+    endfunction
+endif
 "}}}----------------------------------------------------------------------------
 
 
@@ -305,7 +313,7 @@ command! HighlightGroup call SyntaxItem()
 command! HlGroup call SyntaxItem()
 
 "Reload vimrc
-command! Reload source $MYVIMRC
+command! Reload call Reload()
 
 "Clear the last used search pattern
 command! ClearSearch let @/=""
@@ -358,7 +366,7 @@ map <F3> :execute " grep -srnw --binary-files=without-match
 
 "[F5] saves and 'compiles' using my Compile function
 map <F5> :w<CR>:call Compile()<CR>
-imap <F5> <Esc>:w<Cr>:call Compile()<CR>
+imap <F5> <Esc>:w<CR>:call Compile()<CR>
 
 "[F8] toggles spellcheck
 map <F8> :setlocal spell!<CR>
