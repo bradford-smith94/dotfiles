@@ -155,47 +155,52 @@ ain't
 ain’t
 
 ## Tech/Computer Things
+Facebook
+IP
+NSA
+README
+SSL
+TLS
+UDP
+XSS
+app
+apps
+blog
+crypto
+filesystem
+github
+gitignore
+malware
+metadata
+utf
 vim
 vimrc
 vundle
-github
-utf
-gitignore
-wordlist
-crypto
-NSA
-Facebook
-README
-app
-apps
-metadata
-blog
 wiki
-XSS
+wordlist
 zsh
-filesystem
-malware
 ## Languages
-sql
-php
-java
-Javascript
 JavaScript
+Javascript
+java
+php
+sql
 ## File Extensions/Types
-pdf
 htm
 html
+pdf
 tex
 txt
 ## TLDs
-www
+co.uk
 org
 uk
-co.uk
+www
 
-okay
-a.m.
-p.m.
+## Others
 U.S.
-ssn
+a.m.
 abided
+okay
+p.m.
+ssn

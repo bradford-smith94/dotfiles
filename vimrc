@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 11/17/2015
+" updated: 11/18/2015
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -57,6 +57,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'shougo/neocomplete' "autocomplete requires +lua
 Plugin 'tpope/vim-surround' "surroundings motion
+Plugin 'tpope/vim-repeat' "allow repeating of surround
 call vundle#end()
 
 "felt like this belonged with plugin initialization
