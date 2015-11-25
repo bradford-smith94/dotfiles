@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 11/18/2015
+" updated: 11/23/2015
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -221,6 +221,8 @@ cabbrev WA wa
 cabbrev Wa wa
 cabbrev W w
 cabbrev Q q
+cabbrev B b
+cabbrev E e
 "}}}----------------------------------------------------------------------------
 
 
@@ -309,6 +311,15 @@ endif
 
 
 "{{{-my mappings----------------------------------------------------------------
+"vimdiff commands
+if &diff
+    command! GetRemote :diffget RE
+    command! GetBase :diffget BA
+    command! GetLocal :diffget LO
+    command! NextDiff ]c :
+    command! PrevDiff [c :
+endif
+
 "call the SyntaxItem function
 command! HighlightGroup call SyntaxItem()
 command! HlGroup call SyntaxItem()
