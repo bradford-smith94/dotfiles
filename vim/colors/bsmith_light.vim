@@ -10,44 +10,6 @@
 if has("gui_running")
     echo "bsmith_light.vim does not currently support GVim"
 elseif &t_Co >= 256 "this is a 256 or greater color terminal
-    "vim things
-    hi VisualNOS ctermbg=239
-    hi SignColumn ctermfg=118 ctermbg=235
-    hi Title ctermfg=202
-    hi Label ctermfg=228
-    hi Directory ctermfg=118
-    hi MatchParen cterm=bold ctermfg=1
-    hi Special ctermfg=161
-    hi link SpecialChar Special
-    hi SpecialKey ctermfg=34
-    hi link Tag Special
-    hi Delimiter ctermfg=75
-    hi link Question SpecialKey
-    hi Underlined cterm=underline
-
-    "messages
-    hi Error ctermbg=9
-    hi link ErrorMsg Error
-    hi WarningMsg ctermfg=165 ctermbg=253
-    hi MoreMsg ctermfg=243
-    hi link ModeMsg MoreMsg
-    hi StatusLine ctermfg=253 ctermbg=238
-    hi StatusLineNC ctermfg=232 ctermbg=244
-    hi TabLine cterm=underline ctermfg=0 ctermbg=7
-    hi TabLineSel cterm=bold
-    hi TabLineFill cterm=reverse
-
-    "menus
-    hi WildMenu ctermfg=156 ctermbg=16
-    hi Folded ctermfg=67 ctermbg=16
-    hi link FoldColumn Folded
-    hi PMenu ctermfg=156 ctermbg=240
-    hi PMenuSel cterm=bold ctermfg=156 ctermbg=235
-    hi PMenuSBar ctermfg=255 ctermbg=237
-    hi PMenuThumb ctermfg=156 ctermbg=237
-    hi VertSplit cterm=bold ctermfg=244
-
-    "searching and spelling
     hi Search ctermfg=0 ctermbg=222
     hi IncSearch ctermfg=16 ctermbg=193
     hi SpellBad cterm=underline ctermfg=160 ctermbg=253
