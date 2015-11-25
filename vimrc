@@ -221,6 +221,7 @@ cabbrev WA wa
 cabbrev Wa wa
 cabbrev W w
 cabbrev Q q
+
 cabbrev B b
 cabbrev E e
 "}}}----------------------------------------------------------------------------
@@ -311,15 +312,6 @@ endif
 
 
 "{{{-my mappings----------------------------------------------------------------
-"vimdiff commands
-if &diff
-    command! GetRemote :diffget RE
-    command! GetBase :diffget BA
-    command! GetLocal :diffget LO
-    command! NextDiff ]c :
-    command! PrevDiff [c :
-endif
-
 "call the SyntaxItem function
 command! HighlightGroup call SyntaxItem()
 command! HlGroup call SyntaxItem()
@@ -339,13 +331,22 @@ nmap <CR> <nop>
 nmap - <nop>
 nmap + <nop>
 
+"{{{-leader mappings
 let mapleader=" " "set <leader> as space
 
-"leader mappings
 nmap <leader>o :CtrlP<CR>
 nmap <leader>f :CtrlPFunky<CR>
 nmap <leader>b :CtrlPBuffer<CR>
+"substitute word under cursor
 nmap <leader>s :%s/\<<C-r><C-w>\>/
+
+if &diff "vimdiff leader mappings
+    "next difference
+    nmap <leader>n ]c :
+    "previous difference
+    nmap <leader>p [c :
+endif
+"}}}
 
 "backspace in Normal clears search pattern
 nmap <bs> :ClearSearch<CR>

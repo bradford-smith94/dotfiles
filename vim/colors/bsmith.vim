@@ -4,8 +4,6 @@
 " updated: 11/25/2015
 "=====================
 
-"This was started by following the guide at:
-"http://vim.wikia.com/wiki/Create_a_color_scheme_based_on_another
 "TODO: maybe add 16/8-color terminal support
 "TODO: maybe add non-color terminal support
 "TODO: add GVim support
@@ -19,11 +17,13 @@ endif
 "set the name of the colorscheme
 let g:colors_name = "bsmith"
 
-"use my custom airline theme too
-let g:airline_theme = "bsmith_airline"
+"use my custom airline theme too, if it is present
+if filereadable(glob("~/.vim/autoload/airline/themes/bsmith_airline.vim"))
+    let g:airline_theme = "bsmith_airline"
+endif
 "}}}===========================================================================
 
-"{{{--clear everything manually (fixes some errors) ===========================
+"{{{--clear highlights manually (fixes some errors with defaults) =============
 hi clear Normal
 hi clear Cursor
 hi clear CursorLine
@@ -116,6 +116,7 @@ hi clear Exception
 "}}}===========================================================================
 
 "{{{--define modes ============================================================
+"set the mode statement (s:m) based on vim/gvim and number of supported colors
 if (has('gui_running'))
     let s:m = ' gui'
     echoerr "bsmith.vim does not currently support GVim, results may vary!"
@@ -125,58 +126,80 @@ else
     let s:m = ' term'
     echoerr "bsmith.vim does not currently support terminals with < 256 colors, results may vary!"
 endif
-let s:mfg = s:m . "fg="
-let s:mbg = s:m . "bg="
-let s:b = s:m . "=bold"
-let s:r = s:m . "=reverse"
-let s:u = s:m . "=underline"
+
+let s:mfg = s:m . "fg="      "mode foreground color statement
+let s:mbg = s:m . "bg="      "mode background color statement
+
+let s:b = s:m . "=bold"      "mode bold statement
+let s:r = s:m . "=reverse"   "mode reverse statement
+let s:u = s:m . "=underline" "mode unerline statement
 "}}}===========================================================================
 
 "{{{--define colors ===========================================================
+"{{{black/white
 let s:black = '16 '
-let s:blue = '21 '
-let s:pale_blue = '67 '
-let s:cyan = '6 '
-let s:green = '28 '
-let s:pale_green = '193 '
-let s:grey = '238 '
-let s:light_grey = '243 '
-let s:lime = '118 '
-let s:light_lime = '156 '
-let s:orange = '208 '
-let s:dark_orange = '202 '
-let s:pink = '161 '
-let s:light_pink = '219 '
-let s:purple = '91 '
-let s:bright_purple = '165 '
-let s:light_purple = '133 '
-let s:red = '160 '
-let s:bright_red = '196 '
-let s:dark_red = '52 '
-let s:pale_red = '174 '
 let s:white = '253 '
-let s:yellow = '226 '
+"}}}
+"{{{blues
+let s:blue      = '21 '
+"light blue is set in dark/light section
+let s:pale_blue = '67 '
+let s:cyan      = '6 '
+"}}}
+"{{{greens
+let s:green      = '28 '
+"bright green is set in dark/light section
+let s:pale_green = '193 '
+let s:lime       = '118 '
+let s:light_lime = '156 '
+"}}}
+"{{{greys
+let s:grey       = '238 '
+let s:light_grey = '243 '
+"}}}
+"{{{oranges
+let s:orange      = '208 '
+let s:dark_orange = '202 '
+"}}}
+"{{{pinks
+let s:pink       = '161 '
+let s:light_pink = '219 '
+"}}}
+"{{{purples
+let s:purple        = '91 '
+let s:bright_purple = '165 '
+let s:light_purple  = '133 '
+"}}}
+"{{{reds
+let s:red        = '160 '
+let s:bright_red = '196 '
+let s:dark_red   = '52 '
+let s:pale_red   = '174 '
+"}}}
+"{{{yellows
+let s:yellow       = '226 '
 let s:light_yellow = '228 '
+"}}}
 
 "{{{-dark/light colors
 if &background == "dark" "dark theme colors
-    let s:bg = '233 '
-    let s:fg = '252 '
-    let s:cursor = s:white
-    let s:highlight = '236 '
-    let s:light_blue = '81 '
-    let s:warn = s:yellow
+    let s:bg           = '233 '
+    let s:fg           = '252 '
+    let s:cursor       = s:white
+    let s:highlight    = '236 '
+    let s:light_blue   = '81 '
+    let s:warn         = s:yellow
     let s:bright_green = '112 '
-    let s:special_key = '120 '
+    let s:special_key  = '120 '
 else "light theme colors
-    let s:bg = '230 '
-    let s:fg = s:black
-    let s:cursor = s:black
-    let s:highlight = s:white
-    let s:light_blue = '75 '
-    let s:warn = '165 '
+    let s:bg           = '230 '
+    let s:fg           = s:black
+    let s:cursor       = s:black
+    let s:highlight    = s:white
+    let s:light_blue   = '75 '
+    let s:warn         = s:bright_purple
     let s:bright_green = '34 '
-    let s:special_key = s:bright_green
+    let s:special_key  = s:bright_green
 endif "end if background dark/light
 "}}}
 "}}}===========================================================================
