@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 11/23/2015
+" updated: 11/25/2015
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -345,6 +345,7 @@ let mapleader=" " "set <leader> as space
 nmap <leader>o :CtrlP<CR>
 nmap <leader>f :CtrlPFunky<CR>
 nmap <leader>b :CtrlPBuffer<CR>
+nmap <leader>s :%s/\<<C-r><C-w>\>/
 
 "backspace in Normal clears search pattern
 nmap <bs> :ClearSearch<CR>
