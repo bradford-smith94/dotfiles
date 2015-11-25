@@ -1,9 +1,8 @@
 " Vim colorscheme file
 " Bradford Smith
 " bsmith.vim
-" updated: 11/09/2015
+" updated: 11/25/2015
 "=====================
-" This file requires bsmith_dark.vim and bsmith_light.vim
 
 "This was started by following the guide at:
 "http://vim.wikia.com/wiki/Create_a_color_scheme_based_on_another
@@ -11,7 +10,7 @@
 "TODO: add non-color terminal support
 "TODO: add GVim support
 
-"these lines are suggested to be at the top of every colorscheme
+"{{{--required colorscheme lines ==============================================
 hi clear
 if exists("syntax_on")
     syntax reset
@@ -22,8 +21,9 @@ let g:colors_name = "bsmith"
 
 "use my custom airline theme too
 let g:airline_theme = "bsmith_airline"
+"}}}===========================================================================
 
-"--clear everything manually (fixes some errors with things being defaulted)
+"{{{--clear everything manually (fixes some errors) ===========================
 hi clear Normal
 hi clear Cursor
 hi clear CursorLine
@@ -113,9 +113,42 @@ hi clear Macro
 hi clear PreCondit
 hi clear PreProc
 hi clear Exception
+"}}}===========================================================================
+
+let s:m = ' cterm'
+let s:mfg = s:m . "fg="
+let s:mbg = s:m . "bg="
+let s:b = s:m . "=bold"
+let s:r = s:m . "=reverse"
+let s:u = s:m . "=underline"
+"{{{--define colors ===========================================================
+let s:black = '16 '
+let s:orange = '208 '
+let s:white = '255 '
 
 if &background == "dark" "dark theme colors
-    source ~/.vim/colors/bsmith_dark.vim
+    let s:bg = '233 '
+    let s:fg = '252 '
+    let s:cursor = s:white
+    let s:highlight = '236 '
 else "light theme colors
-    source ~/.vim/colors/bsmith_light.vim
+    let s:bg = '230 '
+    let s:fg = s:black
+    let s:cursor = s:black
+    let s:highlight = s:white
 endif "end if background dark/light
+"}}}===========================================================================
+
+"{{{--do highlights ===========================================================
+"vim things
+exe "hi Normal" . s:mfg . s:fg . s:mbg . s:bg
+exe "hi Cursor" . s:mfg . s:cursor . s:mbg . s:fg
+exe "hi CursorLine" . s:mbg . s:highlight
+hi link CursorColumn CursorLine
+exe "hi LineNR" . s:mfg . s:fg . s:mbg . s:highlight
+exe "hi CursorLineNR" . s:b . s:mfg . s:orange . s:mbg . s:highlight
+hi link ColorColumn CursorColumn
+exe "hi Visual" . s:r
+exe "hi VisualNOS"
+"}}}===========================================================================
+

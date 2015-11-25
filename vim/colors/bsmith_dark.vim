@@ -10,14 +10,6 @@ if has("gui_running")
     echo "bsmith_dark.vim does not currently support GVim"
 elseif &t_Co >= 256 "this is a 256 or greater color terminal
     "vim things
-    hi Normal ctermfg=252 ctermbg=233
-    hi Cursor ctermfg=16 ctermbg=253
-    hi CursorLine cterm=none ctermbg=236
-    hi link CursorColumn CursorLine
-    hi LineNR ctermfg=250 ctermbg=236
-    hi CursorLineNR cterm=bold ctermfg=208 ctermbg=233
-    hi link ColorColumn CursorColumn
-    hi Visual cterm=reverse
     hi VisualNOS ctermbg=239
     hi SignColumn ctermfg=118 ctermbg=235
     hi Title ctermfg=166

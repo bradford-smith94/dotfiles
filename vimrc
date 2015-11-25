@@ -91,7 +91,7 @@ filetype indent plugin on
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 
-let g:ctrlp_show_hidden = 1
+let g:ctrlp_show_hidden = 0
 "let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'} "use cpsm as the matcher
 
 let g:neocomplete#enable_at_startup = 1
