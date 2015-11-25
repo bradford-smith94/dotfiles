@@ -115,25 +115,37 @@ hi clear PreProc
 hi clear Exception
 "}}}===========================================================================
 
+"{{{--define modes ============================================================
 let s:m = ' cterm'
 let s:mfg = s:m . "fg="
 let s:mbg = s:m . "bg="
 let s:b = s:m . "=bold"
 let s:r = s:m . "=reverse"
 let s:u = s:m . "=underline"
+"}}}===========================================================================
 
 "{{{--define colors ===========================================================
 let s:black = '16 '
+let s:blue = '21 '
 let s:pale_blue = '67 '
+let s:cyan = '6 '
 let s:light_grey = '243 '
+let s:green = '28 '
+let s:pale_green = '193 '
 let s:grey = '238 '
 let s:lime = '118 '
 let s:light_lime = '156 '
 let s:orange = '208 '
 let s:dark_orange = '202 '
 let s:pink = '161 '
+let s:light_pink = '219 '
+let s:purple = '91 '
+let s:bright_purple = '165 '
+let s:light_purple = '133 '
 let s:red = '160 '
 let s:bright_red = '196 '
+let s:dark_red = '52 '
+let s:pale_red = '174 '
 let s:white = '253 '
 let s:yellow = '11 ' "maybe 226?
 let s:light_yellow = '228 '
@@ -147,6 +159,7 @@ if &background == "dark" "dark theme colors
     let s:special_key = '120 '
     let s:light_blue = '81 '
     let s:warn = s:yellow
+    let s:bright_green = '112 '
 else "light theme colors
     let s:bg = '230 '
     let s:fg = s:black
@@ -155,6 +168,7 @@ else "light theme colors
     let s:special_key = '34 '
     let s:light_blue = '75 '
     let s:warn = '165 '
+    let s:bright_green = '34 '
 endif "end if background dark/light
 "}}}
 "}}}===========================================================================
@@ -164,10 +178,10 @@ endif "end if background dark/light
 exe "hi Normal" . s:mfg . s:fg . s:mbg . s:bg
 exe "hi Cursor" . s:mfg . s:cursor . s:mbg . s:fg
 exe "hi CursorLine" . s:mbg . s:highlight
-hi link CursorColumn CursorLine
+hi! link CursorColumn CursorLine
 exe "hi LineNR" . s:mfg . s:fg . s:mbg . s:highlight
-exe "hi CursorLineNR" . s:b . s:mfg . s:orange . s:mbg . s:highlight
-hi link ColorColumn CursorColumn
+exe "hi CursorLineNR" . s:b . s:mfg . s:orange . s:mbg . s:bg
+hi! link ColorColumn CursorColumn
 exe "hi Visual" . s:r
 exe "hi VisualNOS" . s:mbg . s:highlight
 exe "hi SignColumn" . s:mfg . s:lime . s:mbg . s:highlight
@@ -176,20 +190,20 @@ exe "hi Label" . s:mfg . s:light_yellow
 exe "hi Directory" . s:mfg . s:lime
 exe "hi MatchParen" . s:b . s:mfg . s:red
 exe "hi Special" . s:mfg . s:pink
-hi link SpecialChar Special
-hi link Tag Special
+hi! link SpecialChar Special
+hi! link Tag Special
 exe "hi SpecialKey" . s:mfg . s:special_key
-hi link Question SpecialKey
+hi! link Question SpecialKey
 exe "hi Delimiter" . s:mfg . s:light_blue
 exe "hi Underlined" . s:u
 "}}}
 
 "{{{-messages
 exe "hi Error" . s:mbg . s:bright_red
-hi link ErrorMsg Error
+hi! link ErrorMsg Error
 exe "hi WarningMsg" . s:mfg . s:warn . s:mbg . s:highlight
 exe "hi MoreMsg" . s:mfg . s:light_grey
-hi link ModeMsg MoreMsg
+hi! link ModeMsg MoreMsg
 "}}}
 
 "{{{-menus/ui
@@ -200,9 +214,9 @@ exe "hi TablineSel" . s:b
 exe "hi TabLineFill" . s:r
 exe "hi WildMenu" . s:mfg . s:light_lime . s:mbg . s:grey
 exe "hi Folded" . s:mfg . s:pale_blue . s:mbg . s:black
-hi link FoldColumn Folded
+hi! link FoldColumn Folded
 exe "hi PMenu" . s:mfg . s:light_lime . s:mbg . s:light_grey
-hi link PMenuThumb PMenu
+hi! link PMenuThumb PMenu
 exe "hi PMenuSel" . s:b . s:mfg . s:light_lime . s:mbg . s:grey
 exe "hi PMenuSBar" . s:mfg . s:white . s:mbg . s:grey
 exe "hi VertSplit" . s:mfg . s:light_grey
@@ -210,6 +224,79 @@ exe "hi VertSplit" . s:mfg . s:light_grey
 
 "{{{-searching/spelling
 exe "hi Search" . s:mfg . s:black . s:mbg . s:light_yellow
+exe "hi IncSearch" . s:mfg . s:black . s:mbg . s:pale_green
+if &background == "dark"
+    exe "hi SpellBad" . s:u . s:mfg . s:red
+    exe "hi SpellCap" . s:u . s:mfg . s:blue
+    exe "hi SpellRare" . s:u . s:mfg . s:bright_purple
+    exe "hi SpellLocal" . s:u . s:mfg . s:purple
+else
+    exe "hi SpellBad" . s:u . s:mfg . s:red . s:mbg . s:white
+    exe "hi SpellCap" . s:u . s:mfg . s:blue . s:mbg . s:white
+    exe "hi SpellRare" . s:u . s:mfg . s:bright_purple . s:mbg . s:white
+    exe "hi SpellLocal" . s:u . s:mfg . s:purple . s:mbg . s:white
+endif
+hi! link SyntasticError SpellBad
+hi! link SyntasticWarning WarningMsg
+hi! link SyntasticStyleError SyntasticError
+hi! link SyntasticStyleWarning SyntasticWarning
+"}}}
+
+"{{{-vimdiff colors
+exe "hi DiffAdd" . s:mfg . s:pale_red . s:mbg . s:green
+exe "hi DiffChange" . s:mfg . s:pale_red . s:mbg . s:blue
+exe "hi DiffDelete" . s:mbg . s:dark_red
+exe "hi DiffText" . s:mfg . s:blue . s:mbg . s:light_grey
+"}}}
+
+"{{{-comments
+exe "hi Comment" . s:mfg . s:cyan
+exe "hi SpecialComment" . s:mfg . s:light_blue
+if &background == "dark"
+    exe "hi TODO" . s:b . s:mfg . s:yellow . s:mbg . s:black
+else
+    exe "hi TODO" . s:b . s:mfg . s:black . s:mbg . s:yellow
+endif
+exe "hi NonText" . s:mfg . s:grey
+hi! link Ignore NonText
+exe "hi Conceal" s:mfg . s:white . s:mbg . s:light_grey
+"}}}
+
+"{{{-types
+exe "hi Type" . s:mfg . s:bright_green
+exe "hi String" . s:mfg . s:green
+exe "hi Character" . s:mfg . s:bright_red
+if &background == "dark"
+    exe "hi Constant" . s:mfg . s:yellow
+else
+    exe "hi Constant" . s:mfg . s:orange
+endif
+hi! link Boolean Constant
+if &background == "dark"
+    exe "hi Number" . s:mfg . s:light_purple
+else
+    exe "hi Number" . s:mfg . s:purple
+endif
+hi! link Float Number
+exe "hi Structure" . s:b . s:mfg . s:bright_green
+hi! link Typedef Structure
+exe "hi StorageClass" . s:mfg . s:orange
+"}}}
+
+"{{{-other programming language constructs
+exe "hi Function" . s:b . s:mfg . s:light_blue
+exe "hi Keyword" . s:mfg . s:orange
+exe "hi Identifier" . s:mfg . s:bright_green
+exe "hi Conditional" . s:b . s:mfg . s:orange
+hi! link Repeat Conditional
+exe "hi Statement" . s:mfg . s:bright_red
+hi! link Operator Normal
+exe "hi Debug" . s:mfg . s:light_pink
+exe "hi Define" . s:b . s:mfg . s:light_blue
+hi! link Macro Define
+exe "hi PreCondit" . s:b . s:mfg . s:pale_blue
+exe "hi PreProc" . s:mfg . s:pink
+exe "hi Exception" . s:mfg . s:blue
 "}}}
 "}}}===========================================================================
 
