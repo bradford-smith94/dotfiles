@@ -18,8 +18,14 @@ endif
 let g:colors_name = "bsmith"
 
 "use my custom airline theme too, if it is present
-if filereadable(glob("~/.vim/autoload/airline/themes/bsmith_airline.vim"))
-    let g:airline_theme = "bsmith_airline"
+if &background == "dark"
+    if filereadable(glob("~/.vim/autoload/airline/themes/bsmith_dark.vim"))
+        let g:airline_theme = "bsmith_dark"
+    endif
+else
+    if filereadable(glob("~/.vim/autoload/airline/themes/bsmith_light.vim"))
+        let g:airline_theme = "bsmith_light"
+    endif
 endif
 "}}}===========================================================================
 
