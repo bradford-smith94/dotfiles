@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 11/23/2015
+" updated: 11/30/2015
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -91,7 +91,7 @@ filetype indent plugin on
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 
-let g:ctrlp_show_hidden = 1
+let g:ctrlp_show_hidden = 0
 "let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'} "use cpsm as the matcher
 
 let g:neocomplete#enable_at_startup = 1
@@ -221,6 +221,7 @@ cabbrev WA wa
 cabbrev Wa wa
 cabbrev W w
 cabbrev Q q
+
 cabbrev B b
 cabbrev E e
 "}}}----------------------------------------------------------------------------
@@ -230,6 +231,7 @@ cabbrev E e
 iabbrev teh the
 iabbrev ahve have
 iabbrev waht what
+iabbrev smae same
 "}}}-----------------------------------------------------------------------------
 
 
@@ -311,15 +313,6 @@ endif
 
 
 "{{{-my mappings----------------------------------------------------------------
-"vimdiff commands
-if &diff
-    command! GetRemote :diffget RE
-    command! GetBase :diffget BA
-    command! GetLocal :diffget LO
-    command! NextDiff ]c :
-    command! PrevDiff [c :
-endif
-
 "call the SyntaxItem function
 command! HighlightGroup call SyntaxItem()
 command! HlGroup call SyntaxItem()
@@ -339,12 +332,22 @@ nmap <CR> <nop>
 nmap - <nop>
 nmap + <nop>
 
+"{{{-leader mappings
 let mapleader=" " "set <leader> as space
 
-"leader mappings
 nmap <leader>o :CtrlP<CR>
 nmap <leader>f :CtrlPFunky<CR>
 nmap <leader>b :CtrlPBuffer<CR>
+"substitute word under cursor
+nmap <leader>s :%s/\<<C-r><C-w>\>/
+
+if &diff "vimdiff leader mappings
+    "next difference
+    nmap <leader>n ]c :
+    "previous difference
+    nmap <leader>p [c :
+endif
+"}}}
 
 "backspace in Normal clears search pattern
 nmap <bs> :ClearSearch<CR>
