@@ -80,7 +80,8 @@ augroup plugin_updating
     "clear this autocmd group to protect from re-sourcing this file
     autocmd!
     autocmd VimEnter * call AutoupdatePlugins()
-    autocmd BufDelete * if &previewwindow && &ft == "vundle" | echom "It works" | endif
+    autocmd BufDelete * if &previewwindow && &ft == "vundle" |
+                \ call SaveLastUpdate() | endif
 augroup END
 
 "turn filetype back on (was turned off to do Vundle things)
@@ -284,6 +285,10 @@ function! Compile()
     endif
 endfunction
 
+function! SaveLastUpdate()
+    let g:LAST_UPDATE = str2nr(strftime("%Y%m%d"))
+endfunction
+
 "function to check when the last time plugins were automatically updated and
 "update them if it has been more than a week and it is currently the weekend
 function! AutoupdatePlugins()
@@ -295,11 +300,11 @@ function! AutoupdatePlugins()
                         \ strftime("%a") == "Sun")
                 PluginUpdate
                 "save today's date as YYYYMMDD
-                let g:LAST_UPDATE = str2nr(strftime("%Y%m%d"))
+                call SaveLastUpdate()
             endif
         endif
     else
-        let g:LAST_UPDATE = str2nr(strftime("%Y%m%d"))
+        call SaveLastUpdate()
     endif
 endfunction
 
