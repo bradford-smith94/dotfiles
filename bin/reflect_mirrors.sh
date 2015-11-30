@@ -1,6 +1,6 @@
 #!/bin/bash
 ##############
-# Run reflector on /etc/mirrorlist to keep them up to date
+# Run reflector on /etc/pacman.d/mirrorlist to keep them up to date
 # Bradford Smith
 # updated: 09/14/2015
 ######################
