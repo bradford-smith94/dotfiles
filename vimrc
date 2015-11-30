@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 11/25/2015
+" updated: 11/30/2015
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -231,6 +231,7 @@ cabbrev E e
 iabbrev teh the
 iabbrev ahve have
 iabbrev waht what
+iabbrev smae same
 "}}}-----------------------------------------------------------------------------
 
 
