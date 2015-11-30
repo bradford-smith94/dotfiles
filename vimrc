@@ -80,6 +80,7 @@ augroup plugin_updating
     "clear this autocmd group to protect from re-sourcing this file
     autocmd!
     autocmd VimEnter * call AutoupdatePlugins()
+    autocmd BufDelete * if &previewwindow && &ft == "vundle" | echom "It works" | endif
 augroup END
 
 "turn filetype back on (was turned off to do Vundle things)
