@@ -166,6 +166,7 @@ XSS
 app
 apps
 blog
+cpu
 crypto
 etc
 filesystem
@@ -188,6 +189,7 @@ java
 php
 sql
 ## File Extensions/Types
+exe
 htm
 html
 pdf
