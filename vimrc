@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 11/30/2015
+" updated: 12/02/2015
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -58,6 +58,7 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'shougo/neocomplete' "autocomplete requires +lua
 Plugin 'tpope/vim-surround' "surroundings motion
 Plugin 'tpope/vim-repeat' "allow repeating of surround
+Plugin 'unblevable/quick-scope' "highlight unique targets for (f, F, etc)
 call vundle#end()
 
 "felt like this belonged with plugin initialization
@@ -99,6 +100,9 @@ let g:ctrlp_show_hidden = 0
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+"only do quick-scope highlighting after pressing f, F, t and T keys
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 "use Tab for completion
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
