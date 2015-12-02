@@ -167,11 +167,13 @@ app
 apps
 blog
 crypto
+etc
 filesystem
 github
 gitignore
 malware
 metadata
+smartcard
 utf
 vim
 vimrc
