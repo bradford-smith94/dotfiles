@@ -1,6 +1,6 @@
 # Bradford Smith
 # bsmith.zsh-theme
-# updated: 10/13/2015
+# updated: 12/02/2015
 #####################
 
 autoload -U colors && colors
@@ -34,9 +34,9 @@ function host()
 
 function dir()
 {
-    #if directory has at least 5 parts show the front 2 and last 1
+    #if directory has at least 5 parts show the front 1 and last 2
     #else show the full cwd
-    local dir="%(5C.%-2~/***/%1~.%~)"
+    local dir="%(5C.%-1~/***/%2~.%~)"
     echo "%B${BLUE}$dir${RESET}%b"
 }
 
