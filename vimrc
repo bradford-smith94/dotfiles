@@ -1,14 +1,11 @@
 " Bradford Smith
 " .vimrc
-" updated: 12/02/2015
+" updated: 12/03/2015
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
 set nocompatible "do not use vi compatible mode, we're better than that
 set encoding=utf-8 "use UTF-8 internally
-set background=dark
-"let &t_Co=256 "force full 256 color support (should auto detect)
-color bsmith "custom colorscheme
 set helplang=en
 set nospell "spelling off by default
 set spelllang=en_us
@@ -48,6 +45,7 @@ set rtp+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin()
 "plugins '<github_user>/<repo>' or full git path
 Plugin 'gmarik/Vundle.vim'
+Plugin 'bradford-smith94/vim-colors-bsmith' "repo for my colorscheme
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim' "kien/ctrlp.vim is unmaintained
 Plugin 'tacahiroy/ctrlp-funky' "adds function searching to CtrlP (:CtrlPFunky)
@@ -114,6 +112,9 @@ inoremap <expr><BS> neocomplete#smart_close_popup() ."\<C-h>"
 
 "{{{-visual stuff---------------------------------------------------------------
 syntax on
+set background=dark
+"let &t_Co=256 "force full 256 color support (should auto detect)
+color bsmith "custom colorscheme
 set number "line numbers
 set relativenumber "and relative numbers (current line is exact)
 augroup numbering_group
