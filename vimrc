@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 12/03/2015
+" updated: 12/04/2015
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -49,7 +49,6 @@ Plugin 'bradford-smith94/vim-colors-bsmith' "repo for my colorscheme
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim' "kien/ctrlp.vim is unmaintained
 Plugin 'tacahiroy/ctrlp-funky' "adds function searching to CtrlP (:CtrlPFunky)
-Plugin 'nixprime/cpsm' "better matcher for CtrlP requires +python
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -67,10 +66,6 @@ if has_vundle == 0
     echo "Initial Plugin install please wait..."
     "install the plugins
     silent! PluginInstall
-
-    "cpsm requires running a install.sh script
-    chdir $HOME/.vim/bundle/cpsm
-    !$HOME/.vim/bundle/cpsm/install.sh
 
     qa "quit after installing everything
 endif
@@ -93,7 +88,6 @@ let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 
 let g:ctrlp_show_hidden = 0
-"let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'} "use cpsm as the matcher
 
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
