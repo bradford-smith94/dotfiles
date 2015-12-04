@@ -3,8 +3,8 @@ My configuration files (dotfiles) for anyone that is interested.
 
 ##Repository Structure
 For the most part the whole repository is meant to be symbolically linked into my home directory.
-Files that don't follow this scheme are `install.sh`, `README.md`, `.gitignore`, `.gitattributes` and more which are found under `system/`.
-The files under `system/` are files that help me configure my setup system-wide (such as udev rules) and are unlikely to be used on a system where root access is not permitted.
+Files that don't follow this scheme are `install.sh`, `README.md`, `.gitignore`, `.gitattributes` and more which are found under `etc/`.
+The files under `etc/` are files that help me configure my setup system-wide (such as udev rules) and are unlikely to be used on a system where root access is not permitted, the structure of the `etc/` folder is setup to match that on the system.
 
 ##Installing
 The file `install.sh` is used to link these files to their correct places.
