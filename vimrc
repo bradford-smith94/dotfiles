@@ -101,6 +101,8 @@ let g:neocomplete#sources#syntax#min_keyword_length = 3
 
 "only do quick-scope highlighting after pressing f, F, t and T keys
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+let g:qs_first_occurrence_highlight_color = 81
+let g:qs_second_occurrence_highlight_color = 161
 
 "use Tab for completion
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
