@@ -162,7 +162,7 @@ augroup misc_group
     autocmd!
     "trim trailing whitespaces before saving
     "see: vim.wikia.com/wiki/Remove_unwanted_spaces
-    autocmd BufWritePre * :%s/\s\+$//e
+    autocmd BufWritePre * :%s/\s\+$//e|normal! ``
 
     "open epub files for editing (can use this for zip files too)
     "see: www.albertopettarin.it/blog/2014/06/03/open-epub-files-with-vim.html
