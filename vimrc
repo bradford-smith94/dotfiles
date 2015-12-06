@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 12/04/2015
+" updated: 12/05/2015
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -160,9 +160,9 @@ set nowrap "don't wrap text by default
 augroup misc_group
     "clear this autocmd group to protect from re-sourcing this file
     autocmd!
+
     "trim trailing whitespaces before saving
-    "see: vim.wikia.com/wiki/Remove_unwanted_spaces
-    autocmd BufWritePre * :%s/\s\+$//e|normal! ``
+    autocmd BufWritePre * call RemoveTrailingSpaces()
 
     "open epub files for editing (can use this for zip files too)
     "see: www.albertopettarin.it/blog/2014/06/03/open-epub-files-with-vim.html
@@ -197,6 +197,9 @@ augroup filetype_group
     autocmd FileType text setlocal formatoptions-=cq
     autocmd FileType text setlocal formatoptions+=t
     autocmd FileType markdown setlocal formatoptions-=tc
+
+    "set keepTrailingSpaces
+    autocmd FileType text let b:keepTrailingSpaces = 1
 
     "set completion
     autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -267,6 +270,20 @@ function! ToggleHexMode()
         setlocal eol
         execute ":%!xxd -r"
         let b:hexMode=0
+    endif
+endfunction
+
+"see: vim.wikia.com/wiki/Remove_unwanted_spaces
+"+: stackoverflow.com/questions/6496778/vim-run-autocmd-on-all-filetypes-except
+function! RemoveTrailingSpaces()
+    if !&binary && &filetype != 'diff'
+        if !exists('b:keepTrailingSpaces')
+            normal mz
+            normal Hmy
+            %s/\s\+$//e
+            normal 'yz<CR>
+            normal `z
+        endif
     endif
 endfunction
 
