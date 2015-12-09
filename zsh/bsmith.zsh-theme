@@ -1,6 +1,6 @@
 # Bradford Smith
 # bsmith.zsh-theme
-# updated: 12/02/2015
+# updated: 12/09/2015
 #####################
 
 autoload -U colors && colors
@@ -40,6 +40,12 @@ function dir()
     echo "%B${BLUE}$dir${RESET}%b"
 }
 
+#number of background jobs in cyan
+function bgjobs()
+{
+    echo "%(1j.jobs:${CYAN}%j${RESET}.) "
+}
+
 # from github.com/SicK94/minimal/minimal.zsh-theme
 function git_branch_name()
 {
@@ -70,7 +76,7 @@ function prompt_git()
 {
     local branch=$(git_branch_name)
     if [[ -n $branch ]]; then
-        local prompt="git:$(git_repo_status)%B$branch%b${RESET}"
+        local prompt="git:$(git_repo_status)%B$branch%b${RESET} "
         echo "$prompt"
     fi
 }
@@ -79,16 +85,16 @@ function prompt_vimode()
 {
     case $KEYMAP in
         main|viins)
-            # echo "[%B${blue}INSERT%b${reset}]"
+            # echo "[%B${blue}INSERT%b${reset}] "
             ;;
         vicmd)
-            echo "[%B${YELLOW}NORMAL%b${RESET}]"
+            echo "[%B${YELLOW}NORMAL%b${RESET}] "
             ;;
         viopp)
-            echo "[%B${YELLOW}NORMAL%b${RESET}]"
+            echo "[%B${YELLOW}NORMAL%b${RESET}] "
             ;;
         visual)
-            echo "[%B${RED}VISUAL%b${RESET}]"
+            echo "[%B${RED}VISUAL%b${RESET}] "
             ;;
     esac
 }
@@ -103,6 +109,6 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 zle -N zle-line-finish
 
-
-PROMPT="$(user)$(host)$(dir)$PROMPT_CHAR"
-RPROMPT='$(prompt_vimode)$(prompt_git)'
+NL=$'\n'
+PROMPT='$(prompt_vimode)$(bgjobs)$(prompt_git)${NL}$(user)$(host)$(dir)$PROMPT_CHAR'
+RPROMPT=''
