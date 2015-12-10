@@ -18,6 +18,8 @@ local YELLOW="%{$fg[yellow]%}"
 local CYAN="%{$fg[cyan]%}"
 local MAGENTA="%{$fg[magenta]%}"
 
+local NEWLINE=$'\n'
+
 #red # if root, else green $
 PROMPT_CHAR="%(!.${RED}#${RESET}.${GREEN}$ ${RESET})"
 
@@ -85,7 +87,7 @@ function prompt_vimode()
 {
     case $KEYMAP in
         main|viins)
-            # echo "[%B${blue}INSERT%b${reset}] "
+            # echo "[%B${BLUE}INSERT%b${RESET}] "
             ;;
         vicmd)
             echo "[%B${YELLOW}NORMAL%b${RESET}] "
@@ -99,6 +101,11 @@ function prompt_vimode()
     esac
 }
 
+function prompt_topline()
+{
+    echo "$(prompt_vimode)$(bgjobs)$(prompt_git)${NEWLINE}"
+}
+
 function zle-line-init zle-line-finish zle-keymap-select
 {
     zle reset-prompt
@@ -109,6 +116,5 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 zle -N zle-line-finish
 
-NL=$'\n'
-PROMPT='$(prompt_vimode)$(bgjobs)$(prompt_git)${NL}$(user)$(host)$(dir)$PROMPT_CHAR'
+PROMPT='$(prompt_topline)$(user)$(host)$(dir)$PROMPT_CHAR'
 RPROMPT=''
