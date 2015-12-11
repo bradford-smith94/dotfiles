@@ -1,6 +1,6 @@
 # Bradford Smith
 # bsmith.zsh-theme
-# updated: 12/09/2015
+# updated: 12/10/2015
 #####################
 
 autoload -U colors && colors
@@ -103,7 +103,7 @@ function prompt_vimode()
 
 function prompt_topline()
 {
-    echo "$(prompt_vimode)$(bgjobs)$(prompt_git)${NEWLINE}"
+    echo "$(prompt_vimode)$(bgjobs)$(prompt_git)${NEWLINE}."
 }
 
 function zle-line-init zle-line-finish zle-keymap-select
@@ -116,5 +116,6 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 zle -N zle-line-finish
 
-PROMPT='$(prompt_topline)$(user)$(host)$(dir)$PROMPT_CHAR'
+TL='${$(prompt_topline)%.}'
+PROMPT="${TL}$(user)$(host)$(dir)$PROMPT_CHAR"
 RPROMPT=''
