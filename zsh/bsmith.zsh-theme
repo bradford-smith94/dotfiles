@@ -45,7 +45,7 @@ function dir()
 #number of background jobs in cyan
 function bgjobs()
 {
-    echo "%(1j.jobs:${CYAN}%j${RESET}.)"
+    [[ $(jobs | wc -l) -gt 0 ]] && echo "jobs:${CYAN}$(jobs | wc -l)${RESET}"
 }
 
 # from github.com/SicK94/minimal/minimal.zsh-theme
@@ -77,10 +77,7 @@ function git_repo_status()
 function prompt_git()
 {
     local branch=$(git_branch_name)
-    if [[ -n $branch ]]; then
-        local prompt="git:$(git_repo_status)%B$branch%b${RESET}"
-        echo "$prompt"
-    fi
+    [[ -n $branch ]] && echo "git:$(git_repo_status)%B$branch%b${RESET}"
 }
 
 function prompt_vimode()
@@ -106,8 +103,12 @@ function prompt_topline()
     local vi_mode="$(prompt_vimode)"
     local bg_jobs="$(bgjobs)"
     local git_things="$(prompt_git)"
+    local flag
 
-    echo "$vi_mode$bg_jobs$git_things${NEWLINE}."
+    [[ -n $vi_mode ]] && echo -n $vi_mode" " && flag=true
+    [[ -n $bg_jobs ]] && echo -n $bg_jobs" " && flag=true
+    [[ -n $git_things ]] && echo -n $git_things" " && flag=true
+    [[ $flag ]] && echo ${NEWLINE}"."
 }
 
 function zle-line-init zle-line-finish zle-keymap-select
