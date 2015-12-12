@@ -1,6 +1,6 @@
 # Bradford Smith
 # bsmith.zsh-theme
-# updated: 12/10/2015
+# updated: 12/11/2015
 #####################
 
 autoload -U colors && colors
@@ -45,7 +45,7 @@ function dir()
 #number of background jobs in cyan
 function bgjobs()
 {
-    echo "%(1j.jobs:${CYAN}%j${RESET}.) "
+    echo "%(1j.jobs:${CYAN}%j${RESET}.)"
 }
 
 # from github.com/SicK94/minimal/minimal.zsh-theme
@@ -78,7 +78,7 @@ function prompt_git()
 {
     local branch=$(git_branch_name)
     if [[ -n $branch ]]; then
-        local prompt="git:$(git_repo_status)%B$branch%b${RESET} "
+        local prompt="git:$(git_repo_status)%B$branch%b${RESET}"
         echo "$prompt"
     fi
 }
@@ -87,23 +87,27 @@ function prompt_vimode()
 {
     case $KEYMAP in
         main|viins)
-            # echo "[%B${BLUE}INSERT%b${RESET}] "
+            # echo "[%B${BLUE}INSERT%b${RESET}]"
             ;;
         vicmd)
-            echo "[%B${YELLOW}NORMAL%b${RESET}] "
+            echo "[%B${YELLOW}NORMAL%b${RESET}]"
             ;;
         viopp)
-            echo "[%B${YELLOW}NORMAL%b${RESET}] "
+            echo "[%B${YELLOW}NORMAL%b${RESET}]"
             ;;
         visual)
-            echo "[%B${RED}VISUAL%b${RESET}] "
+            echo "[%B${RED}VISUAL%b${RESET}]"
             ;;
     esac
 }
 
 function prompt_topline()
 {
-    echo "$(prompt_vimode)$(bgjobs)$(prompt_git)${NEWLINE}."
+    local vi_mode="$(prompt_vimode)"
+    local bg_jobs="$(bgjobs)"
+    local git_things="$(prompt_git)"
+
+    echo "$vi_mode$bg_jobs$git_things${NEWLINE}."
 }
 
 function zle-line-init zle-line-finish zle-keymap-select
