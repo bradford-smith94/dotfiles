@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 12/29/2015
+" updated: 01/02/2015
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -46,6 +46,7 @@ call vundle#begin()
 "plugins '<github_user>/<repo>' or full git path
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bradford-smith94/vim-colors-bsmith' "repo for my colorscheme
+Plugin 'bradford-smith94/vim-superupdate' "automatic plugin updating
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim' "kien/ctrlp.vim is unmaintained
 Plugin 'tacahiroy/ctrlp-funky' "adds function searching to CtrlP (:CtrlPFunky)
