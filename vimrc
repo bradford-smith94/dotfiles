@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 12/05/2015
+" updated: 01/02/2015
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -46,6 +46,7 @@ call vundle#begin()
 "plugins '<github_user>/<repo>' or full git path
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bradford-smith94/vim-colors-bsmith' "repo for my colorscheme
+Plugin 'bradford-smith94/vim-superupdate' "automatic plugin updating
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim' "kien/ctrlp.vim is unmaintained
 Plugin 'tacahiroy/ctrlp-funky' "adds function searching to CtrlP (:CtrlPFunky)
@@ -69,14 +70,6 @@ if has_vundle == 0
 
     qa "quit after installing everything
 endif
-
-augroup plugin_updating
-    "clear this autocmd group to protect from re-sourcing this file
-    autocmd!
-    autocmd VimEnter * call AutoupdatePlugins()
-    autocmd BufDelete * if &previewwindow && &ft == "vundle" |
-                \ call SaveLastUpdate() | endif
-augroup END
 
 "turn filetype back on (was turned off to do Vundle things)
 filetype indent plugin on
@@ -300,29 +293,6 @@ function! Compile()
         execute ":silent! Reload"
     else
         echo "No compile method set for filetype: ".&ft
-    endif
-endfunction
-
-function! SaveLastUpdate()
-    let g:LAST_UPDATE = str2nr(strftime("%Y%m%d"))
-endfunction
-
-"function to check when the last time plugins were automatically updated and
-"update them if it has been more than a week and it is currently the weekend
-function! AutoupdatePlugins()
-"sohua.xyz/questions/2190412/how-do-i-get-vim-to-test-if-user-input-is-an-integer
-    if exists("g:LAST_UPDATE")
-        if ((str2nr(strftime("%Y%m%d")) - g:LAST_UPDATE) >= 7)
-            if (strftime("%a") == "Fri" ||
-                        \ strftime("%a") == "Sat" ||
-                        \ strftime("%a") == "Sun")
-                PluginUpdate
-                "save today's date as YYYYMMDD
-                call SaveLastUpdate()
-            endif
-        endif
-    else
-        call SaveLastUpdate()
     endif
 endfunction
 
