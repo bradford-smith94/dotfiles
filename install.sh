@@ -77,17 +77,43 @@ function _help
 # $1 question, $2 default choice (y, n or "")
 function promptYN
 {
-    qest=$1
+    question=$1
     shift
-    default=$2
+    choice=$1
     prompt=""
+    default=""
 
-    if [ $default == "y" ]; then
+    if [ "$choice" == "y" ]; then
         prompt="(Y/n)"
-    elif [ $default == "n" ]; then
+        default=true
+    elif [ "$choice" == "n" ]; then
         prompt="(y/N)"
+        default=false
     else
         prompt="(y/n)"
+    fi
+
+    echo -n "$question? $prompt "
+
+    read response
+    while [[ "$response" != "n" && \
+        "$response" != "N" && \
+        "$response" != "y" && \
+        "$response" != "Y" ]]; do
+        if [[ "$response" == "" && "$default" != "" ]]; then
+            $default
+        fi
+        echo -n "Type 'y' or 'n': "
+        read response
+    done
+
+    if [[ "$response" == "n" || "$response" == "N" ]]; then
+        false
+    elif [[ "$response" == "y" || "$response" == "Y" ]]; then
+        true
+    else # this shouldn't happen
+        echo "Something went wrong"
+        false
     fi
 }
 ##### End promptYN #############################################################
@@ -109,15 +135,7 @@ function makeSymLinks
 
     for file in $files; do
         if [ $interactive -eq 1 ]; then
-            echo -n "Link $file to $dest?(y|n) "
-            read -n 1 choice
-            echo ""
-            while [[ "$choice" != "n" && "$choice" != "y" ]]; do
-                echo -n "Type 'y' or 'n': "
-                read -n 1 choice
-                echo ""
-            done
-            if [ $choice == "n" ]; then
+            if ! promptYN "Link $file to $dest" "y"; then
                 continue
             fi
         fi # end if interactive
@@ -163,15 +181,7 @@ function makeSymLinksGroup
     files=$*
 
     if [ $interactive -eq 1 ]; then
-        echo -n "Link $group group to $dest?(y|n) "
-        read -n 1 choice
-        echo ""
-        while [[ "$choice" != "n" && "$choice" != "y" ]]; do
-            echo -n "Type 'y' or 'n': "
-            read -n 1 choice
-            echo ""
-        done
-        if [ $choice == "n" ]; then
+        if ! promptYN "Link $group to $dest" "y"; then
             return
         fi
     fi # end if interactive
