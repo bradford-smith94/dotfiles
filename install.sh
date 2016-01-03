@@ -2,7 +2,7 @@
 ################################################################################
 # Bradford Smith
 # install.sh
-# updated: 11/18/2015
+# updated: 01/02/2016
 #
 # This script can be run to install my dotfiles.
 #
@@ -73,6 +73,25 @@ function _help
 }
 ##### End _help ################################################################
 
+##### promptYN #################################################################
+# $1 question, $2 default choice (y, n or "")
+function promptYN
+{
+    qest=$1
+    shift
+    default=$2
+    prompt=""
+
+    if [ $default == "y" ]; then
+        prompt="(Y/n)"
+    elif [ $default == "n" ]; then
+        prompt="(y/N)"
+    else
+        prompt="(y/n)"
+    fi
+}
+##### End promptYN #############################################################
+
 ##### makeSymLinks #############################################################
 # $1 destination, $2 source, $3 destination backup,
 # $4 use dot (0|1), $5 files (can be a list)
@@ -88,7 +107,6 @@ function makeSymLinks
     shift
     files=$*
 
-    echo "Moving any existing dotfiles from $dest to $backup"
     for file in $files; do
         if [ $interactive -eq 1 ]; then
             echo -n "Link $file to $dest?(y|n) "
@@ -144,9 +162,8 @@ function makeSymLinksGroup
     shift
     files=$*
 
-    echo "Moving any existing $group dotfiles from $dest to $backup"
     if [ $interactive -eq 1 ]; then
-        echo -n "Link $group to $dest?(y|n) "
+        echo -n "Link $group group to $dest?(y|n) "
         read -n 1 choice
         echo ""
         while [[ "$choice" != "n" && "$choice" != "y" ]]; do
@@ -155,7 +172,7 @@ function makeSymLinksGroup
             echo ""
         done
         if [ $choice == "n" ]; then
-            break
+            return
         fi
     fi # end if interactive
     for file in $files; do
@@ -177,7 +194,7 @@ function makeSymLinksGroup
             ln -s $src/$file $target
         fi
     done
-    if [ $hook != "" ]; then
+    if [ "$hook" != "" ]; then
         $hook
     fi
 }
@@ -233,6 +250,7 @@ makeSymLinks $HOME $dir $olddir 0 $no_dot_files
 makeSymLinksGroup "Vim Configuration" "vim" $HOME $dir $olddir 1 $vim_group
 makeSymLinksGroup "Git Configuration" "source $dir/bin/hasGitPushSimple.sh" $HOME $dir $olddir 1 $git_group
 makeSymLinksGroup "Bash Configuration" "" $HOME $dir $olddir 1 $bash_group
+makeSymLinksGroup "Zsh Configuration" "" $HOME $dir $olddir 1 $zsh_group
 makeSymLinksGroup "Conky Configuration" "" $HOME $dir $olddir 1 $conky_group
 
 # change to config directory
