@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 01/02/2016
+" updated: 01/05/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -59,8 +59,9 @@ Plugin 'tpope/vim-repeat' "allow repeating of surround
 Plugin 'unblevable/quick-scope' "highlight unique targets for (f, F, etc)
 call vundle#end()
 
-"felt like this belonged with plugin initialization
+"felt like these belonged with plugin initialization
 source $VIMRUNTIME/ftplugin/man.vim "initializes the :Man command
+runtime macros/matchit.vim "souces extended mappings for '%'
 
 "if this is the first time vundle is installed
 if has_vundle == 0
