@@ -1,6 +1,6 @@
 #Bradford Smith
 #.gitconfig (global git settings)
-#updated: 11/05/2015
+#updated: 01/12/2015
 #################################
 
 [user]
@@ -39,3 +39,5 @@
     graph = "log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
     lines = "!git ls-files | xargs wc -l"
     lines-authored = "!git ls-tree -r -z --name-only HEAD -- $1 | xargs -0 -n1 git blame --line-porcelain HEAD | grep \"^author \"|sort|uniq -c|sort -nr"
+
+    who = "shortlog -n -s --no-merges"
