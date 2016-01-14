@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 01/05/2016
+" updated: 01/13/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -50,7 +50,7 @@ Plugin 'bradford-smith94/vim-superupdate' "automatic plugin updating
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim' "kien/ctrlp.vim is unmaintained
 Plugin 'tacahiroy/ctrlp-funky' "adds function searching to CtrlP (:CtrlPFunky)
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline' "bling/vim-airline is unmaintained
 Plugin 'scrooloose/syntastic'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'shougo/neocomplete' "autocomplete requires +lua
