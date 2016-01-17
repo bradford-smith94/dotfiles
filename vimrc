@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 01/13/2016
+" updated: 01/16/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -169,38 +169,10 @@ set nofoldenable "do not start folded
 "}}}----------------------------------------------------------------------------
 
 
-"{{{-filetype settings----------------------------------------------------------
-augroup filetype_group
+"{{{-template settings----------------------------------------------------------
+augroup template_group
     "clear this autocmd group to protect from re-sourcing this file
     autocmd!
-    "set wrapping
-    autocmd FileType markdown setlocal wrap
-    autocmd FileType html,xhtml setlocal wrap
-    autocmd FileType tex setlocal wrap
-
-    "set foldmethod
-    autocmd FileType vim setlocal foldmethod=marker
-
-    "set spell
-    autocmd FileType text setlocal spell
-    autocmd FileType gitcommit setlocal spell
-    autocmd FileType markdown setlocal spell
-    autocmd FileType tex setlocal spell
-
-    "set formatoptions
-    autocmd FileType text setlocal formatoptions-=cq
-    autocmd FileType text setlocal formatoptions+=t
-    autocmd FileType markdown setlocal formatoptions-=tc
-
-    "set keepTrailingSpaces
-    autocmd FileType text let b:keepTrailingSpaces = 1
-
-    "set completion
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
     "autofilled templates
     autocmd BufNewFile Makefile source ~/.vim/templates/Makefile.vim
