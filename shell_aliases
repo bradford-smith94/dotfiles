@@ -1,6 +1,6 @@
 # Bradford Smith
 # .shell_aliases
-# updated: 12/02/2015
+# updated: 01/25/2016
 #####################
 
 ## Overall
@@ -20,8 +20,8 @@ alias cdl='cd -' #cd to last directory
 ## Ghostscript combine pdfs (usage: `gs-pdf in1.pdf in2.pdf ...`)
 alias gs-pdf='gs -q -dBATCH -dNOPAUSE -dPDFSETTINGS=/prepress -sPAPERSIZE=letter -sDEVICE=pdfwrite -sOutputFile=merged.pdf'
 
-## IP Addresses (replace wlo1 with correct interface)
-alias local-ip="ip addr show wlo1 | grep 'inet' | awk '{print \$2}'"
+## IP Addresses
+alias local-ip="ip addr show $(~/bin/activeNetDev.sh) | grep 'inet' | awk '{print \$2}'"
 alias public-ip='curl icanhazip.com'
 
 alias chrome='google-chrome-stable'
