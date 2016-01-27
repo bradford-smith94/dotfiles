@@ -1,6 +1,6 @@
 # Bradford Smith
 # bsmith.zsh-theme
-# updated: 12/11/2015
+# updated: 01/27/2016
 #####################
 
 autoload -U colors && colors
@@ -45,7 +45,7 @@ function dir()
 #number of background jobs in cyan
 function bgjobs()
 {
-    [[ $(jobs | wc -l) -gt 0 ]] && echo "jobs:${CYAN}$(jobs | wc -l)${RESET}"
+    [[ $(jobs | wc -l) -gt 0 ]] && echo "jobs:${CYAN}%j${RESET}"
 }
 
 # from github.com/SicK94/minimal/minimal.zsh-theme
