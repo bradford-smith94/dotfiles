@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 01/29/2016
+" updated: 01/30/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -306,6 +306,7 @@ let mapleader=" " "set <leader> as space
 nmap <leader>o :CtrlP<CR>
 nmap <leader>f :CtrlPFunky<CR>
 nmap <leader>b :CtrlPBuffer<CR>
+nmap <leader>v :e $MYVIMRC<CR>
 "substitute word under cursor
 nmap <leader>s :%s/\<<C-r><C-w>\>/
 

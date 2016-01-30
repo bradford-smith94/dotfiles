@@ -4,5 +4,6 @@ setlocal spell
 setlocal formatoptions-=tc
 setlocal omnifunc=htmlcomplete#CompleteTags
 
-inoremap <buffer> <CR> <Esc>:call g:AutolistNewLineBelow()<CR>
-nnoremap <buffer> o <Esc>:call g:AutolistNewLineBelow()<CR>
+inoremap <buffer> <CR> <Esc>:AutolistNewLineBelow<CR>
+nnoremap <buffer> o <Esc>:AutolistNewLineBelow<CR>
+nnoremap <buffer> O <Esc>:AutolistNewLineAbove<CR>
