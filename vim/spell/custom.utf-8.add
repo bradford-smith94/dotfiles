@@ -166,6 +166,7 @@ XSS
 app
 apps
 blog
+ciphertext
 cpu
 crypto
 etc
@@ -174,6 +175,7 @@ github
 gitignore
 malware
 metadata
+plaintext
 plugin
 smartcard
 utf
