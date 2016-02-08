@@ -10,6 +10,9 @@
 
 public class <class>
 {
+    public static void main(String[] args)
+    {
+    }
 }
 .
 " ended inserting, update "Date:" with the current date as mm/dd/yyyy
