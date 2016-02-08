@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 01/30/2016
+" updated: 02/04/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -83,6 +83,8 @@ let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 
 let g:ctrlp_show_hidden = 0
+
+let g:syntastic_javascript_checkers = ["eslint"]
 
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
