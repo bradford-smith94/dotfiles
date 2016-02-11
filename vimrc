@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 02/04/2016
+" updated: 02/11/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -261,6 +261,8 @@ function! Compile()
         execute ":make"
     elseif &ft == "java"
         execute ":!javac " . bufname("%")
+    elseif &ft == "javascript"
+        execute ":!node " . bufname("%")
     elseif &ft == "markdown"
         execute "!pandoc -s -t latex -o ".expand("%:r").".pdf ".bufname("%")
     elseif &ft == "tex"
