@@ -1,6 +1,6 @@
 #Bradford Smith
 #.gitconfig (global git settings)
-#updated: 01/12/2015
+#updated: 02/12/2016
 #################################
 
 [user]
@@ -15,8 +15,6 @@
     tool = vimdiff
 [difftool]
     prompt = false
-[core]
-    editor = vim
 [commit] #commits start with prefilled text provided in:
     template = ~/.gitmessage
 [filter "push_default"] #use a .gitattributes to apply filter
@@ -40,4 +38,4 @@
     lines = "!git ls-files | xargs wc -l"
     lines-authored = "!git ls-tree -r -z --name-only HEAD -- $1 | xargs -0 -n1 git blame --line-porcelain HEAD | grep \"^author \"|sort|uniq -c|sort -nr"
 
-    who = "shortlog -n -s --no-merges"
+    authors = "shortlog -n -s --no-merges"
