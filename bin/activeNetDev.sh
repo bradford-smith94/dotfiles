@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # activeNetDev.sh
 # Echos the name of the active network device
 
@@ -14,4 +14,4 @@
 ROUTE=$(ip route)
 
 # echo the name of the device that the default route uses
-echo "$ROUTE" | grep "default" | sed 's/^.*dev //' | awk "{print \$1}"
+echo "$ROUTE" | sed -n 's/^default.*dev \(\S*\).*/\1/p'
