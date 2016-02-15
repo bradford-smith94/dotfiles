@@ -49,6 +49,8 @@ default_color white
 
 #archlinux blue
 color1 1793D0
+#red
+color2 ff3300
 
 ##Text Section##
 TEXT
@@ -56,10 +58,10 @@ ${font DejaVu Sans Mono:size=70}${time %k:%M}${voffset -1}${color1}${font DejaVu
 ${font DejaVu Sans Mono:size=20}${alignr}${time %B %d, %Y}${font}
 $hr
 ${font}${nodename}: ${sysname} ${kernel} ${alignr}${color1}Uptime:${color} ${uptime_short}
-${color1}CPU Usage:${color} ${cpu}% ${color1}RAM Usage:${color} ${memperc}% ${color1}Swap Usage:${color} ${swapperc}%
+${color1}CPU:${color} ${cpu}% ${color1}RAM:${color} ${memperc}% ${color1}Swap:${color} ${swapperc}%
+${if_existing /sys/class/power_supply/BAT0/}\
 ${color1}Battery:${color} ${exec cat /sys/class/power_supply/BAT0/capacity}% (${exec cat /sys/class/power_supply/BAT0/status})
+${endif}\
 $hr
-${color1}Networking: ${color}${exec ~/bin/activeNetDev.sh}: ${wireless_essid wlo1}
-${color1}Down:$color ${downspeed wlo1}${alignc}${color1}Up:$color ${upspeed wlo1}
-${downspeedgraph wlo1 25,100 dddddd 1793d0 0}${alignc}${upspeedgraph wlo1 25,100 dddddd ff3300 0}
+${color1}Networking: ${color}${exec ~/.conky/conkyNetwork.sh}
 
