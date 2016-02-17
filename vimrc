@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 02/11/2016
+" updated: 02/16/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -242,6 +242,15 @@ function! ToggleHexMode()
     endif
 endfunction
 
+"function to toggle diff mode for the current buffer
+function! ToggleDiffMode()
+    if &diff
+        execute ":diffoff"
+    else
+        execute ":diffthis"
+    endif
+endfunction
+
 "see: vim.wikia.com/wiki/Remove_unwanted_spaces
 "+: stackoverflow.com/questions/6496778/vim-run-autocmd-on-all-filetypes-except
 function! RemoveTrailingSpaces()
@@ -297,6 +306,9 @@ command! ClearSearch let @/=""
 
 "Toggle editing in Hex mode
 command! Hex call ToggleHexMode()
+
+"Toggle diff mode for current buffer
+command! Diff call ToggleDiffMode()
 
 "unbind keys
 nmap <space> <nop>
