@@ -1,7 +1,7 @@
 # Bradford Smith
 # .conkyrc
-# updated: 4/12/2015
-####################
+# updated: 02/15/2016
+#####################
 
 ##Basic Conky Settings##
 background no
@@ -22,11 +22,9 @@ own_window_argb_visual yes
 own_window_argb_value 255
 
 border_width 1
-minimum_size 280 700
+minimum_size 450 700
 
 alignment top_right
-gap_x 5
-gap_y 60
 
 ##Graphics Settings##
 default_outline_color white
@@ -51,29 +49,19 @@ default_color white
 
 #archlinux blue
 color1 1793D0
-
-##Lua Section##
-lua_load ~/.conky/lua/clock_rings.lua
-lua_draw_hook_pre clock_rings
+#red
+color2 ff3300
 
 ##Text Section##
 TEXT
-${font DejaVu Sans Mono:size=40}${alignr}${time %k:%M:%S}
-${font DejaVu Sans Mono:size=20}${alignr}${time %a %b %d %Y}
+${font DejaVu Sans Mono:size=70}${time %k:%M}${voffset -1}${color1}${font DejaVu Sans Mono:size=15}${time %S} ${color}${voffset -15}${font DejaVu Sans Mono:size=30}${time %A}
+${font DejaVu Sans Mono:size=20}${alignr}${time %B %d, %Y}${font}
 $hr
-${font DejaVu Sans Mono:size=12}$nodename - $sysname $kernel on $machine
-${color1}Uptime:$color $uptime
+${font}${nodename}: ${sysname} ${kernel} ${alignr}${color1}Uptime:${color} ${uptime_short}
+${color1}CPU:${color} ${cpu}% ${color1}RAM:${color} ${memperc}% ${color1}Swap:${color} ${swapperc}%
+${if_existing /sys/class/power_supply/BAT0/}\
+${color1}Battery:${color} ${exec cat /sys/class/power_supply/BAT0/capacity}% (${exec cat /sys/class/power_supply/BAT0/status})
+${endif}\
 $hr
-${alignc}${color1}Frequency (in MHz):$color $freq
-${alignc}${color1}Frequency (in GHz):$color $freq_g
-${color1}        CPU Usage:$color $cpu%
-${alignc}${color1}RAM Usage:$color $memperc%
-${alignc}${color1}Swap Usage:$color $swapperc%
-${color1}            File systems:
-              / $color${fs_used_perc /}% Filled
-${color1}              /home $color${fs_used_perc /home}% Filled
-${color1}              /boot $color${fs_used_perc /boot}% Filled
-${color1}Networking: ${color}wlo1: ${wireless_essid wlo1}
-${color1}Down:$color ${downspeed wlo1}${alignc}${color1}Up:$color ${upspeed wlo1}
-${downspeedgraph wlo1 25,100 dddddd 1793d0 0}${alignc}${upspeedgraph wlo1 25,100 dddddd ff3300 0}
-$hr
+${color1}Networking: ${color}${exec ~/.conky/conkyNetwork.sh}
+
