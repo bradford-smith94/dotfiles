@@ -65,5 +65,5 @@ ${endif}\
 ${color1}Networking: ${color}$hr
 ${exec ~/.conky/conkyNetwork.sh}
 ${color1}Arch News: ${color}$hr
-${execi 300 ~/.conky/conkyRSS.sh https://www.archlinux.org/feeds/news/ 5 1}
+${texeci 300 ~/.conky/conkyRSS.sh https://www.archlinux.org/feeds/news/ 5 1}
 
