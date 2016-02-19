@@ -1,6 +1,6 @@
 # Bradford Smith
 # .shell_aliases
-# updated: 02/18/2016
+# updated: 02/19/2016
 #####################
 
 ## Overall
@@ -30,6 +30,12 @@ alias clock="while true; do tput clear; date +'%H : %M : %S' | figlet ; sleep 1;
 
 # if I remember to do watch I probably want `watch -g`
 alias watch='watch -g'
+
+## Local Aliases
+################
+if [ -f "$HOME/.shell_aliases.local" ]; then
+    . "$HOME/.shell_aliases.local"
+fi
 
 ## Laptop Specific
 ##################
