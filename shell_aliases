@@ -1,6 +1,6 @@
 # Bradford Smith
 # .shell_aliases
-# updated: 01/25/2016
+# updated: 02/18/2016
 #####################
 
 ## Overall
@@ -25,6 +25,8 @@ alias local-ip="ip addr show $(~/bin/activeNetDev.sh) | grep 'inet' | awk '{prin
 alias public-ip='curl icanhazip.com'
 
 alias chrome='google-chrome-stable'
+
+alias clock="while true; do tput clear; date +'%H : %M : %S' | figlet ; sleep 1; done"
 
 # if I remember to do watch I probably want `watch -g`
 alias watch='watch -g'
