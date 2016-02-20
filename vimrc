@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 02/16/2016
+" updated: 02/20/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -78,13 +78,14 @@ filetype indent plugin on
 "}}}----------------------------------------------------------------------------
 
 
-"{{{-plugin options-------------------------------------------------------------
+"{{{-plugin settings------------------------------------------------------------
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 
 let g:ctrlp_show_hidden = 0
 
 let g:syntastic_javascript_checkers = ["eslint"]
+let g:syntastic_html_checkers = ["validator"]
 
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
