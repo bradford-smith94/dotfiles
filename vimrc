@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 02/16/2016
+" updated: 02/19/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -48,7 +48,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'bradford-smith94/vim-colors-bsmith' "repo for my colorscheme
 Plugin 'bradford-smith94/vim-superupdate' "automatic plugin updating
 Plugin 'bradford-smith94/vim-autolist' "automatic list continuation
-Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim' "kien/ctrlp.vim is unmaintained
 Plugin 'tacahiroy/ctrlp-funky' "adds function searching to CtrlP (:CtrlPFunky)
 Plugin 'vim-airline/vim-airline' "bling/vim-airline is unmaintained
@@ -354,10 +353,6 @@ nnoremap <c-w><s-Tab> <c-w>W
 
 "[F1] toggles the background light/dark
 map <F1> :call ToggleBackground()<CR>
-
-"[F2] toggles NERDTree
-map <F2> :NERDTreeToggle<CR>
-imap <F2> <Esc>:NERDTreeToggle<CR>
 
 "[F3] greps current project directory for word under cursor (results in buffer)
 map <F3> :execute " grep -srnw --binary-files=without-match
