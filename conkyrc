@@ -1,6 +1,6 @@
 # Bradford Smith
 # .conkyrc
-# updated: 02/19/2016
+# updated: 02/20/2016
 #####################
 
 ##Basic Conky Settings##
@@ -64,6 +64,8 @@ ${color1}Battery:${color} ${exec cat /sys/class/power_supply/BAT0/capacity}% (${
 ${endif}\
 ${color1}Networking: ${color}$hr
 ${exec ~/.conky/conkyNetwork.sh}
+${if_gw}\
 ${color1}Arch News: ${color}$hr
 ${texeci 300 ~/.conky/conkyRSS.sh https://www.archlinux.org/feeds/news/ 5 1}
+${endif}\
 
