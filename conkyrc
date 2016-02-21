@@ -1,6 +1,6 @@
 # Bradford Smith
 # .conkyrc
-# updated: 02/15/2016
+# updated: 02/20/2016
 #####################
 
 ##Basic Conky Settings##
@@ -56,12 +56,16 @@ color2 ff3300
 TEXT
 ${font DejaVu Sans Mono:size=70}${time %k:%M}${voffset -1}${color1}${font DejaVu Sans Mono:size=15}${time %S} ${color}${voffset -15}${font DejaVu Sans Mono:size=30}${time %A}
 ${font DejaVu Sans Mono:size=20}${alignr}${time %B %d, %Y}${font}
-$hr
+${color1}System: ${color}$hr
 ${font}${nodename}: ${sysname} ${kernel} ${alignr}${color1}Uptime:${color} ${uptime_short}
 ${color1}CPU:${color} ${cpu}% ${color1}RAM:${color} ${memperc}% ${color1}Swap:${color} ${swapperc}%
 ${if_existing /sys/class/power_supply/BAT0/}\
 ${color1}Battery:${color} ${exec cat /sys/class/power_supply/BAT0/capacity}% (${exec cat /sys/class/power_supply/BAT0/status})
 ${endif}\
-$hr
-${color1}Networking: ${color}${exec ~/.conky/conkyNetwork.sh}
+${color1}Networking: ${color}$hr
+${exec ~/.conky/conkyNetwork.sh}
+${if_gw}\
+${color1}Arch News: ${color}$hr
+${texeci 300 ~/.conky/conkyRSS.sh https://www.archlinux.org/feeds/news/ 5 1}
+${endif}\
 
