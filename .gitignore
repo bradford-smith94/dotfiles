@@ -15,3 +15,6 @@ vim/spell/*.spl
 
 # the viminfo file
 vim/viminfo
+
+# netrwhist
+vim/.netrwhist
