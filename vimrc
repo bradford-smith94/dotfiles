@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 02/21/2016
+" updated: 02/22/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -326,6 +326,7 @@ nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>v :e $MYVIMRC<CR>
 "substitute word under cursor
 nmap <leader>s :%s/\<<C-r><C-w>\>/
+nmap <leader>c :chdir %:h<CR>
 
 if &diff "vimdiff leader mappings
     "next difference
