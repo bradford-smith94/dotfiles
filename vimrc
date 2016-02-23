@@ -277,6 +277,8 @@ function! Compile()
         execute "!pandoc -s -t latex -o ".expand("%:r").".pdf ".bufname("%")
     elseif &ft == "tex"
         execute "!pdflatex " . bufname("%")
+    elseif &ft == "python"
+        execute "!python " . bufname("%")
     elseif &ft == "vim"
         execute ":silent! Reload"
     else
