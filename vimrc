@@ -266,26 +266,6 @@ function! RemoveTrailingSpaces()
     endif
 endfunction
 
-function! Compile()
-    if &ft == "c" || &ft == "cpp"
-        execute ":make"
-    elseif &ft == "java"
-        execute ":!javac " . bufname("%")
-    elseif &ft == "javascript"
-        execute ":!node " . bufname("%")
-    elseif &ft == "markdown"
-        execute "!pandoc -s -t latex -o ".expand("%:r").".pdf ".bufname("%")
-    elseif &ft == "tex"
-        execute "!pdflatex " . bufname("%")
-    elseif &ft == "python"
-        execute "!python " . bufname("%")
-    elseif &ft == "vim"
-        execute ":silent! Reload"
-    else
-        echo "No compile method set for filetype: ".&ft
-    endif
-endfunction
-
 "function to reload the vimrc
 if !exists("*Reload()")
     function! Reload()
@@ -365,9 +345,9 @@ noremap <F3> :execute " grep -srnw --binary-files=without-match
     \ --exclude-dir=.git . -e " . expand("<cword>") . " "
     \ <bar> cwindow<CR><CR><CR>
 
-"[F5] saves and 'compiles' using my Compile function
-noremap <F5> :w<CR>:call Compile()<CR>
-inoremap <F5> <Esc>:w<CR>:call Compile()<CR>
+"[F5] saves
+noremap <F5> :w<CR>
+inoremap <F5> <Esc>:w<CR>
 
 "[F8] toggles spellcheck
 noremap <F8> :setlocal spell!<CR>
