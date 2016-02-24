@@ -3,7 +3,7 @@
 # depends on bin/activeNetDev.sh
 
 DEV=$(~/bin/activeNetDev.sh)
-IP=$(ip addr show wlo1 | grep "inet" | awk "{print \$2}")
+IP=$(ip addr show $DEV | grep "inet" | awk "{print \$2}")
 CONNECTED=0
 if [[ $DEV == "" ]]; then
     RESULT="Not Connected"
