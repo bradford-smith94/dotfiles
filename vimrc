@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 02/22/2016
+" updated: 02/24/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -314,32 +314,33 @@ command! Hex call ToggleHexMode()
 command! Diff call ToggleDiffMode()
 
 "unbind keys
-nmap <space> <nop>
-nmap <CR> <nop>
-nmap - <nop>
-nmap + <nop>
+nnoremap <space> <nop>
+nnoremap <CR> <nop>
+nnoremap - <nop>
+nnoremap + <nop>
 
 "{{{-leader mappings
-let mapleader=" " "set <leader> as space
+let g:mapleader="\<Space>" "set <leader> as space
 
-nmap <leader>o :CtrlP<CR>
-nmap <leader>f :CtrlPFunky<CR>
-nmap <leader>b :CtrlPBuffer<CR>
-nmap <leader>v :e $MYVIMRC<CR>
+nnoremap <leader>o :CtrlP<CR>
+nnoremap <leader>f :CtrlPFunky<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>v :e $MYVIMRC<CR>
 "substitute word under cursor
-nmap <leader>s :%s/\<<C-r><C-w>\>/
-nmap <leader>c :chdir %:h<CR>
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/
+nnoremap <leader>c :chdir %:h<CR>
+nnoremap <leader>d :Diff<CR>
 
 if &diff "vimdiff leader mappings
     "next difference
-    nmap <leader>n ]c :
+    nnoremap <leader>n ]c :
     "previous difference
-    nmap <leader>p [c :
+    nnoremap <leader>N [c :
 endif
 "}}}
 
 "backspace in Normal clears search pattern
-nmap <bs> :ClearSearch<CR>
+nnoremap <bs> :ClearSearch<CR>
 
 "center screen when jumping to next
 "credit: blog.sanctum.geek.nz/vim-annoyances
@@ -347,7 +348,7 @@ nnoremap n nzz
 nnoremap N Nzz
 
 "make Y behave like C and D
-map Y y$
+noremap Y y$
 
 "make Q execute and insert a shell command on the current line
 noremap Q !!$SHELL<CR>
@@ -357,24 +358,24 @@ nnoremap <c-w><Tab> <c-w>w
 nnoremap <c-w><s-Tab> <c-w>W
 
 "[F1] toggles the background light/dark
-map <F1> :call ToggleBackground()<CR>
+noremap <F1> :call ToggleBackground()<CR>
 
 "[F3] greps current project directory for word under cursor (results in buffer)
-map <F3> :execute " grep -srnw --binary-files=without-match
+noremap <F3> :execute " grep -srnw --binary-files=without-match
     \ --exclude-dir=.git . -e " . expand("<cword>") . " "
     \ <bar> cwindow<CR><CR><CR>
 
 "[F5] saves and 'compiles' using my Compile function
-map <F5> :w<CR>:call Compile()<CR>
-imap <F5> <Esc>:w<CR>:call Compile()<CR>
+noremap <F5> :w<CR>:call Compile()<CR>
+inoremap <F5> <Esc>:w<CR>:call Compile()<CR>
 
 "[F8] toggles spellcheck
-map <F8> :setlocal spell!<CR>
-imap <F8> <Esc>:setlocal spell!<CR>a
+noremap <F8> :setlocal spell!<CR>
+inoremap <F8> <Esc>:setlocal spell!<CR>a
 
 "[F9] opens suggestions for next misspelled word
-map <F9> ]sz=
-imap <F9> <Esc>]sz=
+noremap <F9> ]sz=
+inoremap <F9> <Esc>]sz=
 "}}}----------------------------------------------------------------------------
 
 
