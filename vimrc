@@ -78,6 +78,8 @@ filetype indent plugin on
 
 
 "{{{-plugin settings------------------------------------------------------------
+let g:netrw_banner = 0
+
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 

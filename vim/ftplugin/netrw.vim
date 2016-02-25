@@ -1,0 +1,2 @@
+"mappings
+nmap <buffer> <BS> -
