@@ -38,3 +38,6 @@
 :%s/Date:/\=strftime("%m\/%d\/%Y", localtime())/
 " expand <File> with the filename
 :execute "normal! ggjfFca<".expand('%:t')
+
+"this sets the filetype correctly right away
+setlocal ft=tex
