@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 02/25/2016
+" updated: 02/27/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -186,6 +186,7 @@ augroup template_group
     autocmd BufNewFile *.java source ~/.vim/templates/java.vim
     autocmd BufNewFile *.js source ~/.vim/templates/javascript.vim
     autocmd BufNewFile *.tex source ~/.vim/templates/tex.vim
+    autocmd BufNewFile *.html source ~/.vim/templates/html.vim
 augroup END
 "}}}----------------------------------------------------------------------------
 
