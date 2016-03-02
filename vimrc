@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 02/29/2016
+" updated: 03/01/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -79,6 +79,7 @@ filetype indent plugin on
 
 "{{{-plugin settings------------------------------------------------------------
 let g:netrw_banner = 0
+let g:netrw_winsize = -30
 
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
@@ -212,6 +213,7 @@ cabbrev E e
 iabbrev teh the
 iabbrev ahve have
 iabbrev waht what
+iabbrev taht that
 iabbrev smae same
 "}}}-----------------------------------------------------------------------------
 
@@ -344,6 +346,9 @@ nnoremap <c-w><s-Tab> <c-w>W
 
 "[F1] toggles the background light/dark
 noremap <F1> :call ToggleBackground()<CR>
+
+"[F2] toggles file explorer
+noremap <F2> :Lexplore<CR>
 
 "[F3] greps current project directory for word under cursor (results in buffer)
 noremap <F3> :execute " grep -srnw --binary-files=without-match
