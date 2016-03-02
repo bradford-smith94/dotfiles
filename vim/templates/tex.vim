@@ -22,9 +22,24 @@
 
 \\usepackage{textcomp}
 
+\\usepackage{xcolor} %for colored code formatting
+
 \\pagestyle{empty}
 
 \\setlength{\tabcolsep}{0em}
+
+
+% custom macros ================================================================
+% simple inline code formatting (using typewriter font)
+%\newcommand{\code}[1]{\texttt{#1}}
+
+% colored inline code formatting
+
+\\definecolor{codebg}{RGB}{225,225,225}
+
+\\definecolor{codefg}{RGB}{200,40,90}
+
+\\newcommand{\code}[1]{\colorbox{codebg}{\textcolor{codefg}{\texttt{#1}}}}
 
 
 % document begins here =========================================================

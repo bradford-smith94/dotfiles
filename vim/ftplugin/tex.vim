@@ -4,7 +4,7 @@ setlocal spell
 
 "script local function for making pdf
 function! s:MakePDF()
-    execute "!pdflatex " . bufname("%")
+    execute "!pdflatex  -output-directory=" . expand("%:h") . " " . bufname("%")
     execute ":silent! !rm " . expand("%:r") . ".log"
     execute ":silent! !rm " . expand("%:r") . ".aux"
 endfunction
