@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 01/02/2016
+# updated: 03/02/2016
 #
 # This script can be run to install my dotfiles.
 #
@@ -143,7 +143,7 @@ function makeSymLinks
         if [ $useDot -eq 1 ]; then
             target=$dest/.$file
         fi # end if useDot
-        if [ "$(readlink $target)" = $src/$file ]; then
+        if [ "$(readlink $target 2> /dev/null)" = $src/$file ]; then
             if [ $force -eq 1 ]; then
                 echo "Creating symlink to $file in $dest"
                 unlink $target
@@ -190,7 +190,7 @@ function makeSymLinksGroup
         if [ $useDot -eq 1 ]; then
             target=$dest/.$file
         fi # end if useDot
-        if [ "$(readlink $target)" = $src/$file ]; then
+        if [ "$(readlink $target 2> /dev/null)" = $src/$file ]; then
             if [ $force -eq 1 ]; then
                 echo "Creating symlink to $file in $dest"
                 unlink $target
