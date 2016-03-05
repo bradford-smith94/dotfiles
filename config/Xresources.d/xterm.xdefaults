@@ -1,10 +1,12 @@
 XTerm*locale: true
-xterm*termName: xterm-256color
+XTerm*termName: xterm-256color
 XTerm*metaSendsEscape: true
 XTerm*borderWidth: 0
-xterm*faceName: DejaVu Sans Mono: style=Book: size=11: antialias=true
-xterm*font: 7x13
+XTerm*faceName: DejaVu Sans Mono: style=Book: size=11: antialias=true
+XTerm*boldFont: DejaVu Sans Mono: style=Bold: size=11: antialias=true
+XTerm*font: 7x13
 XTerm*VT100.geometry: 85x25
+XTerm*visualBell: true
 
 XTerm*background:                    #292929
 XTerm*foreground:                    #d3d7cf
