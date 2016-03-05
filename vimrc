@@ -341,6 +341,9 @@ noremap Y y$
 "make Q execute and insert a shell command on the current line
 noremap Q !!$SHELL<CR>
 
+"make K use built-in Man command
+nnoremap K :execute ":Man " . expand("<cword>")<CR>
+
 "use <Ctrl + w then Tab> and <Ctrl + w then Shift + Tab> to cycle between splits
 nnoremap <c-w><Tab> <c-w>w
 nnoremap <c-w><s-Tab> <c-w>W
