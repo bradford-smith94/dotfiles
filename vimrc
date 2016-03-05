@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 03/01/2016
+" updated: 03/05/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -14,6 +14,7 @@ silent! mkspell! ~/.vim/spell/custom.utf-8.add
 set backspace=indent,eol,start "makes backspace work like expected
 set noerrorbells
 set visualbell
+set t_vb=
 set viminfo='100,<50,s10,h,!,n~/.vim/viminfo "see :help 'viminfo'
 set nomodeline "disable modelines
 set ttyfast "legacy setting to speed up output, probably useless
