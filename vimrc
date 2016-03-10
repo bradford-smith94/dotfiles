@@ -319,6 +319,7 @@ nnoremap <leader>v :e $MYVIMRC<CR>
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 nnoremap <leader>c :chdir %:h<CR>
 nnoremap <leader>d :Diff<CR>
+nnoremap <leader>l :set list!<CR>
 
 if &diff "vimdiff leader mappings
     "next difference
