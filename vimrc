@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 03/05/2016
+" updated: 03/09/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -93,6 +93,7 @@ let g:syntastic_html_checkers = ["validator"]
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#enable_auto_close_preview = 1
 
 "only do quick-scope highlighting after pressing f, F, t and T keys
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
