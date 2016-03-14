@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 03/09/2016
+" updated: 03/14/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -58,6 +58,7 @@ Plugin 'shougo/neocomplete' "autocomplete requires +lua
 Plugin 'tpope/vim-surround' "surroundings motion
 Plugin 'tpope/vim-repeat' "allow repeating of surround
 Plugin 'unblevable/quick-scope' "highlight unique targets for (f, F, etc)
+Plugin 'konfekt/fastfold'
 call vundle#end()
 
 "felt like these belonged with plugin initialization
