@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 03/14/2016
+" updated: 03/22/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -119,11 +119,17 @@ set relativenumber "and relative numbers (current line is exact)
 augroup numbering_group
     "clear this autocmd group to protect from re-sourcing this file
     autocmd!
-    autocmd InsertEnter * :set norelativenumber "don't need relatives in insert
-    autocmd InsertEnter * :set number "turn numbers back on (supports old versions)
-    autocmd InsertLeave * :set relativenumber "back on for everything else
+    autocmd InsertEnter * setlocal norelativenumber "don't need relatives in insert
+    autocmd InsertEnter * setlocal number "turn numbers back on (supports old versions)
+    autocmd InsertLeave * setlocal relativenumber "back on for everything else
 augroup END
 set cursorline "highlight the line the cursor is on
+augroup cursorline_group
+    "clear this autocmd group to protect from re-sourcing this file
+    autocmd!
+    autocmd WinEnter * setlocal cursorline
+    autocmd WinLeave * setlocal nocursorline
+augroup END
 set showmatch "highlight matching brackets
 set ruler
 set showcmd "show hanging command while typing
