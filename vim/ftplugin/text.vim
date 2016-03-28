@@ -2,6 +2,7 @@
 setlocal spell
 setlocal formatoptions-=cq
 setlocal formatoptions+=t
+setlocal foldmethod=manual
 
 let b:keepTrailingSpaces = 1
 
