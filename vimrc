@@ -54,7 +54,7 @@ Plugin 'tacahiroy/ctrlp-funky' "adds function searching to CtrlP (:CtrlPFunky)
 Plugin 'vim-airline/vim-airline' "bling/vim-airline is unmaintained
 Plugin 'scrooloose/syntastic'
 Plugin 'octol/vim-cpp-enhanced-highlight'
-if has("patch-7.3-885") && has("+lua") "neocomplete requires v7.3.885 and +lua
+if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
     Plugin 'shougo/neocomplete'
 endif
 Plugin 'tpope/vim-surround' "surroundings motion
@@ -93,7 +93,7 @@ let g:ctrlp_show_hidden = 0
 let g:syntastic_javascript_checkers = ["eslint"]
 let g:syntastic_html_checkers = ["validator"]
 
-if exists("g:loaded_neocomplete")
+if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
     let g:neocomplete#sources#syntax#min_keyword_length = 3
@@ -108,7 +108,7 @@ let g:qs_second_occurrence_highlight_color = 161
 "use Tab for completion
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-if exists("g:loaded_neocomplete")
+if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
     "Backspace closes popup
     inoremap <expr><BS> neocomplete#smart_close_popup() ."\<C-h>"
 endif
