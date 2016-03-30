@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 03/22/2016
+" updated: 03/30/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -54,7 +54,9 @@ Plugin 'tacahiroy/ctrlp-funky' "adds function searching to CtrlP (:CtrlPFunky)
 Plugin 'vim-airline/vim-airline' "bling/vim-airline is unmaintained
 Plugin 'scrooloose/syntastic'
 Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'shougo/neocomplete' "autocomplete requires +lua
+if has("patch-7.3-885") && has("+lua") "neocomplete requires v7.3.885 and +lua
+    Plugin 'shougo/neocomplete'
+endif
 Plugin 'tpope/vim-surround' "surroundings motion
 Plugin 'tpope/vim-repeat' "allow repeating of surround
 Plugin 'unblevable/quick-scope' "highlight unique targets for (f, F, etc)
@@ -91,10 +93,12 @@ let g:ctrlp_show_hidden = 0
 let g:syntastic_javascript_checkers = ["eslint"]
 let g:syntastic_html_checkers = ["validator"]
 
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#enable_auto_close_preview = 1
+if exists("g:loaded_neocomplete")
+    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#enable_smart_case = 1
+    let g:neocomplete#sources#syntax#min_keyword_length = 3
+    let g:neocomplete#enable_auto_close_preview = 1
+endif
 
 "only do quick-scope highlighting after pressing f, F, t and T keys
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -104,8 +108,10 @@ let g:qs_second_occurrence_highlight_color = 161
 "use Tab for completion
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"Backspace closes popup
-inoremap <expr><BS> neocomplete#smart_close_popup() ."\<C-h>"
+if exists("g:loaded_neocomplete")
+    "Backspace closes popup
+    inoremap <expr><BS> neocomplete#smart_close_popup() ."\<C-h>"
+endif
 "}}}----------------------------------------------------------------------------
 
 
@@ -142,7 +148,11 @@ set lazyredraw "don't redraw the screen when executing macros (for speed)
 set scrolloff=5 "keep 5 lines visible above or below cursor
 set scrolljump=5 "scrolls 5 lines instead of 1
 set fillchars+=vert:│
-set listchars=tab:▶-,space:∙,nbsp:␣,trail:∙,eol:↵
+if has("patch-7.4-711") "option 'space' was added in this patch
+    set listchars=tab:▶-,space:∙,nbsp:␣,trail:∙,eol:↵
+else
+    set listchars=tab:▶-,nbsp:␣,trail:∙,eol:↵
+endif
 
 "make splits feel more correct
 set splitbelow "splits open below instead of above
