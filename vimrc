@@ -148,10 +148,9 @@ set lazyredraw "don't redraw the screen when executing macros (for speed)
 set scrolloff=5 "keep 5 lines visible above or below cursor
 set scrolljump=5 "scrolls 5 lines instead of 1
 set fillchars+=vert:│
+set listchars=tab:▶-,nbsp:␣,trail:∙,eol:↵
 if has("patch-7.4-711") "option 'space' was added in this patch
-    set listchars=tab:▶-,space:∙,nbsp:␣,trail:∙,eol:↵
-else
-    set listchars=tab:▶-,nbsp:␣,trail:∙,eol:↵
+    set listchars+=space:∙
 endif
 
 "make splits feel more correct
