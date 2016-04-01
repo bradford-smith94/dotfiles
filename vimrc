@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 03/30/2016
+" updated: 03/31/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -339,9 +339,9 @@ nnoremap <leader>l :set list!<CR>
 
 if &diff "vimdiff leader mappings
     "next difference
-    nnoremap <leader>n ]c :
+    nnoremap <leader>n ]c
     "previous difference
-    nnoremap <leader>N [c :
+    nnoremap <leader>N [c
 endif
 "}}}
 
