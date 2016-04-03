@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 03/31/2016
+" updated: 04/03/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -133,8 +133,8 @@ set cursorline "highlight the line the cursor is on
 augroup cursorline_group
     "clear this autocmd group to protect from re-sourcing this file
     autocmd!
-    autocmd WinEnter * setlocal cursorline
-    autocmd WinLeave * setlocal nocursorline
+    autocmd WinEnter,BufEnter * setlocal cursorline
+    autocmd WinLeave,BufLeave * setlocal nocursorline
 augroup END
 set showmatch "highlight matching brackets
 set ruler
