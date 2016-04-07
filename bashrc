@@ -18,6 +18,9 @@ HISTFILE=
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# use vi input mode
+set -o vi
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
