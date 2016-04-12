@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 04/03/2016
+" updated: 04/11/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -120,15 +120,19 @@ syntax on
 set background=dark
 "let &t_Co=256 "force full 256 color support (should auto detect)
 color bsmith "custom colorscheme
-set number "line numbers
-set relativenumber "and relative numbers (current line is exact)
-augroup numbering_group
-    "clear this autocmd group to protect from re-sourcing this file
-    autocmd!
-    autocmd InsertEnter * setlocal norelativenumber "don't need relatives in insert
-    autocmd InsertEnter * setlocal number "turn numbers back on (supports old versions)
-    autocmd InsertLeave * setlocal relativenumber "back on for everything else
-augroup END
+if has("patch-7.3-787") "relative numbers and absolute will both display
+    set number "line numbers
+    set relativenumber "and relative numbers (current line is exact)
+else
+    set relativenumber
+    augroup numbering_group
+        "clear this autocmd group to protect from re-sourcing this file
+        autocmd!
+        autocmd InsertEnter * setlocal norelativenumber "don't need relatives in insert
+        autocmd InsertEnter * setlocal number
+        autocmd InsertLeave * setlocal relativenumber "back on for everything else
+    augroup END
+endif
 set cursorline "highlight the line the cursor is on
 augroup cursorline_group
     "clear this autocmd group to protect from re-sourcing this file
