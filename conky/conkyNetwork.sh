@@ -3,24 +3,29 @@
 # depends on bin/activeNetDev.sh
 
 DEV=$(~/bin/activeNetDev.sh)
-IP=$(ip addr show $DEV | grep "inet" | awk "{print \$2}")
-CONNECTED=0
-if [[ $DEV == "" ]]; then
-    RESULT="Not Connected"
-elif [[ $DEV == w* ]]; then #this is a wireless interface
-    NETWORK=$(iwgetid -r $DEV)
-    if [[ $NETWORK == "" ]]; then
-        RESULT="$DEV: Not Connected"
+
+echo $DEV | while read line; do
+
+    IP=$(ip addr show $line | grep "inet" | awk "{print \$2}")
+    CONNECTED=0
+    if [[ $line == "" ]]; then
+        RESULT="Not Connected"
+    elif [[ $line == w* ]]; then #this is a wireless interface
+        NETWORK=$(iwgetid -r $line)
+        if [[ $NETWORK == "" ]]; then
+            RESULT="$line: Not Connected"
+        else
+            RESULT="$line: $NETWORK"
+            CONNECTED=1
+        fi
     else
-        RESULT="$DEV: $NETWORK"
+        RESULT="$line: Connected"
         CONNECTED=1
     fi
-else
-    RESULT="$DEV: Connected"
-    CONNECTED=1
-fi
 
-echo  "$RESULT"
-if [[ $CONNECTED -eq 1 ]]; then
-    echo "$IP"
-fi
+    echo  "$RESULT"
+    if [[ $CONNECTED -eq 1 ]]; then
+        echo "$IP"
+    fi
+
+done
