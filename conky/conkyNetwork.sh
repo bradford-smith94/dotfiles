@@ -4,7 +4,7 @@
 
 DEV=$(~/bin/activeNetDev.sh)
 
-echo $DEV | while read line; do
+echo "$DEV" | while read line; do
 
     IP=$(ip addr show $line | grep "inet" | awk "{print \$2}")
     CONNECTED=0
