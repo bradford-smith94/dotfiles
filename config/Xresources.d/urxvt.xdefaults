@@ -46,6 +46,10 @@ URxvt*cursorBlink:                   true
 URxvt*depth:                         32
 URxvt*background:                    [95]#292929
 URxvt*foreground:                    #d3d7cf
+!cursor background
+URxvt*cursorColor:                   #777777
+!cursor foreground
+URxvt*cursorColor2:                  #000000
 !black
 URxvt*color0:                        #000000
 URxvt*color8:                        #555753
@@ -79,8 +83,6 @@ URxvt*color15:                       #eeeeec
 ! URxvt*troughColor:                   color
 ! URxvt*highlightColor:                color
 ! URxvt*highlightTextColor:            color
-! URxvt*cursorColor:                   #8ae234
-! URxvt*cursorColor2:                  color
 ! URxvt*pointerColor:                  color
 ! URxvt*pointerColor2:                 color
 ! URxvt*borderColor:                   color
