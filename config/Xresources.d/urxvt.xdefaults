@@ -122,13 +122,15 @@ URxvt*buffered:                      true
 ! URxvt*secondaryScroll:               boolean
 ! URxvt*perl-lib:                      string
 ! URxvt*perl-eval:                     perl-eval
-URxvt*perl-ext-common:               fullscreen
+URxvt*perl-ext-common:               fullscreen,font-size
 ! URxvt*perl-ext:                      string
 ! URxvt*iso14755:                      boolean
 ! URxvt*iso14755_52:                   boolean
 ! URxvt*xrm:                           string
 ! URxvt*keysym.sym:                    keysym
 URxvt*keysym.F11:                    perl:fullscreen:switch
+URxvt*keysym.C-plus:                 perl:font-size:increase
+URxvt*keysym.C-minus:                perl:font-size:decrease
 ! URxvt*background.border:             boolean
 ! URxvt*background.expr:               string
 ! URxvt*background.interval:           seconds
