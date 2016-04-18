@@ -1,0 +1,13 @@
+# Pacman hook for using reflector to update the mirrorlist
+# This file should be placed at `/etc/pacman.d/hooks/mirrorlist.hook`
+
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = pacman-mirrorlist
+
+[Action]
+Description = Sort mirrorlist using reflector after updates
+Depends = reflector
+When = PostTransaction
+Exec = /etc/pacman.d/hooks/mirrorlist.sh
