@@ -85,10 +85,10 @@ function promptYN
 
     if [ "$choice" == "y" ]; then
         prompt="(Y/n)"
-        default=true
+        default=0 #true
     elif [ "$choice" == "n" ]; then
         prompt="(y/N)"
-        default=false
+        default=1 #false
     else
         prompt="(y/n)"
     fi
@@ -100,20 +100,20 @@ function promptYN
         "$response" != "N" && \
         "$response" != "y" && \
         "$response" != "Y" ]]; do
-        if [[ "$response" == "" && "$default" != "" ]]; then
-            $default
+        if [[ -z "$response" ]] && [[ -n "$default" ]]; then
+            return $default
         fi
         echo -n "Type 'y' or 'n': "
         read response
     done
 
     if [[ "$response" == "n" || "$response" == "N" ]]; then
-        false
+        return 1 #false
     elif [[ "$response" == "y" || "$response" == "Y" ]]; then
-        true
+        return 0 #true
     else # this shouldn't happen
         echo "Something went wrong"
-        false
+        return 1 #false
     fi
 }
 #}}} End promptYN ##############################################################
