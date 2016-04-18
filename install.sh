@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 03/02/2016
+# updated: 04/18/2016
 #
 # This script can be run to install my dotfiles.
 #
@@ -152,7 +152,7 @@ function makeSymLinks
                 echo "$file is already linked here, skipping..."
             fi
         else
-            mv $dest/$file $backup/
+            mv $target $backup/ 2> /dev/null
             echo "Creating symlink to $file in $dest"
             ln -s $src/$file $target
         fi
@@ -199,7 +199,7 @@ function makeSymLinksGroup
                 echo "$file is already linked here, skipping..."
             fi
         else
-            mv $dest/$file $backup/
+            mv $target $backup/ 2> /dev/null
             echo "Creating symlink to $file in $dest"
             ln -s $src/$file $target
         fi
