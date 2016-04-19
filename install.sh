@@ -39,12 +39,12 @@ git_group="gitconfig\
  gitmessage"
 
 bash_group="bashrc\
- shell_aliases
+ shell_aliases\
  dir_colors"
 
 zsh_group="zshrc\
  zsh\
- shell_aliases
+ shell_aliases\
  dir_colors"
 
 conky_group="conkyrc\
