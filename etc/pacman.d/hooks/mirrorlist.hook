@@ -7,7 +7,7 @@ Type = Package
 Target = pacman-mirrorlist
 
 [Action]
-Description = Sort mirrorlist using reflector after updates
+Description = Sorting mirrorlist using reflector
 Depends = reflector
 When = PostTransaction
 Exec = /etc/pacman.d/hooks/mirrorlist.sh
