@@ -13,13 +13,13 @@ echo "$DEV" | while read line; do
     elif [[ $line == w* ]]; then #this is a wireless interface
         NETWORK=$(iwgetid -r $line)
         if [[ $NETWORK == "" ]]; then
-            RESULT="$line: Not Connected"
+            RESULT="\${color2}$line\${color}: Not Connected"
         else
-            RESULT="$line: $NETWORK"
+            RESULT="\${color1}$line\${color}: $NETWORK"
             CONNECTED=1
         fi
     else
-        RESULT="$line: Connected"
+        RESULT="\${color1}$line\${color}: Connected"
         CONNECTED=1
     fi
 
