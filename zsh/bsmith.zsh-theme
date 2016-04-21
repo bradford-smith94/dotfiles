@@ -1,6 +1,6 @@
 # Bradford Smith
 # bsmith.zsh-theme
-# updated: 02/11/2016
+# updated: 04/21/2016
 #####################
 
 autoload -U colors && colors
@@ -125,4 +125,4 @@ zle -N zle-line-finish
 
 TL='${$(prompt_topline)%.}'
 PROMPT="${TL}$(user)$(host)$(dir)$PROMPT_CHAR"
-RPROMPT=''
+RPROMPT="${RED}%(?..%?)${RESET}"
