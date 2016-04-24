@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 04/18/2016
+# updated: 04/24/2016
 #
 # This script can be run to install my dotfiles.
 #
@@ -55,6 +55,7 @@ no_dot_files="bin"
 
 # list of files/folders to symlink in homedir/.config
 config_files="redshift.conf\
+ termite\
  Xresources.d\
  cower"
 #}}} End Variables #############################################################
