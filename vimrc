@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 04/11/2016
+" updated: 04/23/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -61,6 +61,7 @@ Plugin 'tpope/vim-surround' "surroundings motion
 Plugin 'tpope/vim-repeat' "allow repeating of surround
 Plugin 'unblevable/quick-scope' "highlight unique targets for (f, F, etc)
 Plugin 'konfekt/fastfold'
+Plugin 'Yggdroot/indentLine'
 call vundle#end()
 
 "felt like these belonged with plugin initialization
@@ -112,6 +113,9 @@ if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
     "Backspace closes popup
     inoremap <expr><BS> neocomplete#smart_close_popup() ."\<C-h>"
 endif
+
+"only enable indentLine for some filetypes
+let g:indentLine_fileType = ['html', 'xhtml', 'xml']
 "}}}----------------------------------------------------------------------------
 
 
