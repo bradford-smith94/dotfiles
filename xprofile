@@ -1,6 +1,6 @@
 [ -f ~/.Xresources ] && xrdb -I$HOME ~/.Xresources
 
-setkbmap -option 'caps:ctrl_modifier'
+setxkbmap -option 'caps:ctrl_modifier'
 xcape -e 'Caps_Lock=Escape'
 
 redshift&
