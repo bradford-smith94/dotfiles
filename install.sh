@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 04/22/2016
+# updated: 04/18/2016
 #
 # This script can be run to install my dotfiles.
 #
@@ -32,8 +32,7 @@ files="tmux.conf\
 
 # groups that have dependent files
 vim_group="vimrc\
- vim\
- Xmodmap"
+ vim"
 
 git_group="gitconfig\
  gitignore\
