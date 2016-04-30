@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 04/23/2016
+" updated: 04/30/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -335,15 +335,19 @@ nnoremap + <nop>
 "{{{-leader mappings
 let g:mapleader="\<Space>" "set <leader> as space
 
-nnoremap <leader>o :CtrlP<CR>
-nnoremap <leader>f :CtrlPFunky<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
-nnoremap <leader>v :e $MYVIMRC<CR>
-"substitute word under cursor
-nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 nnoremap <leader>c :chdir %:h<CR>
 nnoremap <leader>d :Diff<CR>
+nnoremap <leader>f :CtrlPFunky<CR>
 nnoremap <leader>l :set list!<CR>
+"use <leader>m and <leader>M to place and unplace a '>' in the sign column
+sign define bsmith_mark linehl=Underlined text=>
+nnoremap <leader>m :exe ":sign place 1 name=bsmith_mark line=" . line('.') . " file=" . expand('%:p')<CR>
+nnoremap <leader>M :exe ":sign unplace * file=" . expand('%:p')<CR>
+nnoremap <leader>o :CtrlP<CR>
+"substitute word under cursor
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/
+nnoremap <leader>v :e $MYVIMRC<CR>
 
 if &diff "vimdiff leader mappings
     "next difference
@@ -354,7 +358,7 @@ endif
 "}}}
 
 "backspace in Normal clears search pattern
-nnoremap <bs> :ClearSearch<CR>
+nnoremap <BS> :ClearSearch<CR>
 
 "center screen when jumping to next
 "credit: blog.sanctum.geek.nz/vim-annoyances
