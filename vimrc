@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 04/30/2016
+" updated: 05/04/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -93,6 +93,10 @@ let g:ctrlp_show_hidden = 0
 
 let g:syntastic_javascript_checkers = ["eslint"]
 let g:syntastic_html_checkers = ["validator"]
+let g:syntastic_mode_map = {
+            \ "mode": "active",
+            \ "active_filetypes": [],
+            \ "passive_filetypes": ["ejs"] }
 
 if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
     let g:neocomplete#enable_at_startup = 1
