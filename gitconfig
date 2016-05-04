@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 04/26/2016
+# updated: 05/04/2016
 #####################
 
 [user]
@@ -43,6 +43,10 @@
 
     #use after git pull
     new = "!git log $1@{1}..$1@{0} \"$@\""
+    newest = "log -1"
+
+    #for inspecting specific commits
+    whatis = "show -s"
 
     authors = "shortlog -n -s --no-merges"
-    untrack = "rm --cached --"
+    untrack = "rm --cached"
