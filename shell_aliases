@@ -1,6 +1,6 @@
 # Bradford Smith
 # .shell_aliases
-# updated: 02/19/2016
+# updated: 05/16/2016
 #####################
 
 ## Overall
@@ -18,15 +18,22 @@ alias grep='grep --color=auto'
 alias cdl='cd -' #cd to last directory
 
 ## Ghostscript combine pdfs (usage: `gs-pdf in1.pdf in2.pdf ...`)
-alias gs-pdf='gs -q -dBATCH -dNOPAUSE -dPDFSETTINGS=/prepress -sPAPERSIZE=letter -sDEVICE=pdfwrite -sOutputFile=merged.pdf'
+##      (can also read in a list of files using `gs-pdf @list.txt`)
+alias gs-pdf='gs -q -dBATCH -dNOPAUSE -dPDFSETTINGS=/prepress \
+-sPAPERSIZE=letter -sDEVICE=pdfwrite -sOutputFile=merged.pdf'
 
 ## IP Addresses
-alias local-ip="ip addr show $(~/bin/activeNetDev.sh) | grep 'inet' | awk '{print \$2}'"
+alias local-ip="ip addr show $(~/bin/activeNetDev.sh) \
+    | grep 'inet' | awk '{print \$2}'"
 alias public-ip='curl icanhazip.com'
 
 alias chrome='google-chrome-stable'
 
-alias clock="while true; do tput clear; date +'%H : %M : %S' | figlet ; sleep 1; done"
+alias clock="while true; do \
+    tput clear; \
+    date +'%H : %M : %S' | figlet; \
+    sleep 1; \
+done"
 
 # if I remember to do watch I probably want `watch -g`
 alias watch='watch -g'
@@ -39,14 +46,20 @@ fi
 
 ## Laptop Specific
 ##################
-## TLP Powersaving: check to make sure it's running
-alias check-tlp="sudo tlp-stat | grep 'TLP_ENABLE\|TLP power save\|power source'"
-alias check-batt='cat /sys/class/power_supply/BAT0/capacity'
+if [ -d "/sys/class/power_supply/BAT0" ]; then
+    ## TLP Powersaving: check to make sure it's running
+    alias check-tlp="sudo tlp-stat \
+        | grep 'TLP_ENABLE\|TLP power save\|power source'"
+
+    alias check-batt='cat /sys/class/power_supply/BAT0/capacity'
+fi
 
 ## Shell Specific
 #################
 ## ZSH Specific aliases
 if [ -n "$ZSH_VERSION" ]; then
     alias mmv='noglob zmv -W'
+
+    ## suffix alias for pdf files
     alias -s pdf='evince'
 fi
