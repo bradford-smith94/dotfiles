@@ -1,14 +1,8 @@
 # Things to ignore from the repo
 ################################
 
-# Vim Swap files
-*.swp
-
-# Git merge original copies
-*.orig
-
 # Vundle manages things in vim/bundle/
-vim/bundle/*
+vim/bundle/
 
 # .spl files are the binary spell files
 vim/spell/*.spl
