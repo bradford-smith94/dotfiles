@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 05/25/2016
+# updated: 05/29/2016
 #
 # This script can be run to install my dotfiles.
 #
@@ -47,15 +47,13 @@ zsh_group="zshrc\
  shell_aliases\
  dir_colors"
 
-conky_group="conkyrc\
- conky"
-
 # list of files/folders to symlink in homedir without dot
 no_dot_files="bin"
 
 # list of files/folders to symlink in homedir/.config
 config_files="redshift.conf\
  termite\
+ conky\
  Xresources.d\
  cower"
 #}}} End Variables #############################################################
@@ -262,7 +260,6 @@ makeSymLinksGroup "Vim Configuration" "vim" $HOME $dir $olddir 1 $vim_group
 makeSymLinksGroup "Git Configuration" "source $dir/bin/hasGitPushSimple.sh" $HOME $dir $olddir 1 $git_group
 makeSymLinksGroup "Bash Configuration" "" $HOME $dir $olddir 1 $bash_group
 makeSymLinksGroup "Zsh Configuration" "" $HOME $dir $olddir 1 $zsh_group
-makeSymLinksGroup "Conky Configuration" "" $HOME $dir $olddir 1 $conky_group
 
 # change to config directory
 echo ""
