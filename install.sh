@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 04/25/2016
+# updated: 05/25/2016
 #
 # This script can be run to install my dotfiles.
 #
@@ -28,8 +28,7 @@ oldconfig=$HOME/.config_old
 # list of files/folders to symlink in homedir
 files="tmux.conf\
  Xresources\
- xprofile\
- w3m"
+ xprofile"
 
 # groups that have dependent files
 vim_group="vimrc\
