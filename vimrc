@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 05/04/2016
+" updated: 05/31/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -35,7 +35,7 @@ if !filereadable(glob("~/.vim/bundle/Vundle.vim/README.md"))
     echo ""
     silent !mkdir -p $HOME/.vim/bundle
     silent !git clone
-        \ https://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/Vundle.vim
+        \ https://github.com/VundleVim/Vundle.vim $HOME/.vim/bundle/Vundle.vim
     let has_vundle=0
 endif
 
@@ -45,22 +45,23 @@ set rtp+=$HOME/.vim/bundle/Vundle.vim
 
 call vundle#begin()
 "plugins '<github_user>/<repo>' or full git path
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim' "originally gmarik/Vundle.vim
+Plugin 'bradford-smith94/vim-autolist' "automatic list continuation
 Plugin 'bradford-smith94/vim-colors-bsmith' "repo for my colorscheme
 Plugin 'bradford-smith94/vim-superupdate' "automatic plugin updating
-Plugin 'bradford-smith94/vim-autolist' "automatic list continuation
-Plugin 'ctrlpvim/ctrlp.vim' "kien/ctrlp.vim is unmaintained
-Plugin 'tacahiroy/ctrlp-funky' "adds function searching to CtrlP (:CtrlPFunky)
-Plugin 'vim-airline/vim-airline' "bling/vim-airline is unmaintained
-Plugin 'scrooloose/syntastic'
+Plugin 'ctrlpvim/ctrlp.vim' "originally kien/ctrlp.vim
+Plugin 'konfekt/fastfold'
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'scrooloose/syntastic'
 if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
     Plugin 'shougo/neocomplete'
 endif
+Plugin 'tacahiroy/ctrlp-funky' "adds function searching to CtrlP (:CtrlPFunky)
+Plugin 'tpope/vim-speeddating' "allow <C-a>/<C-x> to work for dates and times
 Plugin 'tpope/vim-surround' "surroundings motion
-Plugin 'tpope/vim-repeat' "allow repeating of surround
+Plugin 'tpope/vim-repeat' "allow repeating of surround and speeddating
 Plugin 'unblevable/quick-scope' "highlight unique targets for (f, F, etc)
-Plugin 'konfekt/fastfold'
+Plugin 'vim-airline/vim-airline' "originally bling/vim-airline
 Plugin 'Yggdroot/indentLine'
 call vundle#end()
 

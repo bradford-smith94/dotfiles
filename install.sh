@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 05/29/2016
+# updated: 05/31/2016
 #
 # This script can be run to install my dotfiles.
 #
@@ -256,7 +256,7 @@ cd $dir
 # specified in $files
 makeSymLinks $HOME $dir $olddir 1 $files
 makeSymLinks $HOME $dir $olddir 0 $no_dot_files
-makeSymLinksGroup "Vim Configuration" "vim" $HOME $dir $olddir 1 $vim_group
+makeSymLinksGroup "Vim Configuration" "vim +PluginInstall +qa" $HOME $dir $olddir 1 $vim_group
 makeSymLinksGroup "Git Configuration" "source $dir/bin/hasGitPushSimple.sh" $HOME $dir $olddir 1 $git_group
 makeSymLinksGroup "Bash Configuration" "" $HOME $dir $olddir 1 $bash_group
 makeSymLinksGroup "Zsh Configuration" "" $HOME $dir $olddir 1 $zsh_group
