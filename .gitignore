@@ -1,6 +1,9 @@
 # Things to ignore from the repo
 ################################
 
+# Any TODO files I might leave myself
+TODO*
+
 # Vundle manages things in vim/bundle/
 vim/bundle/
 
