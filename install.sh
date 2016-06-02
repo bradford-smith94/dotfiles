@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 05/31/2016
+# updated: 06/02/2016
 #
 # This script can be run to install my dotfiles.
 #
@@ -282,5 +282,19 @@ fi
 if [ ! "$(ls -A $oldconfig)" ]; then
     echo "$oldconfig is empty, removing..."
     rmdir $oldconfig
+fi
+
+# check for broken symlinks
+broken=$(find $HOME -type l ! -exec test -e {} \; -print)
+
+if [ -n "$broken" ]; then
+    echo "Detected broken symlinks"
+
+    # prompt for deletion of broken links
+    for link in $broken; do
+        if promptYN "Remove broken link: $link" "y"; then
+            rm $link
+        fi
+    done
 fi
 #}}} End Code ##################################################################
