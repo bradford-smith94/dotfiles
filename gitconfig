@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 05/04/2016
+# updated: 06/02/2016
 #####################
 
 [user]
@@ -39,7 +39,7 @@
     #from github.com/tsu-complete/dot/blob/master/git/_gitconfig
     graph = "log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
     lines = "!git ls-files | xargs wc -l"
-    lines-authored = "!git ls-tree -r -z --name-only HEAD -- $1 | xargs -0 -n1 git blame --line-porcelain HEAD | grep \"^author \"|sort|uniq -c|sort -nr"
+    lines-authored = "!git grep --cached -Il '' | xargs -n1 git blame --line-porcelain HEAD | grep \"^author \"|sort|uniq -c|sort -nr"
 
     #use after git pull
     new = "!git log $1@{1}..$1@{0} \"$@\""
