@@ -38,7 +38,7 @@
 
     #from github.com/tsu-complete/dot/blob/master/git/_gitconfig
     graph = "log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
-    lines = "!git ls-files | xargs wc -l"
+    lines = "!git grep --cached -Il '' | xargs wc -l"
     lines-authored = "!git grep --cached -Il '' | xargs -n1 git blame --line-porcelain HEAD | grep \"^author \"|sort|uniq -c|sort -nr"
 
     #use after git pull
