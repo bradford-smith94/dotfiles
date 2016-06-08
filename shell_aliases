@@ -1,6 +1,6 @@
 # Bradford Smith
 # .shell_aliases
-# updated: 05/16/2016
+# updated: 06/08/2016
 #####################
 
 ## Overall
@@ -16,6 +16,7 @@ alias la='ls -lLah' #(l)ong (L)inks (a)ll (h)uman-readable
 alias ll='ls -lLh' #(l)ong (L)inks (h)uman-readable
 alias grep='grep --color=auto'
 alias cdl='cd -' #cd to last directory
+alias dirs='dirs -v'
 
 ## Ghostscript combine pdfs (usage: `gs-pdf in1.pdf in2.pdf ...`)
 ##      (can also read in a list of files using `gs-pdf @list.txt`)
