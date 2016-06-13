@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 05/31/2016
+" updated: 06/13/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -397,6 +397,10 @@ noremap <F3> :execute " grep -srnw --binary-files=without-match
 "[F5] saves
 noremap <F5> :w<CR>
 inoremap <F5> <Esc>:w<CR>
+
+"[F7] toggles paste mode
+noremap <F7> :setlocal paste!<CR>
+inoremap <F7> <Esc>:setlocal paste!<CR>a
 
 "[F8] toggles spellcheck
 noremap <F8> :setlocal spell!<CR>
