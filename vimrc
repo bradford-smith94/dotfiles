@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 06/13/2016
+" updated: 06/14/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -50,6 +50,7 @@ Plugin 'bradford-smith94/vim-autolist' "automatic list continuation
 Plugin 'bradford-smith94/vim-colors-bsmith' "repo for my colorscheme
 Plugin 'bradford-smith94/vim-superupdate' "automatic plugin updating
 Plugin 'ctrlpvim/ctrlp.vim' "originally kien/ctrlp.vim
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'konfekt/fastfold'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'scrooloose/syntastic'
