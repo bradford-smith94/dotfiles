@@ -1,0 +1,12 @@
+#!/bin/bash
+# Git hook to run after `git pull`
+
+git_root="$(git rev-parse --show-toplevel)"
+changed_files="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
+
+check_file() {
+    echo "$changed_files" | grep --quiet "$1" && eval "$2"
+}
+
+# if the gitconfig file has been updated, run the hasGitPushSimple.sh script
+check_file gitconfig "$git_root/bin/hasGitPushSimple.sh"
