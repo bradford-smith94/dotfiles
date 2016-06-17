@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 06/02/2016
+# updated: 06/16/2016
 #
 # This script can be run to install my dotfiles.
 #
@@ -11,15 +11,19 @@
 #}}}############################################################################
 
 #{{{ Variables #################################################################
-usage="usage: \"$0 -[afhr]\""
+usage="usage: \"$0 -[afghr]\""
 
+# install parameters
 root=0
+git_hooks=0
 interactive=1
 force=0
 
 # directories
-dir=$HOME/.dotfiles
-config=$HOME/.dotfiles/config
+dir=$(dirname $(readlink -f $0))
+config=$dir/config
+hooks_dir=$dir/.hooks
+hooks_target=$dir/.git/hooks
 
 # backup directories
 olddir=$HOME/.dotfiles_old
@@ -66,6 +70,7 @@ function _help
     printf "\nArguments:\n\
 \t-a\tAll, skip the default interactive mode and link all files\n\
 \t-f\tForce, relink (unlink then link) any alreay linked files\n\
+\t-g\tGit hooks, install git hooks for this repository\n\
 \t-h\tShow this help text\n\
 \t-r\tRoot, install these files for root also\n\
 \nNote: the '-r' option does not currently do anything\n"
@@ -212,13 +217,16 @@ function makeSymLinksGroup
 
 #{{{ Code ######################################################################
 #{{{ getopts ###################################################################
-while getopts afhr: FLAG; do
+while getopts afghr: FLAG; do
     case $FLAG in
         a) #all (skip interactive)
             interactive=0
             ;;
         f) #force
             force=1
+            ;;
+        g) #install git hooks
+            git_hooks=1
             ;;
         h) #help
             _help
@@ -269,6 +277,21 @@ cd $config
 
 # move existing and make symlinks in $HOME/.config
 makeSymLinks $HOME/.config $config $oldconfig 0 $config_files
+
+# install git hooks
+if [ $git_hooks -eq 1 ]; then
+    echo ""
+    echo "#########################################"
+
+    for hook in $hooks_dir/*; do
+        if [ $interactive -eq 1 ]; then
+            if ! promptYN "Copy $hook to $hooks_target" "y"; then
+                continue
+            fi
+        fi
+        cp $hook $hooks_target
+    done
+fi
 
 echo ""
 echo "#########################################"

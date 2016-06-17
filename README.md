@@ -3,7 +3,7 @@ My configuration files (dotfiles) for anyone that is interested.
 
 ##Repository Structure
 For the most part the whole repository is meant to be symbolically linked into my home directory.
-This means that `vimrc` will be linked to `~/.vimrc` and `config/` will be linked to `~/.config/`, the `bin/` directory however gets linked without the leading dot (i.e. `~/bin/`.
+This means that `vimrc` will be linked to `~/.vimrc` and `config/` will be linked to `~/.config/`, the `bin/` directory however gets linked without the leading dot (i.e. `~/bin/`).
 Files that don't follow this scheme are `install.sh`, `README.md`, `.gitignore`, `.gitattributes`, anything under `.hooks/` and anything under `etc/`.
 The files under `etc/` are files that help me configure my setup system-wide (such as udev rules) and are unlikely to be used on a system where root access is not permitted.
 The structure of the `etc/` folder is setup to match that of the system, and instead of linking these I copy them to where they need to be in the event that I need them.
