@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 06/20/2016
+# updated: 06/21/2016
 #####################
 
 [user]
@@ -48,8 +48,8 @@
     #for inspecting specific commits
     whatis = "show -s"
 
-    #print git config matching "user." but not "alias."
-    whoami = "!git config -l | grep 'user.' | sed '/^alias.*$/d'"
+    #print git config user settings
+    whoami = "!git config --get-regexp 'user.*' | colrm 1 5 | sed 's/[ ]/ = /'"
 
     authors = "shortlog -n -s --no-merges"
     untrack = "rm --cached"
