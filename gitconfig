@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 06/21/2016
+# updated: 06/22/2016
 #####################
 
 [user]
@@ -32,6 +32,8 @@
     untracked = red
 [push] #if version is greater than 1.7.11 this should be simple
     default = <push> #push_default
+[log]
+	decorate = short
 [alias]
     #show aliases
     alias = "!git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'"
