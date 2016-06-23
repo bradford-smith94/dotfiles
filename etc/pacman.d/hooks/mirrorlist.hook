@@ -8,6 +8,6 @@ Target = pacman-mirrorlist
 
 [Action]
 Description = Sorting mirrorlist using reflector
-Depends = reflector
+Depends = reflector wget
 When = PostTransaction
 Exec = /etc/pacman.d/hooks/mirrorlist.sh
