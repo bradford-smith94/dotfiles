@@ -1,7 +1,7 @@
 #!/bin/bash
 # Bradford Smith
 # hasGitPushSimple.sh
-# updated: 11/05/2015
+# updated: 06/23/2016
 #####################
 # The option "git push.default = simple" was introduced in version 1.7.11
 
@@ -33,7 +33,7 @@ else
 fi
 
 if [ ${HASGITPUSHSIMPLE} -eq 1 ]; then
-    sed --follow-symlinks -i -e "s/<push> #push_default$/simple #push_default/g" ~/.gitconfig
+    sed --follow-symlinks -i -e "s/#default = <push> #push_default$/default = simple #push_default/g" ~/.gitconfig
 else #upstream is next best thing to simple
-    sed --follow-symlinks -i -e "s/<push> #push_default$/upstream #push_default/g" ~/.gitconfig
+    sed --follow-symlinks -i -e "s/#default = <push> #push_default$/default = upstream #push_default/g" ~/.gitconfig
 fi
