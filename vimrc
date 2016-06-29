@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 06/14/2016
+" updated: 06/29/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -60,6 +60,7 @@ endif
 Plugin 'tacahiroy/ctrlp-funky' "adds function searching to CtrlP (:CtrlPFunky)
 Plugin 'tpope/vim-speeddating' "allow <C-a>/<C-x> to work for dates and times
 Plugin 'tpope/vim-surround' "surroundings motion
+Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-repeat' "allow repeating of surround and speeddating
 Plugin 'unblevable/quick-scope' "highlight unique targets for (f, F, etc)
 Plugin 'vim-airline/vim-airline' "originally bling/vim-airline
@@ -391,7 +392,7 @@ noremap <F1> :call ToggleBackground()<CR>
 noremap <F2> :Lexplore<CR>
 
 "[F3] greps current project directory for word under cursor (results in buffer)
-noremap <F3> :execute " grep -srnw --binary-files=without-match
+noremap <F3> :execute "grep -srnw --binary-files=without-match
     \ --exclude-dir=.git . -e " . expand("<cword>") . " "
     \ <bar> cwindow<CR><CR><CR>
 
