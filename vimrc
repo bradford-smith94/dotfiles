@@ -226,6 +226,11 @@ augroup END
 "}}}----------------------------------------------------------------------------
 
 
+"{{{-abbreviations--------------------------------------------------------------
+"abbreviation for remembering my grep flags
+cabbrev grep grep -srnw --binary-files=without-match --exclude-dir=.git . -e
+
+
 "{{{-ignore accidental capitalizations------------------------------------------
 cabbrev WQA wqa
 cabbrev WQa wqa
@@ -249,6 +254,7 @@ iabbrev waht what
 iabbrev taht that
 iabbrev smae same
 "}}}-----------------------------------------------------------------------------
+"}}}----------------------------------------------------------------------------
 
 
 "{{{-my functions---------------------------------------------------------------
