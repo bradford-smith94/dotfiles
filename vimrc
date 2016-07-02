@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 06/29/2016
+" updated: 07/02/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -156,7 +156,7 @@ set ruler
 set showcmd "show hanging command while typing
 set wildmenu
 set wildmode=longest:full,full
-set wildignore+=*.a,*.o,*~,*.swp,*.tmp,.git "ignore binaries, swaps and git
+set wildignore+=*.a,*.o,*~,*.swp,*.tmp,.git,*.pdf
 set laststatus=2 "always show statusline (for airline)
 set noshowmode "airline does this better
 set lazyredraw "don't redraw the screen when executing macros (for speed)
@@ -239,8 +239,23 @@ cabbrev WQ wq
 cabbrev Wq wq
 cabbrev WA wa
 cabbrev Wa wa
+cabbrev QA qa
+cabbrev Qa qa
 cabbrev W w
 cabbrev Q q
+
+"need commands because abbreviations only get replaced after hitting space/tab
+command! WQA wqa
+command! WQa wqa
+command! Wqa wqa
+command! WQ wq
+command! Wq wq
+command! WA wa
+command! Wa wa
+command! QA qa
+command! Qa qa
+command! W w
+command! Q q
 
 cabbrev B b
 cabbrev E e
