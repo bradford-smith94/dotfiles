@@ -1,6 +1,6 @@
 # Bradford Smith
 # .zshrc
-# updated: 11/16/2015
+# updated: 07/06/2016
 #####################
 
 # theme it
@@ -17,17 +17,11 @@ zmodload zsh/terminfo
 # rebind backtab (shift-tab) to avoid switching to vicmd mode
 bindkey -M viins "$terminfo[kcbt]" reverse-menu-complete
 
-# use vim as the default editor and man pager
-if [ -f /usr/bin/vim ]; then
-    export EDITOR=/usr/bin/vim
-    export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man' -\""
-fi
-
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _expand _complete _ignored
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|=**' 'l:|=* r:|=*'
-zstyle :compinstall filename '/home/bradford/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 
 autoload -Uz compinit
 compinit
@@ -41,33 +35,10 @@ zstyle ':completion:*:hosts' hosts $_ssh_config
 
 autoload -U zmv
 
-# source aliases
-if [ -f "$HOME/.shell_aliases" ]; then
-    . ~/.shell_aliases
-fi
-
-# use dircolors to set $LC_COLORS
-if [ -f /usr/bin/dircolors ]; then
-    [ -e "$HOME/.dir_colors" ] && DIR_COLORS="$HOME/.dir_colors"
-    [ -e "$DIR_COLORS" ] || DIR_COLORS=""
-    eval "`dircolors -b $DIR_COLORS`"
-fi
-
-# if ~/bin exists add it to the beginning of the path
-if [ -d ~/bin ]; then
-    PATH=~/bin:$PATH
-fi
-
-PATH=$PATH:/opt/android-sdk/tools/
-export PATH=$PATH
-
 setopt autocd
 setopt no_hup #prevent zsh from killing background processes
 
-# if not in SSH
-if [ "x${SSH_TTY}" = "x" ]; then
-#   and screenfetch is installed
-    if [ -f /usr/bin/screenfetch ]; then
-        screenfetch
-    fi
+# source shared shell environment
+if [ -f "$HOME/.shell_env" ]; then
+    . ~/.shell_env
 fi

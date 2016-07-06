@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 06/16/2016
+# updated: 07/06/2016
 #
 # This script can be run to install my dotfiles.
 #
@@ -43,11 +43,13 @@ git_group="gitconfig\
  gitmessage"
 
 bash_group="bashrc\
+ shell_env\
  shell_aliases\
  dir_colors"
 
 zsh_group="zshrc\
  zsh\
+ shell_env\
  shell_aliases\
  dir_colors"
 
