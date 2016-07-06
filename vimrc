@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 07/02/2016
+" updated: 07/06/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -228,7 +228,8 @@ augroup END
 
 "{{{-abbreviations--------------------------------------------------------------
 "abbreviation for remembering my grep flags
-cabbrev grep grep -srnw --binary-files=without-match --exclude-dir=.git . -e
+cabbrev grep grep -srnw --binary-files=without-match --exclude-dir=.git
+            \ --exclude-dir=node_modules . -e
 
 
 "{{{-ignore accidental capitalizations------------------------------------------
@@ -414,8 +415,8 @@ noremap <F2> :Lexplore<CR>
 
 "[F3] greps current project directory for word under cursor (results in buffer)
 noremap <F3> :execute "grep -srnw --binary-files=without-match
-    \ --exclude-dir=.git . -e " . expand("<cword>") . " "
-    \ <bar> cwindow<CR><CR><CR>
+    \ --exclude-dir=.git --exclude-dir=node_modules . -e " . expand("<cword>")
+    \ . " " <bar> cwindow<CR><CR><CR>
 
 "[F5] saves
 noremap <F5> :w<CR>
