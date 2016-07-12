@@ -1,6 +1,6 @@
 # Bradford Smith
 # bsmith.zsh-theme
-# updated: 04/21/2016
+# updated: 07/12/2016
 #####################
 
 autoload -U colors && colors
@@ -58,7 +58,7 @@ function git_branch_name()
 # from github.com/SicK94/minimal/minimal.zsh-theme
 function git_repo_status()
 {
-    local rs="$(git status --porcelain -b)"
+    local rs="$(git status --porcelain -b 2> /dev/null)"
 
     if $(echo "$rs" | grep -v '^##' &> /dev/null); then #dirty
         echo "${RED}"
