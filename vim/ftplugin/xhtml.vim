@@ -1,3 +1,8 @@
+" Bradford Smith
+" 07/21/2016
+" ~/.vim/ftplugin/xhtml.vim
+" XHTML filetype specific configuration
+
 "settings
 setlocal wrap
 

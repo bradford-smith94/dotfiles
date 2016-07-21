@@ -1,3 +1,8 @@
+" Bradford Smith
+" 07/21/2016
+" ~/.vim/ftplugin/tex.vim
+" TEX (LaTeX) filetype specific configuration
+
 "settings
 setlocal wrap
 setlocal spell

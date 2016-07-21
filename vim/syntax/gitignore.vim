@@ -1,3 +1,8 @@
+" Bradford Smith
+" ~/.vim/syntax/gitignore.vim
+" 07/21/2016
+" Custom .gitignore syntax for Vim
+
 if version < 600
     syntax clear
 elseif exists("b:current_syntax")

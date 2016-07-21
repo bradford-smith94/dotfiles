@@ -214,14 +214,14 @@ augroup template_group
     autocmd!
 
     "autofilled templates
-    autocmd BufNewFile Makefile source ~/.vim/templates/Makefile.vim
-    autocmd BufNewFile *.c,*.cpp source ~/.vim/templates/c.vim
-    autocmd BufNewFile *.h source ~/.vim/templates/h.vim
-    autocmd BufNewFile *.java source ~/.vim/templates/java.vim
-    autocmd BufNewFile *.js source ~/.vim/templates/javascript.vim
-    autocmd BufNewFile *.tex source ~/.vim/templates/tex.vim
-    autocmd BufNewFile *.html source ~/.vim/templates/html.vim
-    autocmd BufNewFile *.py source ~/.vim/templates/python.vim
+    autocmd BufNewFile Makefile source ~/.vim/custom/templates/Makefile.vim
+    autocmd BufNewFile *.c,*.cpp source ~/.vim/custom/templates/c.vim
+    autocmd BufNewFile *.h source ~/.vim/custom/templates/h.vim
+    autocmd BufNewFile *.java source ~/.vim/custom/templates/java.vim
+    autocmd BufNewFile *.js source ~/.vim/custom/templates/javascript.vim
+    autocmd BufNewFile *.tex source ~/.vim/custom/templates/tex.vim
+    autocmd BufNewFile *.html source ~/.vim/custom/templates/html.vim
+    autocmd BufNewFile *.py source ~/.vim/custom/templates/python.vim
 augroup END
 "}}}----------------------------------------------------------------------------
 

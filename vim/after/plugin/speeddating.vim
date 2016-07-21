@@ -1,3 +1,8 @@
+" Bradford Smith
+" 07/21/2016
+" ~/.vim/after/plugin/speeddating.vim
+" vim-speeddating configuration
+
 "define custom date formats for vim-speeddating
 "mm/dd/yyyy or mm-dd-yyyy
 SpeedDatingFormat %m%[/-]%d%1%Y

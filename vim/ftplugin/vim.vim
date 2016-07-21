@@ -1,3 +1,8 @@
+" Bradford Smith
+" 07/21/2016
+" ~/.vim/ftplugin/vim.vim
+" VIM filetype specific configuration
+
 "settings
 setlocal foldmethod=marker
 

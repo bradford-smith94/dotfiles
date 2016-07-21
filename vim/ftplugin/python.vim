@@ -1,3 +1,8 @@
+" Bradford Smith
+" 07/21/2016
+" ~/.vim/ftplugin/python.vim
+" Python filetype specific configuration
+
 "settings
 setlocal omnifunc=pythoncomplete#Complete
 

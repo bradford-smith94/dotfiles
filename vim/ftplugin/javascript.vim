@@ -1,3 +1,8 @@
+" Bradford Smith
+" 07/21/2016
+" ~/.vim/ftplugin/javascript.vim
+" Javascript filetype specific configuration
+
 "settings
 setlocal foldmethod=indent
 setlocal omnifunc=javascriptcomplete#CompleteJS

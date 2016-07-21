@@ -1,4 +1,7 @@
-"this is a file sourced when creating a new HTML document
+" Bradford Smith
+" ~/.vim/custom/templates/html.vim
+" 07/21/2016
+" this file is sourced when creating a new HTML document
 
 " :insert will insert all following lines until it reaches a line with just a
 " "." on it

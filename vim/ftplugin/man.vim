@@ -1,9 +1,9 @@
 " Bradford Smith
-" man.vim
-" 11/16/2015
-"""""""""""""""""
+" 07/21/2016
+" ~/.vim/ftplugin/man.vim
+" man filetype specific configuration
 
-"make sure that spelling is off
+"settings
 setlocal nospell
 
 "set buffer not modifiable, not modified and no numbers
@@ -12,7 +12,7 @@ setlocal nomod
 setlocal nonumber
 setlocal norelativenumber
 
-"some mappings that make navigating man pages easier
+"mappings
 
 "Enter works like <Leader>K
 "   jump to manpage under cursor

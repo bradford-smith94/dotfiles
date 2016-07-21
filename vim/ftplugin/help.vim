@@ -1,13 +1,13 @@
 " Bradford Smith
-" help.vim
+" 07/21/2016
+" ~/.vim/ftplugin/help.vim
+" Help filetype specific configuration
 " see: vim.wikia.com/wiki/Learn_to_use_help
-" 11/16/2015
-"""""""""""""""""""""""""""""""""""""""""""
 
-"make sure that spelling is off
+"settings
 setlocal nospell
 
-"some mappings to make navigating the help easier
+"mappings
 
 "Enter <CR> jumps to the subject under the cursor
 nnoremap <buffer> <CR> <C-]>

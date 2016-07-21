@@ -1,3 +1,8 @@
+" Bradford Smith
+" 07/21/2016
+" ~/.vim/after/ftplugin/markdown.vim
+" Markdown filetype specific configuration to run after system configuration
+
 "settings
 setlocal wrap
 setlocal spell

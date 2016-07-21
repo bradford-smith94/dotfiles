@@ -1,3 +1,8 @@
+" Bradford Smith
+" 07/21/2016
+" ~/.vim/ftplugin/text.vim
+" Custom "text" filetype specific configuration
+
 "settings
 setlocal spell
 setlocal formatoptions-=cq
