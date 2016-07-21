@@ -12,3 +12,6 @@ endfunction
 "mappings
 noremap <buffer> <F5> :w<CR>:call <SID>MakePDF()<CR>
 inoremap <buffer> <F5> <Esc>:w<CR>:call <SID>MakePDF()<CR>
+
+"source typo autocorrection
+source ~/.vim/custom/typo_autocorrect.vim
