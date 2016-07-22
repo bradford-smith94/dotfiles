@@ -1,0 +1,14 @@
+# Pacman hook to update npm packages
+# This file should be placed at `/etc/pacman.d/hooks/npm.hook`
+
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = npm
+Target = nodejs
+Target = semver
+
+[Action]
+Description = Updating npm packages
+When = PostTransaction
+Exec = /usr/bin/npm update -g
