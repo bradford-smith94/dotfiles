@@ -1,6 +1,6 @@
 ## Bradford Smith
 ## ~/.vim/spell/custom.utf-8.add
-## 07/21/2016
+## 07/22/2016
 ## custom.utf-8.add Vim spellfile
 /encoding=utf-8
 
@@ -201,7 +201,8 @@ pdf
 tex
 txt
 ## TLDs and URL parts
-co.uk
+co
+http
 https
 org
 uk
@@ -211,6 +212,9 @@ www
 U.S.
 a.m.
 abided
+café
+doppelgänger
+déjà
 i.e.
 okay
 p.m.
