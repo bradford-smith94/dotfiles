@@ -69,7 +69,7 @@ call vundle#end()
 
 "felt like these belonged with plugin initialization
 source $VIMRUNTIME/ftplugin/man.vim "initializes the :Man command
-runtime macros/matchit.vim "souces extended mappings for '%'
+runtime macros/matchit.vim "sources extended mappings for '%'
 
 "if this is the first time vundle is installed
 if has_vundle == 0
