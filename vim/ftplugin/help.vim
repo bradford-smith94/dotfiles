@@ -1,5 +1,5 @@
 " Bradford Smith
-" 07/21/2016
+" 07/28/2016
 " ~/.vim/ftplugin/help.vim
 " Help filetype specific configuration
 " see: vim.wikia.com/wiki/Learn_to_use_help
@@ -13,6 +13,8 @@ setlocal nospell
 nnoremap <buffer> <CR> <C-]>
 "Backspace <BS> jumps back
 nnoremap <buffer> <BS> <C-T>
+"K searches help for word under cursor
+nnoremap <buffer> K :execute ":help " . expand("<cword")<CR>
 "o finds next option
 nnoremap <buffer> o /'\l\{2,\}'<CR>
 "O finds previous option
