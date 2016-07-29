@@ -1,5 +1,5 @@
 " Bradford Smith
-" 07/21/2016
+" 07/29/2016
 " ~/.vim/ftplugin/text.vim
 " Custom "text" filetype specific configuration
 
@@ -12,9 +12,9 @@ setlocal foldmethod=manual
 let b:keepTrailingSpaces = 1
 
 "vim-autolist mappings
-inoremap <buffer> <CR> <Esc>:AutolistReturn<CR>
-nnoremap <buffer> o <Esc>:AutolistNewLineBelow<CR>
-nnoremap <buffer> O <Esc>:AutolistNewLineAbove<CR>
+imap <buffer> <CR> <Esc><Plug>AutolistReturn
+nmap <buffer> o <Plug>AutolistNewLineBelow
+nmap <buffer> O <Plug>AutolistNewLineAbove
 
 "source typo autocorrection
 source ~/.vim/custom/typo_autocorrect.vim
