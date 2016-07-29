@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 07/21/2016
+" updated: 07/29/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -91,6 +91,7 @@ let g:netrw_winsize = -30
 
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
+let g:airline_skip_empty_sections = 1
 
 let g:ctrlp_show_hidden = 0
 
