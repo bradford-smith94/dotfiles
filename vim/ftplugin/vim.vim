@@ -1,5 +1,5 @@
 " Bradford Smith
-" 07/28/2016
+" 08/01/2016
 " ~/.vim/ftplugin/vim.vim
 " VIM filetype specific configuration
 
@@ -13,4 +13,4 @@ noremap <buffer> <F5> :w<CR>:execute ":silent! Reload"<CR>
 inoremap <buffer> <F5> <Esc>:w<CR>:execute ":silent! Reload"<CR>
 
 "K searches help for word under cursor
-nnoremap <buffer> K :execute ":help " . expand("<cword")<CR>
+nnoremap <buffer> K :execute ":help " . expand("<cword>")<CR>
