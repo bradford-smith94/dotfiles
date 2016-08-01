@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 07/29/2016
+" updated: 08/01/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -229,8 +229,9 @@ augroup END
 
 "{{{-abbreviations--------------------------------------------------------------
 "abbreviation for remembering my grep flags
-cabbrev grep grep -srnw --binary-files=without-match --exclude-dir=.git
-            \ --exclude-dir=node_modules . -e
+cabbrev grep <C-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'grep -srnw
+            \ --binary-files=without-match --exclude-dir=.git
+            \ --exclude-dir=node_modules . -e' : 'grep')<CR>
 
 
 "{{{-ignore accidental capitalizations------------------------------------------
