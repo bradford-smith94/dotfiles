@@ -1,5 +1,5 @@
 " Bradford Smith
-" 07/21/2016
+" 08/02/2016
 " ~/.vim/ftplugin/html.vim
 " HTML filetype specific configuration
 
@@ -7,9 +7,6 @@
 setlocal wrap
 setlocal foldmethod=indent
 setlocal omnifunc=htmlcomplete#CompleteTags
-
-"TODO: try to detect if this is a special html file angular/ejs/etc.
-let b:syntastic_mode = "passive"
 
 "mappings
 nnoremap <buffer> <F5> :w<CR>:execute "!google-chrome-stable " . bufname("%")<CR>

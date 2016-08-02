@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 08/01/2016
+" updated: 08/02/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -52,6 +52,7 @@ Plugin 'bradford-smith94/vim-superupdate' "automatic plugin updating
 Plugin 'ctrlpvim/ctrlp.vim' "originally kien/ctrlp.vim
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'konfekt/fastfold'
+Plugin 'nikvdp/ejs-syntax'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'scrooloose/syntastic'
 if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
@@ -100,7 +101,7 @@ let g:syntastic_html_checkers = ["validator"]
 let g:syntastic_mode_map = {
             \ "mode": "active",
             \ "active_filetypes": [],
-            \ "passive_filetypes": ["ejs"] }
+            \ "passive_filetypes": ["ejs", "html"] }
 
 if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
     let g:neocomplete#enable_at_startup = 1
