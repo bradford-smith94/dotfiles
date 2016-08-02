@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 07/06/2016
+# updated: 08/02/2016
 #
 # This script can be run to install my dotfiles.
 #
@@ -18,6 +18,25 @@ root=0
 git_hooks=0
 interactive=1
 force=0
+
+# colors
+BLACK='\033[0;30m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+L_GREY='\033[0;37m'
+D_GREY='\033[1;30m'
+L_RED='\033[1;31m'
+L_GREEN='\033[1;32m'
+L_YELLOW='\033[1;33m'
+L_BLUE='\033[1;34m'
+L_PURPLE='\033[1;35m'
+L_CYAN='\033[1;36m'
+WHITE='\033[1;37m'
+NC='\033[0m'
 
 # directories
 dir=$(dirname $(readlink -f $0))
@@ -66,6 +85,7 @@ config_files="redshift.conf\
 
 #{{{ Functions #################################################################
 #{{{ _help #####################################################################
+# Show help text
 function _help
 {
     echo "$usage"
@@ -79,7 +99,21 @@ function _help
 }
 #}}} End _help #################################################################
 
+#{{{ printSep ##################################################################
+# Print a full terminal width separator line
+# $1 (optional) character to draw the line with
+function printSep
+{
+    if [ $# -gt 0 ]; then
+        printf '\n%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' $1
+    else
+        printf '\n%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+    fi
+}
+#}}} End printSep ##############################################################
+
 #{{{ promptYN ##################################################################
+# Prompt the user with a yes or no question and get a true or false response
 # $1 question, $2 default choice (y, n or "")
 function promptYN
 {
@@ -101,30 +135,46 @@ function promptYN
 
     echo -n "$question? $prompt "
 
+    #TODO figure out a nice case insensitive comparison
     read response
-    while [[ "$response" != "n" && \
-        "$response" != "N" && \
-        "$response" != "y" && \
-        "$response" != "Y" ]]; do
+    while [[ $response != "n" && \
+        $response != "N" && \
+        $response != "no" && \
+        $response != "No" && \
+        $response != "NO" && \
+        $response != "y" && \
+        $response != "Y" && \
+        $response != "yes" && \
+        $response != "Yes" && \
+        $response != "YES" ]]; do
         if [[ -z "$response" ]] && [[ -n "$default" ]]; then
             return $default
         fi
-        echo -n "Type 'y' or 'n': "
+        echo -ne "${RED}Type 'y/yes' or 'n/no': ${NC}"
         read response
     done
 
-    if [[ "$response" == "n" || "$response" == "N" ]]; then
+    if [[ $response == "n" || \
+        $response == "N" || \
+        $response == "no" || \
+        $response == "No" || \
+        $reponse == "NO" ]]; then
         return 1 #false
-    elif [[ "$response" == "y" || "$response" == "Y" ]]; then
+    elif [[ $response == "y" || \
+        $response == "Y" || \
+        $response == "yes" || \
+        $response == "Yes" || \
+        $reponse == "YES" ]]; then
         return 0 #true
     else # this shouldn't happen
-        echo "Something went wrong"
+        echo -e "${RED}Something went wrong${NC}"
         return 1 #false
     fi
 }
 #}}} End promptYN ##############################################################
 
 #{{{ makeSymLinks ##############################################################
+# Symlink a file
 # $1 destination, $2 source, $3 destination backup,
 # $4 use dot (0|1), $5 files (can be a list)
 function makeSymLinks
@@ -151,15 +201,15 @@ function makeSymLinks
         fi # end if useDot
         if [ "$(readlink $target 2> /dev/null)" = $src/$file ]; then
             if [ $force -eq 1 ]; then
-                echo "Creating symlink to $file in $dest"
+                echo -e "${GREEN}Creating symlink to $file in $dest${NC}"
                 unlink $target
                 ln -s $src/$file $target
             else
-                echo "$file is already linked here, skipping..."
+                echo -e "${CYAN}$file is already linked here, skipping...${NC}"
             fi
         else
             mv $target $backup/ 2> /dev/null
-            echo "Creating symlink to $file in $dest"
+            echo -e "${GREEN}Creating symlink to $file in $dest${NC}"
             ln -s $src/$file $target
         fi
     done
@@ -198,15 +248,15 @@ function makeSymLinksGroup
         fi # end if useDot
         if [ "$(readlink $target 2> /dev/null)" = $src/$file ]; then
             if [ $force -eq 1 ]; then
-                echo "Creating symlink to $file in $dest"
+                echo -e "${GREEN}Creating symlink to $file in $dest${NC}"
                 unlink $target
                 ln -s $src/$file $target
             else
-                echo "$file is already linked here, skipping..."
+                echo -e "${CYAN}$file is already linked here, skipping...${NC}"
             fi
         else
             mv $target $backup/ 2> /dev/null
-            echo "Creating symlink to $file in $dest"
+            echo -e "${GREEN}Creating symlink to $file in $dest${NC}"
             ln -s $src/$file $target
         fi
     done
@@ -256,8 +306,7 @@ echo "Creating $oldconfig for backup of any existing files in $HOME/.config"
 mkdir -p $oldconfig
 
 # change to the dotfiles directory
-echo ""
-echo "#########################################"
+printSep "="
 echo "Changing to the $dir directory ..."
 cd $dir
 
@@ -272,8 +321,7 @@ makeSymLinksGroup "Bash Configuration" "" $HOME $dir $olddir 1 $bash_group
 makeSymLinksGroup "Zsh Configuration" "" $HOME $dir $olddir 1 $zsh_group
 
 # change to config directory
-echo ""
-echo "#########################################"
+printSep "="
 echo "Changing to the $config directory ..."
 cd $config
 
@@ -282,8 +330,7 @@ makeSymLinks $HOME/.config $config $oldconfig 0 $config_files
 
 # install git hooks
 if [ $git_hooks -eq 1 ]; then
-    echo ""
-    echo "#########################################"
+    printSep "="
 
     for hook in $hooks_dir/*; do
         if [ $interactive -eq 1 ]; then
@@ -295,8 +342,7 @@ if [ $git_hooks -eq 1 ]; then
     done
 fi
 
-echo ""
-echo "#########################################"
+printSep "="
 
 # check if backup dirs are empty and clean if they are
 if [ ! "$(ls -A $olddir)" ]; then
@@ -309,17 +355,21 @@ if [ ! "$(ls -A $oldconfig)" ]; then
     rmdir $oldconfig
 fi
 
+printSep "="
+
 # check for broken symlinks
-broken=$(find $HOME -type l ! -exec test -e {} \; -print)
+if promptYN "Check for broken symlinks" ""; then
+    broken=$(find $HOME -type l ! -exec test -e {} \; -print)
 
-if [ -n "$broken" ]; then
-    echo "Detected broken symlinks"
+    if [ -n "$broken" ]; then
+        echo -e "${RED}Detected broken symlinks${NC}"
 
-    # prompt for deletion of broken links
-    for link in $broken; do
-        if promptYN "Remove broken link: $link" "y"; then
-            rm $link
-        fi
-    done
+        # prompt for deletion of broken links
+        for link in $broken; do
+            if promptYN "Remove broken link: $link" "y"; then
+                rm $link
+            fi
+        done
+    fi
 fi
 #}}} End Code ##################################################################
