@@ -11,10 +11,11 @@
 #}}}############################################################################
 
 #{{{ Variables #################################################################
-usage="usage: \"$0 -[afghr]\""
+usage="usage: \"$0 -[abfgh]\""
 
 # install parameters
 root=0
+remove_broken_links=0
 git_hooks=0
 interactive=1
 force=0
@@ -89,13 +90,15 @@ config_files="redshift.conf\
 function _help
 {
     echo "$usage"
+
+    #TODO - this better
     printf "\nArguments:\n\
 \t-a\tAll, skip the default interactive mode and link all files\n\
+\t-b\tBroken links, remove broken symlinks\n\
 \t-f\tForce, relink (unlink then link) any alreay linked files\n\
 \t-g\tGit hooks, install git hooks for this repository\n\
 \t-h\tShow this help text\n\
-\t-r\tRoot, install these files for root also\n\
-\nNote: the '-r' option does not currently do anything\n"
+\tNote: -b and -g are only necessary when not running interactively (-a)\n"
 }
 #}}} End _help #################################################################
 
@@ -269,10 +272,13 @@ function makeSymLinksGroup
 
 #{{{ Code ######################################################################
 #{{{ getopts ###################################################################
-while getopts afghr: FLAG; do
+while getopts abfghr: FLAG; do
     case $FLAG in
         a) #all (skip interactive)
             interactive=0
+            ;;
+        b) #broken links
+            remove_broken_links=1
             ;;
         f) #force
             force=1
@@ -329,8 +335,9 @@ cd $config
 makeSymLinks $HOME/.config $config $oldconfig 0 $config_files
 
 # install git hooks
-if [ $git_hooks -eq 1 ]; then
+if [[ $interactive -eq 1 || $git_hooks -eq 1 ]]; then
     printSep "="
+    echo "Install Git hooks for this repository"
 
     for hook in $hooks_dir/*; do
         if [ $interactive -eq 1 ]; then
@@ -338,6 +345,7 @@ if [ $git_hooks -eq 1 ]; then
                 continue
             fi
         fi
+        echo -e "${GREEN}Copying $hook to $hooks_target${NC}"
         cp $hook $hooks_target
     done
 fi
@@ -355,10 +363,13 @@ if [ ! "$(ls -A $oldconfig)" ]; then
     rmdir $oldconfig
 fi
 
+# check for broken symlinks
+
 printSep "="
 
-# check for broken symlinks
-if promptYN "Check for broken symlinks" ""; then
+if [ $remove_broken_links -eq 1 ] || \
+    [ $interactive -eq 1 ] && promptYN "Check for broken symlinks" ""; then
+
     broken=$(find $HOME -type l ! -exec test -e {} \; -print)
 
     if [ -n "$broken" ]; then
@@ -370,6 +381,10 @@ if promptYN "Check for broken symlinks" ""; then
                 rm $link
             fi
         done
+    else
+        echo -e "${GREEN}No broken symlinks detected${NC}"
     fi
+
+    printSep "="
 fi
 #}}} End Code ##################################################################
