@@ -1,7 +1,11 @@
 # Bradford Smith
 # .shell_env
-# updated: 07/06/2016
+# updated: 08/04/2016
 #####################
+
+# turn off flow control (ctrl-q and ctrl-s)
+stty -ixon
+stty -ixoff
 
 # source aliases
 if [ -f "$HOME/.shell_aliases" ]; then
