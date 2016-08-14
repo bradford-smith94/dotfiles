@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 08/02/2016
+# updated: 08/14/2016
 #
 # This script can be run to install my dotfiles.
 #
@@ -89,16 +89,19 @@ config_files="redshift.conf\
 # Show help text
 function _help
 {
-    echo "$usage"
+    #use cat and a "here document" for printing the more verbose help
+    cat <<EndHelpText
+$usage
+where:
+    -a  (All) Skip the default interactive mode and link all files
+    -b  (Broken links) Remove broken symlinks
+    -f  (Force) Relink (unlink then link) any alreay linked files
+    -g  (Git hooks) Install git hooks for this repository
+    -h  (Help) Show this help text
 
-    #TODO - this better
-    printf "\nArguments:\n\
-\t-a\tAll, skip the default interactive mode and link all files\n\
-\t-b\tBroken links, remove broken symlinks\n\
-\t-f\tForce, relink (unlink then link) any alreay linked files\n\
-\t-g\tGit hooks, install git hooks for this repository\n\
-\t-h\tShow this help text\n\
-\tNote: -b and -g are only necessary when not running interactively (-a)\n"
+Note: -b and -g are only necessary when not running interactively (-a)
+
+EndHelpText
 }
 #}}} End _help #################################################################
 
