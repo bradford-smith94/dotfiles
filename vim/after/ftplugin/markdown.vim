@@ -1,5 +1,5 @@
 " Bradford Smith
-" 07/29/2016
+" 08/14/2016
 " ~/.vim/after/ftplugin/markdown.vim
 " Markdown filetype specific configuration to run after system configuration
 
@@ -10,8 +10,10 @@ setlocal formatoptions-=tc
 setlocal omnifunc=htmlcomplete#CompleteTags
 
 "mappings
-noremap <buffer> <F5> :w<CR>:execute "!pandoc -s -t latex -o ".expand("%:r").".pdf ".expand("%")<CR>
-inoremap <buffer> <F5> <Esc>:w<CR>:execute "!pandoc -s -t latex -o ".expand("%:r").".pdf ".expand("%")<CR>
+if executable('pandoc') == 1
+    noremap <buffer> <F5> :w<CR>:execute "!pandoc -s -t latex -o ".expand("%:r").".pdf ".expand("%")<CR>
+    inoremap <buffer> <F5> <Esc>:w<CR>:execute "!pandoc -s -t latex -o ".expand("%:r").".pdf ".expand("%")<CR>
+endif
 
 "vim-autolist mappings
 imap <buffer> <CR> <Esc><Plug>AutolistReturn

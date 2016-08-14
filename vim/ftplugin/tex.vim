@@ -1,5 +1,5 @@
 " Bradford Smith
-" 07/21/2016
+" 08/14/2016
 " ~/.vim/ftplugin/tex.vim
 " TEX (LaTeX) filetype specific configuration
 
@@ -7,16 +7,18 @@
 setlocal wrap
 setlocal spell
 
-"script local function for making pdf
-function! s:MakePDF()
-    execute "!pdflatex  -output-directory=" . expand("%:h") . " " . bufname("%")
-    execute ":silent! !rm " . expand("%:r") . ".log"
-    execute ":silent! !rm " . expand("%:r") . ".aux"
-endfunction
+if executable('pdflatex') == 1
+    "script local function for making pdf
+    function! s:MakePDF()
+        execute "!pdflatex  -output-directory=" . expand("%:h") . " " . bufname("%")
+        execute ":silent! !rm " . expand("%:r") . ".log"
+        execute ":silent! !rm " . expand("%:r") . ".aux"
+    endfunction
 
-"mappings
-noremap <buffer> <F5> :w<CR>:call <SID>MakePDF()<CR>
-inoremap <buffer> <F5> <Esc>:w<CR>:call <SID>MakePDF()<CR>
+    "mappings
+    noremap <buffer> <F5> :w<CR>:call <SID>MakePDF()<CR>
+    inoremap <buffer> <F5> <Esc>:w<CR>:call <SID>MakePDF()<CR>
+endif
 
 "source typo autocorrection
 source ~/.vim/custom/typo_autocorrect.vim
