@@ -1,6 +1,6 @@
 ## Bradford Smith
 ## ~/.vim/spell/custom.utf-8.add
-## 07/22/2016
+## 08/15/2016
 ## custom.utf-8.add Vim spellfile
 /encoding=utf-8
 
@@ -172,6 +172,7 @@ ciphertext
 cpu
 crypto
 etc
+executables
 filesystem
 github
 gitignore
@@ -197,6 +198,7 @@ sql
 exe
 htm
 html
+mp3
 pdf
 tex
 txt
@@ -212,12 +214,21 @@ www
 U.S.
 a.m.
 abided
+attaché
 café
+cafés
+cliché
+deadweight
 doppelgänger
 déjà
+déjà vu
 i.e.
+intel
+matériel
 okay
 p.m.
 polymorphism
+protégé
 ssn
 steganography
+vis-à-vis
