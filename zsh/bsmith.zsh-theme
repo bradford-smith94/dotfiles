@@ -1,7 +1,7 @@
 # Bradford Smith
-# bsmith.zsh-theme
-# updated: 07/12/2016
-#####################
+# ~/.zsh/bsmith.zsh-theme
+# updated: 08/16/2016
+#########################
 
 autoload -U colors && colors
 
@@ -75,11 +75,19 @@ function git_repo_status()
     fi
 }
 
+function git_stash_count()
+{
+    local count="$(git stash list 2> /dev/null | wc -l)"
+
+    [[ $count -gt 0 ]] && echo "${MAGENTA}{$count}${RESET}"
+}
+
 # from github.com/SicK94/minimal/minimal.zsh-theme
 function prompt_git()
 {
     local branch=$(git_branch_name)
-    [[ -n $branch ]] && echo "git:$(git_repo_status)%B$branch%b${RESET}"
+    [[ -n $branch ]] && \
+        echo "git:$(git_repo_status)%B$branch%b${RESET}$(git_stash_count)"
 }
 
 function prompt_vimode()
