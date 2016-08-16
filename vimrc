@@ -383,10 +383,14 @@ endif
 "backspace in Normal clears search pattern
 nnoremap <BS> :ClearSearch<CR>
 
-"center screen when jumping to next
+"center screen when jumping to next/previous matches
 "credit: blog.sanctum.geek.nz/vim-annoyances
 nnoremap n nzz
 nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
 
 "make Y behave like C and D
 noremap Y y$
