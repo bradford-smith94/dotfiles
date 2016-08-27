@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 08/02/2016
+" updated: 08/27/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -47,10 +47,10 @@ call vundle#begin()
 "plugins '<github_user>/<repo>' or full git path
 Plugin 'VundleVim/Vundle.vim' "originally gmarik/Vundle.vim
 Plugin 'bradford-smith94/vim-autolist' "automatic list continuation
-Plugin 'bradford-smith94/vim-colors-bsmith' "repo for my colorscheme
+Plugin 'bradford-smith94/vim-colors-bsmith'
 Plugin 'bradford-smith94/vim-superupdate' "automatic plugin updating
-Plugin 'ctrlpvim/ctrlp.vim' "originally kien/ctrlp.vim
-Plugin 'editorconfig/editorconfig-vim'
+Plugin 'editorconfig/editorconfig-vim' "support for editorconfig
+Plugin 'EinfachToll/DidYouMean'
 Plugin 'konfekt/fastfold'
 Plugin 'nikvdp/ejs-syntax'
 Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -58,10 +58,9 @@ Plugin 'scrooloose/syntastic'
 if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
     Plugin 'shougo/neocomplete'
 endif
-Plugin 'tacahiroy/ctrlp-funky' "adds function searching to CtrlP (:CtrlPFunky)
 Plugin 'tpope/vim-speeddating' "allow <C-a>/<C-x> to work for dates and times
-Plugin 'tpope/vim-surround' "surroundings motion
-Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-surround' "surroundings motions
+Plugin 'tpope/vim-unimpaired' "additional bracket pair mappings
 Plugin 'tpope/vim-repeat' "allow repeating of surround and speeddating
 Plugin 'unblevable/quick-scope' "highlight unique targets for (f, F, etc)
 Plugin 'vim-airline/vim-airline' "originally bling/vim-airline
@@ -93,8 +92,6 @@ let g:netrw_winsize = -30
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 let g:airline_skip_empty_sections = 1
-
-let g:ctrlp_show_hidden = 0
 
 let g:syntastic_javascript_checkers = ["eslint"]
 let g:syntastic_html_checkers = ["validator"]
@@ -195,6 +192,9 @@ set nowrap "don't wrap text by default
 augroup misc_group
     "clear this autocmd group to protect from re-sourcing this file
     autocmd!
+
+    "automatically open thw quickfix window after grep commands
+    autocmd QuickFixCmdPost *grep* cwindow
 
     "trim trailing whitespaces before saving
     autocmd BufWritePre * call RemoveTrailingSpaces()
@@ -358,16 +358,14 @@ nnoremap + <nop>
 "{{{-leader mappings
 let g:mapleader="\<Space>" "set <leader> as space
 
-nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>b :ls<CR>:b
 nnoremap <leader>c :chdir %:h<CR>
 nnoremap <leader>d :Diff<CR>
-nnoremap <leader>f :CtrlPFunky<CR>
 nnoremap <leader>l :set list!<CR>
 "use <leader>m and <leader>M to place and unplace a '>' in the sign column
 sign define bsmith_mark linehl=Underlined text=>
 nnoremap <leader>m :exe ":sign place 1 name=bsmith_mark line=" . line('.') . " file=" . expand('%:p')<CR>
 nnoremap <leader>M :exe ":sign unplace * file=" . expand('%:p')<CR>
-nnoremap <leader>o :CtrlP<CR>
 "substitute word under cursor
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 nnoremap <leader>v :e $MYVIMRC<CR>
@@ -414,7 +412,7 @@ noremap <F2> :Lexplore<CR>
 "[F3] greps current project directory for word under cursor (results in buffer)
 noremap <F3> :execute "grep -srnw --binary-files=without-match
     \ --exclude-dir=.git --exclude-dir=node_modules . -e " . expand("<cword>")
-    \ . " " <bar> cwindow<CR><CR><CR>
+    \ <CR><CR><CR>
 
 "[F5] saves
 noremap <F5> :w<CR>
