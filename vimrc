@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 08/27/2016
+" updated: 08/30/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -358,7 +358,7 @@ nnoremap + <nop>
 "{{{-leader mappings
 let g:mapleader="\<Space>" "set <leader> as space
 
-nnoremap <leader>b :ls<CR>:b
+nnoremap <leader>b :ls<CR>:b<space>
 nnoremap <leader>c :chdir %:h<CR>
 nnoremap <leader>d :Diff<CR>
 nnoremap <leader>l :set list!<CR>
