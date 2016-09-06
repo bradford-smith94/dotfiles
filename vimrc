@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 08/30/2016
+" updated: 09/06/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -54,6 +54,7 @@ Plugin 'EinfachToll/DidYouMean'
 Plugin 'konfekt/fastfold'
 Plugin 'nikvdp/ejs-syntax'
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'runoshun/vim-alloy'
 Plugin 'scrooloose/syntastic'
 if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
     Plugin 'shougo/neocomplete'
