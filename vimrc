@@ -417,19 +417,19 @@ noremap <F3> :execute "grep -srnw --binary-files=without-match
 
 "[F5] saves
 noremap <F5> :w<CR>
-inoremap <F5> <Esc>:w<CR>
+inoremap <F5> <C-o>:w<CR>
 
 "[F7] toggles paste mode
 noremap <F7> :setlocal paste!<CR>
-inoremap <F7> <Esc>:setlocal paste!<CR>a
+inoremap <F7> <C-o>:setlocal paste!<CR>
 
 "[F8] toggles spellcheck
 noremap <F8> :setlocal spell!<CR>
-inoremap <F8> <Esc>:setlocal spell!<CR>a
+inoremap <F8> <C-o>:setlocal spell!<CR>
 
 "[F9] opens suggestions for next misspelled word
 noremap <F9> ]sz=
-inoremap <F9> <Esc>]sz=
+inoremap <F9> <C-o>]sz=
 "}}}----------------------------------------------------------------------------
 
 

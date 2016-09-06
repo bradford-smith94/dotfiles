@@ -1,6 +1,6 @@
 " Bradford Smith
-" 07/21/2016
 " ~/.vim/ftplugin/xhtml.vim
+" 07/21/2016
 " XHTML filetype specific configuration
 
 "settings

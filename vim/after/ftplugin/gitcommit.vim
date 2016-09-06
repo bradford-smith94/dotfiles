@@ -1,6 +1,6 @@
 " Bradford Smith
-" 07/21/2016
 " ~/.vim/after/ftplugin/gitcommit.vim
+" 07/21/2016
 " gitcommit filetype specific configuration to run after system configuration
 
 "settings

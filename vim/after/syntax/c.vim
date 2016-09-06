@@ -1,6 +1,6 @@
 " Bradford Smith
-" 09/06/2016
 " ~/.vim/after/syntax/c.vim
+" 09/06/2016
 " C syntax additions to be loaded after system syntax
 
 "'remove' operator highlighting

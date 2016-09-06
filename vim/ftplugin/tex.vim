@@ -1,6 +1,6 @@
 " Bradford Smith
-" 08/14/2016
 " ~/.vim/ftplugin/tex.vim
+" 09/06/2016
 " TEX (LaTeX) filetype specific configuration
 
 "settings
@@ -17,7 +17,7 @@ if executable('pdflatex') == 1
 
     "mappings
     noremap <buffer> <F5> :w<CR>:call <SID>MakePDF()<CR>
-    inoremap <buffer> <F5> <Esc>:w<CR>:call <SID>MakePDF()<CR>
+    inoremap <buffer> <F5> <C-o>:w<CR><C-o>:call <SID>MakePDF()<CR>
 endif
 
 "source typo autocorrection

@@ -1,6 +1,6 @@
 " Bradford Smith
-" 07/29/2016
 " ~/.vim/ftplugin/text.vim
+" 07/29/2016
 " Custom "text" filetype specific configuration
 
 "settings

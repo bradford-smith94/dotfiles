@@ -1,6 +1,6 @@
 " Bradford Smith
-" 08/01/2016
 " ~/.vim/ftplugin/help.vim
+" 08/01/2016
 " Help filetype specific configuration
 " see: vim.wikia.com/wiki/Learn_to_use_help
 

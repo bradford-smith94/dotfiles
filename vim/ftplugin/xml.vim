@@ -1,6 +1,6 @@
 " Bradford Smith
-" 08/14/2016
 " ~/.vim/ftplugin/xml.vim
+" 08/14/2016
 " XML filetype specific configuration
 
 "settings

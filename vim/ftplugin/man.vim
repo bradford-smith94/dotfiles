@@ -1,6 +1,6 @@
 " Bradford Smith
-" 07/21/2016
 " ~/.vim/ftplugin/man.vim
+" 07/21/2016
 " man filetype specific configuration
 
 "settings

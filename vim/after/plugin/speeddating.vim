@@ -1,6 +1,6 @@
 " Bradford Smith
-" 07/21/2016
 " ~/.vim/after/plugin/speeddating.vim
+" 07/21/2016
 " vim-speeddating configuration
 
 "define custom date formats for vim-speeddating
