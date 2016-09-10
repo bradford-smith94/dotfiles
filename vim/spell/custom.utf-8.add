@@ -1,6 +1,6 @@
 ## Bradford Smith
 ## ~/.vim/spell/custom.utf-8.add
-## 08/15/2016
+## 09/06/2016
 ## custom.utf-8.add Vim spellfile
 /encoding=utf-8
 
@@ -157,13 +157,16 @@ ain't
 ain’t
 
 ## Tech/Computer Things
+DSL
 Facebook
 IP
 NSA
 README
 SSL
+TCP/IP
 TLS
 UDP
+WLAN
 XSS
 app
 apps
@@ -204,6 +207,7 @@ tex
 txt
 ## TLDs and URL parts
 co
+edu
 http
 https
 org

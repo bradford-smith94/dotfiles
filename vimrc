@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 09/06/2016
+" updated: 09/10/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -203,6 +203,9 @@ augroup misc_group
     "open epub files for editing (can use this for zip files too)
     "see: www.albertopettarin.it/blog/2014/06/03/open-epub-files-with-vim.html
     autocmd BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
+
+    "insert header for new markdown files in a 'Notebook' directory
+    autocmd BufNewFile **/Notebook/*.md call notebook#NewEntry()
 augroup END
 
 "enable folding of code blocks
