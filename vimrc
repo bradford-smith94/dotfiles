@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 09/10/2016
+" updated: 09/11/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -358,6 +358,15 @@ nnoremap <space> <nop>
 nnoremap <CR> <nop>
 nnoremap - <nop>
 nnoremap + <nop>
+
+augroup cmdwin
+    "clear this autocmd group to protect from re-sourcing this file
+    autocmd!
+
+    "enter is usefull in the cmdwin
+    autocmd CmdWinEnter * nunmap <CR>
+    autocmd CmdWinLeave * nnoremap <CR> <nop>
+augroup END
 
 "{{{-leader mappings
 let g:mapleader="\<Space>" "set <leader> as space
