@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 09/11/2016
+" updated: 09/12/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -374,6 +374,8 @@ let g:mapleader="\<Space>" "set <leader> as space
 nnoremap <leader>b :ls<CR>:b<space>
 nnoremap <leader>c :chdir %:h<CR>
 nnoremap <leader>d :Diff<CR>
+nnoremap <leader>e :e<space>
+nnoremap <leader>h :nohlsearch<CR>
 nnoremap <leader>l :set list!<CR>
 "use <leader>m and <leader>M to place and unplace a '>' in the sign column
 sign define bsmith_mark linehl=Underlined text=>
