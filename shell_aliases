@@ -1,6 +1,6 @@
 # Bradford Smith
 # .shell_aliases
-# updated: 06/08/2016
+# updated: 09/13/2016
 #####################
 
 ## Overall
@@ -35,9 +35,6 @@ alias clock="while true; do \
     date +'%H : %M : %S' | figlet; \
     sleep 1; \
 done"
-
-# if I remember to do watch I probably want `watch -g`
-alias watch='watch -g'
 
 ## Local Aliases
 ################
