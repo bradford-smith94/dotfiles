@@ -24,6 +24,8 @@ bindkey -M viins "[2~" overwrite-mode
 bindkey -M vicmd "[2~" overwrite-mode
 bindkey -M viins "[3~" delete-char
 bindkey -M vicmd "[3~" delete-char
+bindkey -M viins "" history-incremental-search-backward
+bindkey -M vicmd "" history-incremental-search-backward
 
 # The following lines were added by compinstall
 
