@@ -1,6 +1,6 @@
 # Bradford Smith
 # .zshrc
-# updated: 07/06/2016
+# updated: 09/17/2016
 #####################
 
 # theme it
@@ -16,6 +16,14 @@ export KEYTIMEOUT=1
 zmodload zsh/terminfo
 # rebind backtab (shift-tab) to avoid switching to vicmd mode
 bindkey -M viins "$terminfo[kcbt]" reverse-menu-complete
+bindkey -M viins "$terminfo[khome]" beginning-of-line
+bindkey -M vicmd "$terminfo[khome]" beginning-of-line
+bindkey -M viins "$terminfo[kend]" end-of-line
+bindkey -M vicmd "$terminfo[kend]" end-of-line
+bindkey -M viins "[2~" overwrite-mode
+bindkey -M vicmd "[2~" overwrite-mode
+bindkey -M viins "[3~" delete-char
+bindkey -M vicmd "[3~" delete-char
 
 # The following lines were added by compinstall
 
