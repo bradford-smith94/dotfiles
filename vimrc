@@ -179,7 +179,7 @@ highlight StatR1 ctermfg=15 ctermbg=124
 highlight StatR2 ctermfg=124 ctermbg=236
 highlight StatR3 ctermfg=196 ctermbg=236
 "visual mode colors (orange)
-highlight StatV1 ctermfg=15 ctermbg=208
+highlight StatV1 ctermfg=0 ctermbg=208
 highlight StatV2 ctermfg=208 ctermbg=236
 highlight StatV3 ctermfg=215 ctermbg=236
 
@@ -195,7 +195,7 @@ set statusline=%1*
 set statusline+=%q "quickfix/location list flag
 set statusline+=%w "preview window flag
 set statusline+=%h "help file flag
-set statusline+=\ %f "file name
+set statusline+=\ %<%f "file name
 
 set statusline+=\ %2*▶%3* "a fancy separator
 
