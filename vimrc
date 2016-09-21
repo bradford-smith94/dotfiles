@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 09/12/2016
+" updated: 09/21/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -64,7 +64,6 @@ Plugin 'tpope/vim-surround' "surroundings motions
 Plugin 'tpope/vim-unimpaired' "additional bracket pair mappings
 Plugin 'tpope/vim-repeat' "allow repeating of surround and speeddating
 Plugin 'unblevable/quick-scope' "highlight unique targets for (f, F, etc)
-Plugin 'vim-airline/vim-airline' "originally bling/vim-airline
 Plugin 'Yggdroot/indentLine'
 call vundle#end()
 
@@ -89,10 +88,6 @@ filetype indent plugin on
 "{{{-plugin settings------------------------------------------------------------
 let g:netrw_banner = 0
 let g:netrw_winsize = -30
-
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '◀'
-let g:airline_skip_empty_sections = 1
 
 let g:syntastic_javascript_checkers = ["eslint"]
 let g:syntastic_html_checkers = ["validator"]
@@ -137,7 +132,6 @@ if has("patch-7.3-787") "relative numbers and absolute will both display
 else
     set relativenumber
     augroup numbering_group
-        "clear this autocmd group to protect from re-sourcing this file
         autocmd!
         autocmd InsertEnter * setlocal norelativenumber "don't need relatives in insert
         autocmd InsertEnter * setlocal number
@@ -146,19 +140,86 @@ else
 endif
 set cursorline "highlight the line the cursor is on
 augroup cursorline_group
-    "clear this autocmd group to protect from re-sourcing this file
     autocmd!
     autocmd WinEnter,BufEnter * setlocal cursorline
     autocmd WinLeave,BufLeave * setlocal nocursorline
 augroup END
 set showmatch "highlight matching brackets
-set ruler
 set showcmd "show hanging command while typing
 set wildmenu
 set wildmode=longest:full,full
 set wildignore+=*.a,*.o,*~,*.swp,*.tmp,.git,*.pdf
-set laststatus=2 "always show statusline (for airline)
-set noshowmode "airline does this better
+
+"{{{-statusline-----------------------------------------------------------------
+"much of this taken from: http://stackoverflow.com/a/9121083
+
+augroup statusline_color
+    autocmd!
+    autocmd InsertEnter * call ColorStatusline(v:insertmode)
+    autocmd InsertLeave * call ColorStatusline('n')
+augroup END
+
+"work around for not having VisualEnter/VisualLeave autocmds
+"see: https://stackoverflow.com/a/15565233
+nnoremap <silent> v :call ColorStatusline('vi')<CR>v
+nnoremap <silent> V :call ColorStatusline('vl')<CR>V
+nnoremap <silent> <C-v> :call ColorStatusline('vb')<CR><C-v>
+vnoremap <silent> <Esc> <Esc>:call ColorStatusline('n')<CR>
+
+"normal mode colors (green)
+highlight StatN1 ctermfg=0 ctermbg=118
+highlight StatN2 ctermfg=118 ctermbg=236
+highlight StatN3 ctermfg=120 ctermbg=236
+"insert mode colors (blue)
+highlight StatI1 ctermfg=0 ctermbg=45
+highlight StatI2 ctermfg=45 ctermbg=236
+highlight StatI3 ctermfg=51 ctermbg=236
+"replace mode colors (red)
+highlight StatR1 ctermfg=15 ctermbg=124
+highlight StatR2 ctermfg=124 ctermbg=236
+highlight StatR3 ctermfg=196 ctermbg=236
+"visual mode colors (orange)
+highlight StatV1 ctermfg=15 ctermbg=208
+highlight StatV2 ctermfg=208 ctermbg=236
+highlight StatV3 ctermfg=215 ctermbg=236
+
+"read only flag (red)
+highlight User9 ctermfg=196 ctermbg=236
+
+"start with statusline in normal mode colors
+highlight link User1 StatN1
+highlight link User2 StatN2
+highlight link User3 StatN3
+
+set statusline=%1*
+set statusline+=%q "quickfix/location list flag
+set statusline+=%w "preview window flag
+set statusline+=%h "help file flag
+set statusline+=\ %f "file name
+
+set statusline+=\ %2*▶%3* "a fancy separator
+
+set statusline+=\ %m "modified flag
+set statusline+=\ %9*%r%3* "read only flag
+set statusline+=\ %{&paste>0?'[paste]':''} "paste mode flag
+set statusline+=\ %{&spell>0?'[spell]':''} "spell mode flag
+
+set statusline+=\ %= "align right
+
+set statusline+=%y "filetype
+set statusline+=\ %{&fenc} "file encoding
+set statusline+=[%{&ff}] "file format
+
+set statusline+=\ %2*◀%1* "a fancy separator
+
+set statusline+=\ %P "percent through file as ruler displays it
+set statusline+=\ L:%5(%l%) "line
+set statusline+=\ C:%3(%c%) "column
+
+set laststatus=2 "always show statusline
+set showmode
+"}}}----------------------------------------------------------------------------
+
 set lazyredraw "don't redraw the screen when executing macros (for speed)
 set scrolloff=5 "keep 5 lines visible above or below cursor
 set scrolljump=5 "scrolls 5 lines instead of 1
@@ -191,7 +252,6 @@ set formatoptions-=t "turn off auto-formatting of text by default
 set nowrap "don't wrap text by default
 
 augroup misc_group
-    "clear this autocmd group to protect from re-sourcing this file
     autocmd!
 
     "automatically open thw quickfix window after grep commands
@@ -216,7 +276,6 @@ set nofoldenable "do not start folded
 
 "{{{-template settings----------------------------------------------------------
 augroup template_group
-    "clear this autocmd group to protect from re-sourcing this file
     autocmd!
 
     "autofilled templates
@@ -284,6 +343,51 @@ function! ToggleBackground()
         set background=light
     else
         set background=dark
+    endif
+endfunction
+
+"function to change the colors of the statusline based on what mode is active
+function! ColorStatusline(mode)
+    if a:mode == 'i'
+        "normal insert
+        highlight link User1 StatI1
+        highlight link User2 StatI2
+        highlight link User3 StatI3
+    elseif a:mode == 'r'
+        "insert replace mode
+        highlight link User1 StatR1
+        highlight link User2 StatR2
+        highlight link User3 StatR3
+    elseif a:mode == 'v'
+        "virtual insert mode
+        highlight link User1 StatI1
+        highlight link User2 StatI2
+        highlight link User3 StatI3
+    elseif a:mode == 'n'
+        "normal mode
+        highlight link User1 StatN1
+        highlight link User2 StatN2
+        highlight link User3 StatN3
+    elseif a:mode == 'vi'
+        "visual mode
+        highlight link User1 StatV1
+        highlight link User2 StatV2
+        highlight link User3 StatV3
+    elseif a:mode == 'vl'
+        "visual line mode
+        highlight link User1 StatV1
+        highlight link User2 StatV2
+        highlight link User3 StatV3
+    elseif a:mode == 'vb'
+        "visual block mode
+        highlight link User1 StatV1
+        highlight link User2 StatV2
+        highlight link User3 StatV3
+    else
+        "use normal colors
+        highlight StatN1 ctermfg=0 ctermbg=118
+        highlight StatN2 ctermfg=118 ctermbg=236
+        highlight StatN3 ctermfg=120 ctermbg=236
     endif
 endfunction
 
@@ -360,7 +464,6 @@ nnoremap - <nop>
 nnoremap + <nop>
 
 augroup cmdwin
-    "clear this autocmd group to protect from re-sourcing this file
     autocmd!
 
     "enter is usefull in the cmdwin
