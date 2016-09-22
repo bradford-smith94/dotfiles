@@ -200,9 +200,9 @@ set statusline+=\ %<%f "file name
 set statusline+=\ %2*▶%3* "a fancy separator
 
 set statusline+=\ %m "modified flag
-set statusline+=\ %9*%r%3* "read only flag
-set statusline+=\ %{&paste>0?'[paste]':''} "paste mode flag
-set statusline+=\ %{&spell>0?'[spell]':''} "spell mode flag
+set statusline+=%9*%r%3* "read only flag
+set statusline+=%{&paste>0?'[paste]':''} "paste mode flag
+set statusline+=%{&spell>0?'[spell]':''} "spell mode flag
 
 set statusline+=\ %= "align right
 
