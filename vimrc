@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 09/21/2016
+" updated: 09/22/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -385,9 +385,9 @@ function! ColorStatusline(mode)
         highlight link User3 StatV3
     else
         "use normal colors
-        highlight StatN1 ctermfg=0 ctermbg=118
-        highlight StatN2 ctermfg=118 ctermbg=236
-        highlight StatN3 ctermfg=120 ctermbg=236
+        highlight link User1 StatN1
+        highlight link User2 StatN2
+        highlight link User3 StatN3
     endif
 endfunction
 
