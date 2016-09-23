@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 09/22/2016
+" updated: 09/23/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -165,6 +165,7 @@ nnoremap <silent> v :call ColorStatusline('vi')<CR>v
 nnoremap <silent> V :call ColorStatusline('vl')<CR>V
 nnoremap <silent> <C-v> :call ColorStatusline('vb')<CR><C-v>
 vnoremap <silent> <Esc> <Esc>:call ColorStatusline('n')<CR>
+nnoremap <silent> <Esc> <Esc>:call ColorStatusline('n')<CR>
 
 "normal mode colors (green)
 highlight StatN1 ctermfg=0 ctermbg=118
