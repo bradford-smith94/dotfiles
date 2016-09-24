@@ -155,15 +155,16 @@ set wildignore+=*.a,*.o,*~,*.swp,*.tmp,.git,*.pdf
 
 augroup statusline_color
     autocmd!
-    autocmd InsertEnter * call ColorStatusline(v:insertmode)
+    autocmd InsertEnter * call ColorStatusline('i' . v:insertmode)
     autocmd InsertLeave * call ColorStatusline('n')
+    autocmd CursorHold * call ColorStatusline(mode())
 augroup END
 
 "work around for not having VisualEnter/VisualLeave autocmds
 "see: https://stackoverflow.com/a/15565233
-nnoremap <silent> v :call ColorStatusline('vi')<CR>v
-nnoremap <silent> V :call ColorStatusline('vl')<CR>V
-nnoremap <silent> <C-v> :call ColorStatusline('vb')<CR><C-v>
+nnoremap <silent> v :call ColorStatusline('v')<CR>v
+nnoremap <silent> V :call ColorStatusline('V')<CR>V
+nnoremap <silent> <C-v> :call ColorStatusline('CTRL-V')<CR><C-v>
 vnoremap <silent> <Esc> <Esc>:call ColorStatusline('n')<CR>
 
 "normal mode colors (green)
@@ -348,17 +349,17 @@ endfunction
 
 "function to change the colors of the statusline based on what mode is active
 function! ColorStatusline(mode)
-    if a:mode == 'i'
+    if a:mode == 'ii' || a:mode == 'i'
         "normal insert
         highlight link User1 StatI1
         highlight link User2 StatI2
         highlight link User3 StatI3
-    elseif a:mode == 'r'
+    elseif a:mode == 'ir' || a:mode == 'R'
         "insert replace mode
         highlight link User1 StatR1
         highlight link User2 StatR2
         highlight link User3 StatR3
-    elseif a:mode == 'v'
+    elseif a:mode == 'iv' || a:mode == 'Rv'
         "virtual insert mode
         highlight link User1 StatI1
         highlight link User2 StatI2
@@ -368,17 +369,17 @@ function! ColorStatusline(mode)
         highlight link User1 StatN1
         highlight link User2 StatN2
         highlight link User3 StatN3
-    elseif a:mode == 'vi'
+    elseif a:mode == 'v' || a:mode == 's'
         "visual mode
         highlight link User1 StatV1
         highlight link User2 StatV2
         highlight link User3 StatV3
-    elseif a:mode == 'vl'
+    elseif a:mode == 'V' || a:mode == 'S'
         "visual line mode
         highlight link User1 StatV1
         highlight link User2 StatV2
         highlight link User3 StatV3
-    elseif a:mode == 'vb'
+    elseif a:mode == 'CTRL-V' || a:mode == 'CTRL-S'
         "visual block mode
         highlight link User1 StatV1
         highlight link User2 StatV2
