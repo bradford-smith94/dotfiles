@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 09/22/2016
+" updated: 09/24/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -523,6 +523,8 @@ nnoremap <c-w><s-Tab> <c-w>W
 
 "[F1] toggles the background light/dark
 noremap <F1> :call ToggleBackground()<CR>
+inoremap <F1> <C-o>:call ToggleBackground()<CR>
+
 
 "[F2] toggles file explorer
 noremap <F2> :Lexplore<CR>
