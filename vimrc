@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 09/24/2016
+" updated: 09/26/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -123,8 +123,10 @@ let g:indentLine_fileType = ['html', 'xhtml', 'xml']
 
 "{{{-visual stuff---------------------------------------------------------------
 syntax on
+if has("termguicolors")
+    set termguicolors
+endif
 set background=dark
-"let &t_Co=256 "force full 256 color support (should auto detect)
 color bsmith "custom colorscheme
 if has("patch-7.3-787") "relative numbers and absolute will both display
     set number "line numbers
@@ -168,24 +170,24 @@ nnoremap <silent> <C-v> :call ColorStatusline('CTRL-V')<CR><C-v>
 vnoremap <silent> <Esc> <Esc>:call ColorStatusline('n')<CR>
 
 "normal mode colors (green)
-highlight StatN1 ctermfg=0 ctermbg=118
-highlight StatN2 ctermfg=118 ctermbg=236
-highlight StatN3 ctermfg=120 ctermbg=236
+highlight StatN1 guifg=#000000 guibg=#87ff00 ctermfg=0 ctermbg=118
+highlight StatN2 guifg=#87ff00 guibg=#303030 ctermfg=118 ctermbg=236
+highlight StatN3 guifg=#87ff87 guibg=#303030 ctermfg=120 ctermbg=236
 "insert mode colors (blue)
-highlight StatI1 ctermfg=0 ctermbg=45
-highlight StatI2 ctermfg=45 ctermbg=236
-highlight StatI3 ctermfg=51 ctermbg=236
+highlight StatI1 guifg=#000000 guibg=#00d7ff ctermfg=16 ctermbg=45
+highlight StatI2 guifg=#00d7ff guibg=#303030 ctermfg=45 ctermbg=236
+highlight StatI3 guifg=#00ffff guibg=#303030 ctermfg=51 ctermbg=236
 "replace mode colors (red)
-highlight StatR1 ctermfg=15 ctermbg=124
-highlight StatR2 ctermfg=124 ctermbg=236
-highlight StatR3 ctermfg=196 ctermbg=236
+highlight StatR1 guifg=#dadada guibg=#af0000 ctermfg=253 ctermbg=124
+highlight StatR2 guifg=#af0000 guibg=#303030 ctermfg=124 ctermbg=236
+highlight StatR3 guifg=#ff0000 guibg=#303030 ctermfg=196 ctermbg=236
 "visual mode colors (orange)
-highlight StatV1 ctermfg=0 ctermbg=208
-highlight StatV2 ctermfg=208 ctermbg=236
-highlight StatV3 ctermfg=215 ctermbg=236
+highlight StatV1 guifg=#000000 guibg=#ff8700 ctermfg=16 ctermbg=208
+highlight StatV2 guifg=#ff8700 guibg=#303030 ctermfg=208 ctermbg=236
+highlight StatV3 guifg=#ffaf5f guibg=#303030 ctermfg=215 ctermbg=236
 
 "read only flag (red)
-highlight User9 ctermfg=196 ctermbg=236
+highlight User9 guifg=#ff0000 guibg=#303030 ctermfg=196 ctermbg=236
 
 "start with statusline in normal mode colors
 highlight link User1 StatN1
