@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 09/26/2016
+" updated: 09/29/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -302,18 +302,6 @@ cabbrev grep <C-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'grep -srnw
 
 
 "{{{-ignore accidental capitalizations------------------------------------------
-cabbrev WQA wqa
-cabbrev WQa wqa
-cabbrev Wqa wqa
-cabbrev WQ wq
-cabbrev Wq wq
-cabbrev WA wa
-cabbrev Wa wa
-cabbrev QA qa
-cabbrev Qa qa
-cabbrev W w
-cabbrev Q q
-
 "need commands because abbreviations only get replaced after hitting space/tab
 command! WQA wqa
 command! WQa wqa
