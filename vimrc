@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 09/29/2016
+" updated: 10/04/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -52,6 +52,7 @@ Plugin 'bradford-smith94/vim-superupdate' "automatic plugin updating
 Plugin 'editorconfig/editorconfig-vim' "support for editorconfig
 Plugin 'EinfachToll/DidYouMean'
 Plugin 'konfekt/fastfold'
+Plugin 'mgrabovsky/vim-xverif'
 Plugin 'nikvdp/ejs-syntax'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'runoshun/vim-alloy'
