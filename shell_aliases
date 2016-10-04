@@ -1,6 +1,6 @@
 # Bradford Smith
 # .shell_aliases
-# updated: 09/28/2016
+# updated: 10/04/2016
 #####################
 
 ## Overall
@@ -47,10 +47,6 @@ fi
 ## Laptop Specific
 ##################
 if [ -d "/sys/class/power_supply/BAT0" ]; then
-    ## TLP Powersaving: check to make sure it's running
-    alias check-tlp="sudo tlp-stat \
-        | grep 'TLP_ENABLE\|TLP power save\|power source'"
-
     alias check-batt='cat /sys/class/power_supply/BAT0/capacity'
 fi
 
