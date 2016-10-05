@@ -1,32 +1,28 @@
 " Bradford Smith
 " ~/.vim/ftplugin/tex.vim
-" 09/13/2016
-" TEX (LaTeX) filetype specific configuration
+" 10/05/2016
+" TeX (LaTeX) filetype specific configuration
 
 "settings
 setlocal wrap
 setlocal spell
 
-if executable('pdflatex') == 1
-    "script local function for making pdf
-    function! s:MakePDF()
-        execute "!pdflatex  -output-directory=" . expand("%:h") . " " . bufname("%")
-        if (search('\\documentclass{beamer}', 'nw') != 0)
-            execute "!pdflatex  -output-directory=" . expand("%:h") . " " . bufname("%")
-            execute ":silent! !rm " . expand("%:r") . ".nav"
-            execute ":silent! !rm " . expand("%:r") . ".out"
-            execute ":silent! !rm " . expand("%:r") . ".snm"
-            execute ":silent! !rm " . expand("%:r") . ".toc"
-            execute ":silent! !rm " . expand("%:r") . ".vrb"
-        endif
-        execute ":silent! !rm " . expand("%:r") . ".log"
-        execute ":silent! !rm " . expand("%:r") . ".aux"
-    endfunction
-
-    "mappings
-    noremap <buffer> <F5> :w<CR>:call <SID>MakePDF()<CR>
-    inoremap <buffer> <F5> <C-o>:w<CR><C-o>:call <SID>MakePDF()<CR>
+if executable('rubber') == 1
+    setlocal makeprg=rubber\ --pdf\ %
+    noremap <buffer> <F5> :w<CR>:make<CR>
+    inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR>
+elseif executable('pdflatex') == 1
+    setlocal makeprg=pdflatex\ %
+    if (search('\\documentclass{beamer}', 'nw') != 0)
+        noremap <buffer> <F5> :w<CR>:make<CR>:make<CR>
+        inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR><C-o>:make<CR>
+    else
+        noremap <buffer> <F5> :w<CR>:make<CR>
+        inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR>
+    endif
 endif
+
+command! TexClean execute "!rm " . expand("%:r") . ".{aux,log,nav,out,snm,vrb}"
 
 "source typo autocorrection
 source ~/.vim/custom/typo_autocorrect.vim
