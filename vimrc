@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 10/04/2016
+" updated: 10/06/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -274,7 +274,7 @@ augroup END
 
 "enable folding of code blocks
 set foldmethod=syntax
-set nofoldenable "do not start folded
+set foldlevelstart=99 "start with no folds closed
 "}}}----------------------------------------------------------------------------
 
 
