@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 08/16/2016
+# updated: 10/06/2016
 #####################
 
 [user]
@@ -37,6 +37,11 @@
 [alias]
     #show aliases
     alias = "!git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'"
+    authors = "shortlog -n -s --no-merges"
+    contributions ="!git shortlog -n -s --no-merges | colrm 1 8 | xargs -I % \
+        sh -c \"echo \\\"%:\\\"; git log --shortstat --author \\\"%\\\" \
+        | grep \\\"files\\? changed\\\" \
+        | awk '{files+=\\$1; add+=\\$4; del+=\\$6} END {print files, \\\"files changed,\\\", add, \\\"insertions(+)\\\", del, \\\"deletions(-)\\\"}'\""
 
     #from github.com/tsu-complete/dot/blob/master/git/_gitconfig
     graph = "log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
@@ -47,15 +52,12 @@
     new = "!git log $1@{1}..$1@{0} \"$@\""
     newest = "log -1"
 
+    today ="log --since=midnight"
+
+    untrack = "rm --cached"
+
     #for inspecting specific commits
     whatis = "show -s"
 
     #print git config user settings
     whoami = "!git config --get-regexp 'user.*' | colrm 1 5 | sed 's/[ ]/ = /'"
-
-    authors = "shortlog -n -s --no-merges"
-    contributions ="!git shortlog -n -s --no-merges | colrm 1 8 | xargs -I % \
-        sh -c \"echo \\\"%:\\\"; git log --shortstat --author \\\"%\\\" \
-        | grep \\\"files\\? changed\\\" \
-        | awk '{files+=\\$1; add+=\\$4; del+=\\$6} END {print files, \\\"files changed,\\\", add, \\\"insertions(+)\\\", del, \\\"deletions(-)\\\"}'\""
-    untrack = "rm --cached"
