@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/ftplugin/tex.vim
-" 10/05/2016
+" 10/08/2016
 " TeX (LaTeX) filetype specific configuration
 
 "settings
@@ -22,7 +22,7 @@ elseif executable('pdflatex') == 1
     endif
 endif
 
-command! TexClean execute "!rm " . expand("%:r") . ".{aux,log,nav,out,snm,vrb}"
+command! TexClean execute "!rm " . expand("%:r") . ".{aux,log,nav,out,snm,toc,vrb}"
 
 "source typo autocorrection
 source ~/.vim/custom/typo_autocorrect.vim
