@@ -1,13 +1,15 @@
 # Bradford Smith
 # ~/.gitignore (global gitignore)
-# updated: 10/19/2015
+# updated: 10/09/2016
 #################################
 
 ## Linux ##
 *~
 
 ## Vim ##
-*.swp
+.*.s[a-w][a-z]
+.s[a-w][a-z]
+.netrwhist
 
 ## Git Merge ##
 *.orig
