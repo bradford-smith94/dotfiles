@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 10/06/2016
+" updated: 10/14/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -451,7 +451,6 @@ command! Diff call ToggleDiffMode()
 
 "unbind keys
 nnoremap <space> <nop>
-nnoremap <CR> <nop>
 nnoremap - <nop>
 nnoremap + <nop>
 
@@ -487,6 +486,9 @@ if &diff "vimdiff leader mappings
     nnoremap <leader>N [c
 endif
 "}}}
+
+"enter in Normal is a shortcut to Command
+nnoremap <CR> :
 
 "backspace in Normal clears search pattern
 nnoremap <BS> :ClearSearch<CR>
