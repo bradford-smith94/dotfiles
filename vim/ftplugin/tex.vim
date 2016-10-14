@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/ftplugin/tex.vim
-" 10/10/2016
+" 10/13/2016
 " TeX (LaTeX) filetype specific configuration
 
 "settings
@@ -25,7 +25,7 @@ endif
 command! TexClean execute "!rm " . expand("%:r") . ".{aux,log,nav,out,snm,toc,vrb}"
 
 augroup tex_autocmds
-    autocmd QuitPre * TexClean
+    autocmd QuitPre *.tex TexClean
 augroup END
 
 "source typo autocorrection
