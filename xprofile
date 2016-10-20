@@ -1,6 +1,10 @@
 [ -f ~/.Xresources ] && xrdb -I$HOME ~/.Xresources
 
+# Make capslock be escape/ctrl
 setxkbmap -option 'caps:ctrl_modifier'
 xcape -e 'Caps_Lock=Escape'
+
+# Make both shift keys together be capslock
+setxkbmap -option 'shift:both_capslock'
 
 redshift&
