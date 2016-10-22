@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.zsh/bsmith.zsh-theme
-# updated: 08/16/2016
+# updated: 10/22/2016
 #########################
 
 autoload -U colors && colors
@@ -131,6 +131,13 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 zle -N zle-line-finish
 
+# check if we're connected via SSH
+if [ "x$SSH_TTY" != "x" ]; then
+    SSH="${RED}(ssh) ${RESET}"
+else
+    SSH=""
+fi
+
 TL='${$(prompt_topline)%.}'
-PROMPT="${TL}$(user)$(host)$(dir)$PROMPT_CHAR"
+PROMPT="${TL}$SSH$(user)$(host)$(dir)$PROMPT_CHAR"
 RPROMPT="${RED}%(?..%?)${RESET}"
