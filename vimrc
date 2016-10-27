@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 10/14/2016
+" updated: 10/27/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -434,7 +434,6 @@ endif
 
 "{{{-my mappings----------------------------------------------------------------
 "call the SyntaxItem function
-command! HighlightGroup call SyntaxItem()
 command! HlGroup call SyntaxItem()
 
 "Reload vimrc
@@ -475,6 +474,7 @@ nnoremap <leader>l :set list!<CR>
 sign define bsmith_mark linehl=Underlined text=>
 nnoremap <leader>m :exe ":sign place 1 name=bsmith_mark line=" . line('.') . " file=" . expand('%:p')<CR>
 nnoremap <leader>M :exe ":sign unplace * file=" . expand('%:p')<CR>
+nnoremap <leader>q :q<CR>
 "substitute word under cursor
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 nnoremap <leader>v :e $MYVIMRC<CR>
