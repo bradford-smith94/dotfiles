@@ -1,6 +1,6 @@
 # Bradford Smith
 # .zshrc
-# updated: 09/17/2016
+# updated: 11/02/2016
 #####################
 
 # theme it
@@ -16,14 +16,31 @@ export KEYTIMEOUT=1
 zmodload zsh/terminfo
 # rebind backtab (shift-tab) to avoid switching to vicmd mode
 bindkey -M viins "$terminfo[kcbt]" reverse-menu-complete
-bindkey -M viins "$terminfo[khome]" beginning-of-line
-bindkey -M vicmd "$terminfo[khome]" beginning-of-line
-bindkey -M viins "$terminfo[kend]" end-of-line
-bindkey -M vicmd "$terminfo[kend]" end-of-line
+
+# fix keys home
+bindkey -M viins "[H" beginning-of-line
+bindkey -M vicmd "[H" beginning-of-line
+
+# fix keys end
+bindkey -M viins "[F" end-of-line
+bindkey -M vicmd "[F" end-of-line
+
+# fix keys insert
 bindkey -M viins "[2~" overwrite-mode
 bindkey -M vicmd "[2~" overwrite-mode
+
+# fix keys delete
 bindkey -M viins "[3~" delete-char
 bindkey -M vicmd "[3~" delete-char
+
+# fix keys pgup
+bindkey -M viins "[5~" up-history
+bindkey -M vicmd "[5~" up-history
+
+# fix keys pgdown
+bindkey -M viins "[6~" down-history
+bindkey -M vicmd "[6~" down-history
+
 bindkey -M viins "" history-incremental-search-backward
 bindkey -M vicmd "" history-incremental-search-backward
 
