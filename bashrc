@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.bashrc
-# updated: 10/22/2016
+# updated: 11/07/2016
 #####################
 
 # If not running interactively, don't do anything
@@ -31,17 +31,28 @@ else
     SSH=""
 fi
 
-# Prompt.
-# user@host: dir$
+# Prompt
 if [[ $EUID -ne 0 ]]; then
-    #if not root
-    #   | ssh | user - green        | @host - bright green  | dir - blue           | $ - green           |
-    PS1="$SSH\[\e[0;32m\]\u\[\e[m\]\[\e[1;32m\]@\h:\[\e[m\] \[\e[1;34m\]\w\[\e[m\]\[\e[0;32m\]\$\[\e[m\] "
+    # | user - green
+    PROMPT_USER="\[\e[0;32m\]\u\[\e[m\]"
+    # | @host - bright green
+    PROMPT_HOST="\[\e[1;32m\]@\h:\[\e[m\]"
+    # | $ - green
+    PROMPT_CHAR="\[\e[0;32m\]\$\[\e[m\]"
 else
-    #else root
-    #   | ssh | user - red          | @host - bright red    | dir - blue           | # - red             |
-    PS1="$SSH\[\e[0;31m\]\u\[\e[m\]\[\e[1;31m\]@\h:\[\e[m\] \[\e[1;34m\]\w\[\e[m\]\[\e[0;31m\]\$\[\e[m\] "
+    # | user - red
+    PROMPT_USER="\[\e[0;31m\]\u\[\e[m\]"
+    # | @host - bright red
+    PROMPT_HOST="\[\e[1;31m\]@\h:\[\e[m\]"
+    # | # - red
+    PROMPT_CHAR="\[\e[0;31m\]\$\[\e[m\]"
 fi
+
+# | dir - blue
+PROMPT_DIR="\[\e[1;34m\]\w\[\e[m\]"
+
+# (ssh) user@host: dir$
+PS1="$SSH$PROMPT_USER$PROMPT_HOST $PROMPT_DIR$PROMPT_CHAR "
 
 # source shared shell environment
 if [ -f "$HOME/.shell_env" ]; then
