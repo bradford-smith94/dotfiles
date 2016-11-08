@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 10/06/2016
+# updated: 11/08/2016
 #####################
 
 [user]
@@ -37,7 +37,9 @@
 [alias]
     #show aliases
     alias = "!git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'"
+
     authors = "shortlog -n -s --no-merges"
+    branches = "branch -a"
     contributions ="!git shortlog -n -s --no-merges | colrm 1 8 | xargs -I % \
         sh -c \"echo \\\"%:\\\"; git log --shortstat --author \\\"%\\\" \
         | grep \\\"files\\? changed\\\" \
@@ -52,6 +54,9 @@
     new = "!git log $1@{1}..$1@{0} \"$@\""
     newest = "log -1"
 
+    remotes = "remote -v"
+    stashes = "stash list"
+    tags = "tag"
     today ="log --since=midnight"
 
     untrack = "rm --cached"
