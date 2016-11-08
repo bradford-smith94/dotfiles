@@ -66,3 +66,6 @@
 
     #print git config user settings
     whoami = "!git config --get-regexp 'user.*' | colrm 1 5 | sed 's/[ ]/ = /'"
+
+    #given a string for an author, try to figure out full name and email
+    whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
