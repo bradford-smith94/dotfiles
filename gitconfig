@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 11/08/2016
+# updated: 11/09/2016
 #####################
 
 [user]
@@ -41,9 +41,12 @@
     authors = "shortlog -n -s --no-merges"
     branches = "branch -a"
     contributions ="!git shortlog -n -s --no-merges | colrm 1 8 | xargs -I % \
-        sh -c \"echo \\\"%:\\\"; git log --shortstat --author \\\"%\\\" \
+        sh -c \"echo \\\"%: \\\"; \
+        git log --no-merges --author=\\\"%\\\" --name-only --pretty=format:\\\"\\\" | sort -u | wc -l | tr -d '\n'; \
+        echo -n \\\" files changed, \\\"; \
+        git log --shortstat --author \\\"%\\\" \
         | grep \\\"files\\? changed\\\" \
-        | awk '{files+=\\$1; add+=\\$4; del+=\\$6} END {print files, \\\"files changed,\\\", add, \\\"insertions(+)\\\", del, \\\"deletions(-)\\\"}'\""
+        | awk '{add+=\\$4; del+=\\$6} END {print add, \\\"insertions(+)\\\", del, \\\"deletions(-)\\\"}'\""
 
     #from github.com/tsu-complete/dot/blob/master/git/_gitconfig
     graph = "log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
