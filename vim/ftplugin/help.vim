@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/ftplugin/help.vim
-" 08/01/2016
+" 11/11/2016
 " Help filetype specific configuration
 " see: vim.wikia.com/wiki/Learn_to_use_help
 
@@ -19,6 +19,8 @@ nnoremap <buffer> K :execute ":help " . expand("<cword>")<CR>
 nnoremap <buffer> o /'\l\{2,\}'<CR>
 "O finds previous option
 nnoremap <buffer> O ?'\l\{2,\}'<CR>
+"q quits
+nnoremap <buffer> q :q<CR>
 "s finds next subject
 nnoremap <buffer> s /\|\zs\S\+\ze\|<CR>
 "S finds previous subject
