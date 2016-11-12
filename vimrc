@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 10/27/2016
+" updated: 11/12/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -60,6 +60,7 @@ Plugin 'scrooloose/syntastic'
 if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
     Plugin 'shougo/neocomplete'
 endif
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-speeddating' "allow <C-a>/<C-x> to work for dates and times
 Plugin 'tpope/vim-surround' "surroundings motions
 Plugin 'tpope/vim-unimpaired' "additional bracket pair mappings
