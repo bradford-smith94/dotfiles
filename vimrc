@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 11/12/2016
+" updated: 11/14/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -56,7 +56,6 @@ Plugin 'mgrabovsky/vim-xverif'
 Plugin 'nikvdp/ejs-syntax'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'runoshun/vim-alloy'
-Plugin 'scrooloose/syntastic'
 if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
     Plugin 'shougo/neocomplete'
 endif
@@ -66,6 +65,7 @@ Plugin 'tpope/vim-surround' "surroundings motions
 Plugin 'tpope/vim-unimpaired' "additional bracket pair mappings
 Plugin 'tpope/vim-repeat' "allow repeating of surround and speeddating
 Plugin 'unblevable/quick-scope' "highlight unique targets for (f, F, etc)
+Plugin 'vim-syntastic/syntastic' "originally scrooloose/syntastic
 Plugin 'Yggdroot/indentLine'
 call vundle#end()
 
