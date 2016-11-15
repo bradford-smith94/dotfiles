@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 11/14/2016
+" updated: 11/15/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -459,7 +459,7 @@ augroup cmdwin
 
     "enter is usefull in the cmdwin
     autocmd CmdWinEnter * nunmap <CR>
-    autocmd CmdWinLeave * nnoremap <CR> <nop>
+    autocmd CmdWinLeave * nnoremap <CR> :
 augroup END
 
 "{{{-leader mappings
