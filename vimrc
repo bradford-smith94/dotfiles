@@ -1,12 +1,10 @@
 " Bradford Smith
 " .vimrc
-" updated: 11/15/2016
+" updated: 11/24/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
-set nocompatible "do not use vi compatible mode, we're better than that
 set encoding=utf-8 "use UTF-8 internally
-set helplang=en
 set nospell "spelling off by default
 set spelllang=en_us
 set spellfile=~/.vim/spell/custom.utf-8.add
@@ -17,10 +15,9 @@ set visualbell
 set t_vb=
 set viminfo='100,<50,s10,h,!,n~/.vim/viminfo "see :help 'viminfo'
 set nomodeline "disable modelines
-set ttyfast "legacy setting to speed up output, probably useless
 set notimeout "don't timeout on :mappings
 set ttimeout "timeout on key codes (like esc and arrow keys)
-set timeoutlen=50 "esc and arrows timeout
+set ttimeoutlen=50 "esc and arrows timeout
 set mouse=nr "normal and 'Hit Enter' messages (useful for switching windows)
 let $MANPAGER='' "allows Vim's :Man command to be used without conflict
 "}}}----------------------------------------------------------------------------
@@ -124,9 +121,14 @@ let g:indentLine_fileType = ['html', 'xhtml', 'xml']
 
 
 "{{{-visual stuff---------------------------------------------------------------
-syntax on
-if has("termguicolors")
-    set termguicolors
+if has("syntax")
+    syntax on
+    set cursorline "highlight the line the cursor is on
+    augroup cursorline_group
+        autocmd!
+        autocmd WinEnter,BufEnter * setlocal cursorline
+        autocmd WinLeave,BufLeave * setlocal nocursorline
+    augroup END
 endif
 set background=dark
 color bsmith "custom colorscheme
@@ -137,22 +139,20 @@ else
     set relativenumber
     augroup numbering_group
         autocmd!
-        autocmd InsertEnter * setlocal norelativenumber "don't need relatives in insert
+        autocmd InsertEnter * setlocal norelativenumber "don't need in insert
         autocmd InsertEnter * setlocal number
-        autocmd InsertLeave * setlocal relativenumber "back on for everything else
+        autocmd InsertLeave * setlocal relativenumber
     augroup END
 endif
-set cursorline "highlight the line the cursor is on
-augroup cursorline_group
-    autocmd!
-    autocmd WinEnter,BufEnter * setlocal cursorline
-    autocmd WinLeave,BufLeave * setlocal nocursorline
-augroup END
 set showmatch "highlight matching brackets
-set showcmd "show hanging command while typing
-set wildmenu
-set wildmode=longest:full,full
-set wildignore+=*.a,*.o,*~,*.swp,*.tmp,.git,*.pdf
+if has("cmdline_info")
+    set showcmd "show hanging command while typing
+endif
+if has("wildmenu")
+    set wildmenu
+    set wildmode=longest:full,full
+    set wildignore+=*.a,*.o,*~,*.swp,*.tmp,.git,*.pdf
+endif
 
 "{{{-statusline-----------------------------------------------------------------
 "much of this taken from: http://stackoverflow.com/a/9121083
@@ -228,21 +228,25 @@ set showmode
 set lazyredraw "don't redraw the screen when executing macros (for speed)
 set scrolloff=5 "keep 5 lines visible above or below cursor
 set scrolljump=5 "scrolls 5 lines instead of 1
-set fillchars+=vert:│
 set listchars=tab:▶-,nbsp:␣,trail:∙,eol:↵
 if has("patch-7.4-711") "option 'space' was added in this patch
     set listchars+=space:∙
 endif
 
-"make splits feel more correct
-set splitbelow "splits open below instead of above
-set splitright "splits open right instead of left
+if has("windows") && has("folding")
+    set fillchars+=vert:│
+    "make splits feel more correct
+    set splitbelow "splits open below instead of above
+    set splitright "splits open right instead of left
+endif
 
 "searching
-set incsearch
+if has("extra_search")
+    set incsearch
+    set hlsearch "highlight all matches (:nohlsearch or :noh to stop)
+endif
 set ignorecase "case insensitive search
 set smartcase "unless I searched for capitalized letters
-set hlsearch "highlight all matches (:nohlsearch or :noh to stop)
 "}}}----------------------------------------------------------------------------
 
 
@@ -273,9 +277,11 @@ augroup misc_group
     autocmd BufNewFile **/Notebook/*.md call notebook#NewEntry()
 augroup END
 
-"enable folding of code blocks
-set foldmethod=syntax
-set foldlevelstart=99 "start with no folds closed
+if has("folding")
+    "enable folding of code blocks
+    set foldmethod=syntax
+    set foldlevelstart=99 "start with no folds closed
+endif
 "}}}----------------------------------------------------------------------------
 
 
