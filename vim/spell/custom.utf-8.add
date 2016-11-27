@@ -1,6 +1,6 @@
 ## Bradford Smith
 ## ~/.vim/spell/custom.utf-8.add
-## 09/15/2016
+## 11/25/2016
 ## custom.utf-8.add Vim spellfile
 /encoding=utf-8
 
@@ -164,18 +164,19 @@ IP
 NSA
 README
 SSL
-TCP/IP
+TCP
 TLS
 UDP
+VoIP/=
 WLAN
 XSS
-VoIP
 app
 apps
 blog
 ciphertext
 cpu
 crypto
+cryptographic
 etc
 executables
 filesystem

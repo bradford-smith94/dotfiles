@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 11/24/2016
+" updated: 11/26/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -48,6 +48,7 @@ Plugin 'bradford-smith94/vim-colors-bsmith'
 Plugin 'bradford-smith94/vim-superupdate' "automatic plugin updating
 Plugin 'editorconfig/editorconfig-vim' "support for editorconfig
 Plugin 'EinfachToll/DidYouMean'
+Plugin 'honza/vim-snippets'
 Plugin 'konfekt/fastfold'
 Plugin 'mgrabovsky/vim-xverif'
 Plugin 'nikvdp/ejs-syntax'
@@ -55,6 +56,9 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'runoshun/vim-alloy'
 if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
     Plugin 'shougo/neocomplete'
+endif
+if has("python") || has("python3")
+    Plugin 'SirVer/ultisnips'
 endif
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-speeddating' "allow <C-a>/<C-x> to work for dates and times
@@ -107,9 +111,13 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 let g:qs_first_occurrence_highlight_color = 81
 let g:qs_second_occurrence_highlight_color = 161
 
-"use Tab for completion
-inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+if has("python") || has("python3")
+    let g:UltiSnipsExpandTrigger = "<Tab>"
+    "let g:UltiSnipsListSnippets = "<C-Tab>"
+    let g:UltiSnipsJumpForwardTrigger = "<Tab>"
+    let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
+endif
+
 if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
     "Backspace closes popup
     inoremap <expr><BS> neocomplete#smart_close_popup() ."\<C-h>"
