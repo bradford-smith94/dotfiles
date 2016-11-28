@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 11/26/2016
+" updated: 11/28/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -57,7 +57,7 @@ Plugin 'runoshun/vim-alloy'
 if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
     Plugin 'shougo/neocomplete'
 endif
-if has("python") || has("python3")
+if v:version >= 704 && (has("python") || has("python3"))
     Plugin 'SirVer/ultisnips'
 endif
 Plugin 'tpope/vim-fugitive'
