@@ -13,7 +13,7 @@ set backspace=indent,eol,start "makes backspace work like expected
 set noerrorbells
 set visualbell
 set t_vb=
-set viminfo='100,<50,s10,h,!,n~/.vim/viminfo "see :help 'viminfo'
+set viminfo='100,<50,s10,/0,h,n~/.vim/viminfo "see :help 'viminfo'
 set nomodeline "disable modelines
 set notimeout "don't timeout on :mappings
 set ttimeout "timeout on key codes (like esc and arrow keys)
