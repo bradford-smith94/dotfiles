@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 11/09/2016
+# updated: 11/28/2016
 #####################
 
 [user]
@@ -39,7 +39,7 @@
     alias = "!git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'"
 
     authors = "shortlog -n -s --no-merges"
-    branches = "branch -a"
+    branches = "branch -avv"
     contributions ="!git shortlog -n -s --no-merges | colrm 1 8 | xargs -I % \
         sh -c \"echo \\\"%: \\\"; \
         git log --no-merges --author=\\\"%\\\" --name-only --pretty=format:\\\"\\\" | sort -u | wc -l | tr -d '\n'; \
