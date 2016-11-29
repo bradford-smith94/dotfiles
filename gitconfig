@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 11/28/2016
+# updated: 11/29/2016
 #####################
 
 [user]
@@ -42,7 +42,7 @@
     branches = "branch -avv"
     contributions ="!git shortlog -n -s --no-merges | colrm 1 8 | xargs -I % \
         sh -c \"echo \\\"%: \\\"; \
-        git log --no-merges --author=\\\"%\\\" --name-only --pretty=format:\\\"\\\" | sort -u | wc -l | tr -d '\n'; \
+        git log --no-merges --author=\\\"%\\\" --name-only --pretty=format:\\\"\\\" | sort -u | sed '/^$/d' | wc -l | tr -d '\n'; \
         echo -n \\\" files changed, \\\"; \
         git log --shortstat --author \\\"%\\\" \
         | grep \\\"files\\? changed\\\" \
