@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.bashrc
-# updated: 11/07/2016
+# updated: 12/01/2016
 #####################
 
 # If not running interactively, don't do anything
@@ -20,9 +20,6 @@ shopt -s checkwinsize
 
 # use vi input mode
 set -o vi
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # check if we're connected via SSH
 if [ "x$SSH_TTY" != "x" ]; then

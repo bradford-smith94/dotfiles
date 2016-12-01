@@ -1,6 +1,6 @@
 # Bradford Smith
 # .shell_env
-# updated: 08/04/2016
+# updated: 12/01/2016
 #####################
 
 # turn off flow control (ctrl-q and ctrl-s)
@@ -11,6 +11,9 @@ stty -ixoff
 if [ -f "$HOME/.shell_aliases" ]; then
     . ~/.shell_aliases
 fi
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # use dircolors to set $LC_COLORS
 if [ -f /usr/bin/dircolors ]; then
@@ -24,7 +27,10 @@ if [ -d ~/bin ]; then
     PATH=~/bin:$PATH
 fi
 
-PATH=$PATH:/opt/android-sdk/tools/
+# if android tools exist add them to the path
+if [ -d /opt/android-sdk/tools/ ]; then
+    PATH=$PATH:/opt/android-sdk/tools/
+fi
 export PATH=$PATH
 
 # use vim as the default editor and man pager
