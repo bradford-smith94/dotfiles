@@ -1,5 +1,5 @@
 " Bradford Smith
-" 07/21/2016
+" 12/05/2016
 " ~/.vim/custom/templates/Makefile.vim
 " this file is sourced when creating a new Makefile
 " in order to prefill it with a desired default Makefile
@@ -23,15 +23,15 @@ SRC=
 RM=rm -f
 INCLPATH=
 LIBPATH=
-LDLIBS=
+LDLIBS+=
 LDFLAGS+=
+CFLAGS+=
+CPPFLAGS+= -pedantic-errors -Wall
+#CXXFLAGS+=
+DBFLGS= -g -DDEBUG
 # implicit compiling rules:
 # C++ compiled with: `$(CXX) -c $(CPPFLAGS) $(CXXFLAGS)`
 # C complied with: `$(CC) -c $(CPPFLAGS) $(CFLAGS)`
-CFLAGS+=
-CPPFLAGS+= -pedantic-errors -Wall
-CXXFLAGS+=
-DBFLGS= -g -DDEBUG
 
 all: $(OBJ)
 	#$(CXX) $(LDFLAGS) $(OBJ) $(LDLIBS) -o $(PRG)
