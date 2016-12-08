@@ -1,5 +1,5 @@
 " Bradford Smith
-" 12/05/2016
+" 12/07/2016
 " ~/.vim/custom/templates/Makefile.vim
 " this file is sourced when creating a new Makefile
 " in order to prefill it with a desired default Makefile
@@ -33,6 +33,7 @@ DBFLGS= -g -DDEBUG
 # C++ compiled with: `$(CXX) -c $(CPPFLAGS) $(CXXFLAGS)`
 # C complied with: `$(CC) -c $(CPPFLAGS) $(CFLAGS)`
 
+.PHONY: debug clean fclean re tar
 all: $(OBJ)
 	#$(CXX) $(LDFLAGS) $(OBJ) $(LDLIBS) -o $(PRG)
 	#$(CC) $(LDFLAGS) $(OBJ) $(LDLIBS) -o $(PRG)
