@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 11/28/2016
+" updated: 12/11/2016
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -550,6 +550,7 @@ inoremap <F5> <C-o>:w<CR>
 "[F7] toggles paste mode
 noremap <F7> :setlocal paste!<CR>
 inoremap <F7> <C-o>:setlocal paste!<CR>
+set pastetoggle=<F7>
 
 "[F8] toggles spellcheck
 noremap <F8> :setlocal spell!<CR>
