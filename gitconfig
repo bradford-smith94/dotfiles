@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 11/29/2016
+# updated: 12/11/2016
 #####################
 
 [user]
@@ -58,6 +58,7 @@
     newest = "log -1"
 
     remotes = "remote -v"
+    stash-unstaged = "stash -k"
     stashes = "stash list"
     tags = "tag"
     today ="log --since=midnight"
