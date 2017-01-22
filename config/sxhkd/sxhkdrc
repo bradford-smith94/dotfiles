@@ -10,9 +10,30 @@ ctrl + alt + t
 super + space
 	rofi -show run
 
+# screen lock
+ctrl + alt + l
+    xkcd_locker.sh
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
+# Brightness keys
+XF86MonBrightnessUp
+    xbacklight -inc 5
+
+XF86MonBrightnessDown
+    xbacklight -dec 5
+
+# Volume keys
+XF86AudioRaiseVolume
+    pactl set-sink-volume 0 +5%
+
+XF86AudioLowerVolume
+    pactl set-sink-volume 0 -5%
+
+XF86AudioMute
+    pactl set-sink-mute 0 toggle
 
 #
 # bspwm hotkeys
