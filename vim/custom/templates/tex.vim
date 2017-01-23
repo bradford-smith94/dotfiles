@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/custom/templates/tex.vim
-" 07/21/2016
+" 01/23/2017
 " this file is sourced when creating a new LaTeX (*.tex) file
 
 " :insert will insert all following lines until it reaches a line with just a
@@ -13,15 +13,13 @@
 
 % global document styles =======================================================
 
-\\documentclass[11pt, letterpaper]{article}
+\\documentclass[12pt, letterpaper]{article}
 
-\\usepackage[letterpaper, margin=0.5in]{geometry}
+\\usepackage[letterpaper, margin=1.0in]{geometry}
 
 \\usepackage[utf8]{inputenc}
 
 \\usepackage[T1]{fontenc}
-
-\\usepackage{tgbonum}
 
 \\usepackage{textcomp}
 
