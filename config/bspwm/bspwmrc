@@ -1,3 +1,6 @@
 #! /bin/sh
 
 bspc monitor -d I II III IV V VI VII VIII IX X
+
+stalonetray&
+nm-applet&
