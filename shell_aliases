@@ -1,6 +1,6 @@
 # Bradford Smith
 # .shell_aliases
-# updated: 10/04/2016
+# updated: 01/25/2017
 #####################
 
 ## Overall
@@ -57,5 +57,9 @@ if [ -n "$ZSH_VERSION" ]; then
     alias mmv='noglob zmv -W'
 
     ## suffix alias for pdf files
-    alias -s pdf='evince'
+    if type evince >/dev/null 2>&1 ; then
+        alias -s pdf='evince'
+    elif type zathura >/dev/null 2>&1 ; then
+        alias -s pdf='zathura'
+    fi
 fi
