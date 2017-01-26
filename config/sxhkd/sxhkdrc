@@ -10,6 +10,10 @@ ctrl + alt + t
 super + space
 	rofi -show run
 
+# window switcher
+alt + Tab
+    rofi -show window
+
 # screen lock
 ctrl + alt + l
     xkcd_locker.sh
@@ -34,6 +38,10 @@ XF86AudioLowerVolume
 
 XF86AudioMute
     pactl set-sink-mute 0 toggle
+
+#Printscreen keys
+Print
+    scrot -e 'mv $f ~/Pictures/'
 
 #
 # bspwm hotkeys
