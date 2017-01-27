@@ -1,6 +1,16 @@
-#! /bin/sh
+#!/bin/bash
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+mon_internal="eDP1"
+mon_external="HDMI1"
+
+if bspc monitor $mon_external; then
+    bspc monitor $mon_internal  -d I II III IV V VI VII VIII IX X
+    bspc monitor $mon_external  -d VII IX X
+else
+    bspc monitor $mon_internal  -d I II III IV V VI VII VIII IX X
+fi
+
+bspc config click_to_focus true
 
 stalonetray&
 nm-applet&
