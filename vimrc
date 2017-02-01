@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 01/22/2017
+" updated: 02/01/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -53,6 +53,7 @@ Plugin 'EinfachToll/DidYouMean'
 Plugin 'honza/vim-snippets'
 Plugin 'konfekt/fastfold'
 Plugin 'mgrabovsky/vim-xverif'
+Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'nikvdp/ejs-syntax'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'runoshun/vim-alloy'
