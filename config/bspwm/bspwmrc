@@ -12,5 +12,6 @@ fi
 
 bspc config click_to_focus true
 
-stalonetray&
+~/.config/polybar/launch.sh
+dunst&
 nm-applet&

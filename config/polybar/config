@@ -1,0 +1,49 @@
+; comments
+[bar/mybar]
+monitor = eDP1
+bottom = false
+fixed-center = true
+width = 100%
+height = 32
+background = #414141
+foreground = #d3d7cf
+
+separator =
+
+locale = en_US.UTF-8
+
+font-0 = Dejavu Sans Mono:size=11;2
+
+tray-position = right
+tray-detached = false
+tray-maxsize = 20
+
+; modules
+modules-left = bspwm
+modules-center = date
+modules-right = battery volume
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+poll-interval = 5
+time-format = %H:%M
+
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = true
+enable-click = true
+label-focused-foreground = #87ff87
+
+[module/date]
+type = internal/date
+interval = 1.0
+date = %a, %b %d, %Y
+time = %H:%M
+label = %date% - %time%
+
+[module/volume]
+type = internal/volume
+master-mixer = Master
+label-muted = muted
