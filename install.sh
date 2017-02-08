@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 08/14/2016
+# updated: 02/08/2017
 #
 # This script can be run to install my dotfiles.
 #
@@ -48,6 +48,8 @@ hooks_target=$dir/.git/hooks
 # backup directories
 olddir=$HOME/.dotfiles_old
 oldconfig=$HOME/.config_old
+
+installed_files=$(mktemp)
 
 # list of files/folders to symlink in homedir
 files="tmux.conf\
@@ -196,6 +198,11 @@ function makeSymLinks
     files=$*
 
     for file in $files; do
+        if grep -q $file $installed_files ; then
+            echo -e "${YELLOW}$file was already linked this session, skipping...${NC}"
+            continue
+        fi
+
         if [ $interactive -eq 1 ]; then
             if ! promptYN "Link $file to $dest" "y"; then
                 continue
@@ -210,6 +217,7 @@ function makeSymLinks
                 echo -e "${GREEN}Creating symlink to $file in $dest${NC}"
                 unlink $target
                 ln -s $src/$file $target
+                echo $file >> $installed_files
             else
                 echo -e "${CYAN}$file is already linked here, skipping...${NC}"
             fi
@@ -217,6 +225,7 @@ function makeSymLinks
             mv $target $backup/ 2> /dev/null
             echo -e "${GREEN}Creating symlink to $file in $dest${NC}"
             ln -s $src/$file $target
+            echo $file >> $installed_files
         fi
     done
 }
@@ -248,6 +257,11 @@ function makeSymLinksGroup
         fi
     fi # end if interactive
     for file in $files; do
+        if grep -q $file $installed_files ; then
+            echo -e "${YELLOW}$file was already linked this session, skipping...${NC}"
+            continue
+        fi
+
         target=$dest/$file
         if [ $useDot -eq 1 ]; then
             target=$dest/.$file
@@ -257,6 +271,7 @@ function makeSymLinksGroup
                 echo -e "${GREEN}Creating symlink to $file in $dest${NC}"
                 unlink $target
                 ln -s $src/$file $target
+                echo $file >> $installed_files
             else
                 echo -e "${CYAN}$file is already linked here, skipping...${NC}"
             fi
@@ -264,6 +279,7 @@ function makeSymLinksGroup
             mv $target $backup/ 2> /dev/null
             echo -e "${GREEN}Creating symlink to $file in $dest${NC}"
             ln -s $src/$file $target
+            echo $file >> $installed_files
         fi
     done
     if [ "$hook" != "" ]; then
