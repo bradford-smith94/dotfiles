@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 02/08/2017
+# updated: 02/17/2017
 #
 # This script can be run to install my dotfiles.
 #
@@ -143,18 +143,13 @@ function promptYN
 
     echo -n "$question? $prompt "
 
-    #TODO figure out a nice case insensitive comparison
     read response
+    response=$(echo $response | tr '[:upper:]' '[:lower:]')
+
     while [[ $response != "n" && \
-        $response != "N" && \
         $response != "no" && \
-        $response != "No" && \
-        $response != "NO" && \
         $response != "y" && \
-        $response != "Y" && \
-        $response != "yes" && \
-        $response != "Yes" && \
-        $response != "YES" ]]; do
+        $response != "yes" ]]; do
         if [[ -z "$response" ]] && [[ -n "$default" ]]; then
             return $default
         fi
@@ -163,16 +158,10 @@ function promptYN
     done
 
     if [[ $response == "n" || \
-        $response == "N" || \
-        $response == "no" || \
-        $response == "No" || \
-        $reponse == "NO" ]]; then
+        $reponse == "no" ]]; then
         return 1 #false
     elif [[ $response == "y" || \
-        $response == "Y" || \
-        $response == "yes" || \
-        $response == "Yes" || \
-        $reponse == "YES" ]]; then
+        $reponse == "yes" ]]; then
         return 0 #true
     else # this shouldn't happen
         echo -e "${RED}Something went wrong${NC}"
