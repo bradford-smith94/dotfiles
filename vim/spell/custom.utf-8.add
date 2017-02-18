@@ -1,6 +1,6 @@
 ## Bradford Smith
 ## ~/.vim/spell/custom.utf-8.add
-## 11/25/2016
+## 02/03/2017
 ## custom.utf-8.add Vim spellfile
 /encoding=utf-8
 
@@ -187,6 +187,7 @@ metadata
 plaintext
 plugin
 smartcard
+unencrypted
 utf
 vim
 vimrc

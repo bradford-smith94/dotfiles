@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 08/14/2016
+# updated: 02/17/2017
 #
 # This script can be run to install my dotfiles.
 #
@@ -13,12 +13,17 @@
 #{{{ Variables #################################################################
 usage="usage: \"$0 -[abfgh]\""
 
-# install parameters
-root=0
-remove_broken_links=0
-git_hooks=0
-interactive=1
-force=0
+# booleans for ease of writing
+# declared backwards from C standard so they can be used as return codes
+TRUE=0
+FALSE=1
+
+# default install parameters
+root=$FALSE
+remove_broken_links=$FALSE
+git_hooks=$FALSE
+interactive=$TRUE
+force=$FALSE
 
 # colors
 BLACK='\033[0;30m'
@@ -39,53 +44,60 @@ L_CYAN='\033[1;36m'
 WHITE='\033[1;37m'
 NC='\033[0m'
 
-# directories
+# project directories
 dir=$(dirname $(readlink -f $0))
 config=$dir/config
 hooks_dir=$dir/.hooks
+
+# target directories
+# $HOME of course
+config_target=$HOME/.config
 hooks_target=$dir/.git/hooks
 
 # backup directories
 olddir=$HOME/.dotfiles_old
 oldconfig=$HOME/.config_old
 
-# list of files/folders to symlink in homedir
-files="tmux.conf\
- Xresources\
- xprofile"
+# keep a list of files installed (or attempted in the case it's already
+# installed) this session
+installed_files=$(mktemp)
 
-# groups that have dependent files
-vim_group="vimrc\
- vim"
+# lists of files to install
+# format: <file> <source dir> <target dir> <backup dir> <include a leading dot (true/false)>
+files[0]="tmux.conf    $dir $HOME $olddir $TRUE"
+files[1]="Xresources   $dir $HOME $olddir $TRUE"
+files[2]="xprofile     $dir $HOME $olddir $TRUE"
+files[3]="bin          $dir $HOME $olddir $FALSE"
+files[4]="redshift.conf     $config $config_target $oldconfig $FALSE"
+files[5]="termite           $config $config_target $oldconfig $FALSE"
+files[6]="conky             $config $config_target $oldconfig $FALSE"
+files[7]="Xresources.d      $config $config_target $oldconfig $FALSE"
+files[8]="cower             $config $config_target $oldconfig $FALSE"
 
-git_group="gitconfig\
- gitignore\
- gitmessage"
+# lists that represent a group of dependent files (that is the whole group
+# should be installed in order for it to work properly)
+vim[0]="vimrc  $dir $HOME $olddir $TRUE"
+vim[1]="vim    $dir $HOME $olddir $TRUE"
 
-bash_group="bashrc\
- shell_env\
- shell_aliases\
- dir_colors"
+git[0]="gitconfig  $dir $HOME $olddir $TRUE"
+git[1]="gitignore  $dir $HOME $olddir $TRUE"
+git[2]="gitmessage $dir $HOME $olddir $TRUE"
 
-zsh_group="zshrc\
- zsh\
- shell_env\
- shell_aliases\
- dir_colors"
+bash[0]="bashrc        $dir $HOME $olddir $TRUE"
+bash[1]="shell_env     $dir $HOME $olddir $TRUE"
+bash[2]="shell_aliases $dir $HOME $olddir $TRUE"
+bash[3]="dir_colors    $dir $HOME $olddir $TRUE"
 
-# list of files/folders to symlink in homedir without dot
-no_dot_files="bin"
+zsh[0]="zshrc          $dir $HOME $olddir $TRUE"
+zsh[1]="zsh            $dir $HOME $olddir $TRUE"
+zsh[2]="shell_env      $dir $HOME $olddir $TRUE"
+zsh[3]="shell_aliases  $dir $HOME $olddir $TRUE"
+zsh[4]="dir_colors     $dir $HOME $olddir $TRUE"
 
-# list of files/folders to symlink in homedir/.config
-config_files="redshift.conf\
- termite\
- conky\
- Xresources.d\
- cower"
 #}}} End Variables #############################################################
 
 #{{{ Functions #################################################################
-#{{{ _help #####################################################################
+#{{{ _help ---------------------------------------------------------------------
 # Show help text
 function _help
 {
@@ -103,9 +115,9 @@ Note: -b and -g are only necessary when not running interactively (-a)
 
 EndHelpText
 }
-#}}} End _help #################################################################
+#}}} End _help -----------------------------------------------------------------
 
-#{{{ printSep ##################################################################
+#{{{ printSep ------------------------------------------------------------------
 # Print a full terminal width separator line
 # $1 (optional) character to draw the line with
 function printSep
@@ -116,43 +128,37 @@ function printSep
         printf '\n%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
     fi
 }
-#}}} End printSep ##############################################################
+#}}} End printSep --------------------------------------------------------------
 
-#{{{ promptYN ##################################################################
+#{{{ promptYN ------------------------------------------------------------------
 # Prompt the user with a yes or no question and get a true or false response
 # $1 question, $2 default choice (y, n or "")
 function promptYN
 {
     question=$1
-    shift
-    choice=$1
+    choice=$2
     prompt=""
     default=""
 
     if [ "$choice" == "y" ]; then
         prompt="(Y/n)"
-        default=0 #true
+        default=$TRUE
     elif [ "$choice" == "n" ]; then
         prompt="(y/N)"
-        default=1 #false
+        default=$FALSE
     else
         prompt="(y/n)"
     fi
 
     echo -n "$question? $prompt "
 
-    #TODO figure out a nice case insensitive comparison
     read response
+    response=$(echo $response | tr '[:upper:]' '[:lower:]')
+
     while [[ $response != "n" && \
-        $response != "N" && \
         $response != "no" && \
-        $response != "No" && \
-        $response != "NO" && \
         $response != "y" && \
-        $response != "Y" && \
-        $response != "yes" && \
-        $response != "Yes" && \
-        $response != "YES" ]]; do
+        $response != "yes" ]]; do
         if [[ -z "$response" ]] && [[ -n "$default" ]]; then
             return $default
         fi
@@ -161,140 +167,85 @@ function promptYN
     done
 
     if [[ $response == "n" || \
-        $response == "N" || \
-        $response == "no" || \
-        $response == "No" || \
-        $reponse == "NO" ]]; then
-        return 1 #false
+        $reponse == "no" ]]; then
+        return $FALSE
     elif [[ $response == "y" || \
-        $response == "Y" || \
-        $response == "yes" || \
-        $response == "Yes" || \
-        $reponse == "YES" ]]; then
-        return 0 #true
+        $reponse == "yes" ]]; then
+        return $TRUE
     else # this shouldn't happen
         echo -e "${RED}Something went wrong${NC}"
-        return 1 #false
+        return $FALSE
     fi
 }
-#}}} End promptYN ##############################################################
+#}}} End promptYN --------------------------------------------------------------
 
-#{{{ makeSymLinks ##############################################################
+#{{{ makeSymLink ---------------------------------------------------------------
 # Symlink a file
-# $1 destination, $2 source, $3 destination backup,
-# $4 use dot (0|1), $5 files (can be a list)
-function makeSymLinks
+# $1 file, $2 source, $3 destination, $4 backup directory, $5 use a dot
+function makeSymLink
 {
-    dest=$1
-    shift
-    src=$1
-    shift
-    backup=$1
-    shift
-    useDot=$1
-    shift
-    files=$*
+    file=$1
+    src=$2
+    dest=$3
+    backup=$4
+    useDot=$5
 
-    for file in $files; do
-        if [ $interactive -eq 1 ]; then
-            if ! promptYN "Link $file to $dest" "y"; then
-                continue
-            fi
-        fi # end if interactive
-        target=$dest/$file
-        if [ $useDot -eq 1 ]; then
-            target=$dest/.$file
-        fi # end if useDot
-        if [ "$(readlink $target 2> /dev/null)" = $src/$file ]; then
-            if [ $force -eq 1 ]; then
-                echo -e "${GREEN}Creating symlink to $file in $dest${NC}"
-                unlink $target
-                ln -s $src/$file $target
-            else
-                echo -e "${CYAN}$file is already linked here, skipping...${NC}"
-            fi
-        else
-            mv $target $backup/ 2> /dev/null
-            echo -e "${GREEN}Creating symlink to $file in $dest${NC}"
-            ln -s $src/$file $target
-        fi
-    done
-}
-#}}} End makeSymLinks ##########################################################
+    if grep -wq $file $installed_files ; then
+        echo -e "${YELLOW}$file was already done this session, skipping...${NC}"
+        return
+    fi
 
-#{{{ makeSymLinksGroup #########################################################
-# Like makeSymLinks but for a group of dependent files (e.g. .vimrc and .vim/)
-# $1 group, $2 hook function, $3 destination, $4 source,
-# $5 destination backup, $6 use dot (0|1), $7 files (should be a list)
-function makeSymLinksGroup
-{
-    group=$1
-    shift
-    hook=$1
-    shift
-    dest=$1
-    shift
-    src=$1
-    shift
-    backup=$1
-    shift
-    useDot=$1
-    shift
-    files=$*
-
-    if [ $interactive -eq 1 ]; then
-        if ! promptYN "Link $group to $dest" "y"; then
+    if [ $interactive -eq $TRUE ]; then
+        if ! promptYN "Link $file to $dest" "y"; then
             return
         fi
     fi # end if interactive
-    for file in $files; do
-        target=$dest/$file
-        if [ $useDot -eq 1 ]; then
-            target=$dest/.$file
-        fi # end if useDot
-        if [ "$(readlink $target 2> /dev/null)" = $src/$file ]; then
-            if [ $force -eq 1 ]; then
-                echo -e "${GREEN}Creating symlink to $file in $dest${NC}"
-                unlink $target
-                ln -s $src/$file $target
-            else
-                echo -e "${CYAN}$file is already linked here, skipping...${NC}"
-            fi
-        else
-            mv $target $backup/ 2> /dev/null
+
+    target=$dest/$file
+    if [ $useDot -eq $TRUE ]; then
+        target=$dest/.$file
+    fi # end if useDot
+
+    echo $file >> $installed_files
+    if [ "$(readlink $target 2> /dev/null)" = $src/$file ]; then
+        if [ $force -eq $TRUE ]; then
             echo -e "${GREEN}Creating symlink to $file in $dest${NC}"
+            unlink $target
             ln -s $src/$file $target
+        else
+            echo -e "${CYAN}$file is already linked here, skipping...${NC}"
         fi
-    done
-    if [ "$hook" != "" ]; then
-        $hook
+    else
+        mv $target $backup/ 2> /dev/null
+        echo -e "${GREEN}Creating symlink to $file in $dest${NC}"
+        ln -s $src/$file $target
     fi
 }
-#}}} End makeSymLinksGroup #####################################################
+#}}} End makeSymLinks ----------------------------------------------------------
 #}}} End Functions #############################################################
 
 #{{{ Code ######################################################################
-#{{{ getopts ###################################################################
+#{{{ getopts -------------------------------------------------------------------
 while getopts abfghr: FLAG; do
     case $FLAG in
         a) #all (skip interactive)
-            interactive=0
+            interactive=$FALSE
             ;;
         b) #broken links
-            remove_broken_links=1
+            remove_broken_links=$TRUE
             ;;
         f) #force
-            force=1
+            force=$TRUE
             ;;
         g) #install git hooks
-            git_hooks=1
+            git_hooks=$TRUE
             ;;
         h) #help
             _help
             exit
             ;;
         r) #root
-            root=1
+            root=$TRUE
             ;;
         \?) #unrecognized flag
             echo "$usage"
@@ -304,7 +255,7 @@ while getopts abfghr: FLAG; do
 done
 
 shift $((OPTIND-1)) #Moves getopts to the next argument
-#}}} End getopts ###############################################################
+#}}} End getopts ---------------------------------------------------------------
 
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in $HOME"
@@ -314,36 +265,80 @@ mkdir -p $olddir
 echo "Creating $oldconfig for backup of any existing files in $HOME/.config"
 mkdir -p $oldconfig
 
-# change to the dotfiles directory
+# create config_target
+echo "Creating $config_target in case it doesn't exist yet"
+mkdir -p $config_target
+
+#{{{ install dotfiles ----------------------------------------------------------
 printSep "="
-echo "Changing to the $dir directory ..."
-cd $dir
 
-# move any existing dotfiles in $HOME to $dotfiles_old directory, then create
-# symlinks from the $HOME to any files in the $HOME/.dotfiles directory
-# specified in $files
-makeSymLinks $HOME $dir $olddir 1 $files
-makeSymLinks $HOME $dir $olddir 0 $no_dot_files
-makeSymLinksGroup "Vim Configuration" "vim +PluginInstall +qa" $HOME $dir $olddir 1 $vim_group
-makeSymLinksGroup "Git Configuration" "source $dir/bin/hasGitPushSimple.sh" $HOME $dir $olddir 1 $git_group
-makeSymLinksGroup "Bash Configuration" "" $HOME $dir $olddir 1 $bash_group
-makeSymLinksGroup "Zsh Configuration" "" $HOME $dir $olddir 1 $zsh_group
+# install non-dependent files from the 'files' list
+for ((i = 0; i < ${#files[@]}; i++)); do
+    arr=(${files[$i]})
+    makeSymLink ${arr[0]} ${arr[1]} ${arr[2]} ${arr[3]} ${arr[4]}
+done
 
-# change to config directory
-printSep "="
-echo "Changing to the $config directory ..."
-cd $config
+# install Vim group
+if [ $interactive -eq $FALSE ] || promptYN "Link Vim Configuration group" "y"; then
+    saved_interactive=$interactive
+    interactive=$FALSE #don't prompt for dependent files
 
-# move existing and make symlinks in $HOME/.config
-makeSymLinks $HOME/.config $config $oldconfig 0 $config_files
+    for ((i = 0; i < ${#vim[@]}; i++)); do
+        arr=(${vim[$i]})
+        makeSymLink ${arr[0]} ${arr[1]} ${arr[2]} ${arr[3]} ${arr[4]}
+    done
+
+    interactive=$saved_interactive
+fi
+
+# install Git group
+if [ $interactive -eq $FALSE ] || promptYN "Link Git Configuration group" "y"; then
+    saved_interactive=$interactive
+    interactive=$FALSE #don't prompt for dependent files
+
+    for ((i = 0; i < ${#git[@]}; i++)); do
+        arr=(${git[$i]})
+        makeSymLink ${arr[0]} ${arr[1]} ${arr[2]} ${arr[3]} ${arr[4]}
+    done
+
+    interactive=$saved_interactive
+    $dir/bin/hasGitPushSimple.sh
+fi
+
+# install Bash group
+if [ $interactive -eq $FALSE ] || promptYN "Link Bash Configuration group" "y"; then
+    saved_interactive=$interactive
+    interactive=$FALSE #don't prompt for dependent files
+
+    for ((i = 0; i < ${#bash[@]}; i++)); do
+        arr=(${bash[$i]})
+        makeSymLink ${arr[0]} ${arr[1]} ${arr[2]} ${arr[3]} ${arr[4]}
+    done
+
+    interactive=$saved_interactive
+fi
+
+# install Zsh group
+if [ $interactive -eq $FALSE ] || promptYN "Link Zsh Configuration group" "y"; then
+    saved_interactive=$interactive
+    interactive=$FALSE #don't prompt for dependent files
+
+    for ((i = 0; i < ${#zsh[@]}; i++)); do
+        arr=(${zsh[$i]})
+        makeSymLink ${arr[0]} ${arr[1]} ${arr[2]} ${arr[3]} ${arr[4]}
+    done
+
+    interactive=$saved_interactive
+fi
+#}}} end install dotfiles ------------------------------------------------------
 
 # install git hooks
-if [[ $interactive -eq 1 || $git_hooks -eq 1 ]]; then
+if [[ $interactive -eq $TRUE || $git_hooks -eq $TRUE ]]; then
     printSep "="
     echo "Install Git hooks for this repository"
 
     for hook in $hooks_dir/*; do
-        if [ $interactive -eq 1 ]; then
+        if [ $interactive -eq $TRUE ]; then
             if ! promptYN "Copy $hook to $hooks_target" "y"; then
                 continue
             fi
@@ -366,12 +361,17 @@ if [ ! "$(ls -A $oldconfig)" ]; then
     rmdir $oldconfig
 fi
 
+if [ ! "$(ls -A $config_target)" ]; then
+    echo "$config_target is empty, we must have created it, removing..."
+    rmdir $config_target
+fi
+
 # check for broken symlinks
 
 printSep "="
 
-if [ $remove_broken_links -eq 1 ] || \
-    [ $interactive -eq 1 ] && promptYN "Check for broken symlinks" ""; then
+if [ $remove_broken_links -eq $TRUE ] || \
+    [ $interactive -eq $TRUE ] && promptYN "Check for broken symlinks" ""; then
 
     broken=$(find $HOME -type l ! -exec test -e {} \; -print)
 

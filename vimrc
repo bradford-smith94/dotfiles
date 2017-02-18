@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 12/11/2016
+" updated: 02/01/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -46,11 +46,14 @@ Plugin 'VundleVim/Vundle.vim' "originally gmarik/Vundle.vim
 Plugin 'bradford-smith94/vim-autolist' "automatic list continuation
 Plugin 'bradford-smith94/vim-colors-bsmith'
 Plugin 'bradford-smith94/vim-superupdate' "automatic plugin updating
-Plugin 'editorconfig/editorconfig-vim' "support for editorconfig
+if executable('editorconfig')
+    Plugin 'editorconfig/editorconfig-vim' "support for editorconfig
+endif
 Plugin 'EinfachToll/DidYouMean'
 Plugin 'honza/vim-snippets'
 Plugin 'konfekt/fastfold'
 Plugin 'mgrabovsky/vim-xverif'
+Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'nikvdp/ejs-syntax'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'runoshun/vim-alloy'
