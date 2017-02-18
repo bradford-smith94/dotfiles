@@ -2,11 +2,12 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 02/17/2017
+# updated: 02/18/2017
 #
 # This script can be run to install my dotfiles.
 #
-# Inspired by: github.com/michaeljsmalley/dotfiles/blob/master/makesymlinks.sh
+# Originally inspired by:
+# https://github.com/michaeljsmalley/dotfiles/blob/master/makesymlinks.sh
 #
 #}}}############################################################################
 
@@ -93,6 +94,14 @@ zsh[1]="zsh            $dir $HOME $olddir $TRUE"
 zsh[2]="shell_env      $dir $HOME $olddir $TRUE"
 zsh[3]="shell_aliases  $dir $HOME $olddir $TRUE"
 zsh[4]="dir_colors     $dir $HOME $olddir $TRUE"
+
+bspwm[0]="bspwm         $config $config_target $oldconfig $FALSE"
+bspwm[1]="sxhkd         $config $config_target $oldconfig $FALSE"
+bspwm[2]="polybar       $config $config_target $oldconfig $FALSE"
+bspwm[3]="rofi          $config $config_target $oldconfig $FALSE"
+bspwm[4]="redshift.conf $config $config_target $oldconfig $FALSE"
+bspwm[5]="xinitrc       $dir    $HOME          $olddir    $TRUE"
+bspwm[6]="xprofile      $dir    $HOME          $olddir    $TRUE"
 
 #}}} End Variables #############################################################
 
@@ -325,6 +334,19 @@ if [ $interactive -eq $FALSE ] || promptYN "Link Zsh Configuration group" "y"; t
 
     for ((i = 0; i < ${#zsh[@]}; i++)); do
         arr=(${zsh[$i]})
+        makeSymLink ${arr[0]} ${arr[1]} ${arr[2]} ${arr[3]} ${arr[4]}
+    done
+
+    interactive=$saved_interactive
+fi
+
+# install Bspwm group
+if [ $interactive -eq $FALSE ] || promptYN "Link Bspwm Configuration group" "y"; then
+    saved_interactive=$interactive
+    interactive=$FALSE #don't prompt for dependent files
+
+    for ((i = 0; i < ${#bspwm[@]}; i++)); do
+        arr=(${bspwm[$i]})
         makeSymLink ${arr[0]} ${arr[1]} ${arr[2]} ${arr[3]} ${arr[4]}
     done
 
