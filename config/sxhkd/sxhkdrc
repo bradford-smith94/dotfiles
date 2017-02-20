@@ -34,8 +34,8 @@ XF86AudioMute
     pactl set-sink-mute 0 toggle
 
 #Printscreen keys
-Print
-    scrot -e 'mv $f ~/Pictures/'
+{@ctrl + ,_} Print
+    scrot {-s,_} 'Screenshot\ from\ %Y-%m-%d\ %H-%M-%S.png' -e 'mv "$f" ~/Pictures/'
 
 #
 # bspwm hotkeys
