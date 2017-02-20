@@ -1,4 +1,8 @@
-; comments
+; Bradford Smith
+; ~/.config/polybar/config
+; updated: 02/20/2017
+; ========================
+
 [bar/mybar]
 monitor = eDP1
 bottom = false
@@ -8,7 +12,8 @@ height = 32
 background = #414141
 foreground = #d3d7cf
 
-separator =
+; separate modules with a single space
+separator = " "
 
 locale = en_US.UTF-8
 
@@ -29,6 +34,7 @@ battery = BAT0
 adapter = ADP1
 poll-interval = 5
 time-format = %H:%M
+label-charging-foreground = #87ff87
 
 [module/bspwm]
 type = internal/bspwm
