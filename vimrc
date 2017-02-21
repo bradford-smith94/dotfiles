@@ -43,6 +43,7 @@ set rtp+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin()
 "plugins '<github_user>/<repo>' or full git path
 Plugin 'VundleVim/Vundle.vim' "originally gmarik/Vundle.vim
+Plugin 'baskerville/vim-sxhkdrc'
 Plugin 'bradford-smith94/vim-autolist' "automatic list continuation
 Plugin 'bradford-smith94/vim-colors-bsmith'
 Plugin 'bradford-smith94/vim-superupdate' "automatic plugin updating
