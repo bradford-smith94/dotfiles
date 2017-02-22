@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 12/11/2016
+# updated: 02/21/2017
 #####################
 
 [user]
@@ -42,7 +42,8 @@
     branches = "branch -avv"
     contributions ="!git shortlog -n -s --no-merges | colrm 1 8 | xargs -I % \
         sh -c \"echo \\\"%: \\\"; \
-        git log --no-merges --author=\\\"%\\\" --name-only --pretty=format:\\\"\\\" | sort -u | sed '/^$/d' | wc -l | tr -d '\n'; \
+        git log --no-merges --author=\\\"%\\\" --name-only --pretty=format:\\\"\\\" \
+        | sort -u | sed '/^$/d' | wc -l | tr -d '\n'; \
         echo -n \\\" files changed, \\\"; \
         git log --shortstat --author \\\"%\\\" \
         | grep \\\"files\\? changed\\\" \
@@ -72,4 +73,4 @@
     whoami = "!git config --get-regexp 'user.*' | colrm 1 5 | sed 's/[ ]/ = /'"
 
     #given a string for an author, try to figure out full name and email
-    whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+    whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\" --author=\"$1\"' -"
