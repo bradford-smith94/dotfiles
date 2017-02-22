@@ -336,8 +336,8 @@ command! Qa qa
 command! W w
 command! Q q
 
-cabbrev B b
-cabbrev E e
+cabbrev B <C-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'b' : 'B')<CR>
+cabbrev E <C-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'e' : 'E')<CR>
 "}}}----------------------------------------------------------------------------
 "}}}----------------------------------------------------------------------------
 
