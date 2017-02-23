@@ -45,7 +45,7 @@ if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent > ~/.ssh-agent-output
 fi
 if [[ "$SSH_AGENT_PID" == "" ]]; then
-    eval "$(<~/.ssh-agent-output)"
+    eval "$(<~/.ssh-agent-output)" > /dev/null
 fi
 
 # if not in SSH
