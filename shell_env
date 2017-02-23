@@ -1,6 +1,6 @@
 # Bradford Smith
 # .shell_env
-# updated: 12/01/2016
+# updated: 02/22/2017
 #####################
 
 # turn off flow control (ctrl-q and ctrl-s)
@@ -37,6 +37,15 @@ export PATH=$PATH
 if [ -f /usr/bin/vim ]; then
     export EDITOR=/usr/bin/vim
     export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man' -\""
+fi
+
+# start ssh-agent
+# https://wiki.archlinux.org/index.php?title=SSH_keys&redirect=no#SSH_agents
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > ~/.ssh-agent-output
+fi
+if [[ "$SSH_AGENT_PID" == "" ]]; then
+    eval "$(<~/.ssh-agent-output)"
 fi
 
 # if not in SSH
