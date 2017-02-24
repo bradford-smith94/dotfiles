@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitignore (global gitignore)
-# updated: 10/09/2016
+# updated: 02/24/2017
 #################################
 
 ## Linux ##
@@ -13,3 +13,6 @@
 
 ## Git Merge ##
 *.orig
+
+## Ctags ##
+tags

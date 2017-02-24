@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 02/18/2017
+# updated: 02/24/2017
 #
 # This script can be run to install my dotfiles.
 #
@@ -69,11 +69,12 @@ files[0]="tmux.conf    $dir $HOME $olddir $TRUE"
 files[1]="Xresources   $dir $HOME $olddir $TRUE"
 files[2]="xprofile     $dir $HOME $olddir $TRUE"
 files[3]="bin          $dir $HOME $olddir $FALSE"
-files[4]="redshift.conf     $config $config_target $oldconfig $FALSE"
-files[5]="termite           $config $config_target $oldconfig $FALSE"
-files[6]="conky             $config $config_target $oldconfig $FALSE"
-files[7]="Xresources.d      $config $config_target $oldconfig $FALSE"
-files[8]="cower             $config $config_target $oldconfig $FALSE"
+files[4]="ctags        $dir $HOME $olddir $TRUE"
+files[5]="redshift.conf     $config $config_target $oldconfig $FALSE"
+files[6]="termite           $config $config_target $oldconfig $FALSE"
+files[7]="conky             $config $config_target $oldconfig $FALSE"
+files[8]="Xresources.d      $config $config_target $oldconfig $FALSE"
+files[9]="cower             $config $config_target $oldconfig $FALSE"
 
 # lists that represent a group of dependent files (that is the whole group
 # should be installed in order for it to work properly)
