@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 02/24/2017
+" updated: 02/26/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -468,6 +468,11 @@ command! Hex call ToggleHexMode()
 
 "Toggle diff mode for current buffer
 command! Diff call ToggleDiffMode()
+
+if executable('xclip')
+    "copy the given range (or the current line) using xclip
+    command! -range Xclip <line1>,<line2>!tee >(xclip -i -selection clipboard)
+endif
 
 "unbind keys
 nnoremap <space> <nop>
