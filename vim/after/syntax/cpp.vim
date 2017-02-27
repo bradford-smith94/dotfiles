@@ -10,3 +10,9 @@ syntax region AngleBracketContents matchgroup=AngleBrackets
             \ end='>'
 
 highlight link AngleBrackets StorageClass
+
+runtime! syntax/doxygen.vim
+
+highlight link doxygenBrief Comment
+highlight link doxygenSpecialTypeOnelineDesc Comment
+highlight link doxygenSpecialOnelineDesc Comment
