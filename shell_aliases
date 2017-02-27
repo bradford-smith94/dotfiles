@@ -1,6 +1,6 @@
 # Bradford Smith
 # .shell_aliases
-# updated: 01/25/2017
+# updated: 02/27/2017
 #####################
 
 ## Overall
@@ -24,7 +24,8 @@ alias gs-pdf='gs -q -dBATCH -dNOPAUSE -dPDFSETTINGS=/prepress \
 -sPAPERSIZE=letter -sDEVICE=pdfwrite -sOutputFile=merged.pdf'
 
 ## IP Addresses
-alias local-ip="ip addr show $(~/bin/activeNetDev.sh) \
+alias local-ip="~/bin/activeNetDev.sh \
+    | xargs -L1 ip addr show \
     | grep 'inet' | awk '{print \$2}'"
 alias public-ip='curl icanhazip.com'
 
