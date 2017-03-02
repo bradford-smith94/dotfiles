@@ -1,6 +1,6 @@
 ! Bradford Smith
 ! ~/.config/rofi/config
-! updated: 01/26/17
+! updated: 03/02/2017
 
 ! "Window width" Set from: Default
 ! rofi.width:                          50
@@ -110,8 +110,8 @@ rofi.separator-style:                solid
 ! "Go to the next column" Set from: Default
 ! rofi.kb-row-right:                   Control+Page_Down
 ! "Select previous entry" Set from: Default
-rofi.kb-row-up:                      Up,Control+p,Shift+Tab,ISO_Left_Tab
+rofi.kb-row-up:                      Up,Control+p,Shift+Tab,ISO_Left_Tab,Alt+Shift+Tab,Alt+ISO_Left_Tab
 ! "Select next entry" Set from: Default
-! rofi.kb-row-down:                    Down,Control+n
+rofi.kb-row-down:                    Down,Control+n,Alt+Tab
 ! "Go to next row, if one left, accept it, if no left next mode." Set from: Default
 ! rofi.kb-row-tab:                     Tab
