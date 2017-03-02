@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 02/26/2017
+" updated: 03/02/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -71,6 +71,7 @@ Plugin 'tpope/vim-surround' "surroundings motions
 Plugin 'tpope/vim-unimpaired' "additional bracket pair mappings
 Plugin 'tpope/vim-repeat' "allow repeating of surround and speeddating
 Plugin 'unblevable/quick-scope' "highlight unique targets for (f, F, etc)
+Plugin 'vim-scripts/scons.vim'
 Plugin 'vim-syntastic/syntastic' "originally scrooloose/syntastic
 Plugin 'Yggdroot/indentLine'
 call vundle#end()
