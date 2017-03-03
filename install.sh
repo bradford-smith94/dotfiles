@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 02/24/2017
+# updated: 03/03/2017
 #
 # This script can be run to install my dotfiles.
 #
@@ -396,15 +396,21 @@ printSep "="
 if [ $remove_broken_links -eq $TRUE ] || \
     [ $interactive -eq $TRUE ] && promptYN "Check for broken symlinks" ""; then
 
-    broken=$(find $HOME -type l ! -exec test -e {} \; -print)
+    #use sed to quote files in case they contain spaces
+    broken=$(find $HOME -type l ! -exec test -e {} \; -print | sed -e 's/^/"/g' -e 's/$/"/g')
 
     if [ -n "$broken" ]; then
         echo -e "${RED}Detected broken symlinks${NC}"
 
+        #form an array split only on newlines
+        IFS=$'\n' arr=($broken)
+
         # prompt for deletion of broken links
-        for link in $broken; do
-            if promptYN "Remove broken link: $link" "y"; then
-                rm $link
+        for ((i = 0; i < ${#arr[@]}; i++)); do
+            if promptYN "Remove broken link: ${arr[$i]}" "y"; then
+                #unquote the file so we can remove it properly
+                file=$(echo ${arr[$i]} | sed -e 's/^"//g' -e 's/"$//g')
+                unlink "$file"
             fi
         done
     else
