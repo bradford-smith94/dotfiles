@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.zsh/bsmith.zsh-theme
-# updated: 10/22/2016
+# updated: 03/04/2017
 #########################
 
 autoload -U colors && colors
@@ -130,6 +130,12 @@ function zle-line-init zle-line-finish zle-keymap-select
 zle -N zle-line-init
 zle -N zle-keymap-select
 zle -N zle-line-finish
+
+function precmd()
+{
+    #automatic window title changing
+    print -Pn "\e]0;%n@%m:%~\a"
+}
 
 # check if we're connected via SSH
 if [ "x$SSH_TTY" != "x" ]; then

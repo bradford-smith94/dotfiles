@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 03/02/2017
+" updated: 03/04/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -146,6 +146,7 @@ if has("syntax")
 endif
 set background=dark
 color bsmith "custom colorscheme
+set title "allow Vim to set the window title
 set t_ut= "fixes issues with background color erase (BCE)
 if has("patch-7.3-787") "relative numbers and absolute will both display
     set number "line numbers

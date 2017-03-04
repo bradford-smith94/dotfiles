@@ -1,12 +1,13 @@
 # Bradford Smith
 # ~/.config/termite/config
-# 01/12/2017
+# 03/04/2017
 ##########################
 
 [options]
     audible_bell = false
     mouse_autohide = true
     font = xos4 Terminus 11
+    dynamic_title = true
 
 [colors]
     foreground = #d3d7cf
