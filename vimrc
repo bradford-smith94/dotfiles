@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 03/04/2017
+" updated: 03/05/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -445,6 +445,21 @@ function! RemoveTrailingSpaces()
     endif
 endfunction
 
+"function to unmap and restore any enter key mappings (<CR>) when
+"   entering/leaving the cmdwin, arg 'enter' specifies whether or not the
+"   function has been called when entering the cmdwin
+function! CmdWinEnterMapping(enter)
+    if a:enter == v:true
+        let b:prev_cr_map = maparg('<CR>', 'n')
+        nunmap <CR>
+    else
+        if exists('b:prev_cr_map')
+            execute 'nnoremap <CR> ' . b:prev_cr_map
+            unlet b:prev_cr_map
+        endif
+    endif
+endfunction
+
 "function to reload the vimrc
 if !exists("*Reload()")
     function! Reload()
@@ -485,8 +500,8 @@ augroup cmdwin
     autocmd!
 
     "enter is usefull in the cmdwin
-    autocmd CmdWinEnter * nunmap <CR>
-    autocmd CmdWinLeave * nnoremap <CR> :
+    autocmd CmdWinEnter * call CmdWinEnterMapping(v:true)
+    autocmd CmdWinLeave * call CmdWinEnterMapping(v:false)
 augroup END
 
 "{{{-leader mappings
