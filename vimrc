@@ -449,7 +449,12 @@ endfunction
 "   entering/leaving the cmdwin, arg 'enter' specifies whether or not the
 "   function has been called when entering the cmdwin
 function! CmdWinEnterMapping(enter)
-    if a:enter == v:true
+    if has("patch-7.4-1154") "v:true and v:false added in this patch
+        let l:entering = v:true
+    else
+        let l:entering = 1
+    endif
+    if a:enter == l:entering
         let b:prev_cr_map = maparg('<CR>', 'n')
         nunmap <CR>
     else
@@ -500,8 +505,13 @@ augroup cmdwin
     autocmd!
 
     "enter is usefull in the cmdwin
-    autocmd CmdWinEnter * call CmdWinEnterMapping(v:true)
-    autocmd CmdWinLeave * call CmdWinEnterMapping(v:false)
+    if has("patch-7.4-1154") "v:true and v:false added in this patch
+        autocmd CmdWinEnter * call CmdWinEnterMapping(v:true)
+        autocmd CmdWinLeave * call CmdWinEnterMapping(v:false)
+    else
+        autocmd CmdWinEnter * call CmdWinEnterMapping(1)
+        autocmd CmdWinLeave * call CmdWinEnterMapping(0)
+    endif
 augroup END
 
 "{{{-leader mappings
