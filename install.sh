@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 03/03/2017
+# updated: 03/08/2017
 #
 # This script can be run to install my dotfiles.
 #
@@ -75,6 +75,7 @@ files[6]="termite           $config $config_target $oldconfig $FALSE"
 files[7]="conky             $config $config_target $oldconfig $FALSE"
 files[8]="Xresources.d      $config $config_target $oldconfig $FALSE"
 files[9]="cower             $config $config_target $oldconfig $FALSE"
+files[10]="ranger           $config $config_target $oldconfig $FALSE"
 
 # lists that represent a group of dependent files (that is the whole group
 # should be installed in order for it to work properly)
@@ -89,20 +90,24 @@ bash[0]="bashrc        $dir $HOME $olddir $TRUE"
 bash[1]="shell_env     $dir $HOME $olddir $TRUE"
 bash[2]="shell_aliases $dir $HOME $olddir $TRUE"
 bash[3]="dir_colors    $dir $HOME $olddir $TRUE"
+bash[4]="bin           $dir $HOME $olddir $FALSE"
 
 zsh[0]="zshrc          $dir $HOME $olddir $TRUE"
 zsh[1]="zsh            $dir $HOME $olddir $TRUE"
 zsh[2]="shell_env      $dir $HOME $olddir $TRUE"
 zsh[3]="shell_aliases  $dir $HOME $olddir $TRUE"
 zsh[4]="dir_colors     $dir $HOME $olddir $TRUE"
+zsh[5]="bin            $dir $HOME $olddir $FALSE"
 
 bspwm[0]="bspwm         $config $config_target $oldconfig $FALSE"
 bspwm[1]="sxhkd         $config $config_target $oldconfig $FALSE"
 bspwm[2]="polybar       $config $config_target $oldconfig $FALSE"
 bspwm[3]="rofi          $config $config_target $oldconfig $FALSE"
 bspwm[4]="redshift.conf $config $config_target $oldconfig $FALSE"
-bspwm[5]="xinitrc       $dir    $HOME          $olddir    $TRUE"
-bspwm[6]="xprofile      $dir    $HOME          $olddir    $TRUE"
+bspwm[5]="ranger        $config $config_target $oldconfig $FALSE"
+bspwm[6]="xinitrc       $dir    $HOME          $olddir    $TRUE"
+bspwm[7]="xprofile      $dir    $HOME          $olddir    $TRUE"
+bspwm[8]="bin           $dir    $HOME          $olddir    $FALSE"
 
 #}}} End Variables #############################################################
 
