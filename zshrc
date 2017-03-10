@@ -1,6 +1,6 @@
 # Bradford Smith
 # .zshrc
-# updated: 11/02/2016
+# updated: 03/09/2017
 #####################
 
 # theme it
@@ -44,6 +44,9 @@ bindkey -M vicmd "[6~" down-history
 bindkey -M viins "" history-incremental-search-backward
 bindkey -M vicmd "" history-incremental-search-backward
 
+# bind underscore to beginning-of-line in normal mode
+bindkey -M vicmd "_" beginning-of-line
+
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _expand _complete _ignored
@@ -67,5 +70,5 @@ setopt no_hup #prevent zsh from killing background processes
 
 # source shared shell environment
 if [ -f "$HOME/.shell_env" ]; then
-    . ~/.shell_env
+    . $HOME/.shell_env
 fi
