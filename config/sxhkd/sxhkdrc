@@ -1,3 +1,8 @@
+# Bradford Smith
+# ~/.config/sxhkd/sxhkdrc
+# updated: 03/09/2017
+#########################
+
 #
 # wm independent hotkeys
 #
@@ -26,9 +31,9 @@ super + Escape
 XF86MonBrightness{Up,Down}
     xbacklight {-inc,-dec} 5
 
-# Volume keys
+# Volume keys (only raise/lower volume when not muted)
 XF86Audio{Raise,Lower}Volume
-    pactl set-sink-volume 0 {+,-}5%
+    pactl list sinks | grep Mute:.no && pactl set-sink-volume 0 {+,-}5%
 
 XF86AudioMute
     pactl set-sink-mute 0 toggle
