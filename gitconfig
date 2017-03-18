@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 02/21/2017
+# updated: 03/17/2017
 #####################
 
 [user]
@@ -64,6 +64,7 @@
     tags = "tag"
     today ="log --since=midnight"
 
+    unpushed = "log @{u}.."
     untrack = "rm --cached"
 
     #for inspecting specific commits
