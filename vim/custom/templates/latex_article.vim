@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/custom/templates/latex_article.vim
-" 02/04/2017
+" 03/20/2017
 " this file is sourced for creating a new LaTeX article
 
 :insert
@@ -18,6 +18,8 @@
 \\usepackage{textcomp}
 
 \\usepackage{xcolor} %for colored code formatting
+
+\\usepackage{setspace} %for doublespacing
 
 \\pagestyle{empty}
 
