@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 03/05/2017
+" updated: 03/22/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -308,7 +308,7 @@ augroup template_group
     "autofilled templates
     autocmd BufNewFile Makefile source ~/.vim/custom/templates/Makefile.vim
     autocmd BufNewFile *.c,*.cpp source ~/.vim/custom/templates/c.vim
-    autocmd BufNewFile *.h source ~/.vim/custom/templates/h.vim
+    autocmd BufNewFile *.h,*.hpp source ~/.vim/custom/templates/h.vim
     autocmd BufNewFile *.java source ~/.vim/custom/templates/java.vim
     autocmd BufNewFile *.js source ~/.vim/custom/templates/javascript.vim
     autocmd BufNewFile *.tex source ~/.vim/custom/templates/tex.vim
