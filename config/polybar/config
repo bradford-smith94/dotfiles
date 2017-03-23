@@ -1,6 +1,6 @@
 ; Bradford Smith
 ; ~/.config/polybar/config
-; updated: 02/20/2017
+; updated: 03/23/2017
 ; ========================
 
 [bar/mybar]
@@ -23,6 +23,8 @@ tray-position = right
 tray-detached = false
 tray-maxsize = 20
 
+underline-size = 2
+
 ; modules
 modules-left = bspwm
 modules-center = date
@@ -41,6 +43,8 @@ type = internal/bspwm
 pin-workspaces = true
 enable-click = true
 label-focused-foreground = #87ff87
+label-occupied = " %name%"
+label-occupied-underline = #87ff87
 
 [module/date]
 type = internal/date
