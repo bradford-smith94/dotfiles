@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 03/08/2017
+# updated: 03/22/2017
 #
 # This script can be run to install my dotfiles.
 #
@@ -12,7 +12,7 @@
 #}}}############################################################################
 
 #{{{ Variables #################################################################
-usage="usage: \"$0 -[abfgh]\""
+usage="usage: \"$0 -[abfh]\""
 
 # booleans for ease of writing
 # declared backwards from C standard so they can be used as return codes
@@ -20,9 +20,7 @@ TRUE=0
 FALSE=1
 
 # default install parameters
-root=$FALSE
 remove_broken_links=$FALSE
-git_hooks=$FALSE
 interactive=$TRUE
 force=$FALSE
 
@@ -48,12 +46,10 @@ NC='\033[0m'
 # project directories
 dir=$(dirname $(readlink -f $0))
 config=$dir/config
-hooks_dir=$dir/.hooks
 
 # target directories
 # $HOME of course
 config_target=$HOME/.config
-hooks_target=$dir/.git/hooks
 
 # backup directories
 olddir=$HOME/.dotfiles_old
@@ -123,10 +119,9 @@ where:
     -a  (All) Skip the default interactive mode and link all files
     -b  (Broken links) Remove broken symlinks
     -f  (Force) Relink (unlink then link) any alreay linked files
-    -g  (Git hooks) Install git hooks for this repository
     -h  (Help) Show this help text
 
-Note: -b and -g are only necessary when not running interactively (-a)
+Note: -b is only necessary when not running interactively (-a)
 
 EndHelpText
 }
@@ -241,7 +236,7 @@ function makeSymLink
 
 #{{{ Code ######################################################################
 #{{{ getopts -------------------------------------------------------------------
-while getopts abfghr: FLAG; do
+while getopts abfh: FLAG; do
     case $FLAG in
         a) #all (skip interactive)
             interactive=$FALSE
@@ -252,15 +247,9 @@ while getopts abfghr: FLAG; do
         f) #force
             force=$TRUE
             ;;
-        g) #install git hooks
-            git_hooks=$TRUE
-            ;;
         h) #help
             _help
             exit
-            ;;
-        r) #root
-            root=$TRUE
             ;;
         \?) #unrecognized flag
             echo "$usage"
@@ -317,7 +306,6 @@ if [ $interactive -eq $FALSE ] || promptYN "Link Git Configuration group" "y"; t
     done
 
     interactive=$saved_interactive
-    $dir/bin/hasGitPushSimple.sh
 fi
 
 # install Bash group
@@ -359,22 +347,6 @@ if [ $interactive -eq $FALSE ] || promptYN "Link Bspwm Configuration group" "y";
     interactive=$saved_interactive
 fi
 #}}} end install dotfiles ------------------------------------------------------
-
-# install git hooks
-if [[ $interactive -eq $TRUE || $git_hooks -eq $TRUE ]]; then
-    printSep "="
-    echo "Install Git hooks for this repository"
-
-    for hook in $hooks_dir/*; do
-        if [ $interactive -eq $TRUE ]; then
-            if ! promptYN "Copy $hook to $hooks_target" "y"; then
-                continue
-            fi
-        fi
-        echo -e "${GREEN}Copying $hook to $hooks_target${NC}"
-        cp $hook $hooks_target
-    done
-fi
 
 printSep "="
 

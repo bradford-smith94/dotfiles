@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 03/21/2017
+# updated: 03/22/2017
 #####################
 
 [user]
@@ -30,8 +30,8 @@
     added = green
     changed = yellow
     untracked = red
-[push] #if version is greater than 1.7.11 this should be simple
-    #default = <push> #push_default
+[push]
+    default = upstream
 [log]
     decorate = short
 [alias]
