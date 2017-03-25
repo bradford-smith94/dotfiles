@@ -1,7 +1,7 @@
 #!/bin/bash
 # credit: reddit.com/u/NotoriousHakk0r4chan
 
-wget $(curl -sL "http://dynamic.xkcd.com/random/comic/" | grep "http://imgs.xkcd.com/comics/" |  awk '{print $5}') -O /tmp/xkcd.png
+wget $(curl -sL "http://dynamic.xkcd.com/random/comic/" | grep "//imgs.xkcd.com/comics/" |  awk '{print $5}') -O /tmp/xkcd.png
 ICON=/tmp/xkcd.png
 TMPBG=/tmp/screen.png
 scrot $TMPBG
