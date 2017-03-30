@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/custom/templates/latex_article.vim
-" 03/20/2017
+" 03/30/2017
 " this file is sourced for creating a new LaTeX article
 
 :insert
@@ -24,6 +24,8 @@
 \\pagestyle{empty}
 
 \\setlength{\tabcolsep}{0em}
+
+\\setlength{\parindent}{0.5in}
 
 
 % custom macros ================================================================
