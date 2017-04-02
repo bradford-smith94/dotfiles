@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 03/22/2017
+" updated: 04/01/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -47,6 +47,7 @@ Plugin 'VundleVim/Vundle.vim' "originally gmarik/Vundle.vim
 Plugin 'baskerville/vim-sxhkdrc'
 Plugin 'bradford-smith94/vim-autolist' "automatic list continuation
 Plugin 'bradford-smith94/vim-colors-bsmith'
+Plugin 'bradford-smith94/vim-dauber' "change statusline colors based on mode
 Plugin 'bradford-smith94/vim-superupdate' "automatic plugin updating
 if executable('editorconfig')
     Plugin 'editorconfig/editorconfig-vim' "support for editorconfig
@@ -131,6 +132,19 @@ endif
 
 "only enable indentLine for some filetypes
 let g:indentLine_fileType = ['html', 'xhtml', 'xml']
+
+let g:dauber_normal_groups = ['StatN1', 'StatN2', 'StatN3', 'None', 'None',
+            \ 'None', 'None', 'None', 'StatFlag']
+let g:dauber_insert_groups = ['StatI1', 'StatI2', 'StatI3', 'None', 'None',
+            \ 'None', 'None', 'None', 'StatFlag']
+let g:dauber_replace_groups = ['StatR1', 'StatR2', 'StatR3', 'None', 'None',
+            \ 'None', 'None', 'None', 'StatFlag']
+let g:dauber_visual_groups = ['StatV1', 'StatV2', 'StatV3', 'None', 'None',
+            \ 'None', 'None', 'None', 'StatFlag']
+let g:dauber_visual_line_groups = ['StatV1', 'StatV2', 'StatV3', 'None', 'None',
+            \ 'None', 'None', 'None', 'StatFlag']
+let g:dauber_visual_block_groups = ['StatV1', 'StatV2', 'StatV3', 'None', 'None',
+            \ 'None', 'None', 'None', 'StatFlag']
 "}}}----------------------------------------------------------------------------
 
 
@@ -171,22 +185,6 @@ if has("wildmenu")
 endif
 
 "{{{-statusline-----------------------------------------------------------------
-"much of this taken from: http://stackoverflow.com/a/9121083
-
-augroup statusline_color
-    autocmd!
-    autocmd InsertEnter * call ColorStatusline('i' . v:insertmode)
-    autocmd InsertLeave * call ColorStatusline('n')
-    autocmd CursorHold * call ColorStatusline(mode())
-augroup END
-
-"work around for not having VisualEnter/VisualLeave autocmds
-"see: https://stackoverflow.com/a/15565233
-nnoremap <silent> v :call ColorStatusline('v')<CR>v
-nnoremap <silent> V :call ColorStatusline('V')<CR>V
-nnoremap <silent> <C-v> :call ColorStatusline('CTRL-V')<CR><C-v>
-vnoremap <silent> <Esc> <Esc>:call ColorStatusline('n')<CR>
-
 "normal mode colors (green)
 highlight StatN1 guifg=#000000 guibg=#87ff00 ctermfg=0 ctermbg=118
 highlight StatN2 guifg=#87ff00 guibg=#303030 ctermfg=118 ctermbg=236
@@ -205,12 +203,7 @@ highlight StatV2 guifg=#ff8700 guibg=#303030 ctermfg=208 ctermbg=236
 highlight StatV3 guifg=#ffaf5f guibg=#303030 ctermfg=215 ctermbg=236
 
 "read only flag (red)
-highlight User9 guifg=#ff0000 guibg=#303030 ctermfg=196 ctermbg=236
-
-"start with statusline in normal mode colors
-highlight link User1 StatN1
-highlight link User2 StatN2
-highlight link User3 StatN3
+highlight StatFlag guifg=#ff0000 guibg=#303030 ctermfg=196 ctermbg=236
 
 set statusline=%1*
 set statusline+=%q "quickfix/location list flag
@@ -361,51 +354,6 @@ function! ToggleBackground()
     endif
 endfunction
 
-"function to change the colors of the statusline based on what mode is active
-function! ColorStatusline(mode)
-    if a:mode == 'ii' || a:mode == 'i'
-        "normal insert
-        highlight link User1 StatI1
-        highlight link User2 StatI2
-        highlight link User3 StatI3
-    elseif a:mode == 'ir' || a:mode == 'R'
-        "insert replace mode
-        highlight link User1 StatR1
-        highlight link User2 StatR2
-        highlight link User3 StatR3
-    elseif a:mode == 'iv' || a:mode == 'Rv'
-        "virtual insert mode
-        highlight link User1 StatI1
-        highlight link User2 StatI2
-        highlight link User3 StatI3
-    elseif a:mode == 'n'
-        "normal mode
-        highlight link User1 StatN1
-        highlight link User2 StatN2
-        highlight link User3 StatN3
-    elseif a:mode == 'v' || a:mode == 's'
-        "visual mode
-        highlight link User1 StatV1
-        highlight link User2 StatV2
-        highlight link User3 StatV3
-    elseif a:mode == 'V' || a:mode == 'S'
-        "visual line mode
-        highlight link User1 StatV1
-        highlight link User2 StatV2
-        highlight link User3 StatV3
-    elseif a:mode == 'CTRL-V' || a:mode == 'CTRL-S'
-        "visual block mode
-        highlight link User1 StatV1
-        highlight link User2 StatV2
-        highlight link User3 StatV3
-    else
-        "use normal colors
-        highlight link User1 StatN1
-        highlight link User2 StatN2
-        highlight link User3 StatN3
-    endif
-endfunction
-
 "function to easily toggle into a 'hex editor mode' which pipes the buffer
 "   through xxd
 function! ToggleHexMode()
@@ -531,6 +479,7 @@ nnoremap <leader>q :q<CR>
 "substitute word under cursor
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 nnoremap <leader>v :e $MYVIMRC<CR>
+nnoremap <leader>w :w<CR>
 
 if &diff "vimdiff leader mappings
     "next difference
