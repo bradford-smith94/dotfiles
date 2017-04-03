@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 03/22/2017
+# updated: 04/03/2017
 #####################
 
 [user]
@@ -38,7 +38,7 @@
     #show aliases
     alias = "!git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sed 's/[ ]\\+/ /g' | fmt -t"
 
-    authors = "shortlog -n -s --no-merges"
+    authors = "shortlog -nse --no-merges"
     branches = "branch -avv"
     contributions ="!git shortlog -n -s --no-merges | colrm 1 8 | xargs -I % \
         sh -c \"echo \\\"%: \\\"; \
@@ -53,6 +53,9 @@
     graph = "log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
     lines = "!git grep --cached -Il '' | xargs wc -l"
     lines-authored = "!git grep --cached -Il '' | xargs -n1 git blame --line-porcelain HEAD | grep \"^author \"|sort|uniq -c|sort -nr"
+
+    #make a .mailmap file based on the shortlog
+    mkmailmap = "!git shortlog -se | awk -F'\\t' '{print $2,$3,$2,$3}' | sort > .mailmap"
 
     #use after git pull
     new = "!git log $1@{1}..$1@{0} \"$@\""
