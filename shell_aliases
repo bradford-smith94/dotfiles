@@ -1,6 +1,6 @@
 # Bradford Smith
 # .shell_aliases
-# updated: 02/27/2017
+# updated: 04/05/2017
 #####################
 
 ## Overall
@@ -38,6 +38,12 @@ alias clock="while true; do \
 done"
 
 alias rickroll='nc rya.nc 1987'
+
+## Functions
+function :h () {
+    #quickly access vim help
+    vim -c ":help $1" -c ":only";
+}
 
 ## Local Aliases
 ################
