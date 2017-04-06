@@ -34,7 +34,7 @@
     decorate = short
 [alias]
     #show aliases
-    alias = "!git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sed 's/[ ]\\+/ /g' | fmt -t"
+    alias = "!git config --get-regexp 'alias.*' | colrm 1 6 | sed -e 's/[ ]/ = /' -e 's/[ ]\\+/ /g' | fmt -t"
 
     authors = "shortlog -ns --no-merges"
     branches = "branch -avv"
@@ -72,7 +72,7 @@
     whatis = "show -s"
 
     #print git config user settings
-    whoami = "!git config --get-regexp 'user.*' | colrm 1 5 | sed 's/[ ]/ = /'"
+    whoami = "!git config --get-regexp 'user.*' | colrm 1 5 | sed -e '/^useconfigonly.*$/d' -e 's/[ ]/ = /'"
 
     #given a string for an author, try to figure out full name and email
     whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\" --author=\"$1\"' -"
