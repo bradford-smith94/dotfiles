@@ -18,9 +18,6 @@
     prompt = false
 [commit] #commits start with prefilled text provided in:
     template = ~/.gitmessage
-[filter "push_default"] #use a .gitattributes to apply filter
-    clean = "sed 's/default = .* #push_default$/#default = <push> #push_default/'"
-    smudge = cat
 [color]
     ui = auto
     branch = true
