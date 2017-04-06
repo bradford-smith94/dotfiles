@@ -1,11 +1,12 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 04/03/2017
+# updated: 04/06/2017
 #####################
 
 [user]
     name = Bradford Smith
-    #set user.email in per repository config files
+    #make git prompt for email before allowing commits
+    useConfigOnly = true
 [core]
     editor = vim
     excludesfile = ~/.gitignore
