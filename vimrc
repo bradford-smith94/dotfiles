@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 04/01/2017
+" updated: 04/08/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -534,10 +534,9 @@ noremap <F3> :execute "grep -srnw --binary-files=without-match
 noremap <F5> :w<CR>
 inoremap <F5> <C-o>:w<CR>
 
-"[F7] toggles paste mode
-noremap <F7> :setlocal paste!<CR>
-inoremap <F7> <C-o>:setlocal paste!<CR>
-set pastetoggle=<F7>
+"[F7] uses unimpaired to turn on paste mode (leaving insert turns it off)
+map <F7> <Plug>unimpairedPaste
+imap <F7> <C-o><Plug>unimpairedPaste
 
 "[F8] toggles spellcheck
 noremap <F8> :setlocal spell!<CR>
