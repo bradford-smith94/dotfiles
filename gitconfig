@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 04/06/2017
+# updated: 04/15/2017
 #####################
 
 [user]
@@ -76,3 +76,5 @@
 
     #given a string for an author, try to figure out full name and email
     whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\" --author=\"$1\"' -"
+
+    yesterday = "log --since=\"yesterday midnight\" --until=midnight"
