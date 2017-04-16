@@ -1,13 +1,17 @@
 " Bradford Smith
 " ~/.vim/ftplugin/tex.vim
-" 02/21/2017
+" 04/16/2017
 " TeX (LaTeX) filetype specific configuration
 
 "settings
 setlocal wrap
 setlocal spell
 
-if executable('rubber') == 1
+if executable('latexmk') == 1
+    setlocal makeprg=latexmk\ -pdf\ %
+    noremap <buffer> <F5> :w<CR>:make<CR>
+    inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR>
+elseif executable('rubber') == 1
     setlocal makeprg=rubber\ --pdf\ %
     noremap <buffer> <F5> :w<CR>:make<CR>
     inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR>
@@ -22,7 +26,9 @@ elseif executable('pdflatex') == 1
     endif
 endif
 
-command! TexClean execute "silent! !rm " . expand("%:r") . ".{aux,log,nav,out,snm,toc,vrb} 2> /dev/null"
+command! TexClean execute "silent! !rm " . expand("%:r") .
+            \ ".{aux,bbl,bcf,blg,fdb_latexmk,fls,log,nav,out,run.xml,snm,toc,vrb} " .
+            \ "2> /dev/null"
 
 augroup tex_autocmds
     autocmd QuitPre <buffer> TexClean
