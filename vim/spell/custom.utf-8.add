@@ -1,6 +1,6 @@
 ## Bradford Smith
 ## ~/.vim/spell/custom.utf-8.add
-## 03/08/2017
+## 04/07/2017
 ## custom.utf-8.add Vim spellfile
 /encoding=utf-8
 
@@ -179,6 +179,7 @@ cpu
 crypto
 cryptographic
 cybersecurity
+doxygen
 etc
 executables
 filesystem
