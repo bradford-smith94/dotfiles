@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 04/08/2017
+" updated: 04/20/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -205,30 +205,12 @@ highlight StatV3 guifg=#ffaf5f guibg=#303030 ctermfg=215 ctermbg=236
 "read only flag (red)
 highlight StatFlag guifg=#ff0000 guibg=#303030 ctermfg=196 ctermbg=236
 
-set statusline=%1*
-set statusline+=%q "quickfix/location list flag
-set statusline+=%w "preview window flag
-set statusline+=%h "help file flag
-set statusline+=\ %<%f "file name
-
-set statusline+=\ %2*▶%3* "a fancy separator
-
-set statusline+=\ %m "modified flag
-set statusline+=%9*%r%3* "read only flag
-set statusline+=%{&paste>0?'[paste]':''} "paste mode flag
-set statusline+=%{&spell>0?'[spell]':''} "spell mode flag
-
-set statusline+=\ %= "align right
-
-set statusline+=%y "filetype
-set statusline+=\ %{&fenc} "file encoding
-set statusline+=[%{&ff}] "file format
-
-set statusline+=\ %2*◀%1* "a fancy separator
-
-set statusline+=\ %P "percent through file as ruler displays it
-set statusline+=\ L:%5(%l%) "line
-set statusline+=\ C:%3(%c%) "column
+augroup StatuslineSwitcher
+    autocmd!
+    autocmd VimEnter * call SetFancyStatusline()
+    autocmd BufWinEnter,WinEnter * call SetFancyStatusline()
+    autocmd WinLeave * call SetSimpleStatusline()
+augroup END
 
 set laststatus=2 "always show statusline
 set showmode
@@ -339,6 +321,42 @@ cabbrev E <C-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'e' : 'E')<CR>
 
 
 "{{{-my functions---------------------------------------------------------------
+
+function! SetFancyStatusline()
+    setlocal statusline=%1*
+    setlocal statusline+=%q "quickfix/location list flag
+    setlocal statusline+=%w "preview window flag
+    setlocal statusline+=%h "help file flag
+    setlocal statusline+=\ %<%f "file name
+
+    setlocal statusline+=\ %2*▶%3* "a fancy separator
+
+    setlocal statusline+=\ %m "modified flag
+    setlocal statusline+=%9*%r%3* "read only flag
+    setlocal statusline+=%{&paste>0?'[paste]':''} "paste mode flag
+    setlocal statusline+=%{&spell>0?'[spell]':''} "spell mode flag
+
+    setlocal statusline+=\ %= "align right
+
+    setlocal statusline+=%y "filetype
+    setlocal statusline+=\ %{&fenc} "file encoding
+    setlocal statusline+=[%{&ff}] "file format
+
+    setlocal statusline+=\ %2*◀%1* "a fancy separator
+
+    setlocal statusline+=\ %P "percent through file as ruler displays it
+    setlocal statusline+=\ L:%5(%l%) "line
+    setlocal statusline+=\ C:%3(%c%) "column
+endfunction
+
+function! SetSimpleStatusline()
+    setlocal statusline=%q "quickfix/location list flag
+    setlocal statusline+=%w "preview window flag
+    setlocal statusline+=%h "help file flag
+    setlocal statusline+=\ %<%f "file name
+    setlocal statusline+=\ %m "modified flag
+endfunction
+
 "useful function for making colorschemes
 "see: vim.wikia.com/wiki/Showing_syntax_highlight_group_in_statusline
 function! SyntaxItem()
