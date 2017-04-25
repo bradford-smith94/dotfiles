@@ -1,6 +1,6 @@
 ; Bradford Smith
 ; ~/.config/polybar/config
-; updated: 04/17/2017
+; updated: 04/21/2017
 ; ========================
 
 [bar/mybar]
@@ -41,7 +41,8 @@ label-charging-foreground = #87ff87
 [module/bspwm]
 type = internal/bspwm
 format = <label-state> <label-mode>
-pin-workspaces = true
+; show workspaces from all monitors
+pin-workspaces = false
 enable-click = true
 label-focused-foreground = #87ff87
 label-occupied = " %name%"

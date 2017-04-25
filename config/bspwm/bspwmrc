@@ -10,10 +10,25 @@ else
     bspc monitor $mon_internal  -d I II III IV V VI VII VIII IX X
 fi
 
+bspc config remove_disabled_monitors true
+bspc subscribe monitor | while read -r line; do
+    case $line in
+        monitor_add*|monitor_geometry*)
+            if [ "$(bspc query -M | wc -l)" -eq "2" ]; then
+                bspc monitor $(bspc query -M | sed -n 1p) -d I II III IV V VI VII
+                bspc monitor $(bspc query -M | sed -n 2p) -d VIII IX X
+            else
+                bspc monitor -d I II III IV V VI VII VIII IX X
+            fi
+            ;;
+        *)
+            ;;
+    esac
+done &
+
 bspc config click_to_focus true
 bspc config focused_border_color \#87ff87
 #bspc config active_border_color \#87ff87
-bspc config remove_disabled_monitor true
 
 ~/.config/polybar/launch.sh
 dunst&
