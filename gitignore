@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitignore (global gitignore)
-# updated: 02/24/2017
+# updated: 04/29/2017
 #################################
 
 ## Linux ##
@@ -16,3 +16,6 @@
 
 ## Ctags ##
 tags
+
+## Git Mailmap files ##
+.mailmap
