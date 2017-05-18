@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 04/20/2017
+" updated: 05/18/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -44,6 +44,7 @@ set rtp+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin()
 "plugins '<github_user>/<repo>' or full git path
 Plugin 'VundleVim/Vundle.vim' "originally gmarik/Vundle.vim
+Plugin 'artoj/qmake-syntax-vim'
 Plugin 'baskerville/vim-sxhkdrc'
 Plugin 'bradford-smith94/vim-autolist' "automatic list continuation
 Plugin 'bradford-smith94/vim-colors-bsmith'
