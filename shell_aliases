@@ -1,6 +1,6 @@
 # Bradford Smith
 # .shell_aliases
-# updated: 04/05/2017
+# updated: 05/18/2017
 #####################
 
 ## Overall
@@ -20,10 +20,11 @@ alias dirs='dirs -v'
 
 ## Ghostscript combine pdfs (usage: `gs-pdf in1.pdf in2.pdf ...`)
 ##      (can also read in a list of files using `gs-pdf @list.txt`)
-alias gs-pdf='gs -q -dBATCH -dNOPAUSE -dPDFSETTINGS=/prepress \
--sPAPERSIZE=letter -sDEVICE=pdfwrite -sOutputFile=merged.pdf'
+alias gs-pdf="gs -q -dBATCH -dNOPAUSE -dPDFSETTINGS=/prepress \
+    -sPAPERSIZE=letter -sDEVICE=pdfwrite -sOutputFile=merged.pdf"
 
 ## IP Addresses
+#shellcheck disable=2142
 alias local-ip="~/bin/activeNetDev.sh \
     | xargs -L1 ip addr show \
     | grep 'inet' | awk '{print \$2}'"
@@ -31,11 +32,20 @@ alias public-ip='curl icanhazip.com'
 
 alias chrome='google-chrome-stable'
 
-alias clock="while true; do \
-    tput clear; \
-    date +'%H : %M : %S' | figlet; \
-    sleep 1; \
-done"
+alias clock="while true; \
+    do tput clear; \
+        date +'%H : %M : %S' | figlet; \
+        sleep 1; \
+    done"
+
+# print terminal 256 colors
+# (https://wiki.archlinux.org/index.php/Color_output_in_console)
+alias term-colors="(x=\$(tput op) y=\$(printf %76s); \
+    for i in {0..256}; \
+    do o=00\$i; \
+        echo -e \${o:\${#o}-3:3} \$(tput setaf \$i; \
+        tput setab \$i)\${y// /=}\$x; \
+    done)"
 
 alias rickroll='nc rya.nc 1987'
 
@@ -48,6 +58,7 @@ function :h () {
 ## Local Aliases
 ################
 if [ -f "$HOME/.shell_aliases.local" ]; then
+    #shellcheck source=/dev/null
     . "$HOME/.shell_aliases.local"
 fi
 
