@@ -350,6 +350,11 @@ fi
 
 printSep "="
 
+if grep -wq cower "$installed_files" ; then
+    echo "cower was linked this session, making sure ~/AUR/ exists..."
+    mkdir -p ~/AUR/
+fi
+
 # check if backup dirs are empty and clean if they are
 if [ ! "$(ls -A "$olddir")" ]; then
     echo "$olddir is empty, removing..."
