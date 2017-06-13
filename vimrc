@@ -567,6 +567,16 @@ inoremap <F8> <C-o>:setlocal spell!<CR>
 "[F9] opens suggestions for next misspelled word
 noremap <F9> ]sz=
 inoremap <F9> <C-o>]sz=
+
+"{{{-custom text-objects
+"a line (including leading and trailing whitespace)
+xnoremap al 0o$h
+onoremap al :normal val<CR>
+
+"inner line
+xnoremap il ^og_lh
+onoremap il :normal vil<CR>
+"}}}
 "}}}----------------------------------------------------------------------------
 
 
