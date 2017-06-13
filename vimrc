@@ -1,6 +1,6 @@
 " Bradford Smith
 " .vimrc
-" updated: 05/18/2017
+" updated: 06/12/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -130,6 +130,9 @@ if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
     "Backspace closes popup
     inoremap <expr><BS> neocomplete#smart_close_popup() ."\<C-h>"
 endif
+
+"have superupdate skip first run because of automatic vundle install section
+let g:superupdate_skip_first = 1
 
 "only enable indentLine for some filetypes
 let g:indentLine_fileType = ['html', 'xhtml', 'xml']
