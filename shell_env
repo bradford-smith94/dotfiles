@@ -55,10 +55,18 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
     eval "$(<~/.ssh-agent-output)" > /dev/null
 fi
 
-# if not in SSH
-if [ "x${SSH_TTY}" = "x" ]; then
-#   and screenfetch is installed
-    if [ -f /usr/bin/screenfetch ]; then
-        screenfetch
-    fi
-fi
+case $(tty) in
+    # if in a tty (vt)
+    /dev/tty[0-9]*)
+        ;;
+    # else in a ptty
+    *)
+        # if not in SSH
+        if [ "x${SSH_TTY}" = "x" ]; then
+            #   and screenfetch is installed
+            if [ -f /usr/bin/screenfetch ]; then
+                screenfetch
+            fi
+        fi
+        ;;
+esac
