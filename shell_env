@@ -1,6 +1,6 @@
 # Bradford Smith
 # .shell_env
-# updated: 02/24/2017
+# updated: 06/20/2017
 #####################
 
 # turn off flow control (ctrl-q and ctrl-s)
@@ -9,12 +9,14 @@ stty -ixoff
 
 # source aliases
 if [ -f "$HOME/.shell_aliases" ]; then
-    . $HOME/.shell_aliases
+    # shellcheck source=/dev/null
+    . "$HOME/.shell_aliases"
 fi
 
 # source local shell config
 if [ -f "$HOME/.shell_env.local" ]; then
-    . $HOME/.shell_env.local
+    # shellcheck source=/dev/null
+    . "$HOME/.shell_env.local"
 fi
 
 # make less more friendly for non-text input files, see lesspipe(1)
@@ -24,7 +26,7 @@ fi
 if [ -f /usr/bin/dircolors ]; then
     [ -e "$HOME/.dir_colors" ] && DIR_COLORS="$HOME/.dir_colors"
     [ -e "$DIR_COLORS" ] || DIR_COLORS=""
-    eval "`dircolors -b $DIR_COLORS`"
+    eval "$(dircolors -b $DIR_COLORS)"
 fi
 
 # if ~/bin exists add it to the beginning of the path
