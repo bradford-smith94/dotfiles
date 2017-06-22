@@ -1,10 +1,11 @@
 # Bradford Smith
 # .shell_aliases
-# updated: 05/18/2017
+# updated: 06/21/2017
 #####################
 
 ## Overall
 ##########
+alias aliases='alias'
 alias sudo='sudo ' #allows sudo to work with aliases, the internet says so
 alias unmount='umount' #because sometimes I forget
 alias srm='srm -v' #default srm to verbose

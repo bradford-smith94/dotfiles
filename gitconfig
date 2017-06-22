@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 04/15/2017
+# updated: 06/21/2017
 #####################
 
 [user]
@@ -35,6 +35,7 @@
 [alias]
     #show aliases
     alias = "!git config --get-regexp 'alias.*' | colrm 1 6 | sed -e 's/[ ]/ = /' -e 's/[ ]\\+/ /g' | fmt -t"
+    aliases = "!git alias"
 
     authors = "shortlog -ns --no-merges"
     branches = "branch -avv"
