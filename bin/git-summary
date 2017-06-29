@@ -1,0 +1,28 @@
+#!/bin/bash
+# Bradford Smith
+# ~/bin/git-summary
+# 06/29/2017
+# Print a summary of git author contributions
+
+# shellcheck disable=2034
+USAGE="[<author>]"
+
+# shellcheck source=/dev/null
+source "$(git --exec-path)/git-sh-setup"
+
+require_work_tree
+
+function _summary() {
+    if [ -n "$1" ]; then
+        #author provided
+        AUTHORS=$(git log -i -1 --pretty="format:%an" --author="$1")
+        if [ -z "$AUTHORS" ]; then
+            die "fatal: ambiguous argument '$1': unknown author."
+        fi
+    else
+        #no author provided, run for all of them
+        AUTHORS=$(git shortlog -n -s --no-merges | colrm 1 8)
+    fi
+}
+
+_summary "$1"
