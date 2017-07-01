@@ -1,6 +1,6 @@
 # Bradford Smith
 # .zshrc
-# updated: 03/09/2017
+# updated: 06/29/2017
 #####################
 
 # theme it
@@ -62,6 +62,8 @@ zstyle -s ':completion:*:hosts' hosts _ssh_config
 [[ -r ~/.ssh/config ]] && _ssh_config+=($(cat ~/.ssh/config | sed -ne 's/Host[=\t ]//p'))
 zstyle ':completion:*:hosts' hosts $_ssh_config
 
+# https://stackoverflow.com/a/38850556
+zstyle ':completion:*:*:git:*' user-commands summary:'print a summary of author contributions'
 
 autoload -U zmv
 
