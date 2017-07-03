@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 07/01/2017
+# updated: 07/03/2017
 #####################
 
 [user]
@@ -58,6 +58,7 @@
     stashes = "stash list"
     tags = "tag"
     today ="log --since=midnight"
+    top = "rev-parse --show-toplevel"
 
     unpushed = "log @{u}.."
     untrack = "rm --cached"
