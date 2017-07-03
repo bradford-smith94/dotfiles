@@ -1,11 +1,12 @@
 #!/bin/bash
 # Bradford Smith
 # ~/bin/git-summary
-# 06/30/2017
+# 07/03/2017
 # Print a summary of git author contributions
 
 # shellcheck disable=2034
 USAGE="[<author>]"
+SUBDIRECTORY_OK=true
 
 # shellcheck source=/dev/null
 source "$(git --exec-path)/git-sh-setup"
