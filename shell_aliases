@@ -1,6 +1,6 @@
 # Bradford Smith
 # .shell_aliases
-# updated: 06/21/2017
+# updated: 07/20/2017
 #####################
 
 ## Overall
@@ -50,8 +50,10 @@ alias term-colors="(x=\$(tput op) y=\$(printf %76s); \
 
 alias rickroll='nc rya.nc 1987'
 
+alias :h=':help'
+
 ## Functions
-function :h () {
+function :help () {
     #quickly access vim help
     vim -c ":help $1" -c ":only";
 }
