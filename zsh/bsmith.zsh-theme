@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.zsh/bsmith.zsh-theme
-# updated: 03/04/2017
+# updated: 07/28/2017
 #########################
 
 autoload -U colors && colors
@@ -46,6 +46,12 @@ function dir()
 function bgjobs()
 {
     [[ $(jobs | wc -l) -gt 0 ]] && echo "jobs:${CYAN}%j${RESET}"
+}
+
+function tmux_sessions()
+{
+    local num=$(tmux list-sessions 2>/dev/null | wc -l)
+    [[ $num -gt 0 ]] && echo "tmux:${BLUE}$num${RESET}"
 }
 
 # from github.com/SicK94/minimal/minimal.zsh-theme
@@ -112,11 +118,13 @@ function prompt_topline()
 {
     local vi_mode="$(prompt_vimode)"
     local bg_jobs="$(bgjobs)"
+    local tmux="$(tmux_sessions)"
     local git_things="$(prompt_git)"
     local flag
 
     [[ -n $vi_mode ]] && echo -n $vi_mode" " && flag=true
     [[ -n $bg_jobs ]] && echo -n $bg_jobs" " && flag=true
+    [[ -n $tmux ]] && echo -n $tmux" " && flag=true
     [[ -n $git_things ]] && echo -n $git_things" " && flag=true
     [[ $flag ]] && echo ${NEWLINE}"."
 }
