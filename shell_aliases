@@ -1,6 +1,6 @@
 # Bradford Smith
-# .shell_aliases
-# updated: 07/20/2017
+# ~/.shell_aliases
+# updated: 07/28/2017
 #####################
 
 ## Overall
@@ -10,6 +10,7 @@ alias sudo='sudo ' #allows sudo to work with aliases, the internet says so
 alias unmount='umount' #because sometimes I forget
 alias srm='srm -v' #default srm to verbose
 alias sfill='sfill -vz' #same as srm but works on free partition space
+alias lessman='man -P less'
 
 ## File Navigation
 alias ls='ls --color=auto --group-directories-first -v'
