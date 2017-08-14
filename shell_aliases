@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.shell_aliases
-# updated: 07/28/2017
+# updated: 08/14/2017
 #####################
 
 ## Overall
@@ -50,6 +50,8 @@ alias term-colors="(x=\$(tput op) y=\$(printf %76s); \
     done)"
 
 alias rickroll='nc rya.nc 1987'
+
+alias toggle_redshift='pkill -USR1 redshift'
 
 alias :h=':help'
 
