@@ -1,6 +1,6 @@
 # Bradford Smith
 # .zshrc
-# updated: 06/29/2017
+# updated: 08/26/2017
 #####################
 
 # theme it
@@ -46,6 +46,9 @@ bindkey -M vicmd "" history-incremental-search-backward
 
 # bind underscore to beginning-of-line in normal mode
 bindkey -M vicmd "_" beginning-of-line
+
+bindkey -M viins "" menu-complete
+bindkey -M viins "" reverse-menu-complete
 
 # The following lines were added by compinstall
 
