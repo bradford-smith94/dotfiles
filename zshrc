@@ -71,6 +71,7 @@ zstyle ':completion:*:*:git:*' user-commands summary:'print a summary of author 
 autoload -U zmv
 
 setopt autocd
+setopt globdots
 setopt no_hup #prevent zsh from killing background processes
 
 # source shared shell environment
