@@ -4,7 +4,10 @@
 # Any TODO files I might leave myself
 TODO*
 
-# Vundle manages things in vim/bundle/
+# vim-plug
+vim/autoload/plug.vim
+
+# vim-plug manages things in vim/bundle/
 vim/bundle/
 
 # .spl files are the binary spell files
@@ -13,7 +16,7 @@ vim/spell/*.spl
 # the viminfo file
 vim/viminfo
 
-# netrwhist
+# netrw history file
 vim/.netrwhist
 
 # ranger files

@@ -1,6 +1,6 @@
 " Bradford Smith
-" .vimrc
-" updated: 07/14/2017
+" ~/.vimrc
+" updated: 08/31/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -21,78 +21,59 @@ set ttimeout "timeout on key codes (like esc and arrow keys)
 set ttimeoutlen=50 "esc and arrows timeout
 set mouse=nr "normal and 'Hit Enter' messages (useful for switching windows)
 let $MANPAGER='' "allows Vim's :Man command to be used without conflict
+filetype plugin indent on
 "}}}----------------------------------------------------------------------------
 
 
-"{{{-setup vundle to manage plugins---------------------------------------------
-"automatically install vundle if not present
-"credit: github.com/timss/vimconf
-let has_vundle=1
-if !filereadable(glob("~/.vim/bundle/Vundle.vim/README.md"))
-    echo "Installing Vundle..."
-    echo ""
-    silent !mkdir -p $HOME/.vim/bundle
-    silent !git clone
-        \ https://github.com/VundleVim/Vundle.vim $HOME/.vim/bundle/Vundle.vim
-    let has_vundle=0
+"{{{-setup vim-plug to manage plugins-------------------------------------------
+"see: https://github.com/junegunn/vim-plug/wiki/faq#automatic-installation
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-"initialize vundle
-filetype off
-set rtp+=$HOME/.vim/bundle/Vundle.vim
-
-call vundle#begin()
+call plug#begin('~/.vim/bundle')
 "plugins '<github_user>/<repo>' or full git path
-Plugin 'VundleVim/Vundle.vim' "originally gmarik/Vundle.vim
-Plugin 'artoj/qmake-syntax-vim'
-Plugin 'baskerville/vim-sxhkdrc'
-Plugin 'bradford-smith94/vim-autolist' "automatic list continuation
-Plugin 'bradford-smith94/vim-colors-bsmith'
-Plugin 'bradford-smith94/vim-dauber' "change statusline colors based on mode
-Plugin 'bradford-smith94/vim-superupdate' "automatic plugin updating
+Plug 'artoj/qmake-syntax-vim'
+Plug 'baskerville/vim-sxhkdrc'
+Plug 'bradford-smith94/vim-autolist'
+Plug 'bradford-smith94/vim-colors-bsmith'
+Plug 'bradford-smith94/vim-dauber'
+Plug 'bradford-smith94/vim-superupdate'
+Plug 'chrisbra/Colorizer', { 'for': ['css', 'html'] }
 if executable('editorconfig')
-    Plugin 'editorconfig/editorconfig-vim' "support for editorconfig
+    Plug 'editorconfig/editorconfig-vim'
 endif
-Plugin 'EinfachToll/DidYouMean'
-Plugin 'honza/vim-snippets'
-Plugin 'konfekt/fastfold'
-Plugin 'mgrabovsky/vim-xverif'
-Plugin 'nelstrom/vim-markdown-folding'
-Plugin 'nikvdp/ejs-syntax'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'runoshun/vim-alloy'
+Plug 'EinfachToll/DidYouMean'
+Plug 'honza/vim-snippets'
+Plug 'konfekt/fastfold'
+Plug 'mgrabovsky/vim-xverif'
+Plug 'nelstrom/vim-markdown-folding'
+Plug 'nikvdp/ejs-syntax'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'runoshun/vim-alloy'
 if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
-    Plugin 'shougo/neocomplete'
+    Plug 'shougo/neocomplete'
 endif
 if v:version >= 704 && (has("python") || has("python3"))
-    Plugin 'SirVer/ultisnips'
+    Plug 'SirVer/ultisnips'
 endif
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-speeddating' "allow <C-a>/<C-x> to work for dates and times
-Plugin 'tpope/vim-surround' "surroundings motions
-Plugin 'tpope/vim-unimpaired' "additional bracket pair mappings
-Plugin 'tpope/vim-repeat' "allow repeating of surround and speeddating
-Plugin 'unblevable/quick-scope' "highlight unique targets for (f, F, etc)
-Plugin 'vim-scripts/scons.vim'
-Plugin 'vim-syntastic/syntastic' "originally scrooloose/syntastic
-Plugin 'Yggdroot/indentLine'
-call vundle#end()
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
+Plug 'unblevable/quick-scope'
+Plug 'vim-scripts/scons.vim'
+"originally scrooloose/syntastic
+Plug 'vim-syntastic/syntastic'
+Plug 'Yggdroot/indentLine', { 'for': [ 'html', 'xhtml', 'xml' ] }
+call plug#end()
 
 "felt like these belonged with plugin initialization
 source $VIMRUNTIME/ftplugin/man.vim "initializes the :Man command
 runtime macros/matchit.vim "sources extended mappings for '%'
-
-"if this is the first time vundle is installed
-if has_vundle == 0
-    echo "Initial Plugin install please wait..."
-    "install the plugins
-    silent! PluginInstall
-
-    qa "quit after installing everything
-endif
-
-"turn filetype back on (was turned off to do Vundle things)
-filetype indent plugin on
 "}}}----------------------------------------------------------------------------
 
 
@@ -131,7 +112,7 @@ if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
     inoremap <expr><BS> neocomplete#smart_close_popup() ."\<C-h>"
 endif
 
-"have superupdate skip first run because of automatic vundle install section
+"have superupdate skip first run because of automatic install
 let g:superupdate_skip_first = 1
 
 "only enable indentLine for some filetypes
