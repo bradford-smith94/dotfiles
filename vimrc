@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 08/31/2017
+" updated: 09/03/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -41,7 +41,7 @@ Plug 'bradford-smith94/vim-autolist'
 Plug 'bradford-smith94/vim-colors-bsmith'
 Plug 'bradford-smith94/vim-dauber'
 Plug 'bradford-smith94/vim-superupdate'
-Plug 'chrisbra/Colorizer', { 'for': ['css', 'html'] }
+Plug 'chrisbra/Colorizer', { 'for': ['css', 'html', 'xdefaults'] }
 if executable('editorconfig')
     Plug 'editorconfig/editorconfig-vim'
 endif
@@ -117,6 +117,8 @@ let g:superupdate_skip_first = 1
 
 "only enable indentLine for some filetypes
 let g:indentLine_fileType = ['html', 'xhtml', 'xml']
+
+let g:colorizer_auto_filetype = 'css,xdefaults'
 "}}}----------------------------------------------------------------------------
 
 
