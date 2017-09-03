@@ -1,6 +1,6 @@
 ## Bradford Smith
 ## ~/.vim/spell/custom.utf-8.add
-## 04/07/2017
+## 09/03/2017
 ## custom.utf-8.add Vim spellfile
 /encoding=utf-8
 
@@ -161,6 +161,7 @@ DNS
 DSL
 Facebook
 IP
+LaTeX/=
 NSA
 README
 SSL

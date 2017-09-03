@@ -48,6 +48,7 @@ endif
 Plug 'EinfachToll/DidYouMean'
 Plug 'honza/vim-snippets'
 Plug 'konfekt/fastfold'
+Plug 'matze/vim-tex-fold'
 Plug 'mgrabovsky/vim-xverif'
 Plug 'nelstrom/vim-markdown-folding'
 Plug 'nikvdp/ejs-syntax'
@@ -119,6 +120,8 @@ let g:superupdate_skip_first = 1
 let g:indentLine_fileType = ['html', 'xhtml', 'xml']
 
 let g:colorizer_auto_filetype = 'css,xdefaults'
+
+let g:tex_fold_additional_envs = ['itemize']
 "}}}----------------------------------------------------------------------------
 
 
