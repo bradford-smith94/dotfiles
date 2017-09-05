@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 09/03/2017
+" updated: 09/04/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -121,7 +121,7 @@ let g:indentLine_fileType = ['html', 'xhtml', 'xml']
 
 let g:colorizer_auto_filetype = 'css,xdefaults'
 
-let g:tex_fold_additional_envs = ['itemize']
+let g:tex_fold_additional_envs = ['itemize', 'tabular', 'verbatim']
 "}}}----------------------------------------------------------------------------
 
 
