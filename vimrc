@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 09/04/2017
+" updated: 09/06/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -53,6 +53,7 @@ Plug 'mgrabovsky/vim-xverif'
 Plug 'nelstrom/vim-markdown-folding'
 Plug 'nikvdp/ejs-syntax'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'pangloss/vim-javascript'
 Plug 'runoshun/vim-alloy'
 if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
     Plug 'shougo/neocomplete'

@@ -3,5 +3,5 @@
 " 09/06/2017
 " Javascript syntax additions to be loaded after system syntax
 
-"add javascript number and value highlights
-hi link javascriptValue Number
+" vim-javascript plugin uses Type, change to Function
+hi link jsFunction Function
