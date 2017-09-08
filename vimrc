@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 09/06/2017
+" updated: 09/08/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -247,6 +247,9 @@ augroup template_group
     autocmd BufNewFile *.tex source ~/.vim/custom/templates/tex.vim
     autocmd BufNewFile *.html source ~/.vim/custom/templates/html.vim
     autocmd BufNewFile *.py source ~/.vim/custom/templates/python.vim
+    if executable('editorconfig')
+        autocmd BufNewFile .editorconfig source ~/.vim/custom/templates/editorconfig.vim
+    endif
 augroup END
 "}}}----------------------------------------------------------------------------
 
