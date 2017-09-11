@@ -1,11 +1,10 @@
 " Bradford Smith
 " ~/.vim/ftplugin/html.vim
-" 09/06/2016
+" 09/11/2017
 " HTML filetype specific configuration
 
 "settings
 setlocal wrap
-setlocal foldmethod=indent
 setlocal omnifunc=htmlcomplete#CompleteTags
 
 "mappings
