@@ -43,7 +43,6 @@ Plug 'bradford-smith94/vim-autolist'
 Plug 'bradford-smith94/vim-colors-bsmith'
 Plug 'bradford-smith94/vim-dauber'
 Plug 'bradford-smith94/vim-superupdate'
-Plug 'bradford-smith94/XML-Folding'
 Plug 'chrisbra/Colorizer', { 'for': ['css', 'html', 'xdefaults'] }
 if executable('editorconfig')
     Plug 'editorconfig/editorconfig-vim'
