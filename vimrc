@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 09/08/2017
+" updated: 09/11/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -20,7 +20,6 @@ set notimeout "don't timeout on :mappings
 set ttimeout "timeout on key codes (like esc and arrow keys)
 set ttimeoutlen=50 "esc and arrows timeout
 set mouse=nr "normal and 'Hit Enter' messages (useful for switching windows)
-let $MANPAGER='' "allows Vim's :Man command to be used without conflict
 filetype plugin indent on
 "}}}----------------------------------------------------------------------------
 
@@ -123,6 +122,12 @@ let g:indentLine_fileType = ['html', 'xhtml', 'xml']
 let g:colorizer_auto_filetype = 'css,xdefaults'
 
 let g:tex_fold_additional_envs = ['itemize', 'tabular', 'verbatim']
+
+"for opening man pages from the shell
+if !empty($MAN_PN)
+    autocmd StdinReadPost * silent execute "%! col -b" |
+                \ file $MAN_PN | setlocal ft=man
+endif
 "}}}----------------------------------------------------------------------------
 
 

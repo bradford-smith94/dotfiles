@@ -1,6 +1,6 @@
 # Bradford Smith
-# .shell_env
-# updated: 06/20/2017
+# ~/.shell_env
+# updated: 09/11/2017
 #####################
 
 # turn off flow control (ctrl-q and ctrl-s)
@@ -20,7 +20,9 @@ if [ -f "$HOME/.shell_env.local" ]; then
 fi
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+if command -v lesspipe.sh >/dev/null 2>&1; then
+    eval "$(lesspipe.sh)"
+fi
 
 # use dircolors to set $LC_COLORS
 if [ -f /usr/bin/dircolors ]; then
@@ -41,9 +43,9 @@ fi
 export PATH=$PATH
 
 # use vim as the default editor and man pager
-if [ -f /usr/bin/vim ]; then
-    export EDITOR=/usr/bin/vim
-    export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man' -\""
+if command -v vim >/dev/null 2>&1; then
+    export EDITOR="vim"
+    export MANPAGER="vim -"
 fi
 
 # start ssh-agent
