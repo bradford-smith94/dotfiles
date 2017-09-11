@@ -29,7 +29,10 @@ filetype plugin indent on
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    augroup vimplug_first_install_group
+        autocmd!
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    augroup END
 endif
 
 call plug#begin('~/.vim/bundle')
@@ -125,8 +128,11 @@ let g:tex_fold_additional_envs = ['itemize', 'tabular', 'verbatim']
 
 "for opening man pages from the shell
 if !empty($MAN_PN)
-    autocmd StdinReadPost * silent execute "%! col -b" |
-                \ file $MAN_PN | setlocal ft=man
+    augroup man_page_group
+        autocmd!
+        autocmd StdinReadPost * silent execute "%! col -b" |
+                    \ file $MAN_PN | setlocal ft=man
+    augroup END
 endif
 "}}}----------------------------------------------------------------------------
 
