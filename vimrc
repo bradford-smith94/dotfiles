@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 09/11/2017
+" updated: 09/12/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -139,7 +139,9 @@ endif
 
 "{{{-visual stuff---------------------------------------------------------------
 if has("syntax")
-    syntax on
+    if !exists("g:syntax_on")
+        syntax enable
+    endif
     set cursorline "highlight the line the cursor is on
     augroup cursorline_group
         autocmd!
