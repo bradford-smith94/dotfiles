@@ -130,8 +130,7 @@ let g:tex_fold_additional_envs = ['itemize', 'tabular', 'verbatim']
 if !empty($MAN_PN)
     augroup man_page_group
         autocmd!
-        autocmd StdinReadPost * silent execute "%! col -b" |
-                    \ file $MAN_PN | setlocal ft=man
+        autocmd StdinReadPost * call manpage#SaveStdinManpage()
     augroup END
 endif
 "}}}----------------------------------------------------------------------------
