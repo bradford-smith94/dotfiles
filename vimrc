@@ -1,10 +1,11 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 09/12/2017
+" updated: 09/13/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
 set encoding=utf-8 "use UTF-8 internally
+scriptencoding utf-8
 set nospell "spelling off by default
 set spelllang=en_us
 set spellfile=~/.vim/spell/custom.utf-8.add
@@ -57,10 +58,10 @@ Plug 'nikvdp/ejs-syntax'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'pangloss/vim-javascript'
 Plug 'runoshun/vim-alloy'
-if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
+if has('patch-7.3-885') && has('lua') "neocomplete requires v7.3.885 and +lua
     Plug 'shougo/neocomplete'
 endif
-if v:version >= 704 && (has("python") || has("python3"))
+if v:version >= 704 && (has('python') || has('python3'))
     Plug 'SirVer/ultisnips'
 endif
 Plug 'tpope/vim-fugitive'
@@ -85,14 +86,15 @@ runtime macros/matchit.vim "sources extended mappings for '%'
 let g:netrw_banner = 0
 let g:netrw_winsize = -30
 
-let g:syntastic_javascript_checkers = ["eslint"]
-let g:syntastic_html_checkers = ["validator"]
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_html_checkers = ['validator']
+let g:syntastic_vim_checkers = ['vint']
 let g:syntastic_mode_map = {
-            \ "mode": "active",
-            \ "active_filetypes": [],
-            \ "passive_filetypes": ["ejs", "html"] }
+            \ 'mode': 'active',
+            \ 'active_filetypes': [],
+            \ 'passive_filetypes': ['ejs', 'html'] }
 
-if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
+if has('patch-7.3-885') && has('lua') "neocomplete requires v7.3.885 and +lua
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
     let g:neocomplete#sources#syntax#min_keyword_length = 3
@@ -104,14 +106,14 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 let g:qs_first_occurrence_highlight_color = 81
 let g:qs_second_occurrence_highlight_color = 161
 
-if has("python") || has("python3")
-    let g:UltiSnipsExpandTrigger = "<Tab>"
+if has('python') || has('python3')
+    let g:UltiSnipsExpandTrigger = '<Tab>'
     "let g:UltiSnipsListSnippets = "<C-Tab>"
-    let g:UltiSnipsJumpForwardTrigger = "<Tab>"
-    let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
+    let g:UltiSnipsJumpForwardTrigger = '<Tab>'
+    let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
 endif
 
-if has("patch-7.3-885") && has("lua") "neocomplete requires v7.3.885 and +lua
+if has('patch-7.3-885') && has('lua') "neocomplete requires v7.3.885 and +lua
     "Backspace closes popup
     inoremap <expr><BS> neocomplete#smart_close_popup() ."\<C-h>"
 endif
@@ -137,8 +139,8 @@ endif
 
 
 "{{{-visual stuff---------------------------------------------------------------
-if has("syntax")
-    if !exists("g:syntax_on")
+if has('syntax')
+    if !exists('g:syntax_on')
         syntax enable
     endif
     set cursorline "highlight the line the cursor is on
@@ -152,7 +154,7 @@ set background=dark
 color bsmith "custom colorscheme
 set title "allow Vim to set the window title
 set t_ut= "fixes issues with background color erase (BCE)
-if has("patch-7.3-787") "relative numbers and absolute will both display
+if has('patch-7.3-787') "relative numbers and absolute will both display
     set number "line numbers
     set relativenumber "and relative numbers (current line is exact)
 else
@@ -165,10 +167,10 @@ else
     augroup END
 endif
 set showmatch "highlight matching brackets
-if has("cmdline_info")
+if has('cmdline_info')
     set showcmd "show hanging command while typing
 endif
-if has("wildmenu")
+if has('wildmenu')
     set wildmenu
     set wildmode=longest:full,full
     set wildignore+=*.a,*.o,*~,*.swp,*.tmp,.git,*.pdf
@@ -190,11 +192,11 @@ set lazyredraw "don't redraw the screen when executing macros (for speed)
 set scrolloff=5 "keep 5 lines visible above or below cursor
 set scrolljump=5 "scrolls 5 lines instead of 1
 set listchars=tab:▶-,nbsp:␣,trail:∙,eol:↵
-if has("patch-7.4-711") "option 'space' was added in this patch
+if has('patch-7.4-711') "option 'space' was added in this patch
     set listchars+=space:∙
 endif
 
-if has("windows") && has("folding")
+if has('windows') && has('folding')
     set fillchars+=vert:│
     "make splits feel more correct
     set splitbelow "splits open below instead of above
@@ -202,7 +204,7 @@ if has("windows") && has("folding")
 endif
 
 "searching
-if has("extra_search")
+if has('extra_search')
     set incsearch
     set hlsearch "highlight all matches (:nohlsearch or :noh to stop)
 endif
@@ -238,7 +240,7 @@ augroup misc_group
     autocmd BufNewFile **/Notebook/*.md call notebook#NewEntry()
 augroup END
 
-if has("folding")
+if has('folding')
     "enable folding of code blocks
     set foldmethod=syntax
     set foldlevelstart=99 "start with no folds closed
@@ -335,12 +337,12 @@ endfunction
 "useful function for making colorschemes
 "see: vim.wikia.com/wiki/Showing_syntax_highlight_group_in_statusline
 function! SyntaxItem()
-    echo synIDattr(synID(line("."),col("."),1),"name")
+    echo synIDattr(synID(line('.'),col('.'),1),'name')
 endfunction
 
 "function to toggle the background between light and dark
 function! ToggleBackground()
-    if &background == "dark"
+    if &background ==# 'dark'
         set background=light
     else
         set background=dark
@@ -350,15 +352,15 @@ endfunction
 "function to easily toggle into a 'hex editor mode' which pipes the buffer
 "   through xxd
 function! ToggleHexMode()
-    if !exists("b:hexMode") || !b:hexMode
+    if !exists('b:hexMode') || !b:hexMode
         setlocal binary
         setlocal noeol
-        execute ":%!xxd"
+        execute ':%!xxd'
         let b:hexMode=1
     else
         setlocal nobinary
         setlocal eol
-        execute ":%!xxd -r"
+        execute ':%!xxd -r'
         let b:hexMode=0
     endif
 endfunction
@@ -366,22 +368,26 @@ endfunction
 "function to toggle diff mode for the current buffer
 function! ToggleDiffMode()
     if &diff
-        execute ":diffoff"
+        execute ':diffoff'
     else
-        execute ":diffthis"
+        execute ':diffthis'
     endif
 endfunction
 
 "see: vim.wikia.com/wiki/Remove_unwanted_spaces
 "+: stackoverflow.com/questions/6496778/vim-run-autocmd-on-all-filetypes-except
 function! RemoveTrailingSpaces()
-    if !&binary && &filetype != 'diff'
+    if !&binary && &filetype !=# 'diff'
         if !exists('b:keepTrailingSpaces')
-            normal mz
-            normal Hmy
+            normal! mz
+            normal! Hmy
+            "vint: -ProhibitCommandRelyOnUser
+            "vint: -ProhibitCommandWithUnintendedSideEffect
             %s/\s\+$//e
-            normal 'yz<CR>
-            normal `z
+            "vint: +ProhibitCommandWithUnintendedSideEffect
+            "vint: +ProhibitCommandRelyOnUser
+            normal! 'yz<CR>
+            normal! `z
         endif
     endif
 endfunction
@@ -390,7 +396,7 @@ endfunction
 "   entering/leaving the cmdwin, arg 'enter' specifies whether or not the
 "   function has been called when entering the cmdwin
 function! CmdWinEnterMapping(enter)
-    if has("patch-7.4-1154") "v:true and v:false added in this patch
+    if has('patch-7.4-1154') "v:true and v:false added in this patch
         let l:entering = v:true
     else
         let l:entering = 1
@@ -407,7 +413,7 @@ function! CmdWinEnterMapping(enter)
 endfunction
 
 "function to reload the vimrc
-if !exists("*Reload()")
+if !exists('*Reload()')
     function! Reload()
         source $MYVIMRC
         filetype detect
@@ -446,7 +452,7 @@ augroup cmdwin
     autocmd!
 
     "enter is usefull in the cmdwin
-    if has("patch-7.4-1154") "v:true and v:false added in this patch
+    if has('patch-7.4-1154') "v:true and v:false added in this patch
         autocmd CmdWinEnter * call CmdWinEnterMapping(v:true)
         autocmd CmdWinLeave * call CmdWinEnterMapping(v:false)
     else
@@ -553,7 +559,7 @@ onoremap il :normal vil<CR>
 
 "{{{-other files----------------------------------------------------------------
 " use ~/.vimrc.local for machine local changes
-if filereadable(glob("~/.vimrc.local"))
+if filereadable(glob('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
 "}}}----------------------------------------------------------------------------
