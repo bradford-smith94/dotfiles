@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 09/13/2017
+" updated: 09/14/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -214,11 +214,10 @@ set smartcase "unless I searched for capitalized letters
 
 
 "{{{-text formatting------------------------------------------------------------
-set tabstop=4
 set autoindent
 set shiftwidth=4
-set expandtab "use softabs by default (:set noexpandtab)
-set softtabstop=4 "softtabs (tab key types spaces)
+set expandtab
+set softtabstop=4
 set textwidth=80 "wrap at 80 columns by default
 set formatoptions-=t "turn off auto-formatting of text by default
 set nowrap "don't wrap text by default
