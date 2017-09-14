@@ -40,6 +40,8 @@ call plug#begin('~/.vim/bundle')
 "plugins '<github_user>/<repo>' or full git path
 Plug 'artoj/qmake-syntax-vim'
 Plug 'baskerville/vim-sxhkdrc'
+"my fork of 'unblevable/quick-scope'
+Plug 'bradford-smith94/quick-scope'
 Plug 'bradford-smith94/vim-autolist'
 Plug 'bradford-smith94/vim-colors-bsmith'
 Plug 'bradford-smith94/vim-dauber'
@@ -69,7 +71,6 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
-Plug 'unblevable/quick-scope'
 Plug 'vim-scripts/scons.vim'
 "originally scrooloose/syntastic
 Plug 'vim-syntastic/syntastic'
@@ -103,8 +104,11 @@ endif
 
 "only do quick-scope highlighting after pressing f, F, t and T keys
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-let g:qs_first_occurrence_highlight_color = 81
-let g:qs_second_occurrence_highlight_color = 161
+augroup qs_highlights
+    autocmd!
+    autocmd ColorScheme * highlight QuickScopePrimary gui=underline ctermfg=81 cterm=underline
+    autocmd ColorScheme * highlight QuickScopeSecondary gui=underline ctermfg=161 cterm=underline
+augroup END
 
 if has('python') || has('python3')
     let g:UltiSnipsExpandTrigger = '<Tab>'
