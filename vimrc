@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 09/14/2017
+" updated: 09/17/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -46,7 +46,7 @@ Plug 'bradford-smith94/vim-autolist'
 Plug 'bradford-smith94/vim-colors-bsmith'
 Plug 'bradford-smith94/vim-dauber'
 Plug 'bradford-smith94/vim-superupdate'
-Plug 'chrisbra/Colorizer', { 'for': ['css', 'html', 'xdefaults'] }
+Plug 'chrisbra/Colorizer', { 'for': ['css', 'scss', 'html', 'xdefaults'] }
 if executable('editorconfig')
     Plug 'editorconfig/editorconfig-vim'
 endif
@@ -106,8 +106,8 @@ endif
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 augroup qs_highlights
     autocmd!
-    autocmd ColorScheme * highlight QuickScopePrimary gui=underline ctermfg=81 cterm=underline
-    autocmd ColorScheme * highlight QuickScopeSecondary gui=underline ctermfg=161 cterm=underline
+    autocmd ColorScheme * highlight QuickScopePrimary guifg=#5fd7ff gui=underline ctermfg=81 cterm=underline
+    autocmd ColorScheme * highlight QuickScopeSecondary guifg=#d7005f gui=underline ctermfg=161 cterm=underline
 augroup END
 
 if has('python') || has('python3')
@@ -128,7 +128,7 @@ let g:superupdate_skip_first = 1
 "only enable indentLine for some filetypes
 let g:indentLine_fileType = ['html', 'xhtml', 'xml']
 
-let g:colorizer_auto_filetype = 'css,xdefaults'
+let g:colorizer_auto_filetype = 'css,scss,xdefaults'
 
 let g:tex_fold_additional_envs = ['itemize', 'tabular', 'verbatim']
 
@@ -165,8 +165,10 @@ else
     set relativenumber
     augroup numbering_group
         autocmd!
-        autocmd InsertEnter * setlocal norelativenumber "don't need in insert
-        autocmd InsertEnter * setlocal number
+        "if Vim is old and doesn't support both relative and absolute numbers
+        "these autocmds will show relative numbers in normal/visual modes (for
+        "movement) and absolute numbers in insert mode
+        autocmd InsertEnter * setlocal norelativenumber | setlocal number
         autocmd InsertLeave * setlocal relativenumber
     augroup END
 endif
@@ -355,10 +357,13 @@ endfunction
 "function to easily toggle into a 'hex editor mode' which pipes the buffer
 "   through xxd
 function! ToggleHexMode()
+    "see :help hex-editing
     if !exists('b:hexMode') || !b:hexMode
         setlocal binary
         setlocal noeol
         execute ':%!xxd'
+        setlocal filetype=xxd
+        setlocal nomodified
         let b:hexMode=1
     else
         setlocal nobinary
@@ -371,9 +376,9 @@ endfunction
 "function to toggle diff mode for the current buffer
 function! ToggleDiffMode()
     if &diff
-        execute ':diffoff'
+        diffoff
     else
-        execute ':diffthis'
+        diffthis
     endif
 endfunction
 
@@ -472,7 +477,7 @@ nnoremap <leader>c :chdir %:h<CR>
 nnoremap <leader>d :Diff<CR>
 nnoremap <leader>e :e<space>
 nnoremap <leader>h :nohlsearch<CR>
-nnoremap <leader>l :set list!<CR>
+nnoremap <leader>l :setlocal list!<CR>
 "use <leader>m and <leader>M to place and unplace a '>' in the sign column
 sign define bsmith_mark linehl=Underlined text=>
 nnoremap <leader>m :exe ":sign place 1 name=bsmith_mark line=" . line('.') . " file=" . expand('%:p')<CR>
