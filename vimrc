@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 09/17/2017
+" updated: 09/22/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -55,6 +55,7 @@ Plug 'honza/vim-snippets'
 Plug 'konfekt/fastfold'
 Plug 'matze/vim-tex-fold'
 Plug 'mgrabovsky/vim-xverif'
+Plug 'mxw/vim-jsx'
 Plug 'nelstrom/vim-markdown-folding'
 Plug 'nikvdp/ejs-syntax'
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -131,6 +132,9 @@ let g:indentLine_fileType = ['html', 'xhtml', 'xml']
 let g:colorizer_auto_filetype = 'css,scss,xdefaults'
 
 let g:tex_fold_additional_envs = ['itemize', 'tabular', 'verbatim']
+
+"enable jsx in *.js files
+let g:jsx_ext_required = 0
 
 "for opening man pages from the shell
 if !empty($MAN_PN)
