@@ -1,4 +1,6 @@
+" Bradford Smith
 " ~/.vim/ftdetect/gitignore.vim
+" updated: 09/22/2017
 " gitignore filetype detection
-au BufNewFile,BufRead .gitignore set filetype=gitignore
-au BufNewFile,BufRead gitignore set filetype=gitignore
+
+autocmd BufNewFile,BufRead .gitignore,gitignore set filetype=gitignore
