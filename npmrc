@@ -1,0 +1,9 @@
+# Bradford Smith
+# ~/.npmrc
+# updated: 09/22/2017
+
+global = true
+prefix = ${HOME}/.npm_pkgs
+
+init-author-name = "Bradford Smith"
+init-license = "MIT"

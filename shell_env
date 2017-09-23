@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.shell_env
-# updated: 09/11/2017
+# updated: 09/22/2017
 #####################
 
 # turn off flow control (ctrl-q and ctrl-s)
@@ -31,9 +31,15 @@ if [ -f /usr/bin/dircolors ]; then
     eval "$(dircolors -b $DIR_COLORS)"
 fi
 
+# if ~/.npm_pkgs exists add it to the beginning of the path
+if [ -d "$HOME/.npm_pkgs" ]; then
+    PATH=$PATH:$HOME/.npm_pkgs/bin/
+    export MANPATH=$MANDATORY_MANPATH:$HOME/.npm_pkgs/share/man/
+fi
+
 # if ~/bin exists add it to the beginning of the path
-if [ -d ~/bin ]; then
-    PATH=~/bin:$PATH
+if [ -d "$HOME/bin" ]; then
+    PATH=$HOME/bin:$PATH
 fi
 
 # if android tools exist add them to the path

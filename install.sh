@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 06/06/2017
+# updated: 09/22/2017
 #
 # This script can be run to install my dotfiles.
 #
@@ -66,12 +66,13 @@ files[1]="Xresources   $dir $HOME $olddir $TRUE"
 files[2]="xprofile     $dir $HOME $olddir $TRUE"
 files[3]="bin          $dir $HOME $olddir $FALSE"
 files[4]="ctags        $dir $HOME $olddir $TRUE"
-files[5]="redshift.conf     $config $config_target $oldconfig $FALSE"
-files[6]="termite           $config $config_target $oldconfig $FALSE"
-files[7]="conky             $config $config_target $oldconfig $FALSE"
-files[8]="Xresources.d      $config $config_target $oldconfig $FALSE"
-files[9]="cower             $config $config_target $oldconfig $FALSE"
-files[10]="ranger           $config $config_target $oldconfig $FALSE"
+files[5]="npmrc        $dir $HOME $olddir $TRUE"
+files[6]="redshift.conf     $config $config_target $oldconfig $FALSE"
+files[7]="termite           $config $config_target $oldconfig $FALSE"
+files[8]="conky             $config $config_target $oldconfig $FALSE"
+files[9]="Xresources.d      $config $config_target $oldconfig $FALSE"
+files[10]="cower            $config $config_target $oldconfig $FALSE"
+files[11]="ranger           $config $config_target $oldconfig $FALSE"
 
 # lists that represent a group of dependent files (that is the whole group
 # should be installed in order for it to work properly)
@@ -177,10 +178,10 @@ function promptYN
     done
 
     if [[ $response == "n" || \
-        $reponse == "no" ]]; then
+        $response == "no" ]]; then
         return $FALSE
     elif [[ $response == "y" || \
-        $reponse == "yes" ]]; then
+        $response == "yes" ]]; then
         return $TRUE
     else # this shouldn't happen
         echo -e "${RED}Something went wrong${NC}"
