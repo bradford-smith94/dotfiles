@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 09/22/2017
+# updated: 09/26/2017
 #
 # This script can be run to install my dotfiles.
 #
@@ -102,9 +102,10 @@ bspwm[2]="polybar       $config $config_target $oldconfig $FALSE"
 bspwm[3]="rofi          $config $config_target $oldconfig $FALSE"
 bspwm[4]="redshift.conf $config $config_target $oldconfig $FALSE"
 bspwm[5]="ranger        $config $config_target $oldconfig $FALSE"
-bspwm[6]="xinitrc       $dir    $HOME          $olddir    $TRUE"
-bspwm[7]="xprofile      $dir    $HOME          $olddir    $TRUE"
-bspwm[8]="bin           $dir    $HOME          $olddir    $FALSE"
+bspwm[6]="dunst         $config $config_target $oldconfig $FALSE"
+bspwm[7]="xinitrc       $dir    $HOME          $olddir    $TRUE"
+bspwm[8]="xprofile      $dir    $HOME          $olddir    $TRUE"
+bspwm[9]="bin           $dir    $HOME          $olddir    $FALSE"
 
 #}}} End Variables #############################################################
 
