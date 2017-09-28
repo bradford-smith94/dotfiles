@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/after/ftplugin/markdown.vim
-" 03/07/2017
+" 09/28/2017
 " Markdown filetype specific configuration to run after system configuration
 
 "settings
@@ -20,7 +20,7 @@ endif
 nnoremap <buffer> <leader>a ciW[<C-r>"](<C-r>")<Esc>
 
 "vim-autolist mappings
-imap <buffer> <CR> <Esc><Plug>AutolistReturn
+imap <buffer> <CR> <Plug>AutolistReturn
 nmap <buffer> o <Plug>AutolistNewLineBelow
 nmap <buffer> O <Plug>AutolistNewLineAbove
 

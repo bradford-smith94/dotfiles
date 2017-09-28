@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/ftplugin/text.vim
-" 07/29/2016
+" 09/28/2017
 " Custom "text" filetype specific configuration
 
 "settings
@@ -12,7 +12,7 @@ setlocal foldmethod=manual
 let b:keepTrailingSpaces = 1
 
 "vim-autolist mappings
-imap <buffer> <CR> <Esc><Plug>AutolistReturn
+imap <buffer> <CR> <Plug>AutolistReturn
 nmap <buffer> o <Plug>AutolistNewLineBelow
 nmap <buffer> O <Plug>AutolistNewLineAbove
 
