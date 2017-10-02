@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 09/22/2017
+" updated: 10/02/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -105,10 +105,11 @@ endif
 
 "only do quick-scope highlighting after pressing f, F, t and T keys
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-augroup qs_highlights
+augroup plugin_highlights
     autocmd!
     autocmd ColorScheme * highlight QuickScopePrimary guifg=#5fd7ff gui=underline ctermfg=81 cterm=underline
     autocmd ColorScheme * highlight QuickScopeSecondary guifg=#d7005f gui=underline ctermfg=161 cterm=underline
+    autocmd ColorScheme * call dauber#config#SetColors()
 augroup END
 
 if has('python') || has('python3')
