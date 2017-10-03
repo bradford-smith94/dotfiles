@@ -483,13 +483,14 @@ nnoremap <leader>d :Diff<CR>
 nnoremap <leader>e :e<space>
 nnoremap <leader>h :nohlsearch<CR>
 nnoremap <leader>l :setlocal list!<CR>
-"use <leader>m and <leader>M to place and unplace a '>' in the sign column
-sign define bsmith_mark linehl=Underlined text=>
-nnoremap <leader>m :exe ":sign place 1 name=bsmith_mark line=" . line('.') . " file=" . expand('%:p')<CR>
-nnoremap <leader>M :exe ":sign unplace * file=" . expand('%:p')<CR>
+nnoremap <leader>m :make<CR>
 nnoremap <leader>q :q<CR>
 "substitute word under cursor
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/
+"use <leader>u and <leader>U to place and unplace a '>' in the sign column
+sign define bsmith_mark linehl=Underlined text=>
+nnoremap <leader>u :exe ":sign place 1 name=bsmith_mark line=" . line('.') . " file=" . expand('%:p')<CR>
+nnoremap <leader>U :exe ":sign unplace * file=" . expand('%:p')<CR>
 nnoremap <leader>v :e $MYVIMRC<CR>
 nnoremap <leader>w :w<CR>
 
