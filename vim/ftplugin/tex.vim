@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/ftplugin/tex.vim
-" 09/25/2017
+" 10/04/2017
 " TeX (LaTeX) filetype specific configuration
 
 "settings
@@ -27,7 +27,7 @@ elseif executable('pdflatex') == 1
 endif
 
 command! TexClean execute "silent! !rm " . expand("%:r") .
-            \ ".{aux,bbl,bcf,blg,fdb_latexmk,fls,log,nav,out,run.xml,snm,toc,vrb} " .
+            \ ".{aux,bbl,bcf,blg,fdb_latexmk,fls,lof,log,nav,out,run.xml,snm,toc,vrb} " .
             \ "2> /dev/null"
 
 augroup tex_autocmds
