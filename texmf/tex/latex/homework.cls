@@ -12,6 +12,7 @@
 
 \LoadClass{article}
 \RequirePackage[letterpaper, margin=1.0in]{geometry}
+\RequirePackage[T1]{fontenc}
 \RequirePackage{setspace}
 \RequirePackage{xcolor}
 
