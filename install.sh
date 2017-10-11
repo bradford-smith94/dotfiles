@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 09/26/2017
+# updated: 10/10/2017
 #
 # This script can be run to install my dotfiles.
 #
@@ -67,12 +67,13 @@ files[2]="xprofile     $dir $HOME $olddir $TRUE"
 files[3]="bin          $dir $HOME $olddir $FALSE"
 files[4]="ctags        $dir $HOME $olddir $TRUE"
 files[5]="npmrc        $dir $HOME $olddir $TRUE"
-files[6]="redshift.conf     $config $config_target $oldconfig $FALSE"
-files[7]="termite           $config $config_target $oldconfig $FALSE"
-files[8]="conky             $config $config_target $oldconfig $FALSE"
-files[9]="Xresources.d      $config $config_target $oldconfig $FALSE"
-files[10]="cower            $config $config_target $oldconfig $FALSE"
-files[11]="ranger           $config $config_target $oldconfig $FALSE"
+files[6]="texmf        $dir $HOME $olddir $FALSE"
+files[7]="redshift.conf     $config $config_target $oldconfig $FALSE"
+files[8]="termite           $config $config_target $oldconfig $FALSE"
+files[9]="conky             $config $config_target $oldconfig $FALSE"
+files[10]="Xresources.d      $config $config_target $oldconfig $FALSE"
+files[11]="cower            $config $config_target $oldconfig $FALSE"
+files[12]="ranger           $config $config_target $oldconfig $FALSE"
 
 # lists that represent a group of dependent files (that is the whole group
 # should be installed in order for it to work properly)

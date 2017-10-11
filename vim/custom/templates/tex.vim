@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/custom/templates/tex.vim
-" 02/04/2017
+" 10/10/2017
 " this file is sourced when creating a new LaTeX (*.tex) file
 
 " :insert will insert all following lines until it reaches a line with just a
@@ -15,11 +15,14 @@
 
 let type = inputlist(['Which template would you like:',
             \ '1. article',
-            \ '2. presentation'])
+            \ '2. homework',
+            \ '3. presentation'])
 
 if type == 1
     source ~/.vim/custom/templates/latex_article.vim
 elseif type == 2
+    source ~/.vim/custom/templates/latex_homework.vim
+elseif type == 3
     source ~/.vim/custom/templates/latex_beamer.vim
 endif
 
