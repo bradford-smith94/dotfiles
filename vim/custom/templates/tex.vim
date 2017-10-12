@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/custom/templates/tex.vim
-" 10/10/2017
+" 10/12/2017
 " this file is sourced when creating a new LaTeX (*.tex) file
 
 " :insert will insert all following lines until it reaches a line with just a
@@ -29,7 +29,7 @@ endif
 " ended inserting, update "Date:" with the current date as mm/dd/yyyy
 :%s/Date:/\=strftime("%m\/%d\/%Y", localtime())/
 " expand <File> with the filename
-:execute "normal! ggjfFca<".expand('%:t')
+:execute 'normal! ggjfF"_ca<'.expand('%:t')
 
 "this sets the filetype correctly right away
 setlocal ft=tex

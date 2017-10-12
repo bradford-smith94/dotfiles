@@ -1,5 +1,5 @@
 " Bradford Smith
-" 12/07/2016
+" 10/12/2017
 " ~/.vim/custom/templates/Makefile.vim
 " this file is sourced when creating a new Makefile
 " in order to prefill it with a desired default Makefile
@@ -57,5 +57,5 @@ tar: fclean
 " ended inserting, update "Date:" with the current date as mm/dd/yyyy
 :%s/Date:/\=strftime("%m\/%d\/%Y", localtime())/g
 " start on second line after "Makefile for"
-:execute "normal! ggj$"
+:execute 'normal! ggj$'
 
