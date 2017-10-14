@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/ftplugin/tex.vim
-" 10/04/2017
+" 10/13/2017
 " TeX (LaTeX) filetype specific configuration
 
 "settings
@@ -45,6 +45,14 @@ function! s:BSlashReplace(lhs, rhs)
 endfunction
 
 inoreabbrev <buffer> infinity <C-R>=<SID>BSlashReplace('infinity', 'infty')<CR>
+
+let b:autolist_override_global_markers = 1
+let b:autolist_unordered_markers = ['\\item']
+
+"vim-autolist mappings
+imap <buffer> <CR> <Esc><Plug>AutolistReturn
+nmap <buffer> o <Plug>AutolistNewLineBelow
+nmap <buffer> O <Plug>AutolistNewLineAbove
 
 "source typo autocorrection
 source ~/.vim/custom/typo_autocorrect.vim
