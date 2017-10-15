@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 10/02/2017
+" updated: 10/15/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -55,6 +55,7 @@ Plug 'honza/vim-snippets'
 Plug 'konfekt/fastfold'
 Plug 'matze/vim-tex-fold'
 Plug 'mgrabovsky/vim-xverif'
+Plug 'mtth/scratch.vim'
 Plug 'mxw/vim-jsx'
 Plug 'nelstrom/vim-markdown-folding'
 Plug 'nikvdp/ejs-syntax'
@@ -136,6 +137,8 @@ let g:tex_fold_additional_envs = ['itemize', 'tabular', 'verbatim']
 
 "enable jsx in *.js files
 let g:jsx_ext_required = 0
+
+let g:scratch_top = 0
 
 "for opening man pages from the shell
 if !empty($MAN_PN)
