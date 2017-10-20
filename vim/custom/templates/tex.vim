@@ -16,7 +16,8 @@
 let type = inputlist(['Which template would you like:',
             \ '1. article',
             \ '2. homework',
-            \ '3. presentation'])
+            \ '3. presentation',
+            \ '4. letter'])
 
 if type == 1
     source ~/.vim/custom/templates/latex_article.vim
@@ -24,6 +25,8 @@ elseif type == 2
     source ~/.vim/custom/templates/latex_homework.vim
 elseif type == 3
     source ~/.vim/custom/templates/latex_beamer.vim
+elseif type == 4
+    source ~/.vim/custom/templates/latex_letter.vim
 endif
 
 " ended inserting, update "Date:" with the current date as mm/dd/yyyy
