@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 10/15/2017
+" updated: 10/20/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -76,6 +76,7 @@ Plug 'tpope/vim-repeat'
 Plug 'vim-scripts/scons.vim'
 "originally scrooloose/syntastic
 Plug 'vim-syntastic/syntastic'
+Plug 'xtal8/traces.vim'
 Plug 'Yggdroot/indentLine', { 'for': [ 'html', 'xhtml', 'xml' ] }
 call plug#end()
 
