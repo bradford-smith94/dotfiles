@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.shell_aliases
-# updated: 08/14/2017
+# updated: 10/22/2017
 #####################
 
 ## Overall
@@ -32,7 +32,13 @@ alias local-ip="~/bin/activeNetDev.sh \
     | grep 'inet' | awk '{print \$2}'"
 alias public-ip='curl icanhazip.com'
 
-alias chrome='google-chrome-stable'
+if command -v google-chrome-stable >/dev/null 2>&1; then
+    alias chrome='google-chrome-stable'
+fi
+
+if command -v screenkey >/dev/null 2>&1; then
+    alias screenkey='screenkey --ignore Caps_Lock'
+fi
 
 alias clock="while true; \
     do tput clear; \
