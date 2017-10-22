@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.zsh/bsmith.zsh-theme
-# updated: 07/28/2017
+# updated: 10/22/2017
 #########################
 
 autoload -U colors && colors
@@ -23,18 +23,18 @@ local NEWLINE=$'\n'
 #red # if root, else green $
 PROMPT_CHAR="%(!.${RED}#${RESET}.${GREEN}$ ${RESET})"
 
-function user()
+function _user()
 {
     #echo name in red if root, else name in green
     echo "%(!.${RED}%n${RESET}.${GREEN}%n${RESET})"
 }
 
-function host()
+function _host()
 {
     echo "%B${GREEN}@%M: ${RESET}%b"
 }
 
-function dir()
+function _dir()
 {
     #if directory has at least 5 parts show the front 1 and last 2
     #else show the full cwd
@@ -43,26 +43,26 @@ function dir()
 }
 
 #number of background jobs in cyan
-function bgjobs()
+function _bgjobs()
 {
     [[ $(jobs | wc -l) -gt 0 ]] && echo "jobs:${CYAN}%j${RESET}"
 }
 
-function tmux_sessions()
+function _tmux_sessions()
 {
     local num=$(tmux list-sessions 2>/dev/null | wc -l)
     [[ $num -gt 0 ]] && echo "tmux:${BLUE}$num${RESET}"
 }
 
 # from github.com/SicK94/minimal/minimal.zsh-theme
-function git_branch_name()
+function _git_branch_name()
 {
     local branch_name="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
     [[ -n $branch_name ]] && echo "$branch_name"
 }
 
 # from github.com/SicK94/minimal/minimal.zsh-theme
-function git_repo_status()
+function _git_repo_status()
 {
     local rs="$(git status --porcelain -b 2> /dev/null)"
 
@@ -81,7 +81,7 @@ function git_repo_status()
     fi
 }
 
-function git_stash_count()
+function _git_stash_count()
 {
     local count="$(git stash list 2> /dev/null | wc -l)"
 
@@ -89,14 +89,14 @@ function git_stash_count()
 }
 
 # from github.com/SicK94/minimal/minimal.zsh-theme
-function prompt_git()
+function _prompt_git()
 {
-    local branch=$(git_branch_name)
+    local branch=$(_git_branch_name)
     [[ -n $branch ]] && \
         echo "git:$(git_repo_status)%B$branch%b${RESET}$(git_stash_count)"
 }
 
-function prompt_vimode()
+function _prompt_vimode()
 {
     case $KEYMAP in
         main|viins)
@@ -114,12 +114,12 @@ function prompt_vimode()
     esac
 }
 
-function prompt_topline()
+function _prompt_topline()
 {
-    local vi_mode="$(prompt_vimode)"
-    local bg_jobs="$(bgjobs)"
-    local tmux="$(tmux_sessions)"
-    local git_things="$(prompt_git)"
+    local vi_mode="$(_prompt_vimode)"
+    local bg_jobs="$(_bgjobs)"
+    local tmux="$(_tmux_sessions)"
+    local git_things="$(_prompt_git)"
     local flag
 
     [[ -n $vi_mode ]] && echo -n $vi_mode" " && flag=true
@@ -152,6 +152,6 @@ else
     SSH=""
 fi
 
-TL='${$(prompt_topline)%.}'
-PROMPT="${TL}$SSH$(user)$(host)$(dir)$PROMPT_CHAR"
+TL='${$(_prompt_topline)%.}'
+PROMPT="${TL}$SSH$(_user)$(_host)$(_dir)$PROMPT_CHAR"
 RPROMPT="${RED}%(?..%?)${RESET}"
