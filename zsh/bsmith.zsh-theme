@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.zsh/bsmith.zsh-theme
-# updated: 10/22/2017
+# updated: 10/23/2017
 #########################
 
 autoload -U colors && colors
@@ -93,7 +93,7 @@ function _prompt_git()
 {
     local branch=$(_git_branch_name)
     [[ -n $branch ]] && \
-        echo "git:$(git_repo_status)%B$branch%b${RESET}$(git_stash_count)"
+        echo "git:$(_git_repo_status)%B$branch%b${RESET}$(_git_stash_count)"
 }
 
 function _prompt_vimode()
