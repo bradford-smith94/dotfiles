@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 10/20/2017
+" updated: 10/22/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -47,6 +47,7 @@ Plug 'bradford-smith94/vim-colors-bsmith'
 Plug 'bradford-smith94/vim-dauber'
 Plug 'bradford-smith94/vim-superupdate'
 Plug 'chrisbra/Colorizer', { 'for': ['css', 'scss', 'html', 'xdefaults'] }
+Plug 'chrisbra/vim-diff-enhanced'
 if executable('editorconfig')
     Plug 'editorconfig/editorconfig-vim'
 endif
@@ -140,6 +141,11 @@ let g:tex_fold_additional_envs = ['itemize', 'tabular', 'verbatim']
 let g:jsx_ext_required = 0
 
 let g:scratch_top = 0
+
+"when started in diffmode set diff algorithm to patience (EnhancedDiff plugin)
+if &diff
+    let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
+endif
 
 "for opening man pages from the shell
 if !empty($MAN_PN)
