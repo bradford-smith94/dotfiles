@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.zsh/bsmith.zsh-theme
-# updated: 10/23/2017
+# updated: 10/30/2017
 #########################
 
 autoload -U colors && colors
@@ -51,7 +51,11 @@ function _bgjobs()
 function _tmux_sessions()
 {
     local num=$(tmux list-sessions 2>/dev/null | wc -l)
-    [[ $num -gt 0 ]] && echo "tmux:${BLUE}$num${RESET}"
+    if [[ -n "$TMUX" && $num -gt 0 ]]; then
+        echo "%Btmux:${BLUE}$num${RESET}%b"
+    elif [[ $num -gt 0 ]]; then
+        echo "tmux:${BLUE}$num${RESET}"
+    fi
 }
 
 # from github.com/SicK94/minimal/minimal.zsh-theme
