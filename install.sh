@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 10/10/2017
+# updated: 11/03/2017
 #
 # This script can be run to install my dotfiles.
 #
@@ -74,6 +74,7 @@ files[9]="conky             $config $config_target $oldconfig $FALSE"
 files[10]="Xresources.d      $config $config_target $oldconfig $FALSE"
 files[11]="cower            $config $config_target $oldconfig $FALSE"
 files[12]="ranger           $config $config_target $oldconfig $FALSE"
+files[13]="pacman           $config $config_target $oldconfig $FALSE"
 
 # lists that represent a group of dependent files (that is the whole group
 # should be installed in order for it to work properly)
