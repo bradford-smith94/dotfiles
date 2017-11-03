@@ -1,11 +1,11 @@
 " Bradford Smith
 " ~/.vim/ftplugin/tex.vim
-" 10/13/2017
+" 11/03/2017
 " TeX (LaTeX) filetype specific configuration
 
 "settings
-setlocal wrap
 setlocal spell
+setlocal formatoptions+=tc
 
 if executable('latexmk') == 1
     setlocal makeprg=latexmk\ -pdf\ %
