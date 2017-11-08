@@ -1,5 +1,4 @@
-# Things to ignore from the repo
-################################
+# dotfiles .gitignore
 
 # Any TODO files I might leave myself
 TODO*
@@ -23,3 +22,6 @@ vim/.netrwhist
 config/ranger/bookmarks
 config/ranger/history
 config/ranger/tagged
+
+# zsh completion dump
+zsh/.zcompdump

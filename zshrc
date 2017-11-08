@@ -1,10 +1,10 @@
 # Bradford Smith
-# .zshrc
-# updated: 08/26/2017
+# ~/.zshrc
+# updated: 11/08/2017
 #####################
 
 # theme it
-source ~/.zsh/bsmith.zsh-theme
+source "$HOME/.zsh/bsmith.zsh-theme"
 
 # unset history file
 HISTFILE=
@@ -50,15 +50,11 @@ bindkey -M vicmd "_" beginning-of-line
 bindkey -M viins "" menu-complete
 bindkey -M viins "" reverse-menu-complete
 
-# The following lines were added by compinstall
+autoload -Uz compinit
+compinit -d "$HOME/.zsh/.zcompdump"
 
 zstyle ':completion:*' completer _expand _complete _ignored
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|=**' 'l:|=* r:|=*'
-zstyle :compinstall filename "$HOME/.zshrc"
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
 
 # https://unix.stackexchange.com/questions/52099/how-to-append-extend-zshell-completions
 zstyle -s ':completion:*:hosts' hosts _ssh_config
