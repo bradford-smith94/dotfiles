@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 11/07/2017
+" updated: 11/08/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -192,6 +192,7 @@ if has('wildmenu')
     set wildignore+=*.a,*.o
     set wildignore+=*~,*.swp,*.tmp
     set wildignore+=.git,tags
+    set wildignore+=*/node_modules/*
     set wildignore+=*.jpg,*.png,*.pdf
 endif
 
@@ -466,7 +467,7 @@ command! Diff call ToggleDiffMode()
 
 if executable('xclip')
     "copy the given range (or the current line) using xclip
-    command! -range Xclip <line1>,<line2>!tee >(xclip -i -selection clipboard)
+    command! -range Xclip <line1>,<line2>write !xclip -i -selection clipboard
 endif
 
 "unbind keys
