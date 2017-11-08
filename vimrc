@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 10/22/2017
+" updated: 11/07/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -15,7 +15,7 @@ set noerrorbells
 set visualbell
 set t_vb=
 set tags+=tags;,./tags;
-set viminfo='100,<50,s10,/0,h,n~/.vim/viminfo "see :help 'viminfo'
+set viminfofile=~/.vim/viminfo
 set nomodeline "disable modelines
 set notimeout "don't timeout on :mappings
 set ttimeout "timeout on key codes (like esc and arrow keys)
@@ -25,7 +25,7 @@ filetype plugin indent on
 "}}}----------------------------------------------------------------------------
 
 
-"{{{-setup vim-plug to manage plugins-------------------------------------------
+"{{{-plugins--------------------------------------------------------------------
 "see: https://github.com/junegunn/vim-plug/wiki/faq#automatic-installation
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -84,8 +84,6 @@ call plug#end()
 "felt like these belonged with plugin initialization
 source $VIMRUNTIME/ftplugin/man.vim "initializes the :Man command
 runtime macros/matchit.vim "sources extended mappings for '%'
-"}}}----------------------------------------------------------------------------
-
 
 "{{{-plugin settings------------------------------------------------------------
 let g:netrw_banner = 0
@@ -155,6 +153,7 @@ if !empty($MAN_PN)
     augroup END
 endif
 "}}}----------------------------------------------------------------------------
+"}}}----------------------------------------------------------------------------
 
 
 "{{{-visual stuff---------------------------------------------------------------
@@ -187,14 +186,13 @@ else
         autocmd InsertLeave * setlocal relativenumber
     augroup END
 endif
-set showmatch "highlight matching brackets
-if has('cmdline_info')
-    set showcmd "show hanging command while typing
-endif
 if has('wildmenu')
     set wildmenu
     set wildmode=longest:full,full
-    set wildignore+=*.a,*.o,*~,*.swp,*.tmp,.git,*.pdf
+    set wildignore+=*.a,*.o
+    set wildignore+=*~,*.swp,*.tmp
+    set wildignore+=.git,tags
+    set wildignore+=*.jpg,*.png,*.pdf
 endif
 
 "{{{-statusline-----------------------------------------------------------------
@@ -207,6 +205,10 @@ augroup END
 
 set laststatus=2 "always show statusline
 set showmode
+set showmatch "highlight matching brackets
+if has('cmdline_info')
+    set showcmd "show partial command while typing
+endif
 "}}}----------------------------------------------------------------------------
 
 set lazyredraw "don't redraw the screen when executing macros (for speed)
@@ -227,7 +229,7 @@ endif
 "searching
 if has('extra_search')
     set incsearch
-    set hlsearch "highlight all matches (:nohlsearch or :noh to stop)
+    set hlsearch "highlight all matches (:nohlsearch to stop)
 endif
 set ignorecase "case insensitive search
 set smartcase "unless I searched for capitalized letters
@@ -240,7 +242,6 @@ set shiftwidth=4
 set expandtab
 set softtabstop=4
 set textwidth=80 "wrap at 80 columns by default
-set formatoptions-=t "turn off auto-formatting of text by default
 set nowrap "don't wrap text by default
 
 augroup misc_group
@@ -261,7 +262,7 @@ augroup misc_group
 augroup END
 
 if has('folding')
-    "enable folding of code blocks
+    "enable folding by syntax by default
     set foldmethod=syntax
     set foldlevelstart=99 "start with no folds closed
 endif
@@ -439,7 +440,9 @@ endfunction
 if !exists('*Reload()')
     function! Reload()
         source $MYVIMRC
-        filetype detect
+        "redo filetype detection in all open windows to ensure they reload
+        "properly
+        windo filetype detect
     endfunction
 endif
 "}}}----------------------------------------------------------------------------
@@ -526,6 +529,12 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
+nnoremap gn gnzz
+nnoremap gN gNzz
+
+"stay in visual mode while changing indents
+xnoremap > >gv
+xnoremap < <gv
 
 "make Y behave like C and D
 noremap Y y$
@@ -547,11 +556,6 @@ inoremap <F1> <C-o>:call ToggleBackground()<CR>
 
 "[F2] toggles file explorer
 noremap <F2> :Lexplore<CR>
-
-"[F3] greps current project directory for word under cursor (results in buffer)
-noremap <F3> :execute "grep -srnw --binary-files=without-match
-    \ --exclude-dir=.git --exclude-dir=node_modules . -e " . expand("<cword>")
-    \ <CR><CR><CR>
 
 "[F5] saves
 noremap <F5> :w<CR>
