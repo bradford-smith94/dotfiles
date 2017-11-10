@@ -1,21 +1,19 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 11/08/2017
+" updated: 11/10/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
 set encoding=utf-8 "use UTF-8 internally
-scriptencoding utf-8
-set nospell "spelling off by default
-set spelllang=en_us
-set spellfile=~/.vim/spell/custom.utf-8.add
-silent! mkspell! ~/.vim/spell/custom.utf-8.add
+scriptencoding utf-8 "this file uses UTF-8
 set backspace=indent,eol,start "makes backspace work like expected
 set noerrorbells
 set visualbell
 set t_vb=
 set tags+=tags;,./tags;
-set viminfofile=~/.vim/viminfo
+if has('viminfo')
+    set viminfofile=~/.vim/viminfo
+endif
 set nomodeline "disable modelines
 set notimeout "don't timeout on :mappings
 set ttimeout "timeout on key codes (like esc and arrow keys)
@@ -172,32 +170,21 @@ set background=dark
 color bsmith "custom colorscheme
 set title "allow Vim to set the window title
 set t_ut= "fixes issues with background color erase (BCE)
-if has('patch-7.3-787') "relative numbers and absolute will both display
-    set number "line numbers
-    set relativenumber "and relative numbers (current line is exact)
-else
-    set relativenumber
-    augroup numbering_group
-        autocmd!
-        "if Vim is old and doesn't support both relative and absolute numbers
-        "these autocmds will show relative numbers in normal/visual modes (for
-        "movement) and absolute numbers in insert mode
-        autocmd InsertEnter * setlocal norelativenumber | setlocal number
-        autocmd InsertLeave * setlocal relativenumber
-    augroup END
-endif
+set number "line numbers
+set relativenumber "relative line numbers
+
 if has('wildmenu')
     set wildmenu
     set wildmode=longest:full,full
-    set wildignore+=*.a,*.o
-    set wildignore+=*~,*.swp,*.tmp
+    set wildignore+=*.a,*.o,*.pyc,*.class
+    set wildignore+=*~,*.swp,*.tmp,*.bak
     set wildignore+=.git,tags
     set wildignore+=*/node_modules/*
     set wildignore+=*.jpg,*.png,*.pdf
 endif
 
 "{{{-statusline-----------------------------------------------------------------
-augroup StatuslineSwitcher
+augroup statusline_switcher
     autocmd!
     autocmd VimEnter * call SetFancyStatusline()
     autocmd BufWinEnter,WinEnter * call SetFancyStatusline()
@@ -205,7 +192,7 @@ augroup StatuslineSwitcher
 augroup END
 
 set laststatus=2 "always show statusline
-set showmode
+set showmode "show the current mode in the cmdline
 set showmatch "highlight matching brackets
 if has('cmdline_info')
     set showcmd "show partial command while typing
@@ -216,15 +203,22 @@ set lazyredraw "don't redraw the screen when executing macros (for speed)
 set scrolloff=5 "keep 5 lines visible above or below cursor
 set scrolljump=5 "scrolls 5 lines instead of 1
 set listchars=tab:▶-,nbsp:␣,trail:∙,eol:↵
-if has('patch-7.4-711') "option 'space' was added in this patch
+if has('patch-7.4-711') "listchars option 'space' was added in this patch
     set listchars+=space:∙
 endif
 
-if has('windows') && has('folding')
-    set fillchars+=vert:│
-    "make splits feel more correct
-    set splitbelow "splits open below instead of above
-    set splitright "splits open right instead of left
+if has('folding')
+    if has('windows')
+        set fillchars+=vert:│
+
+        "make splits feel more correct
+        set splitbelow "splits open below instead of above
+        set splitright "splits open right instead of left
+    endif
+
+    "enable folding by syntax by default
+    set foldmethod=syntax
+    set foldlevelstart=99 "start with no folds closed
 endif
 
 "searching
@@ -238,12 +232,25 @@ set smartcase "unless I searched for capitalized letters
 
 
 "{{{-text formatting------------------------------------------------------------
-set autoindent
-set shiftwidth=4
-set expandtab
-set softtabstop=4
+set autoindent "use indent from previous line
+set shiftwidth=4 "number of spaces for each indent level
+set expandtab "tab key types spaces
+set softtabstop=4 "number of spaces the tab key types
 set textwidth=80 "wrap at 80 columns by default
 set nowrap "don't wrap text by default
+
+if v:version > 703 || v:version == 703 && has('patch541')
+    "enable joining of comment lines and removing comment char
+    set formatoptions+=j
+endif
+
+set nospell "spelling off by default
+set spelllang=en_us
+set spellfile=~/.vim/spell/custom.utf-8.add
+augroup spelling
+    autocmd!
+    autocmd VimEnter * call BuildSpellfile()
+augroup END
 
 augroup misc_group
     autocmd!
@@ -261,12 +268,6 @@ augroup misc_group
     "insert header for new markdown files in a 'Notebook' directory
     autocmd BufNewFile **/Notebook/*.md call notebook#NewEntry()
 augroup END
-
-if has('folding')
-    "enable folding by syntax by default
-    set foldmethod=syntax
-    set foldlevelstart=99 "start with no folds closed
-endif
 "}}}----------------------------------------------------------------------------
 
 
@@ -354,6 +355,22 @@ function! SetSimpleStatusline()
     setlocal statusline+=%h "help file flag
     setlocal statusline+=\ %<%f "file name
     setlocal statusline+=\ %m "modified flag
+endfunction
+
+"function to build the spellfile if it needs to be updated
+function! BuildSpellfile()
+    "if the file doesn't exist
+    if !filereadable(&spellfile . '.spl')
+        execute 'silent! mkspell ' . &spellfile
+        return
+    endif
+
+    "or if the '.add' file was updated more recently
+    let l:add_mtime = strftime('%s', getftime(&spellfile))
+    let l:spl_mtime = strftime('%s', getftime(&spellfile . '.spl'))
+    if l:spl_mtime < l:add_mtime
+        execute 'silent! mkspell! ' . &spellfile
+    endif
 endfunction
 
 "useful function for making colorschemes
