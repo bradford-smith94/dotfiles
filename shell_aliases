@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.shell_aliases
-# updated: 10/22/2017
+# updated: 11/10/2017
 #####################
 
 ## Overall
@@ -38,6 +38,11 @@ fi
 
 if command -v screenkey >/dev/null 2>&1; then
     alias screenkey='screenkey --ignore Caps_Lock'
+fi
+
+# automatically add cache dirs to paccache
+if command -v paccache >/dev/null 2>&1; then
+    alias paccache='paccache -c /var/cache/pacman/pkg -c /var/cache/pacman/aur'
 fi
 
 alias clock="while true; \
