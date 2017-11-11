@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 11/10/2017
+" updated: 11/11/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -81,6 +81,7 @@ call plug#end()
 
 "felt like these belonged with plugin initialization
 source $VIMRUNTIME/ftplugin/man.vim "initializes the :Man command
+set keywordprg=:Man
 runtime macros/matchit.vim "sources extended mappings for '%'
 
 "{{{-plugin settings------------------------------------------------------------
@@ -555,40 +556,37 @@ xnoremap > >gv
 xnoremap < <gv
 
 "make Y behave like C and D
-noremap Y y$
+nnoremap Y y$
 
 "make Q execute and insert a shell command on the current line
-noremap Q !!$SHELL<CR>
-
-"make K use built-in Man command
-nnoremap K :execute ":Man " . expand("<cword>")<CR>
+nnoremap Q !!$SHELL<CR>
 
 "use <Ctrl + w then Tab> and <Ctrl + w then Shift + Tab> to cycle between splits
 nnoremap <c-w><Tab> <c-w>w
 nnoremap <c-w><s-Tab> <c-w>W
 
 "[F1] toggles the background light/dark
-noremap <F1> :call ToggleBackground()<CR>
+nnoremap <F1> :call ToggleBackground()<CR>
 inoremap <F1> <C-o>:call ToggleBackground()<CR>
 
 
 "[F2] toggles file explorer
-noremap <F2> :Lexplore<CR>
+nnoremap <F2> :Lexplore<CR>
 
 "[F5] saves
-noremap <F5> :w<CR>
+nnoremap <F5> :w<CR>
 inoremap <F5> <C-o>:w<CR>
 
 "[F7] uses unimpaired to turn on paste mode (leaving insert turns it off)
-map <F7> <Plug>unimpairedPaste
+nmap <F7> <Plug>unimpairedPaste
 imap <F7> <C-o><Plug>unimpairedPaste
 
 "[F8] toggles spellcheck
-noremap <F8> :setlocal spell!<CR>
+nnoremap <F8> :setlocal spell!<CR>
 inoremap <F8> <C-o>:setlocal spell!<CR>
 
 "[F9] opens suggestions for next misspelled word
-noremap <F9> ]sz=
+nnoremap <F9> ]sz=
 inoremap <F9> <C-o>]sz=
 
 "{{{-custom text-objects

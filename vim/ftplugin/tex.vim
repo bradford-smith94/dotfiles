@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/ftplugin/tex.vim
-" 11/03/2017
+" 11/11/2017
 " TeX (LaTeX) filetype specific configuration
 
 "settings
@@ -9,19 +9,19 @@ setlocal formatoptions+=tc
 
 if executable('latexmk') == 1
     setlocal makeprg=latexmk\ -pdf\ %
-    noremap <buffer> <F5> :w<CR>:make<CR>
+    nnoremap <buffer> <F5> :w<CR>:make<CR>
     inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR>
 elseif executable('rubber') == 1
     setlocal makeprg=rubber\ --pdf\ %
-    noremap <buffer> <F5> :w<CR>:make<CR>
+    nnoremap <buffer> <F5> :w<CR>:make<CR>
     inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR>
 elseif executable('pdflatex') == 1
     setlocal makeprg=pdflatex\ %
     if (search('\\documentclass{beamer}', 'nw') != 0)
-        noremap <buffer> <F5> :w<CR>:make<CR>:make<CR>
+        nnoremap <buffer> <F5> :w<CR>:make<CR>:make<CR>
         inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR><C-o>:make<CR>
     else
-        noremap <buffer> <F5> :w<CR>:make<CR>
+        nnoremap <buffer> <F5> :w<CR>:make<CR>
         inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR>
     endif
 endif

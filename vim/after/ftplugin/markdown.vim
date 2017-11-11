@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/after/ftplugin/markdown.vim
-" 03/07/2017
+" 11/11/2017
 " Markdown filetype specific configuration to run after system configuration
 
 "settings
@@ -12,7 +12,7 @@ setlocal omnifunc=htmlcomplete#CompleteTags
 "mappings
 if executable('pandoc') == 1
     setlocal makeprg=pandoc\ -s\ -t\ latex\ -o\ %<.pdf\ %
-    noremap <buffer> <F5> :w<CR>:make<CR>
+    nnoremap <buffer> <F5> :w<CR>:make<CR>
     inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR>
 endif
 
