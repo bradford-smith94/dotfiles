@@ -5,12 +5,15 @@ XTerm*borderWidth: 0
 XTerm*font: -*-terminus-medium-*-*-*-14-*-*-*-*-*-iso10646-1
 XTerm*font1: -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-1
 XTerm*font2: -*-terminus-medium-*-*-*-14-*-*-*-*-*-iso10646-1
-XTerm*font3: -*-terminus-medium-*-*-*-16-*-*-*-*-*-iso10646-1
-XTerm*font4: -*-terminus-medium-*-*-*-18-*-*-*-*-*-iso10646-1
-XTerm*font5: -*-terminus-medium-*-*-*-20-*-*-*-*-*-iso10646-1
-XTerm*font6: -*-terminus-medium-*-*-*-22-*-*-*-*-*-iso10646-1
+XTerm*font3: -*-terminus-medium-*-*-*-18-*-*-*-*-*-iso10646-1
+XTerm*font4: -*-terminus-medium-*-*-*-22-*-*-*-*-*-iso10646-1
+XTerm*font5: -*-terminus-medium-*-*-*-24-*-*-*-*-*-iso10646-1
+XTerm*font6: -*-terminus-medium-*-*-*-28-*-*-*-*-*-iso10646-1
 XTerm*VT100.geometry: 85x25
+
+!disable terminal bells
 XTerm*visualBell: true
+XTerm*visualBellDelay: 0
 
 XTerm*cursorColor:                   reverse
 XTerm*cursorBlink:                   true
@@ -45,6 +48,9 @@ XTerm*color15:                       #eeeeec
 !keymaps
 !Ctrl-+ for increase font size
 !Ctrl-- for decrease font size
-*VT100*translations: #override \n\
+XTerm*VT100*translations: #override \n\
 Ctrl <Key>+:larger-vt-font() \n\
-Ctrl <Key>-:smaller-vt-font() \n
+Ctrl <Key>-:smaller-vt-font() \n\
+Ctrl <Key>0:set-vt-font(d) \n\
+Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
