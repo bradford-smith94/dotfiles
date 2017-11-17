@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 11/11/2017
+" updated: 11/16/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -168,7 +168,7 @@ if has('syntax')
     augroup END
 endif
 set background=dark
-color bsmith "custom colorscheme
+colorscheme bsmith
 set title "allow Vim to set the window title
 set t_ut= "fixes issues with background color erase (BCE)
 set number "line numbers
@@ -187,9 +187,9 @@ endif
 "{{{-statusline-----------------------------------------------------------------
 augroup statusline_switcher
     autocmd!
-    autocmd VimEnter * call SetFancyStatusline()
-    autocmd BufWinEnter,WinEnter * call SetFancyStatusline()
-    autocmd WinLeave * call SetSimpleStatusline()
+    autocmd VimEnter * call <SID>SetFancyStatusline()
+    autocmd BufWinEnter,WinEnter * call <SID>SetFancyStatusline()
+    autocmd WinLeave * call <SID>SetSimpleStatusline()
 augroup END
 
 set laststatus=2 "always show statusline
@@ -198,6 +198,45 @@ set showmatch "highlight matching brackets
 if has('cmdline_info')
     set showcmd "show partial command while typing
 endif
+
+"{{{-statusline functions
+"function to set a "fancy" powerline/*line-like statusline
+function! s:SetFancyStatusline()
+    setlocal statusline=%1*
+    setlocal statusline+=%q "quickfix/location list flag
+    setlocal statusline+=%w "preview window flag
+    setlocal statusline+=%h "help file flag
+    setlocal statusline+=\ %<%f "file name
+
+    setlocal statusline+=\ %2*▶%3* "a fancy separator
+
+    setlocal statusline+=\ %m "modified flag
+    setlocal statusline+=%9*%r%3* "read only flag
+    setlocal statusline+=%{&paste>0?'[paste]':''} "paste mode flag
+    setlocal statusline+=%{&spell>0?'[spell]':''} "spell mode flag
+
+    setlocal statusline+=\ %= "align right
+
+    setlocal statusline+=%y "filetype
+    setlocal statusline+=\ %{&fenc} "file encoding
+    setlocal statusline+=[%{&ff}] "file format
+
+    setlocal statusline+=\ %2*◀%1* "a fancy separator
+
+    setlocal statusline+=\ %P "percent through file as ruler displays it
+    setlocal statusline+=\ L:%5(%l%) "line
+    setlocal statusline+=\ C:%3(%c%) "column
+endfunction
+
+"function to set a simplified statusline to be used for inactive windows
+function! s:SetSimpleStatusline()
+    setlocal statusline=%q "quickfix/location list flag
+    setlocal statusline+=%w "preview window flag
+    setlocal statusline+=%h "help file flag
+    setlocal statusline+=\ %<%f "file name
+    setlocal statusline+=\ %m "modified flag
+endfunction
+"}}}
 "}}}----------------------------------------------------------------------------
 
 set lazyredraw "don't redraw the screen when executing macros (for speed)
@@ -250,30 +289,21 @@ set spelllang=en_us
 set spellfile=~/.vim/spell/custom.utf-8.add
 augroup spelling
     autocmd!
-    autocmd VimEnter * call BuildSpellfile()
+    autocmd User CustomLazyLoad call spelling#BuildSpellfileIfNeeded()
 augroup END
 
-augroup misc_group
+augroup formatting
     autocmd!
 
-    "automatically open thw quickfix window after grep commands
-    autocmd QuickFixCmdPost *grep* cwindow
-
     "trim trailing whitespaces before saving
-    autocmd BufWritePre * call RemoveTrailingSpaces()
-
-    "open epub files for editing (can use this for zip files too)
-    "see: www.albertopettarin.it/blog/2014/06/03/open-epub-files-with-vim.html
-    autocmd BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
+    autocmd BufWritePre * call formatting#RemoveTrailingSpaces()
 
     "insert header for new markdown files in a 'Notebook' directory
     autocmd BufNewFile **/Notebook/*.md call notebook#NewEntry()
 augroup END
-"}}}----------------------------------------------------------------------------
-
 
 "{{{-template settings----------------------------------------------------------
-augroup template_group
+augroup templates
     autocmd!
 
     "autofilled templates
@@ -287,6 +317,32 @@ augroup template_group
     autocmd BufNewFile *.py source ~/.vim/custom/templates/python.vim
     if executable('editorconfig')
         autocmd BufNewFile .editorconfig source ~/.vim/custom/templates/editorconfig.vim
+    endif
+augroup END
+"}}}----------------------------------------------------------------------------
+"}}}----------------------------------------------------------------------------
+
+
+"{{{-misc-autocmds--------------------------------------------------------------
+augroup misc
+    autocmd!
+
+    "automatically open thw quickfix window after grep commands
+    autocmd QuickFixCmdPost *grep* cwindow
+
+    "open epub files for editing (can use this for zip files too)
+    "see: www.albertopettarin.it/blog/2014/06/03/open-epub-files-with-vim.html
+    autocmd BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
+augroup END
+
+"setup a simple lazy load that won't trigger until one of the cursorhold
+"autocmds fires
+"see: wincent's screencast https://www.youtube.com/watch?v=wQ9uB8I0cCg
+augroup setup_custom_lazy_load
+    autocmd!
+
+    if has('vim_starting')
+        autocmd CursorHold,CursorHoldI * call lazy#trigger()
     endif
 augroup END
 "}}}----------------------------------------------------------------------------
@@ -319,194 +375,42 @@ cabbrev E <C-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'e' : 'E')<CR>
 "}}}----------------------------------------------------------------------------
 
 
-"{{{-my functions---------------------------------------------------------------
-
-"function to set a "fancy" powerline/*line-like statusline
-function! SetFancyStatusline()
-    setlocal statusline=%1*
-    setlocal statusline+=%q "quickfix/location list flag
-    setlocal statusline+=%w "preview window flag
-    setlocal statusline+=%h "help file flag
-    setlocal statusline+=\ %<%f "file name
-
-    setlocal statusline+=\ %2*▶%3* "a fancy separator
-
-    setlocal statusline+=\ %m "modified flag
-    setlocal statusline+=%9*%r%3* "read only flag
-    setlocal statusline+=%{&paste>0?'[paste]':''} "paste mode flag
-    setlocal statusline+=%{&spell>0?'[spell]':''} "spell mode flag
-
-    setlocal statusline+=\ %= "align right
-
-    setlocal statusline+=%y "filetype
-    setlocal statusline+=\ %{&fenc} "file encoding
-    setlocal statusline+=[%{&ff}] "file format
-
-    setlocal statusline+=\ %2*◀%1* "a fancy separator
-
-    setlocal statusline+=\ %P "percent through file as ruler displays it
-    setlocal statusline+=\ L:%5(%l%) "line
-    setlocal statusline+=\ C:%3(%c%) "column
-endfunction
-
-"function to set a simplified statusline
-function! SetSimpleStatusline()
-    setlocal statusline=%q "quickfix/location list flag
-    setlocal statusline+=%w "preview window flag
-    setlocal statusline+=%h "help file flag
-    setlocal statusline+=\ %<%f "file name
-    setlocal statusline+=\ %m "modified flag
-endfunction
-
-"function to build the spellfile if it needs to be updated
-function! BuildSpellfile()
-    "if the file doesn't exist
-    if !filereadable(&spellfile . '.spl')
-        execute 'silent! mkspell ' . &spellfile
-        return
-    endif
-
-    "or if the '.add' file was updated more recently
-    let l:add_mtime = strftime('%s', getftime(&spellfile))
-    let l:spl_mtime = strftime('%s', getftime(&spellfile . '.spl'))
-    if l:spl_mtime < l:add_mtime
-        execute 'silent! mkspell! ' . &spellfile
-    endif
-endfunction
-
-"useful function for making colorschemes
-"see: vim.wikia.com/wiki/Showing_syntax_highlight_group_in_statusline
-function! SyntaxItem()
-    echo synIDattr(synID(line('.'),col('.'),1),'name')
-endfunction
-
-"function to toggle the background between light and dark
-function! ToggleBackground()
-    if &background ==# 'dark'
-        set background=light
-    else
-        set background=dark
-    endif
-endfunction
-
-"function to easily toggle into a 'hex editor mode' which pipes the buffer
-"   through xxd
-function! ToggleHexMode()
-    "see :help hex-editing
-    if !exists('b:hexMode') || !b:hexMode
-        setlocal binary
-        setlocal noeol
-        execute ':%!xxd'
-        setlocal filetype=xxd
-        setlocal nomodified
-        let b:hexMode=1
-    else
-        setlocal nobinary
-        setlocal eol
-        execute ':%!xxd -r'
-        let b:hexMode=0
-    endif
-endfunction
-
-"function to toggle diff mode for the current buffer
-function! ToggleDiffMode()
-    if &diff
-        diffoff
-    else
-        diffthis
-    endif
-endfunction
-
-"see: vim.wikia.com/wiki/Remove_unwanted_spaces
-"+: stackoverflow.com/questions/6496778/vim-run-autocmd-on-all-filetypes-except
-function! RemoveTrailingSpaces()
-    if !&binary && &filetype !=# 'diff'
-        if !exists('b:keepTrailingSpaces')
-            normal! mz
-            normal! Hmy
-            "vint: -ProhibitCommandRelyOnUser
-            "vint: -ProhibitCommandWithUnintendedSideEffect
-            %s/\s\+$//e
-            "vint: +ProhibitCommandWithUnintendedSideEffect
-            "vint: +ProhibitCommandRelyOnUser
-            normal! 'yz<CR>
-            normal! `z
-        endif
-    endif
-endfunction
-
-"function to unmap and restore any enter key mappings (<CR>) when
-"   entering/leaving the cmdwin, arg 'enter' specifies whether or not the
-"   function has been called when entering the cmdwin
-function! CmdWinEnterMapping(enter)
-    if has('patch-7.4-1154') "v:true and v:false added in this patch
-        let l:entering = v:true
-    else
-        let l:entering = 1
-    endif
-    if a:enter == l:entering
-        let b:prev_cr_map = maparg('<CR>', 'n')
-        nunmap <CR>
-    else
-        if exists('b:prev_cr_map')
-            execute 'nnoremap <CR> ' . b:prev_cr_map
-            unlet b:prev_cr_map
-        endif
-    endif
-endfunction
-
-"function to reload the vimrc
-if !exists('*Reload()')
-    function! Reload()
-        source $MYVIMRC
-        "redo filetype detection in all open windows to ensure they reload
-        "properly
-        windo filetype detect
-    endfunction
-endif
-"}}}----------------------------------------------------------------------------
-
-
 "{{{-my mappings----------------------------------------------------------------
-"call the SyntaxItem function
-command! HlGroup call SyntaxItem()
+"commands for debugging syntax highlighting
+command! HlGroup call syntax#ShowHighlightGroup()
+command! HlTrace call syntax#ShowHighlightLink()
 
 "Reload vimrc
-command! Reload call Reload()
+command! Reload call reload#Now()
 
 "Clear the last used search pattern
 command! ClearSearch let @/=""
 
 "Toggle editing in Hex mode
-command! Hex call ToggleHexMode()
+command! Hex call toggle#HexMode()
 
 "Toggle diff mode for current buffer
-command! Diff call ToggleDiffMode()
+command! Diff call toggle#DiffMode()
 
 if executable('xclip')
     "copy the given range (or the current line) using xclip
     command! -range Xclip <line1>,<line2>write !xclip -i -selection clipboard
 endif
 
-"unbind keys
-nnoremap <space> <nop>
-nnoremap - <nop>
-nnoremap + <nop>
+"enter in Normal is a shortcut to Command
+nnoremap <CR> :
 
 augroup cmdwin
     autocmd!
 
-    "enter is usefull in the cmdwin
-    if has('patch-7.4-1154') "v:true and v:false added in this patch
-        autocmd CmdWinEnter * call CmdWinEnterMapping(v:true)
-        autocmd CmdWinLeave * call CmdWinEnterMapping(v:false)
-    else
-        autocmd CmdWinEnter * call CmdWinEnterMapping(1)
-        autocmd CmdWinLeave * call CmdWinEnterMapping(0)
-    endif
+    "enter is useful in the cmdwin
+    autocmd CmdWinEnter * call mappings#CmdWinEnterMapping(1)
+    autocmd CmdWinLeave * call mappings#CmdWinEnterMapping(0)
 augroup END
 
 "{{{-leader mappings
+"unbind space so it doesn't do anything but be my leader key
+nnoremap <space> <nop>
 let g:mapleader="\<Space>" "set <leader> as space
 
 nnoremap <leader>b :ls<CR>:b<space>
@@ -533,9 +437,6 @@ if &diff "vimdiff leader mappings
     nnoremap <leader>N [c
 endif
 "}}}
-
-"enter in Normal is a shortcut to Command
-nnoremap <CR> :
 
 "backspace in Normal clears search pattern
 nnoremap <BS> :ClearSearch<CR>
@@ -566,8 +467,8 @@ nnoremap <c-w><Tab> <c-w>w
 nnoremap <c-w><s-Tab> <c-w>W
 
 "[F1] toggles the background light/dark
-nnoremap <F1> :call ToggleBackground()<CR>
-inoremap <F1> <C-o>:call ToggleBackground()<CR>
+nnoremap <F1> :call toggle#Background()<CR>
+inoremap <F1> <C-o>:call toggle#Background()<CR>
 
 
 "[F2] toggles file explorer
