@@ -18,33 +18,6 @@ XTerm*visualBellDelay: 0
 XTerm*cursorColor:                   reverse
 XTerm*cursorBlink:                   true
 
-XTerm*background:                    #292929
-XTerm*foreground:                    #d3d7cf
-!black
-XTerm*color0:                        #000000
-XTerm*color8:                        #555753
-!red
-XTerm*color1:                        #cc0000
-XTerm*color9:                        #ef2929
-!green
-XTerm*color2:                        #4e9a06
-XTerm*color10:                       #8ae234
-!yellow
-XTerm*color3:                        #c4a000
-XTerm*color11:                       #fce94f
-!blue
-XTerm*color4:                        #3465a4
-XTerm*color12:                       #729fcf
-!magenta
-XTerm*color5:                        #75507b
-XTerm*color13:                       #ad7fa8
-!cyan
-XTerm*color6:                        #06989a
-XTerm*color14:                       #34e2e2
-!white
-XTerm*color7:                        #d3d7cf
-XTerm*color15:                       #eeeeec
-
 !keymaps
 !Ctrl-+ for increase font size
 !Ctrl-- for decrease font size
