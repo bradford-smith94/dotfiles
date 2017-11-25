@@ -1,6 +1,6 @@
 ; Bradford Smith
 ; ~/.config/polybar/config
-; updated: 04/21/2017
+; updated: 11/20/2017
 ; ========================
 
 [bar/mybar]
@@ -50,6 +50,8 @@ label-occupied-underline = #87ff87
 label-monocle = " M "
 label-monocle-foreground = #414141
 label-monocle-background = #87ff87
+label-urgent-foreground = #ffbd87
+label-urgent-underline = #ffbd87
 
 [module/date]
 type = internal/date
