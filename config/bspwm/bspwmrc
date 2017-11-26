@@ -1,7 +1,7 @@
 #!/bin/bash
 # Bradford Smith
 # ~/.config/bspwm/bspwmrc
-# updated: 10/22/2017
+# updated: 11/26/2017
 
 mon_internal="eDP1"
 mon_external="HDMI1"
@@ -38,4 +38,4 @@ bspc rule -a Pinentry state=floating
 ~/.config/polybar/launch.sh
 dunst&
 nm-applet&
-xautolock -time 5 -locker xkcd_locker.sh&
+xautolock -time 5 -locker 'i3lock-fancy -p -- scrot -z'&
