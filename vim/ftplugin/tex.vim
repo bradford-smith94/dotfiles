@@ -1,28 +1,30 @@
 " Bradford Smith
 " ~/.vim/ftplugin/tex.vim
-" 11/11/2017
+" 11/28/2017
 " TeX (LaTeX) filetype specific configuration
 
 "settings
 setlocal spell
 setlocal formatoptions+=tc
 
-if executable('latexmk') == 1
-    setlocal makeprg=latexmk\ -pdf\ %
-    nnoremap <buffer> <F5> :w<CR>:make<CR>
-    inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR>
-elseif executable('rubber') == 1
-    setlocal makeprg=rubber\ --pdf\ %
-    nnoremap <buffer> <F5> :w<CR>:make<CR>
-    inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR>
-elseif executable('pdflatex') == 1
-    setlocal makeprg=pdflatex\ %
-    if (search('\\documentclass{beamer}', 'nw') != 0)
-        nnoremap <buffer> <F5> :w<CR>:make<CR>:make<CR>
-        inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR><C-o>:make<CR>
-    else
+if search('\\documentclass', 'cnw') != 0
+    if executable('latexmk') == 1
+        setlocal makeprg=latexmk\ -pdf\ %
         nnoremap <buffer> <F5> :w<CR>:make<CR>
         inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR>
+    elseif executable('rubber') == 1
+        setlocal makeprg=rubber\ --pdf\ %
+        nnoremap <buffer> <F5> :w<CR>:make<CR>
+        inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR>
+    elseif executable('pdflatex') == 1
+        setlocal makeprg=pdflatex\ %
+        if (search('\\documentclass{beamer}', 'cnw') != 0)
+            nnoremap <buffer> <F5> :w<CR>:make<CR>:make<CR>
+            inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR><C-o>:make<CR>
+        else
+            nnoremap <buffer> <F5> :w<CR>:make<CR>
+            inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR>
+        endif
     endif
 endif
 
@@ -37,7 +39,7 @@ augroup END
 
 " replace 'lhs' with 'rhs' if 'lhs' started with a '\'
 function! s:BSlashReplace(lhs, rhs)
-    if getline('.')[col('.') - 2]==?'\'
+    if getline('.')[col('.') - 2] ==? '\'
         return a:rhs
     else
         return a:lhs
