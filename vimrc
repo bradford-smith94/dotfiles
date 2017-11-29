@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 11/16/2017
+" updated: 11/28/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -208,7 +208,7 @@ function! s:SetFancyStatusline()
     setlocal statusline+=%h "help file flag
     setlocal statusline+=\ %<%f "file name
 
-    setlocal statusline+=\ %2*▶%3* "a fancy separator
+    setlocal statusline+=\ %2*▶%3* "a fancy separator U+25b6
 
     setlocal statusline+=\ %m "modified flag
     setlocal statusline+=%9*%r%3* "read only flag
@@ -221,7 +221,7 @@ function! s:SetFancyStatusline()
     setlocal statusline+=\ %{&fenc} "file encoding
     setlocal statusline+=[%{&ff}] "file format
 
-    setlocal statusline+=\ %2*◀%1* "a fancy separator
+    setlocal statusline+=\ %2*◀%1* "a fancy separator U+25c0
 
     setlocal statusline+=\ %P "percent through file as ruler displays it
     setlocal statusline+=\ L:%5(%l%) "line
@@ -242,6 +242,7 @@ endfunction
 set lazyredraw "don't redraw the screen when executing macros (for speed)
 set scrolloff=5 "keep 5 lines visible above or below cursor
 set scrolljump=5 "scrolls 5 lines instead of 1
+"list chars unicode: tab U+25b6, nbsp U+2423, trail/space U+2219, eol U+21b5
 set listchars=tab:▶-,nbsp:␣,trail:∙,eol:↵
 if has('patch-7.4-711') "listchars option 'space' was added in this patch
     set listchars+=space:∙
@@ -249,7 +250,7 @@ endif
 
 if has('folding')
     if has('windows')
-        set fillchars+=vert:│
+        set fillchars+=vert:│ "a nice vertical bar U+2502
 
         "make splits feel more correct
         set splitbelow "splits open below instead of above
