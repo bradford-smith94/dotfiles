@@ -1,6 +1,6 @@
 ## Bradford Smith
 ## ~/.vim/spell/custom.utf-8.add
-## 09/03/2017
+## 12/01/2017
 ## custom.utf-8.add Vim spellfile
 /encoding=utf-8
 
@@ -224,6 +224,7 @@ uk
 www
 
 ## Others
+CTF
 U.S.
 a.m.
 abided
@@ -237,6 +238,7 @@ déjà
 déjà vu
 i.e.
 intel
+leaderboard
 matériel
 okay
 p.m.
