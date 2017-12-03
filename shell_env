@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.shell_env
-# updated: 09/22/2017
+# updated: 12/02/2017
 #####################
 
 # turn off flow control (ctrl-q and ctrl-s)
@@ -52,6 +52,11 @@ export PATH=$PATH
 if command -v vim >/dev/null 2>&1; then
     export EDITOR="vim"
     export MANPAGER="vim -"
+fi
+
+# enable xterm transparency with transset-df
+if command -v transset-df >/dev/null 2>&1; then
+    [ -n "$XTERM_VERSION" ] && transset-df --id "$WINDOWID" .95 >/dev/null
 fi
 
 # start ssh-agent
