@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 11/28/2017
+" updated: 12/09/2017
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -177,6 +177,7 @@ set relativenumber "relative line numbers
 if has('wildmenu')
     set wildmenu
     set wildmode=longest:full,full
+    set wildignorecase
     set wildignore+=*.a,*.o,*.pyc,*.class
     set wildignore+=*~,*.swp,*.tmp,*.bak
     set wildignore+=.git,tags
