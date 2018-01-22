@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 11/03/2017
+# updated: 01/21/2018
 #
 # This script can be run to install my dotfiles.
 #
@@ -86,10 +86,11 @@ git[1]="gitignore  $dir $HOME $olddir $TRUE"
 git[2]="gitmessage $dir $HOME $olddir $TRUE"
 
 bash[0]="bashrc        $dir $HOME $olddir $TRUE"
-bash[1]="shell_env     $dir $HOME $olddir $TRUE"
-bash[2]="shell_aliases $dir $HOME $olddir $TRUE"
-bash[3]="dir_colors    $dir $HOME $olddir $TRUE"
-bash[4]="bin           $dir $HOME $olddir $FALSE"
+bash[1]="bash_profile  $dir $HOME $olddir $TRUE"
+bash[2]="shell_env     $dir $HOME $olddir $TRUE"
+bash[3]="shell_aliases $dir $HOME $olddir $TRUE"
+bash[4]="dir_colors    $dir $HOME $olddir $TRUE"
+bash[5]="bin           $dir $HOME $olddir $FALSE"
 
 zsh[0]="zshrc          $dir $HOME $olddir $TRUE"
 zsh[1]="zsh            $dir $HOME $olddir $TRUE"
