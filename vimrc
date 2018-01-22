@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 12/09/2017
+" updated: 01/22/2018
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -12,7 +12,7 @@ set visualbell
 set t_vb=
 set tags+=tags;,./tags;
 if has('viminfo')
-    set viminfofile=~/.vim/viminfo
+    set viminfo+=n~/.vim/viminfo
 endif
 set nomodeline "disable modelines
 set notimeout "don't timeout on :mappings
