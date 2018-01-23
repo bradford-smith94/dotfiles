@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 07/03/2017
+# updated: 01/23/2018
 #####################
 
 [user]
@@ -53,6 +53,7 @@
     new = "!git log $1@{1}..$1@{0} \"$@\""
     newest = "log -1"
 
+    nuke = "!git rev-parse --show-toplevel 2>&1 >/dev/null && rm -rf $(git rev-parse --show-toplevel)/.git"
     remotes = "remote -v"
     stash-unstaged = "stash -k"
     stashes = "stash list"
