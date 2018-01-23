@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.shell_env
-# updated: 12/02/2017
+# updated: 01/23/2018
 #####################
 
 # turn off flow control (ctrl-q and ctrl-s)
@@ -31,10 +31,10 @@ if [ -f /usr/bin/dircolors ]; then
     eval "$(dircolors -b $DIR_COLORS)"
 fi
 
-# if ~/.npm_pkgs exists add it to the beginning of the path
-if [ -d "$HOME/.npm_pkgs" ]; then
-    PATH=$PATH:$HOME/.npm_pkgs/bin/
-    export MANPATH=$MANDATORY_MANPATH:$HOME/.npm_pkgs/share/man/
+# if ~/.local/bin exists add it to the beginning of the path
+if [ -d "$HOME/.local/bin" ]; then
+    PATH=$HOME/.local/bin:$PATH
+    export MANPATH=$MANDATORY_MANPATH:$HOME/.local/share/man/
 fi
 
 # if ~/bin exists add it to the beginning of the path
