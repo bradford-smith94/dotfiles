@@ -5,11 +5,10 @@
 
 " Format the current buffer as a manpage if it isn't already
 function! manpage#Prettify()
-    if &filetype == 'man'
-        finish
+    if &filetype !=# 'man'
+        silent execute '%! col -b'
+        setlocal filetype=man
     endif
-    silent execute '%! col -b'
-    setlocal filetype=man
 endfunction
 
 " Helper function for saving manpage as a tmpfile
