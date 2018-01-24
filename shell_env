@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.shell_env
-# updated: 01/23/2018
+# updated: 01/24/2018
 #####################
 
 # turn off flow control (ctrl-q and ctrl-s)
@@ -51,7 +51,7 @@ export PATH=$PATH
 # use vim as the default editor and man pager
 if command -v vim >/dev/null 2>&1; then
     export EDITOR="vim"
-    export MANPAGER="vim -"
+    export MANPAGER="vim -c 'call manpage#Prettify()' -"
 fi
 
 # enable xterm transparency with transset-df
