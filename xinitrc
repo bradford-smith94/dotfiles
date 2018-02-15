@@ -5,7 +5,7 @@ export SSH_AUTH_SOCK
 
 xsetroot -cursor_name left_ptr
 feh --bg-scale ~/Pictures/background.lnk
-compton&
+#compton&
 sxhkd&
 udiskie&
 exec bspwm
