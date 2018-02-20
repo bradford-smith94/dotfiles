@@ -1,6 +1,6 @@
 ## Bradford Smith
 ## ~/.vim/spell/custom.utf-8.add
-## 02/14/2018
+## 02/20/2018
 ## custom.utf-8.add Vim spellfile
 /encoding=utf-8
 
@@ -160,8 +160,10 @@ ain’t
 DNS
 DSL
 Facebook
+FreeBSD/=
 IP
 LaTeX/=
+NetBSD/=
 NSA
 README
 SSL
@@ -244,6 +246,7 @@ matériel
 okay
 p.m.
 polymorphism
+pre
 protégé
 servery/!
 ssn
