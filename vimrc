@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 01/22/2018
+" updated: 02/22/2018
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -424,7 +424,7 @@ nnoremap <leader>l :setlocal list!<CR>
 nnoremap <leader>m :make<CR>
 nnoremap <leader>q :q<CR>
 "substitute word under cursor
-nnoremap <leader>s :%s/\<<C-r><C-w>\>/
+nnoremap <leader>s :%s/\(\<<C-r><C-w>\>\)/
 "use <leader>u and <leader>U to place and unplace a '>' in the sign column
 sign define bsmith_mark linehl=Underlined text=>
 nnoremap <leader>u :exe ":sign place 1 name=bsmith_mark line=" . line('.') . " file=" . expand('%:p')<CR>
