@@ -12,6 +12,9 @@ vim/bundle/
 # .spl files are the binary spell files
 vim/spell/*.spl
 
+# archlinux has globally set 'directory'=~/.vim/swap
+vim/swap/
+
 # the viminfo file
 vim/viminfo
 
