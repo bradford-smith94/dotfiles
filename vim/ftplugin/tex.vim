@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/ftplugin/tex.vim
-" 11/28/2017
+" 02/28/2018
 " TeX (LaTeX) filetype specific configuration
 
 "settings
@@ -10,20 +10,20 @@ setlocal formatoptions+=tc
 if search('\\documentclass', 'cnw') != 0
     if executable('latexmk') == 1
         setlocal makeprg=latexmk\ -pdf\ %
-        nnoremap <buffer> <F5> :w<CR>:make<CR>
-        inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR>
+        nnoremap <buffer> <F5> :update<CR>:make<CR>
+        inoremap <buffer> <F5> <C-o>:update<CR><C-o>:make<CR>
     elseif executable('rubber') == 1
         setlocal makeprg=rubber\ --pdf\ %
-        nnoremap <buffer> <F5> :w<CR>:make<CR>
-        inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR>
+        nnoremap <buffer> <F5> :update<CR>:make<CR>
+        inoremap <buffer> <F5> <C-o>:update<CR><C-o>:make<CR>
     elseif executable('pdflatex') == 1
         setlocal makeprg=pdflatex\ %
         if (search('\\documentclass{beamer}', 'cnw') != 0)
-            nnoremap <buffer> <F5> :w<CR>:make<CR>:make<CR>
-            inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR><C-o>:make<CR>
+            nnoremap <buffer> <F5> :update<CR>:make<CR>:make<CR>
+            inoremap <buffer> <F5> <C-o>:update<CR><C-o>:make<CR><C-o>:make<CR>
         else
-            nnoremap <buffer> <F5> :w<CR>:make<CR>
-            inoremap <buffer> <F5> <C-o>:w<CR><C-o>:make<CR>
+            nnoremap <buffer> <F5> :update<CR>:make<CR>
+            inoremap <buffer> <F5> <C-o>:update<CR><C-o>:make<CR>
         endif
     endif
 endif
