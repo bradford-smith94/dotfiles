@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 02/22/2018
+" updated: 03/04/2018
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -421,7 +421,7 @@ nnoremap <leader>d :Diff<CR>
 nnoremap <leader>e :e<space>
 nnoremap <leader>h :nohlsearch<CR>
 nnoremap <leader>l :setlocal list!<CR>
-nnoremap <leader>m :make<CR>
+nnoremap <leader>m :update<CR>:make<CR>
 nnoremap <leader>q :q<CR>
 "substitute word under cursor
 nnoremap <leader>s :%s/\(\<<C-r><C-w>\>\)/
