@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 03/04/2018
+" updated: 03/08/2018
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -442,6 +442,10 @@ endif
 
 "backspace in Normal clears search pattern
 nnoremap <BS> :ClearSearch<CR>
+
+"double slash in visual searches for selection
+"see: http://vim.wikia.com/wiki/Search_for_visually_selected_text
+xnoremap // y/<C-r>"<CR>
 
 "center screen when jumping to next/previous matches
 "credit: blog.sanctum.geek.nz/vim-annoyances
