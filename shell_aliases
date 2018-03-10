@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.shell_aliases
-# updated: 11/10/2017
+# updated: 03/10/2018
 #####################
 
 ## Overall
@@ -37,12 +37,21 @@ if command -v google-chrome-stable >/dev/null 2>&1; then
 fi
 
 if command -v screenkey >/dev/null 2>&1; then
+    # make screenkey ignore my remapped Caps_Lock -> Esc/Ctrl
     alias screenkey='screenkey --ignore Caps_Lock'
 fi
 
 # automatically add cache dirs to paccache
 if command -v paccache >/dev/null 2>&1; then
     alias paccache='paccache -c /var/cache/pacman/pkg -c /var/cache/pacman/aur'
+fi
+
+# use ssh-ident to manage ssh-agent
+if command -v ssh-ident >/dev/null 2>&1; then
+    alias ssh='ssh-ident'
+    alias scp='scp -S ssh-ident'
+    alias sftp='sftp -S ssh-ident'
+    alias rsync='rsync -e ssh-ident'
 fi
 
 alias clock="while true; \
