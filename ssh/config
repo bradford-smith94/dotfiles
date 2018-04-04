@@ -1,0 +1,15 @@
+Host *
+    AddKeysToAgent yes
+    Include config.local
+
+Host aur
+    HostName aur.archlinux.org
+    User aur
+
+Host bitbucket
+    HostName bitbucket.org
+    User git
+
+Host github
+    HostName github.com
+    User git

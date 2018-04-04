@@ -8,7 +8,14 @@ For the most part the whole repository is meant to be symbolically linked into
 my home directory.  This means that `vimrc` will be linked to `~/.vimrc` and
 `config/` will be linked to `~/.config/`, the `bin/` directory however gets
 linked without the leading dot (i.e. `~/bin/`).  Files that don't follow this
-scheme are `install.sh`, `README.md`, `.gitignore`, and anything under `etc/`.
+scheme are `install.sh`, `README.md`, `.gitignore`, the `ssh/` directory and
+anything under `etc/`.
+
+In the case of the `ssh/` directory, the ssh config file is linked itself as
+opposed to the whole directory because the directory may contain other sensitive
+information. I feel it is easier to ensure correct permissions for the `~/.ssh/`
+directory if done this way, so I think this is a better solution than linking
+the directory and ignoring everything inside of it.
 
 The files under `etc/` are files that help me configure my setup system-wide
 (such as udev rules) and are unlikely to be used on a system where root access

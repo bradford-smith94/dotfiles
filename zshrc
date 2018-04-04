@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.zshrc
-# updated: 03/10/2018
+# updated: 04/04/2018
 #####################
 
 # theme it
@@ -63,9 +63,6 @@ zstyle ':completion:*:hosts' hosts $_ssh_config
 
 # https://stackoverflow.com/a/38850556
 zstyle ':completion:*:*:git:*' user-commands summary:'print a summary of author contributions'
-
-# make ssh-ident use ssh completion
-compdef ssh-ident=ssh
 
 autoload -U zmv
 

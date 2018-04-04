@@ -2,7 +2,7 @@
 #{{{############################################################################
 # Bradford Smith
 # install.sh
-# updated: 01/21/2018
+# updated: 04/04/2018
 #
 # This script can be run to install my dotfiles.
 #
@@ -68,13 +68,14 @@ files[3]="bin          $dir $HOME $olddir $FALSE"
 files[4]="ctags        $dir $HOME $olddir $TRUE"
 files[5]="npmrc        $dir $HOME $olddir $TRUE"
 files[6]="texmf        $dir $HOME $olddir $FALSE"
-files[7]="redshift.conf     $config $config_target $oldconfig $FALSE"
-files[8]="termite           $config $config_target $oldconfig $FALSE"
-files[9]="conky             $config $config_target $oldconfig $FALSE"
-files[10]="Xresources.d      $config $config_target $oldconfig $FALSE"
-files[11]="cower            $config $config_target $oldconfig $FALSE"
-files[12]="ranger           $config $config_target $oldconfig $FALSE"
-files[13]="pacman           $config $config_target $oldconfig $FALSE"
+files[7]="ssh/config   $dir $HOME $olddir $TRUE"
+files[8]="redshift.conf     $config $config_target $oldconfig $FALSE"
+files[9]="termite           $config $config_target $oldconfig $FALSE"
+files[10]="conky            $config $config_target $oldconfig $FALSE"
+files[11]="Xresources.d     $config $config_target $oldconfig $FALSE"
+files[12]="cower            $config $config_target $oldconfig $FALSE"
+files[13]="ranger           $config $config_target $oldconfig $FALSE"
+files[14]="pacman           $config $config_target $oldconfig $FALSE"
 
 # lists that represent a group of dependent files (that is the whole group
 # should be installed in order for it to work properly)
@@ -237,6 +238,14 @@ function makeSymLink
     fi
 }
 #}}} End makeSymLinks ----------------------------------------------------------
+
+#{{{ echoerr -------------------------------------------------------------------
+# Echo to stderr cannot take options for echo, anything provided is printed
+function echoerr
+{
+    1>&2 echo "$@";
+}
+#}}} End echoerr ---------------------------------------------------------------
 #}}} End Functions #############################################################
 
 #{{{ Code ######################################################################
@@ -267,16 +276,23 @@ shift $((OPTIND-1)) #Moves getopts to the next argument
 #}}} End getopts ---------------------------------------------------------------
 
 # create dotfiles_old in homedir
-echo "Creating $olddir for backup of any existing dotfiles in $HOME"
+echoerr "Creating $olddir for backup of any existing dotfiles in $HOME"
 mkdir -p "$olddir"
 
 # create config_old in homedir
-echo "Creating $oldconfig for backup of any existing files in $HOME/.config"
+echoerr "Creating $oldconfig for backup of any existing files in $HOME/.config"
 mkdir -p "$oldconfig"
 
 # create config_target
-echo "Creating $config_target in case it doesn't exist yet"
+echoerr "Creating $config_target in case it doesn't exist yet"
 mkdir -p "$config_target"
+
+# create ~/.ssh/
+echoerr "Creating $HOME/.ssh/ in case it doesn't exist yet"
+#shellcheck disable=SC2174
+# we are ok ignoring this warning here because we only want the permissions to
+# apply to the deepest directory
+mkdir -m 700 -p "$HOME/.ssh/"
 
 #{{{ install dotfiles ----------------------------------------------------------
 printSep "="
@@ -356,23 +372,23 @@ fi
 printSep "="
 
 if grep -wq cower "$installed_files" ; then
-    echo "cower was linked this session, making sure ~/AUR/ exists..."
+    echoerr "cower was linked this session, making sure ~/AUR/ exists..."
     mkdir -p ~/AUR/
 fi
 
 # check if backup dirs are empty and clean if they are
 if [ ! "$(ls -A "$olddir")" ]; then
-    echo "$olddir is empty, removing..."
+    echoerr "$olddir is empty, removing..."
     rmdir "$olddir"
 fi
 
 if [ ! "$(ls -A "$oldconfig")" ]; then
-    echo "$oldconfig is empty, removing..."
+    echoerr "$oldconfig is empty, removing..."
     rmdir "$oldconfig"
 fi
 
 if [ ! "$(ls -A "$config_target")" ]; then
-    echo "$config_target is empty, we must have created it, removing..."
+    echoerr "$config_target is empty, we must have created it, removing..."
     rmdir "$config_target"
 fi
 
