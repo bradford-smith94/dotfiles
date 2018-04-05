@@ -1,11 +1,12 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 01/23/2018
+# updated: 04/05/2018
 #####################
 
 [user]
     name = Bradford Smith
-    #make git prompt for email before allowing commits
+    # make git prompt for email before allowing commits, this forces me to
+    # specify my email on a per-repo basis instead of globally
     useConfigOnly = true
 [core]
     editor = vim
@@ -16,7 +17,8 @@
     tool = vimdiff
 [difftool]
     prompt = false
-[commit] #commits start with prefilled text provided in:
+[commit]
+    # commits start with prefilled text provided in:
     template = ~/.gitmessage
 [color]
     ui = auto
@@ -33,44 +35,53 @@
 [log]
     decorate = short
 [alias]
-    #show aliases
+    # show aliases (meta-aliases?)
     alias = "!git config --get-regexp 'alias.*' | colrm 1 6 | sed -e 's/[ ]/ = /' -e 's/[ ]\\+/ /g' | fmt -t"
     aliases = "!git alias"
 
-    authors = "shortlog -ns --no-merges"
-    branches = "branch -avv"
+    # alias for my git-summary helper
+    # see: github.com/bradford-smith94/git-summary
     contributions ="!git summary"
 
-    #from github.com/tsu-complete/dot/blob/master/git/_gitconfig
-    graph = "log --graph --all --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+    # from github.com/tsu-complete/dot/blob/master/git/_gitconfig
+    graph = "log --graph --all --pretty='%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
     lines = "!git grep --cached -Il '' | xargs wc -l"
     lines-authored = "!git grep --cached -Il '' | xargs -n1 git blame --line-porcelain HEAD | grep \"^author \"|sort|uniq -c|sort -nr"
 
-    #make a .mailmap file based on the shortlog
-    mkmailmap = "!git shortlog -se | awk -F'\\t' '{print $2,$3,$2,$3}' | sort > .mailmap"
-
-    #use after git pull
+    # log aliases
+    # use after git pull to show a log of the new commits
     new = "!git log $1@{1}..$1@{0} \"$@\""
     newest = "log -1"
+    # use to show commits from only today/yesterday
+    today ="log --since=midnight"
+    yesterday = "log --since=\"yesterday midnight\" --until=midnight"
+    # log only commits that haven't been pushed to the upstream tracking branch
+    unpushed = "log @{u}.."
 
-    nuke = "!git rev-parse --show-toplevel 2>&1 >/dev/null && rm -rf $(git rev-parse --show-toplevel)/.git"
+    # show all of something, keep commands consistent in plain English
+    authors = "shortlog -ns --no-merges"
+    branches = "branch -avv"
     remotes = "remote -v"
-    stash-unstaged = "stash -k"
     stashes = "stash list"
     tags = "tag"
-    today ="log --since=midnight"
+
+    # question aliases, whatis this commit, whoami (ignore 'useconfigonly'),
+    # whois ths other author
+    whatis = "show"
+    whoami = "!git config --get-regexp 'user.*' | colrm 1 5 | sed -e '/^useconfigonly.*$/d' -e 's/[ ]/ = /'"
+    whois = "!sh -c 'git log -i -1 --pretty=\"tformat:%an <%ae>\" --author=\"$1\"' -"
+
+    # make a .mailmap file based on the shortlog
+    mkmailmap = "!git shortlog -se | awk -F'\\t' '{print $2,$3,$2,$3}' | sort > .mailmap"
+
+    # mostly for fun, destroy all git history
+    nuke = "!git rev-parse --show-toplevel 2>&1 >/dev/null && rm -rf $(git rev-parse --show-toplevel)/.git"
+
+    # for the rare occasion you want to stash _only_ unstaged changes
+    stash-unstaged = "stash -k"
+
+    # useful to navigate to repository root: `cd $(git top)`
     top = "rev-parse --show-toplevel"
 
-    unpushed = "log @{u}.."
+    # stop git from tracking a file
     untrack = "rm --cached"
-
-    #for inspecting specific commits
-    whatis = "show -s"
-
-    #print git config user settings
-    whoami = "!git config --get-regexp 'user.*' | colrm 1 5 | sed -e '/^useconfigonly.*$/d' -e 's/[ ]/ = /'"
-
-    #given a string for an author, try to figure out full name and email
-    whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\" --author=\"$1\"' -"
-
-    yesterday = "log --since=\"yesterday midnight\" --until=midnight"
