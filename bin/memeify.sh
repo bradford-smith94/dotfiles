@@ -3,20 +3,18 @@
 # ~/bin/memeify.sh
 # Use imagemagick to create a meme from a given image and some text
 
-usage="$0 [input file] <top text> <bottom text> <output filename>"
+USAGE="$0 <input file> <top text> <bottom text> [output filename]"
 
-if ! command -v identify >/dev/null 2>&1; then
-    echo "The 'identify' command from imagemagick is required"
-    exit 1
-fi
-
-if ! command -v convert >/dev/null 2>&1; then
-    echo "The 'convert' command from imagemagick is required"
-    exit 1
-fi
+IM_DEPS="identify convert"
+for d in $IM_DEPS; do
+    if ! command -v "$d" >/dev/null 2>&1; then
+        echo "$0: requires the '$d' command from imagemagick."
+        exit 1
+    fi
+done
 
 if [ ! -f "$1" ]; then
-    echo "$usage"
+    echo "$USAGE"
     exit 2
 fi
 

@@ -1,12 +1,27 @@
 #!/bin/sh
 # Bradford Smith
 # ~/bin/toggle_wireless.sh
-# Simple script to toggle the state of the wireless adapters
+# updated: 04/10/2018
+# Toggle the state of the wireless adapters
+
+DEPS="rfkill grep sudo"
+for d in $DEPS; do
+    if ! command -v "$d" >/dev/null 2>&1; then
+        echo "$0: requires '$d'"
+        exit 1
+    fi
+done
+
+STATUS="Your wireless adapter has been"
+ENABLED="$STATUS enabled."
+DISABLED="$STATUS disabled."
 
 if rfkill list wifi | grep "Soft blocked: yes" >/dev/null 2>&1; then
-    sudo rfkill unblock all || exit 1
-    notify-send -i network-wireless-full "Wireless Enabled" "Your wireless adapter has been enabled."
+    sudo rfkill unblock wifi || exit 1
+    notify-send -i network-wireless "Wireless Enabled" "$ENABLED" 2>/dev/null \
+        || echo "$ENABLED"
 else
-    sudo rfkill block all || exit 1
-    notify-send -i network-wireless-disconnected "Wireless Disabled" "Your wireless adapter has been disabled."
+    sudo rfkill block wifi || exit 1
+    notify-send -i network-wireless "Wireless Disabled" "$DISABLED" 2>/dev/null \
+        || echo "$DISABLED"
 fi

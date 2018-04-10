@@ -1,17 +1,15 @@
 #!/bin/sh
-# activeNetDev.sh
-# Echos the name of the active network device
+# Bradford Smith
+# ~/bin/activeNetDev.sh
+# updated: 04/10/2018
+# Print the name of the active network device
+# (that is, any that are a default route)
 
-## nmcli way
-# devices and statuses (using nmcli)
-#DEVS=$(nmcli --terse --fields DEVICE,STATE dev status)
-
-# echo the name of the connected network device
-#echo "$DEVS" | grep "connected" | grep -v "disconnected" | sed 's/:.*//'
-
-## ip way
-# print ip routes
-ROUTE=$(ip route)
-
-# echo the name of the device that the default route uses
-echo "$ROUTE" | sed -n 's/^default.*dev \(\S*\).*/\1/p'
+if command -v ip >/dev/null 2>&1; then
+    ip route | sed -n 's/^default.*dev \(\S*\).*/\1/p'
+elif command -v route >/dev/null 2>&1; then
+    route | sed -n 's/^default.* \(\S*\)$/\1/p'
+else
+    echo "$0: requires one of: 'ip' or 'route'"
+    exit 1
+fi

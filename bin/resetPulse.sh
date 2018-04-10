@@ -1,10 +1,9 @@
 #!/bin/sh
-#####################
-# Reset Pulseaudio
 # Bradford Smith
-# updated: 01/03/2017
-#####################
+# ~/bin/resetPulse.sh
+# updated: 04/10/2018
+# Force reset PulseAudio
 
 sudo killall pulseaudio
-rm ~/.config/pulse/*
-rm ~/.pulse*
+rm -i ~/.config/pulse/*
+rm -i ~/.pulse*
