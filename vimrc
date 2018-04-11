@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 03/08/2018
+" updated: 04/11/2018
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -430,7 +430,7 @@ sign define bsmith_mark linehl=Underlined text=>
 nnoremap <leader>u :exe ":sign place 1 name=bsmith_mark line=" . line('.') . " file=" . expand('%:p')<CR>
 nnoremap <leader>U :exe ":sign unplace * file=" . expand('%:p')<CR>
 nnoremap <leader>v :e $MYVIMRC<CR>
-nnoremap <leader>w :w<CR>
+nnoremap <leader>w :update<CR>
 
 if &diff "vimdiff leader mappings
     "next difference
