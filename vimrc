@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 04/11/2018
+" updated: 04/13/2018
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -52,6 +52,7 @@ endif
 Plug 'EinfachToll/DidYouMean'
 Plug 'honza/vim-snippets'
 Plug 'konfekt/fastfold'
+Plug 'markonm/traces.vim'
 Plug 'matze/vim-tex-fold'
 Plug 'mgrabovsky/vim-xverif'
 Plug 'mtth/scratch.vim'
@@ -75,7 +76,6 @@ Plug 'tpope/vim-repeat'
 Plug 'vim-scripts/scons.vim'
 "originally scrooloose/syntastic
 Plug 'vim-syntastic/syntastic'
-Plug 'xtal8/traces.vim'
 Plug 'Yggdroot/indentLine', { 'for': [ 'html', 'xhtml', 'xml' ] }
 call plug#end()
 
