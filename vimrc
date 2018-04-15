@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 04/13/2018
+" updated: 04/14/2018
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -68,7 +68,6 @@ endif
 if v:version >= 704 && (has('python') || has('python3'))
     Plug 'SirVer/ultisnips'
 endif
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -393,6 +392,10 @@ command! Hex call toggle#HexMode()
 
 "Toggle diff mode for current buffer
 command! Diff call toggle#DiffMode()
+
+"git helper commands to replace fugitive for my uses
+command! Gblame call git#blame()
+command! Glog call git#log()
 
 if executable('xclip')
     "copy the given range (or the current line) using xclip
