@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 04/14/2018
+" updated: 04/16/2018
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -38,8 +38,6 @@ call plug#begin('~/.vim/bundle')
 "plugins '<github_user>/<repo>' or full git path
 Plug 'artoj/qmake-syntax-vim'
 Plug 'baskerville/vim-sxhkdrc'
-"my fork of 'unblevable/quick-scope'
-Plug 'bradford-smith94/quick-scope'
 Plug 'bradford-smith94/vim-autolist'
 Plug 'bradford-smith94/vim-colors-bsmith'
 Plug 'bradford-smith94/vim-dauber'
@@ -72,6 +70,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
+Plug 'unblevable/quick-scope'
 Plug 'vim-scripts/scons.vim'
 "originally scrooloose/syntastic
 Plug 'vim-syntastic/syntastic'
@@ -328,7 +327,7 @@ augroup END
 augroup misc
     autocmd!
 
-    "automatically open thw quickfix window after grep commands
+    "automatically open the quickfix window after grep commands
     autocmd QuickFixCmdPost *grep* cwindow
 
     "open epub files for editing (can use this for zip files too)
