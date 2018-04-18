@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 04/16/2018
+" updated: 04/18/2018
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -401,22 +401,12 @@ if executable('xclip')
     command! -range Xclip <line1>,<line2>write !xclip -i -selection clipboard
 endif
 
-"enter in Normal is a shortcut to Command
-nnoremap <CR> :
-
-augroup cmdwin
-    autocmd!
-
-    "enter is useful in the cmdwin
-    autocmd CmdWinEnter * call mappings#CmdWinEnterMapping(1)
-    autocmd CmdWinLeave * call mappings#CmdWinEnterMapping(0)
-augroup END
-
 "{{{-leader mappings
 "unbind space so it doesn't do anything but be my leader key
 nnoremap <space> <nop>
 let g:mapleader="\<Space>" "set <leader> as space
 
+nnoremap <leader><leader> :
 nnoremap <leader>b :ls<CR>:b<space>
 nnoremap <leader>c :chdir %:h<CR>
 nnoremap <leader>d :Diff<CR>
