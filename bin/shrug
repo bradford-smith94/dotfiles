@@ -1,0 +1,44 @@
+#!/bin/sh
+# Bradford Smith
+# ~/bin/shrug
+# updated: 04/23/2018
+
+# based on: jajmo's script:
+# github.com/jajmo/dotfiles/blob/9040da44f0451cc7714f52ec738202d336f58893/bin/shrug
+
+DEPS="xclip"
+for d in $DEPS; do
+    if ! command -v "$d" >/dev/null 2>&1; then
+        echo "$0: requires '$d'"
+    fi
+done
+
+USAGE="usage: $0 [-hm]"
+RAW_SHRUG="¯\\_(ツ)_/¯"
+ESC_SHRUG="¯\\\\\\_(ツ)\\_/¯"
+
+if [ $# -ge 1 ]; then
+    case $1 in
+        "-h"|"--help") echo "$USAGE"
+            cat<<EOF
+Copy a shrug guy to your clipboard ¯\\_(ツ)_/¯
+Options:
+ -h, --help  print this help text
+ -m          copy a markdown escaped shrug to clipboard
+EOF
+            exit 0
+            ;;
+        "-m") SHRUG="$ESC_SHRUG"
+            ;;
+        *) echo "$USAGE"
+            exit 1
+            ;;
+    esac
+fi
+
+[ -z $SHRUG ] && SHRUG="$RAW_SHRUG"
+
+# printf used to avoid also copying a newline character
+# (as `echo -n` is not POSIX)
+printf "%s" "$SHRUG" | xclip -selection clipboard
+echo "$SHRUG" copied to clipboard
