@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/autoload/git.vim
-" 04/25/2018
+" 04/29/2018
 " Simple git helper functions (or the only features I use from fugitive)
 
 function! git#blame() abort
@@ -20,6 +20,7 @@ function! git#blame() abort
     put! =blame
     redraw
     setlocal nomodified
+    setlocal nomodifiable
     setlocal scrollbind
     setlocal cursorbind
     wincmd l
