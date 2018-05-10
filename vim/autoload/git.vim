@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/autoload/git.vim
-" 04/29/2018
+" 2018-05-10
 " Simple git helper functions (or the only features I use from fugitive)
 
 function! git#blame() abort
@@ -12,12 +12,13 @@ function! git#blame() abort
         return
     endif
     execute 'leftabove vsplit __Git blame__'
-    setlocal filetype=git
+    setlocal filetype=gitblame
     setlocal bufhidden=hide
     setlocal buftype=nofile
     setlocal nobuflisted
     setlocal noswapfile
     put! =blame
+    :%s/)\zs.*$//
     redraw
     setlocal nomodified
     setlocal nomodifiable
