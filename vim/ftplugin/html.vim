@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/ftplugin/html.vim
-" 02/28/2018
+" 2018-04-30
 " HTML filetype specific configuration
 
 "settings
@@ -13,6 +13,8 @@ if executable('google-chrome-stable') == 1
     nnoremap <buffer> <F5> :update<CR>:execute "!google-chrome-stable " . bufname("%")<CR>
     inoremap <buffer> <F5> <C-o>:update<CR><C-o>:execute "!google-chrome-stable " . bufname("%")<CR>
 endif
+
+inoremap </ </<C-x><C-o>
 
 "source typo autocorrection
 source ~/.vim/custom/typo_autocorrect.vim

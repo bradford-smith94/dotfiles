@@ -1,6 +1,6 @@
 ## Bradford Smith
 ## ~/.vim/spell/custom.utf-8.add
-## 03/05/2018
+## 2018-05-13
 ## custom.utf-8.add Vim spellfile
 /encoding=utf-8
 
@@ -212,6 +212,7 @@ java
 php
 sql
 ## File Extensions/Types
+Makefile
 exe
 htm
 html
