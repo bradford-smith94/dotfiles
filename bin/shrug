@@ -1,10 +1,13 @@
 #!/bin/sh
 # Bradford Smith
 # ~/bin/shrug
-# updated: 04/23/2018
+# updated: 2018-05-13
 
 # based on: jajmo's script:
 # github.com/jajmo/dotfiles/blob/9040da44f0451cc7714f52ec738202d336f58893/bin/shrug
+
+# sanitize PATH variable
+PATH=$(command -p getconf PATH)
 
 DEPS="xclip"
 for d in $DEPS; do
@@ -13,7 +16,7 @@ for d in $DEPS; do
     fi
 done
 
-USAGE="usage: $0 [-hm]"
+USAGE="usage: $(basename "$0") [-hm]"
 RAW_SHRUG="¯\\_(ツ)_/¯"
 ESC_SHRUG="¯\\\\\\_(ツ)\\_/¯"
 

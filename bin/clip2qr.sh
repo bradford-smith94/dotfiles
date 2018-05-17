@@ -1,8 +1,11 @@
 #!/bin/sh
 # Bradford Smith
 # ~/bin/clip2qr.sh
-# updated: 04/10/2018
+# updated: 2018-05-13
 # Generate and display a QR code from the contents of the system clipboard
+
+# sanitize PATH variable
+PATH=$(command -p getconf PATH)
 
 DEPS="xclip qrencode"
 for d in $DEPS; do

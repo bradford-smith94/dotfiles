@@ -1,12 +1,15 @@
 #!/bin/bash
 # Bradford Smith
 # ~/bin/2mp3.sh
-# updated: 04/10/2018
+# updated: 2018-05-13
 # Use ffmpeg to convert all the files in a given directory to mp3
 
 # takes in:
 #   $1: file extension to find and convert
 #   $2: directory in which to search for files [optional]
+
+# sanitize PATH variable
+PATH=$(command -p getconf PATH)
 
 # need to at least take in the extension
 if [ $# -lt 1 ]; then

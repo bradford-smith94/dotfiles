@@ -1,11 +1,14 @@
 #!/bin/sh
 # Bradford Smith
 # ~/bin/toggle_touchpad.sh
-# updated: 04/10/2018
+# updated: 2018-05-13
 # Toggle the state of the touchpad
 
 # see also:
 # https://wiki.archlinux.org/index.php/Touchpad_Synaptics#Software_toggle
+
+# sanitize PATH variable
+PATH=$(command -p getconf PATH)
 
 DEPS="xinput grep awk"
 for d in $DEPS; do

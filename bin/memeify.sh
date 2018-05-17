@@ -1,9 +1,13 @@
 #!/bin/sh
 # Bradford Smith
 # ~/bin/memeify.sh
+# updated: 2018-05-13
 # Use imagemagick to create a meme from a given image and some text
 
-USAGE="$0 <input file> <top text> <bottom text> [output filename]"
+# sanitize PATH variable
+PATH=$(command -p getconf PATH)
+
+USAGE="$(basename "$0") <input file> <top text> <bottom text> [output filename]"
 
 IM_DEPS="identify convert"
 for d in $IM_DEPS; do

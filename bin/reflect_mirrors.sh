@@ -1,8 +1,11 @@
 #!/bin/sh
 # Bradford Smith
 # ~/bin/reflect_mirrors.sh
-# updated: 04/10/2018
+# updated: 2018-05-13
 # Run reflector on /etc/pacman.d/mirrorlist to keep them up to date
+
+# sanitize PATH variable
+PATH=$(command -p getconf PATH)
 
 DEPS="reflector wget"
 for d in $DEPS; do

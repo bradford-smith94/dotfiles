@@ -1,8 +1,11 @@
 #!/bin/sh
 # Bradford Smith
 # ~/bin/toggle_webcam.sh
-# updated: 04/10/2018
+# updated: 2018-05-13
 # Toggle the loaded state of the webcam kernel module
+
+# sanitize PATH variable
+PATH=$(command -p getconf PATH)
 
 DEPS="lsmod rmmod modprobe grep sudo"
 for d in $DEPS; do

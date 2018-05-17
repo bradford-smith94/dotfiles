@@ -1,8 +1,11 @@
 #!/bin/sh
 # Bradford Smith
 # ~/bin/toggle_bluetooth.sh
-# updated: 04/10/2018
+# updated: 2018-05-13
 # Toggle the state of the bluetooth adapter
+
+# sanitize PATH variable
+PATH=$(command -p getconf PATH)
 
 DEPS="rfkill grep sudo"
 for d in $DEPS; do
