@@ -1,5 +1,4 @@
 #!/bin/bash
-#{{{############################################################################
 # Bradford Smith
 # install.sh
 # updated: 04/04/2018
@@ -8,10 +7,8 @@
 #
 # Originally inspired by:
 # https://github.com/michaeljsmalley/dotfiles/blob/master/makesymlinks.sh
-#
-#}}}############################################################################
 
-#{{{ Variables #################################################################
+#{ Variables
 usage="usage: \"$0 -[abfh]\""
 
 # booleans for ease of writing
@@ -111,13 +108,11 @@ bspwm[7]="xinitrc       $dir    $HOME          $olddir    $TRUE"
 bspwm[8]="xprofile      $dir    $HOME          $olddir    $TRUE"
 bspwm[9]="bin           $dir    $HOME          $olddir    $FALSE"
 
-#}}} End Variables #############################################################
+#} End Variables
 
-#{{{ Functions #################################################################
-#{{{ _help ---------------------------------------------------------------------
+#{ Functions
 # Show help text
-function _help
-{
+function _help () {
     #use cat and a "here document" for printing the more verbose help
     cat <<EndHelpText
 $usage
@@ -131,26 +126,20 @@ Note: -b is only necessary when not running interactively (-a)
 
 EndHelpText
 }
-#}}} End _help -----------------------------------------------------------------
 
-#{{{ printSep ------------------------------------------------------------------
 # Print a full terminal width separator line
 # $1 (optional) character to draw the line with
-function printSep
-{
+function printSep () {
     if [ $# -gt 0 ]; then
         printf '\n%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' "$1"
     else
         printf '\n%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
     fi
 }
-#}}} End printSep --------------------------------------------------------------
 
-#{{{ promptYN ------------------------------------------------------------------
 # Prompt the user with a yes or no question and get a true or false response
 # $1 question, $2 default choice (y, n or "")
-function promptYN
-{
+function promptYN () {
     question=$1
     choice=$2
     prompt=""
@@ -193,13 +182,10 @@ function promptYN
         return $FALSE
     fi
 }
-#}}} End promptYN --------------------------------------------------------------
 
-#{{{ makeSymLink ---------------------------------------------------------------
 # Symlink a file
 # $1 file, $2 source, $3 destination, $4 backup directory, $5 use a dot
-function makeSymLink
-{
+function makeSymLink () {
     file=$1
     src=$2
     dest=$3
@@ -237,19 +223,15 @@ function makeSymLink
         ln -s "$src/$file" "$target"
     fi
 }
-#}}} End makeSymLinks ----------------------------------------------------------
 
-#{{{ echoerr -------------------------------------------------------------------
 # Echo to stderr cannot take options for echo, anything provided is printed
-function echoerr
-{
+function echoerr () {
     1>&2 echo "$@";
 }
-#}}} End echoerr ---------------------------------------------------------------
-#}}} End Functions #############################################################
+#} End Functions
 
-#{{{ Code ######################################################################
-#{{{ getopts -------------------------------------------------------------------
+#{ Code
+#{ getopts
 while getopts abfh: FLAG; do
     case $FLAG in
         a) #all (skip interactive)
@@ -273,7 +255,7 @@ while getopts abfh: FLAG; do
 done
 
 shift $((OPTIND-1)) #Moves getopts to the next argument
-#}}} End getopts ---------------------------------------------------------------
+#} End getopts
 
 # create dotfiles_old in homedir
 echoerr "Creating $olddir for backup of any existing dotfiles in $HOME"
@@ -294,7 +276,7 @@ echoerr "Creating $HOME/.ssh/ in case it doesn't exist yet"
 # apply to the deepest directory
 mkdir -m 700 -p "$HOME/.ssh/"
 
-#{{{ install dotfiles ----------------------------------------------------------
+#{ install dotfiles
 printSep "="
 
 # install non-dependent files from the 'files' list
@@ -367,7 +349,7 @@ if [ $interactive -eq $FALSE ] || promptYN "Link Bspwm Configuration group" "y";
 
     interactive=$saved_interactive
 fi
-#}}} end install dotfiles ------------------------------------------------------
+#} end install dotfiles
 
 printSep "="
 
@@ -422,4 +404,4 @@ if [ $remove_broken_links -eq $TRUE ] || \
 
     printSep "="
 fi
-#}}} End Code ##################################################################
+#} End Code
