@@ -1,7 +1,7 @@
 #!/bin/sh
 # Bradford Smith
 # ~/bin/reflect_mirrors.sh
-# updated: 2018-05-13
+# updated: 2018-05-17
 # Run reflector on /etc/pacman.d/mirrorlist to keep them up to date
 
 # sanitize PATH variable
@@ -26,6 +26,8 @@ MIRRORLIST="$DIR/mirrorlist"
 PACNEW="$MIRRORLIST.pacnew"
 BACKUP="$MIRRORLIST.backup"
 URL=https://www.archlinux.org/mirrorlist/all/
+
+err=0
 
 # remove mirrorlist.pacnew if it exists
 if [ -f "$PACNEW" ]; then
