@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 04/06/2018
+# updated: 2018-06-13
 #####################
 
 [user]
@@ -40,6 +40,7 @@
     default = upstream
 [log]
     decorate = short
+    mailmap = true
 [alias]
     # show aliases (meta-aliases?)
     alias = "!git config --get-regexp 'alias.*' | colrm 1 6 | sed -e 's/[ ]/ = /' -e 's/[ ]\\+/ /g' | fmt -t"
@@ -50,9 +51,9 @@
     contributions ="!git summary"
 
     # from github.com/tsu-complete/dot/blob/master/git/_gitconfig
-    graph = "log --graph --all --pretty='%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
-    lines = "!git grep --cached -Il '' | xargs wc -l"
-    lines-authored = "!git grep --cached -Il '' | xargs -n1 git blame --line-porcelain HEAD | grep \"^author \"|sort|uniq -c|sort -nr"
+    graph = "log --graph --all --pretty='%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cr) %C(bold blue)<%aN>%Creset' --abbrev-commit --date=relative"
+    lines = "!git grep -z --cached -Il '' | xargs -0 wc -l"
+    lines-authored = "!git grep -z --cached -Il '' | xargs -0 -n1 git blame --line-porcelain HEAD | grep \"^author \"|sort|uniq -c|sort -nr"
 
     # log aliases
     # use after git pull to show a log of the new commits
@@ -72,10 +73,10 @@
     tags = "tag"
 
     # question aliases, whatis this commit, whoami (ignore 'useconfigonly'),
-    # whois ths other author
+    # whois this other author
     whatis = "show"
     whoami = "!git config --get-regexp 'user.*' | colrm 1 5 | sed -e '/^useconfigonly.*$/d' -e 's/[ ]/ = /'"
-    whois = "!sh -c 'git log -i -1 --pretty=\"tformat:%an <%ae>\" --author=\"$1\"' -"
+    whois = "!sh -c 'git log -i -1 --pretty=\"tformat:%aN <%aE>\" --author=\"$1\"' -"
 
     # make a .mailmap file based on the shortlog
     mkmailmap = "!git shortlog -se | awk -F'\\t' '{print $2,$3,$2,$3}' | sort > .mailmap"
