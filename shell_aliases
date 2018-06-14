@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.shell_aliases
-# updated: 04/10/2018
+# updated: 2018-06-13
 #####################
 
 ## Overall
@@ -23,10 +23,12 @@ if command -v srm >/dev/null 2>&1; then
     alias sfill='sfill -vz' # same as srm but works on free partition space
 fi
 
-## Ghostscript combine pdfs (usage: `gs-pdf in1.pdf in2.pdf ...`)
-##      (can also read in a list of files using `gs-pdf @list.txt`)
-alias gs-pdf="gs -q -dBATCH -dNOPAUSE -dPDFSETTINGS=/prepress \
-    -sPAPERSIZE=letter -sDEVICE=pdfwrite -sOutputFile=merged.pdf"
+if command -v gs >/dev/null 2>&1; then
+    ## Ghostscript combine pdfs (usage: `gs-pdf in1.pdf in2.pdf ...`)
+    ##      (can also read in a list of files using `gs-pdf @list.txt`)
+    alias gs-pdf="gs -q -dBATCH -dNOPAUSE -dPDFSETTINGS=/prepress \
+        -sPAPERSIZE=letter -sDEVICE=pdfwrite -sOutputFile=merged.pdf"
+fi
 
 ## IP Addresses
 if [ -f "$HOME/bin/activeNetDev.sh" ]; then
@@ -50,11 +52,13 @@ if command -v paccache >/dev/null 2>&1; then
     alias paccache='paccache -c /var/cache/pacman/pkg -c /var/cache/pacman/aur'
 fi
 
-alias clock="while true; \
-    do tput clear; \
-        date +'%H : %M : %S' | figlet; \
-        sleep 1; \
-    done"
+if command -v figlet >/dev/null 2>&1; then
+    alias clock="while true; \
+        do tput clear; \
+            date +'%H : %M : %S' | figlet; \
+            sleep 1; \
+        done"
+fi
 
 # print terminal 256 colors
 # (https://wiki.archlinux.org/index.php/Color_output_in_console)
