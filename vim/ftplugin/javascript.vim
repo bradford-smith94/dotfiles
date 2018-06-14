@@ -1,10 +1,12 @@
 " Bradford Smith
 " ~/.vim/ftplugin/javascript.vim
-" 02/28/2018
+" 2018-06-13
 " Javascript filetype specific configuration
 
 "settings
 setlocal omnifunc=javascriptcomplete#CompleteJS
+
+let g:syntastic_javascript_checkers = ['eslint']
 
 "mappings
 if executable('node')

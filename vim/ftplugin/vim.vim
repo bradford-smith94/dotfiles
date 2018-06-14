@@ -1,11 +1,13 @@
 " Bradford Smith
 " ~/.vim/ftplugin/vim.vim
-" 02/28/2018
+" 2018-06-13
 " VIM filetype specific configuration
 
 "settings
 setlocal foldmethod=marker
 setlocal keywordprg=:help
+
+let g:syntastic_vim_checkers = ['vint']
 
 "mappings
 

@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/custom/templates/python.vim
-" 11/04/2017
+" 2018-06-13
 " this file is sourced when creating a new python file
 
 " :insert will insert all following lines until it reaches a line with just a
@@ -13,8 +13,11 @@
 
 """This module ... """
 
+def main():
+    """The main function"""
+
 if __name__ == '__main__':
-    exit()
+    main()
 .
 " ended inserting, update "Date:" with the current date as mm/dd/yyyy
 :%s/Date:/\=strftime("%m\/%d\/%Y", localtime())/

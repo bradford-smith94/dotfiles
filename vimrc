@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 04/18/2018
+" updated: 2018-06-13
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -86,9 +86,6 @@ runtime macros/matchit.vim "sources extended mappings for '%'
 let g:netrw_banner = 0
 let g:netrw_winsize = -30
 
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_html_checkers = ['validator']
-let g:syntastic_vim_checkers = ['vint']
 let g:syntastic_mode_map = {
             \ 'mode': 'active',
             \ 'active_filetypes': [],
