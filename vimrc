@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 2018-06-13
+" updated: 2018-06-20
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -177,6 +177,7 @@ if has('wildmenu')
     set wildignore+=*~,*.swp,*.tmp,*.bak
     set wildignore+=.git,tags
     set wildignore+=*/node_modules/*
+    set wildignore+=*/__pycache__/*
     set wildignore+=*.jpg,*.png,*.pdf
 endif
 
