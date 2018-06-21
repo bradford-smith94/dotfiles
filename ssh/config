@@ -1,6 +1,6 @@
-Host *
-    AddKeysToAgent yes
-    Include config.local
+IgnoreUnknown Include
+Include config.local
+AddKeysToAgent yes
 
 Host aur
     HostName aur.archlinux.org
