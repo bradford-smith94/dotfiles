@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 2018-06-14
+# updated: 2018-08-23
 #####################
 
 [user]
@@ -53,7 +53,8 @@
     contributions ="!git summary"
 
     # from github.com/tsu-complete/dot/blob/master/git/_gitconfig
-    graph = "log --graph --all --pretty='%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cr) %C(bold blue)<%aN>%Creset' --abbrev-commit --date=relative"
+    graph = "log --graph --branches --remotes --tags --pretty='%w(76, 0, 6)%C(red)%h%C(reset) -%C(auto)%d%C(reset) %s%n %C(green)(%cr) %C(bold blue)<%aN>%C(reset)' --abbrev-commit --date=relative"
+    shortgraph = "log --graph --branches --remotes --tags --pretty='%C(red)%h%C(reset)%C(auto)%d%C(reset) %s' --abbrev-commit"
     lines = "!git grep -z --cached -Il '' | xargs -0 wc -l"
     lines-authored = "!git grep -z --cached -Il '' | xargs -0 -n1 git blame --line-porcelain HEAD | grep \"^author \"|sort|uniq -c|sort -nr | awk '{lines[count++]=$0;sum+=$1}END{for(i=0;i<count;i++){ print lines[i] \" (\" lines[i]/sum*100 \"%)\"}}'"
 
