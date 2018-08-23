@@ -73,7 +73,7 @@
     branches = "branch -avv"
     remotes = "remote -v"
     stashes = "stash list"
-    tags = "tag"
+    tags = "tag --sort -taggerdate"
 
     # question aliases, whatis this commit, whoami (ignore 'useconfigonly'),
     # whois this other author
