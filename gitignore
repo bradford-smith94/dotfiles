@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitignore (global gitignore)
-# updated: 04/06/2018
+# updated: 2018-08-23
 #################################
 
 ## Linux ##
@@ -29,3 +29,6 @@ tags
 
 ## PDFs ##
 *.pdf
+
+## Log files ##
+*.log
