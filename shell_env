@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.shell_env
-# updated: 03/12/2018
+# updated: 2018-09-24
 #####################
 
 # turn off flow control (ctrl-q and ctrl-s)
@@ -61,7 +61,9 @@ fi
 
 # start ssh-agent
 # https://wiki.archlinux.org/index.php?title=SSH_keys&redirect=no#SSH_agents
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+#shellcheck disable=SC2009
+# grepping ps to specifically remove dependency on pgrep (for cygwin support)
+if ! ps u | grep "[s]sh-agent" > /dev/null; then
     #shellcheck disable=SC2174
     mkdir -m 0700 -p "$HOME/.ssh/agents/"
     ssh-agent > ~/.ssh/agents/agent-"$USER"-"$(hostname)"
