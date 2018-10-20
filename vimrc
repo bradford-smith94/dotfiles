@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 2018-06-20
+" updated: 2018-10-20
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -36,6 +36,7 @@ endif
 
 call plug#begin('~/.vim/bundle')
 "plugins '<github_user>/<repo>' or full git path
+Plug 'AndrewRadev/linediff.vim'
 Plug 'artoj/qmake-syntax-vim'
 Plug 'baskerville/vim-sxhkdrc'
 Plug 'bradford-smith94/vim-autolist'
