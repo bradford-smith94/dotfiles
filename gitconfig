@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 2018-08-23
+# updated: 2018-11-21
 #####################
 
 [user]
@@ -56,7 +56,7 @@
     graph = "log --graph --branches --remotes --tags --pretty='%w(76, 0, 6)%C(red)%h%C(reset) -%C(auto)%d%C(reset) %s%n %C(green)(%cr) %C(bold blue)<%aN>%C(reset)' --abbrev-commit --date=relative"
     shortgraph = "log --graph --branches --remotes --tags --pretty='%C(red)%h%C(reset)%C(auto)%d%C(reset) %s' --abbrev-commit"
     lines = "!git grep -z --cached -Il '' | xargs -0 wc -l"
-    lines-authored = "!git grep -z --cached -Il '' | xargs -0 -n1 git blame --line-porcelain HEAD | grep \"^author \"|sort|uniq -c|sort -nr | awk '{lines[count++]=$0;sum+=$1}END{for(i=0;i<count;i++){ print lines[i] \" (\" lines[i]/sum*100 \"%)\"}}'"
+    lines-authored = "!git grep -z --cached -Il '' | xargs -0 -n1 git blame --line-porcelain HEAD | grep -a \"^author \"|sort|uniq -c|sort -nr | awk '{lines[count++]=$0;sum+=$1}END{for(i=0;i<count;i++){ print lines[i] \" (\" lines[i]/sum*100 \"%)\"}}'"
 
     # log aliases
     # use after git pull to show a log of the new commits
