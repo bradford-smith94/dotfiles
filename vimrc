@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 2018-10-20
+" updated: 2018-12-02
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -44,7 +44,9 @@ Plug 'bradford-smith94/vim-colors-bsmith'
 Plug 'bradford-smith94/vim-dauber'
 Plug 'bradford-smith94/vim-superupdate'
 Plug 'chrisbra/Colorizer', { 'for': ['css', 'scss', 'html', 'xdefaults'] }
-Plug 'chrisbra/vim-diff-enhanced'
+if ! has('patch-8.1-360')
+    Plug 'chrisbra/vim-diff-enhanced'
+endif
 if executable('editorconfig')
     Plug 'editorconfig/editorconfig-vim'
 endif
@@ -136,8 +138,10 @@ let g:jsx_ext_required = 0
 let g:scratch_top = 0
 
 "when started in diffmode set diff algorithm to patience (EnhancedDiff plugin)
-if &diff
+if &diff && ! has('patch-8.1-360')
     let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
+elseif &diff
+    set diffopt+=internal,algorithm:patience
 endif
 
 "for opening man pages from the shell
