@@ -1,12 +1,13 @@
 " Bradford Smith
 " ~/.vim/ftplugin/python.vim
-" 2018-06-21
+" 2018-12-18
 " Python filetype specific configuration
 
 "settings
 setlocal omnifunc=pythoncomplete#Complete
 setlocal foldmethod=indent
 setlocal formatoptions-=t
+setlocal define=\\s*def\\>
 
 if index(split($PYTHONPATH, ':'), '.') == -1
     let $PYTHONPATH=$PYTHONPATH . ':.'
