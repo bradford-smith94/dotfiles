@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 2018-11-21
+# updated: 2019-01-03
 #####################
 
 [user]
@@ -11,6 +11,8 @@
 [core]
     editor = vim
     excludesfile = ~/.gitignore
+[init]
+    templatedir = ~/.git_template
 [merge]
     tool = vimdiff
 [diff]
@@ -51,6 +53,8 @@
     # alias for my git-summary helper
     # see: github.com/bradford-smith94/git-summary
     contributions ="!git summary"
+
+    ctags = "!$(git rev-parse --show-toplevel)/.git/hooks/ctags.sh"
 
     # from github.com/tsu-complete/dot/blob/master/git/_gitconfig
     graph = "log --graph --branches --remotes --tags --pretty='%w(76, 0, 6)%C(red)%h%C(reset) -%C(auto)%d%C(reset) %s%n %C(green)(%cr) %C(bold blue)<%aN>%C(reset)' --abbrev-commit --date=relative"

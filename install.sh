@@ -1,7 +1,7 @@
 #!/bin/bash
 # Bradford Smith
 # install.sh
-# updated: 04/04/2018
+# updated: 2019-01-03
 #
 # This script can be run to install my dotfiles.
 #
@@ -79,9 +79,10 @@ files[14]="pacman           $config $config_target $oldconfig $FALSE"
 vim[0]="vimrc  $dir $HOME $olddir $TRUE"
 vim[1]="vim    $dir $HOME $olddir $TRUE"
 
-git[0]="gitconfig  $dir $HOME $olddir $TRUE"
-git[1]="gitignore  $dir $HOME $olddir $TRUE"
-git[2]="gitmessage $dir $HOME $olddir $TRUE"
+git[0]="gitconfig    $dir $HOME $olddir $TRUE"
+git[1]="gitignore    $dir $HOME $olddir $TRUE"
+git[2]="gitmessage   $dir $HOME $olddir $TRUE"
+git[3]="git_template $dir $HOME $olddir $TRUE"
 
 bash[0]="bashrc        $dir $HOME $olddir $TRUE"
 bash[1]="bash_profile  $dir $HOME $olddir $TRUE"
