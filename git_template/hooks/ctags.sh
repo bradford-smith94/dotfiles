@@ -2,7 +2,7 @@
 set -e
 PATH="/usr/local/bin:$PATH"
 dir="$(git rev-parse --git-dir)"
-trap 'rm -f "$dir/$$.tags"' EXIT
+trap 'rm -f "$dir/../$$.tags"' EXIT
 git ls-files | \
-    ctags -L - -f"$dir/$$.tags"
-mv "$dir/$$.tags" "$dir/../tags"
+    ctags -L - -f"$dir/../$$.tags"
+mv "$dir/../$$.tags" "$dir/../tags"
