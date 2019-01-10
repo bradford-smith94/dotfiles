@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 2018-12-02
+" updated: 2019-01-10
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -414,6 +414,7 @@ nnoremap <leader>b :ls<CR>:b<space>
 nnoremap <leader>c :chdir %:h<CR>
 nnoremap <leader>d :Diff<CR>
 nnoremap <leader>e :e<space>
+nnoremap <leader>f :exe ":e " . resolve(join([$HOME, "/.vim/ftplugin/", &filetype, ".vim"], ""))<CR>
 nnoremap <leader>h :nohlsearch<CR>
 nnoremap <leader>l :setlocal list!<CR>
 nnoremap <leader>m :update<CR>:make<CR>
