@@ -1,7 +1,7 @@
 #!/bin/sh
 # Bradford Smith
 # ~/bin/shrug
-# updated: 2018-05-13
+# updated: 2019-02-23
 
 # based on: jajmo's script:
 # github.com/jajmo/dotfiles/blob/9040da44f0451cc7714f52ec738202d336f58893/bin/shrug
@@ -13,6 +13,7 @@ DEPS="xclip"
 for d in $DEPS; do
     if ! command -v "$d" >/dev/null 2>&1; then
         echo "$0: requires '$d'"
+        exit 1
     fi
 done
 
