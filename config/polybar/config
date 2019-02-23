@@ -1,6 +1,6 @@
 ; Bradford Smith
 ; ~/.config/polybar/config
-; updated: 11/28/2017
+; updated: 2019-02-23
 ; ========================
 
 [colors]
@@ -13,7 +13,6 @@ red = #ff8787
 
 
 [bar/mybar]
-monitor = eDP1
 bottom = false
 width = 100%
 height = 32
