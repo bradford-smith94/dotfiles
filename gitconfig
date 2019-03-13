@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 2019-01-03
+# updated: 2019-03-13
 #####################
 
 [user]
@@ -87,6 +87,8 @@
 
     # make a .mailmap file based on the shortlog
     mkmailmap = "!git shortlog -se | awk -F'\\t' '{print $2,$3,$2,$3}' | sort > .mailmap"
+
+    serve = "!git daemon --reuseaddr --verbose --base-path=$(git rev-parse --show-toplevel) --export-all $(git rev-parse --show-toplevel)/.git"
 
     # mostly for fun, destroy all git history
     nuke = "!git rev-parse --show-toplevel 2>&1 >/dev/null && rm -rf $(git rev-parse --show-toplevel)/.git"
