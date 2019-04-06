@@ -1,12 +1,13 @@
 " Bradford Smith
 " ~/.vim/after/ftplugin/markdown.vim
-" 02/28/2018
+" 2019-04-06
 " Markdown filetype specific configuration to run after system configuration
 
 "settings
 setlocal wrap
 setlocal spell
 setlocal formatoptions-=tc
+setlocal breakindent
 setlocal omnifunc=htmlcomplete#CompleteTags
 
 "mappings
