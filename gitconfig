@@ -55,6 +55,7 @@
     contributions ="!git summary"
 
     ctags = "!$(git rev-parse --show-toplevel)/.git/hooks/ctags.sh"
+    re-init-hooks = "!rm -r $(git rev-parse --show-toplevel)/.git/hooks/; git init"
 
     # from github.com/tsu-complete/dot/blob/master/git/_gitconfig
     graph = "log --graph --branches --remotes --tags --pretty='%w(76, 0, 6)%C(red)%h%C(reset) -%C(auto)%d%C(reset) %s%n %C(green)(%cr) %C(bold blue)<%aN>%C(reset)' --abbrev-commit --date=relative"
