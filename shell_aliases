@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.shell_aliases
-# updated: 2018-06-13
+# updated: 2019-06-30
 #####################
 
 ## Overall
@@ -58,6 +58,10 @@ if command -v figlet >/dev/null 2>&1; then
             date +'%H : %M : %S' | figlet; \
             sleep 1; \
         done"
+fi
+
+if command -v python2 >/dev/null 2>&1; then
+    alias serve="python2 -m SimpleHTTPServer"
 fi
 
 # print terminal 256 colors
