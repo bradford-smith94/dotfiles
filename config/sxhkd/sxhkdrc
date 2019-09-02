@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.config/sxhkd/sxhkdrc
-# updated: 12/23/2017
+# updated: 2019-09-02
 #########################
 
 #
@@ -24,7 +24,7 @@ alt + Tab
 
 # screen lock
 ctrl + alt + l
-    i3lock-fancy -p -- scrot -z
+    i3lock-fancy -p
 
 # make sxhkd reload its configuration files:
 super + Escape
