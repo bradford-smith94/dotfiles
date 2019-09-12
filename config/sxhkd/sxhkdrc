@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.config/sxhkd/sxhkdrc
-# updated: 2019-09-02
+# updated: 2019-09-12
 #########################
 
 #
@@ -10,6 +10,9 @@
 # terminal emulator
 ctrl + alt + t
     xterm
+
+ctrl + alt + k
+    keepassxc
 
 # program launcher
 super + space
