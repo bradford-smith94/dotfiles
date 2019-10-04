@@ -1,12 +1,12 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 2019-01-10
+" updated: 2019-10-03
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
 set encoding=utf-8 "use UTF-8 internally
 scriptencoding utf-8 "this file uses UTF-8
-set backspace=indent,eol,start "makes backspace work like expected
+set backspace=indent,eol,start
 set noerrorbells
 set visualbell
 set t_vb=
@@ -14,11 +14,11 @@ set tags+=tags;,./tags;
 if has('viminfo')
     set viminfo+=n~/.vim/viminfo
 endif
-set nomodeline "disable modelines
+set nomodeline
 set notimeout "don't timeout on :mappings
 set ttimeout "timeout on key codes (like esc and arrow keys)
 set ttimeoutlen=50 "esc and arrows timeout
-set mouse=nr "normal and 'Hit Enter' messages (useful for switching windows)
+set mouse=nr "normal and 'Hit Enter' messages
 filetype plugin indent on
 "}}}----------------------------------------------------------------------------
 
@@ -47,9 +47,7 @@ Plug 'chrisbra/Colorizer', { 'for': ['css', 'scss', 'html', 'xdefaults'] }
 if ! has('patch-8.1-360')
     Plug 'chrisbra/vim-diff-enhanced'
 endif
-if executable('editorconfig')
-    Plug 'editorconfig/editorconfig-vim'
-endif
+Plug 'editorconfig/editorconfig-vim'
 Plug 'EinfachToll/DidYouMean'
 Plug 'honza/vim-snippets'
 Plug 'konfekt/fastfold'
@@ -63,7 +61,7 @@ Plug 'nikvdp/ejs-syntax'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'pangloss/vim-javascript'
 Plug 'runoshun/vim-alloy'
-if has('patch-7.3-885') && has('lua') "neocomplete requires v7.3.885 and +lua
+if has('patch-7.3-885') && has('lua')
     Plug 'shougo/neocomplete'
 endif
 if v:version >= 704 && (has('python') || has('python3'))
@@ -94,11 +92,12 @@ let g:syntastic_mode_map = {
             \ 'active_filetypes': [],
             \ 'passive_filetypes': ['ejs', 'html'] }
 
-if has('patch-7.3-885') && has('lua') "neocomplete requires v7.3.885 and +lua
+if has('patch-7.3-885') && has('lua')
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
     let g:neocomplete#sources#syntax#min_keyword_length = 3
     let g:neocomplete#enable_auto_close_preview = 1
+    inoremap <expr><BS> neocomplete#smart_close_popup() ."\<C-h>"
 endif
 
 "only do quick-scope highlighting after pressing f, F, t and T keys
@@ -117,15 +116,8 @@ if has('python') || has('python3')
     let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
 endif
 
-if has('patch-7.3-885') && has('lua') "neocomplete requires v7.3.885 and +lua
-    "Backspace closes popup
-    inoremap <expr><BS> neocomplete#smart_close_popup() ."\<C-h>"
-endif
-
-"have superupdate skip first run because of automatic install
 let g:superupdate_skip_first = 1
 
-"only enable indentLine for some filetypes
 let g:indentLine_fileType = ['html', 'xhtml', 'xml']
 
 let g:colorizer_auto_filetype = 'css,scss,xdefaults'
@@ -160,19 +152,27 @@ if has('syntax')
     if !exists('g:syntax_on')
         syntax enable
     endif
-    set cursorline "highlight the line the cursor is on
+    set cursorline
     augroup cursorline_group
         autocmd!
         autocmd WinEnter,BufEnter * setlocal cursorline
         autocmd WinLeave,BufLeave * setlocal nocursorline
     augroup END
 endif
+if filereadable('/proc/version') "fix WSL cursor issues
+    let lines = readfile('/proc/version')
+    if lines[0] =~# 'Microsoft'
+        let &t_SI.="\e[1 q" "SI = Insert mode
+        let &t_SR.="\e[1 q" "SR = Replace mode
+        let &t_EI.="\e[1 q" "EI = Normal mode (else)
+    endif
+endif
 set background=dark
 colorscheme bsmith
 set title "allow Vim to set the window title
 set t_ut= "fixes issues with background color erase (BCE)
-set number "line numbers
-set relativenumber "relative line numbers
+set number
+set relativenumber
 
 if has('wildmenu')
     set wildmenu
@@ -195,10 +195,10 @@ augroup statusline_switcher
 augroup END
 
 set laststatus=2 "always show statusline
-set showmode "show the current mode in the cmdline
+set showmode
 set showmatch "highlight matching brackets
 if has('cmdline_info')
-    set showcmd "show partial command while typing
+    set showcmd
 endif
 
 "{{{-statusline functions
@@ -208,9 +208,7 @@ function! s:SetFancyStatusline()
     setlocal statusline+=%q "quickfix/location list flag
     setlocal statusline+=%w "preview window flag
     setlocal statusline+=%h "help file flag
-    setlocal statusline+=\ %<%f "file name
-
-    setlocal statusline+=\ %2*▶%3* "a fancy separator U+25b6
+    setlocal statusline+=\ %<%f\ %3* "file name
 
     setlocal statusline+=\ %m "modified flag
     setlocal statusline+=%9*%r%3* "read only flag
@@ -221,9 +219,7 @@ function! s:SetFancyStatusline()
 
     setlocal statusline+=%y "filetype
     setlocal statusline+=\ %{&fenc} "file encoding
-    setlocal statusline+=[%{&ff}] "file format
-
-    setlocal statusline+=\ %2*◀%1* "a fancy separator U+25c0
+    setlocal statusline+=[%{&ff}]\ %1* "file format
 
     setlocal statusline+=\ %P "percent through file as ruler displays it
     setlocal statusline+=\ L:%5(%l%) "line
@@ -242,21 +238,19 @@ endfunction
 "}}}----------------------------------------------------------------------------
 
 set lazyredraw "don't redraw the screen when executing macros (for speed)
-set scrolloff=5 "keep 5 lines visible above or below cursor
-set scrolljump=5 "scrolls 5 lines instead of 1
+set scrolloff=5
+set scrolljump=5
 "list chars unicode: tab U+25b6, nbsp U+2423, trail/space U+2219, eol U+21b5
 set listchars=tab:▶-,nbsp:␣,trail:∙,eol:↵
 if has('patch-7.4-711') "listchars option 'space' was added in this patch
-    set listchars+=space:∙
+    set listchars+=space:∙ "U+2219
 endif
 
 if has('folding')
     if has('windows')
-        set fillchars+=vert:│ "a nice vertical bar U+2502
-
-        "make splits feel more correct
-        set splitbelow "splits open below instead of above
-        set splitright "splits open right instead of left
+        set fillchars+=vert:│ "U+2502
+        set splitbelow
+        set splitright
     endif
 
     "enable folding by syntax by default
@@ -269,8 +263,8 @@ if has('extra_search')
     set incsearch
     set hlsearch "highlight all matches (:nohlsearch to stop)
 endif
-set ignorecase "case insensitive search
-set smartcase "unless I searched for capitalized letters
+set ignorecase
+set smartcase
 "}}}----------------------------------------------------------------------------
 
 
@@ -279,15 +273,15 @@ set autoindent "use indent from previous line
 set shiftwidth=4 "number of spaces for each indent level
 set expandtab "tab key types spaces
 set softtabstop=4 "number of spaces the tab key types
-set textwidth=80 "wrap at 80 columns by default
-set nowrap "don't wrap text by default
+set textwidth=80
+set nowrap
 
-if v:version > 703 || v:version == 703 && has('patch541')
+if v:version > 703 || (v:version == 703 && has('patch541'))
     "enable joining of comment lines and removing comment char
     set formatoptions+=j
 endif
 
-set nospell "spelling off by default
+set nospell
 set spelllang=en_us
 set spellfile=~/.vim/spell/custom.utf-8.add
 augroup spelling
@@ -297,19 +291,13 @@ augroup END
 
 augroup formatting
     autocmd!
-
-    "trim trailing whitespaces before saving
     autocmd BufWritePre * call formatting#RemoveTrailingSpaces()
-
-    "insert header for new markdown files in a 'Notebook' directory
     autocmd BufNewFile **/Notebook/*.md call notebook#NewEntry()
 augroup END
 
 "{{{-template settings----------------------------------------------------------
 augroup templates
     autocmd!
-
-    "autofilled templates
     autocmd BufNewFile Makefile source ~/.vim/custom/templates/Makefile.vim
     autocmd BufNewFile *.c,*.cpp source ~/.vim/custom/templates/c.vim
     autocmd BufNewFile *.h,*.hpp source ~/.vim/custom/templates/h.vim
@@ -318,9 +306,7 @@ augroup templates
     autocmd BufNewFile *.tex source ~/.vim/custom/templates/tex.vim
     autocmd BufNewFile *.html source ~/.vim/custom/templates/html.vim
     autocmd BufNewFile *.py source ~/.vim/custom/templates/python.vim
-    if executable('editorconfig')
-        autocmd BufNewFile .editorconfig source ~/.vim/custom/templates/editorconfig.vim
-    endif
+    autocmd BufNewFile .editorconfig source ~/.vim/custom/templates/editorconfig.vim
 augroup END
 "}}}----------------------------------------------------------------------------
 "}}}----------------------------------------------------------------------------
@@ -330,7 +316,6 @@ augroup END
 augroup misc
     autocmd!
 
-    "automatically open the quickfix window after grep commands
     autocmd QuickFixCmdPost *grep* cwindow
 
     "open epub files for editing (can use this for zip files too)
@@ -343,7 +328,6 @@ augroup END
 "see: wincent's screencast https://www.youtube.com/watch?v=wQ9uB8I0cCg
 augroup setup_custom_lazy_load
     autocmd!
-
     if has('vim_starting')
         autocmd CursorHold,CursorHoldI * call lazy#trigger()
     endif
@@ -389,10 +373,7 @@ command! Reload call reload#Now()
 "Clear the last used search pattern
 command! ClearSearch let @/=""
 
-"Toggle editing in Hex mode
 command! Hex call toggle#HexMode()
-
-"Toggle diff mode for current buffer
 command! Diff call toggle#DiffMode()
 
 "git helper commands to replace fugitive for my uses
@@ -407,7 +388,7 @@ endif
 "{{{-leader mappings
 "unbind space so it doesn't do anything but be my leader key
 nnoremap <space> <nop>
-let g:mapleader="\<Space>" "set <leader> as space
+let g:mapleader="\<Space>"
 
 nnoremap <leader><leader> :
 nnoremap <leader>b :ls<CR>:b<space>
@@ -436,7 +417,6 @@ if &diff "vimdiff leader mappings
 endif
 "}}}
 
-"backspace in Normal clears search pattern
 nnoremap <BS> :ClearSearch<CR>
 
 "double slash in visual searches for selection
@@ -477,8 +457,8 @@ inoremap <F1> <C-o>:call toggle#Background()<CR>
 nnoremap <F2> :Lexplore<CR>
 
 "[F5] saves
-nnoremap <F5> :w<CR>
-inoremap <F5> <C-o>:w<CR>
+nnoremap <F5> :update<CR>
+inoremap <F5> <C-o>:update<CR>
 
 "[F7] uses unimpaired to turn on paste mode (leaving insert turns it off)
 nmap <F7> <Plug>unimpairedPaste
@@ -505,7 +485,6 @@ onoremap il :normal vil<CR>
 
 
 "{{{-other files----------------------------------------------------------------
-" use ~/.vimrc.local for machine local changes
 if filereadable(glob('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
