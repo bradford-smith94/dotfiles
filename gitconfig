@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 2019-04-06
+# updated: 2020-01-28
 #####################
 
 [user]
@@ -45,6 +45,8 @@
     mailmap = true
 [stash]
     showPatch = true
+[fetch]
+    prune = true
 [alias]
     # show aliases (meta-aliases?)
     alias = "!git config --get-regexp 'alias.*' | colrm 1 6 | sed -e 's/[ ]/ = /' -e 's/[ ]\\+/ /g' | fmt -t"
@@ -56,6 +58,7 @@
 
     ctags = "!$(git rev-parse --show-toplevel)/.git/hooks/ctags.sh"
     re-init-hooks = "!rm -r $(git rev-parse --show-toplevel)/.git/hooks/; git init"
+    local-ignore = "!sh -c 'echo \"$1\" >> $(git rev-parse --show-toplevel)/.git/info/exclude' -"
 
     # from github.com/tsu-complete/dot/blob/master/git/_gitconfig
     graph = "log --graph --branches --remotes --tags --pretty='%w(76, 0, 6)%C(red)%h%C(reset) -%C(auto)%d%C(reset) %s%n %C(green)(%cr) %C(bold blue)<%aN>%C(reset)' --abbrev-commit --date=relative"

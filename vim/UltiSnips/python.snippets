@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.vim/UltiSnips/python.snippets
-# updated: 2019-04-06
+# updated: 2019-10-29
 
 snippet #pylint "pylint: disable=" b
 #pylint: disable=$1
@@ -9,4 +9,10 @@ endsnippet
 snippet pdb "pdb import and set_trace" b
 #pylint: disable=multiple-statements
 import pdb; pdb.set_trace() #TODO: DEBUG
+endsnippet
+
+snippet trace "print traceback" b
+import sys, traceback
+exc_type, exc_value, exc_traceback = sys.exc_info()
+traceback.print_tb(exc_traceback, limit=1, file=sys.stdout)
 endsnippet

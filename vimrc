@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 2019-10-03
+" updated: 2020-02-28
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -64,7 +64,7 @@ Plug 'runoshun/vim-alloy'
 if has('patch-7.3-885') && has('lua')
     Plug 'shougo/neocomplete'
 endif
-if v:version >= 704 && (has('python') || has('python3'))
+if v:version >= 704 && (has('python3') || has('python'))
     Plug 'SirVer/ultisnips'
 endif
 Plug 'tpope/vim-speeddating'
@@ -75,7 +75,7 @@ Plug 'unblevable/quick-scope'
 Plug 'vim-scripts/scons.vim'
 "originally scrooloose/syntastic
 Plug 'vim-syntastic/syntastic'
-Plug 'Yggdroot/indentLine', { 'for': [ 'html', 'xhtml', 'xml' ] }
+Plug 'Yggdroot/indentLine', { 'for': [ 'html', 'xhtml', 'xml', 'yaml' ] }
 call plug#end()
 
 "felt like these belonged with plugin initialization
@@ -118,7 +118,7 @@ endif
 
 let g:superupdate_skip_first = 1
 
-let g:indentLine_fileType = ['html', 'xhtml', 'xml']
+let g:indentLine_fileType = ['html', 'xhtml', 'xml', 'yaml']
 
 let g:colorizer_auto_filetype = 'css,scss,xdefaults'
 
@@ -402,6 +402,7 @@ nnoremap <leader>m :update<CR>:make<CR>
 nnoremap <leader>q :q<CR>
 "substitute word under cursor
 nnoremap <leader>s :%s/\(\<<C-r><C-w>\>\)/
+nnoremap <leader>t :SyntasticCheck<CR>
 "use <leader>u and <leader>U to place and unplace a '>' in the sign column
 sign define bsmith_mark linehl=Underlined text=>
 nnoremap <leader>u :exe ":sign place 1 name=bsmith_mark line=" . line('.') . " file=" . expand('%:p')<CR>
@@ -442,7 +443,7 @@ xnoremap < <gv
 nnoremap Y y$
 
 "make Q execute and insert a shell command on the current line
-nnoremap Q !!$SHELL<CR>
+nnoremap Q "zyy"zp!!$SHELL<CR>
 
 "use <Ctrl + w then Tab> and <Ctrl + w then Shift + Tab> to cycle between splits
 nnoremap <c-w><Tab> <c-w>w
