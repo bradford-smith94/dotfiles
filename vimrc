@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 2020-02-28
+" updated: 2020-03-13
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -37,6 +37,7 @@ endif
 call plug#begin('~/.vim/bundle')
 "plugins '<github_user>/<repo>' or full git path
 Plug 'AndrewRadev/linediff.vim'
+Plug 'airblade/vim-rooter'
 Plug 'artoj/qmake-syntax-vim'
 Plug 'baskerville/vim-sxhkdrc'
 Plug 'bradford-smith94/vim-autolist'
@@ -128,6 +129,8 @@ let g:tex_fold_additional_envs = ['itemize', 'tabular', 'verbatim']
 let g:jsx_ext_required = 0
 
 let g:scratch_top = 0
+
+let g:rooter_manual_only = 1
 
 "when started in diffmode set diff algorithm to patience (EnhancedDiff plugin)
 if &diff && ! has('patch-8.1-360')
@@ -339,8 +342,12 @@ augroup END
 "abbreviation for remembering my grep flags
 cabbrev grep <C-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'grep -srnw
             \ --binary-files=without-match --exclude-dir=.git
-            \ --exclude-dir=node_modules . -e' : 'grep')<CR>
+            \ --exclude-dir=node_modules --exclude=tags '.
+            \ (FindRootDirectory()=='' ? '.' : FindRootDirectory()) .' -e' :
+            \ 'grep')<CR>
 
+"make helpclose like cclose and lclose
+cabbrev hclose helpclose
 
 "{{{-ignore accidental capitalizations------------------------------------------
 "need commands because abbreviations only get replaced after hitting space/tab
