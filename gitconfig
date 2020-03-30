@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 2020-01-28
+# updated: 2020-03-30
 #####################
 
 [user]
@@ -91,6 +91,8 @@
 
     # make a .mailmap file based on the shortlog
     mkmailmap = "!git shortlog -se | awk -F'\\t' '{print $2,$3,$2,$3}' | sort > .mailmap"
+
+    clean-orig = "clean -f -e '*.*' -e '!*.orig'"
 
     serve = "!git daemon --reuseaddr --verbose --base-path=$(git rev-parse --show-toplevel) --export-all $(git rev-parse --show-toplevel)/.git"
 
