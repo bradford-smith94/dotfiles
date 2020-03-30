@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/ftplugin/man.vim
-" 09/26/2016
+" 2020-03-27
 " man filetype specific configuration
 
 "settings
@@ -8,10 +8,12 @@ setlocal tabstop=8
 setlocal nospell
 
 "set buffer not modifiable, not modified and no numbers
-setlocal noma
-setlocal nomod
+setlocal nomodifiable
+setlocal nomodified
 setlocal nonumber
 setlocal norelativenumber
+setlocal bufhidden=hide
+setlocal nobuflisted
 
 "mappings
 
