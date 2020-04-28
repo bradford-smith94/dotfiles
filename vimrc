@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 2020-03-13
+" updated: 2020-04-27
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -50,6 +50,7 @@ if ! has('patch-8.1-360')
 endif
 Plug 'editorconfig/editorconfig-vim'
 Plug 'EinfachToll/DidYouMean'
+Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'honza/vim-snippets'
 Plug 'konfekt/fastfold'
 Plug 'markonm/traces.vim'
