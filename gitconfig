@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 2020-03-30
+# updated: 2020-05-09
 #####################
 
 [user]
@@ -81,7 +81,7 @@
     branches = "branch -avv"
     remotes = "remote -v"
     stashes = "stash list"
-    tags = "!git log --tags --simplify-by-decoration --pretty=\"format:%ai %d\" | grep tag | sed 's/.*tag: \\([^,)]*\\).*/\\1/'"
+    tags = "!git log --tags --simplify-by-decoration --pretty=\"format:%ai %d\" | grep tag | sed 's/.*tag: \\([^,)]*\\).*/\\1/' | less -FRX"
 
     # question aliases, whatis this commit, whoami (ignore 'useconfigonly'),
     # whois this other author
