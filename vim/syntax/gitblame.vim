@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/syntax/gitblame.vim
-" 2018-05-10
+" 2020-05-26
 " Custom Git Blame syntax for Vim
 
 if version < 600
@@ -12,6 +12,7 @@ endif
 runtime! syntax/git.vim
 
 syntax match gitHash /^\^\x\{39\}\>/ containedin=gitHead
+syntax match gitHash /^\x\{40\}\>/ containedin=gitHead
 syntax match gitUncommittedChange /^0\{40\}\>/ containedin=gitHash
 
 syntax region gitAuthorTimestamp start=/(/ end=/)/ containedin=gitHead
