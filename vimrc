@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 2020-04-27
+" updated: 2020-09-07
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -63,8 +63,10 @@ Plug 'nikvdp/ejs-syntax'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'pangloss/vim-javascript'
 Plug 'runoshun/vim-alloy'
-if has('patch-7.3-885') && has('lua')
+if ! has('patch-8.2-1066') && has('patch-7.3-885') && has('lua')
     Plug 'shougo/neocomplete'
+else
+    Plug 'ervandew/supertab'
 endif
 if v:version >= 704 && (has('python3') || has('python'))
     Plug 'SirVer/ultisnips'
@@ -94,7 +96,7 @@ let g:syntastic_mode_map = {
             \ 'active_filetypes': [],
             \ 'passive_filetypes': ['ejs', 'html'] }
 
-if has('patch-7.3-885') && has('lua')
+if ! has('patch-8.2-1066') && has('patch-7.3-885') && has('lua')
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
     let g:neocomplete#sources#syntax#min_keyword_length = 3
