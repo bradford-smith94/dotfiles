@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 2020-05-09
+# updated: 2020-07-28
 #####################
 
 [user]
@@ -40,6 +40,8 @@
     untracked = red
 [push]
     default = upstream
+[pull]
+    rebase = false
 [log]
     decorate = short
     mailmap = true
