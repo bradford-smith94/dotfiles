@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 2020-07-28
+# updated: 2020-09-09
 #####################
 
 [user]
@@ -13,6 +13,8 @@
     excludesfile = ~/.gitignore
 [init]
     templatedir = ~/.git_template
+[include]
+    path = .gitconfig.local
 [merge]
     tool = vimdiff
 [diff]
@@ -45,6 +47,8 @@
 [log]
     decorate = short
     mailmap = true
+[mailmap]
+    file = ~/.git_mailmap
 [stash]
     showPatch = true
 [fetch]
@@ -64,6 +68,7 @@
 
     # from github.com/tsu-complete/dot/blob/master/git/_gitconfig
     graph = "log --graph --branches --remotes --tags --pretty='%w(76, 0, 6)%C(red)%h%C(reset) -%C(auto)%d%C(reset) %s%n %C(green)(%cr) %C(bold blue)<%aN>%C(reset)' --abbrev-commit --date=relative"
+    graph-branch = "log --graph --pretty='%w(76, 0, 6)%C(red)%h%C(reset) -%C(auto)%d%C(reset) %s%n %C(green)(%cr) %C(bold blue)<%aN>%C(reset)' --abbrev-commit --date=relative"
     shortgraph = "log --graph --branches --remotes --tags --pretty='%C(red)%h%C(reset)%C(auto)%d%C(reset) %s' --abbrev-commit"
     lines = "!git grep -z --cached -Il '' | xargs -0 wc -l"
     lines-authored = "!git grep -z --cached -Il '' | xargs -0 -n1 git blame --line-porcelain HEAD | grep -a \"^author \"|sort|uniq -c|sort -nr | awk '{lines[count++]=$0;sum+=$1}END{for(i=0;i<count;i++){ print lines[i] \" (\" lines[i]/sum*100 \"%)\"}}'"
@@ -81,6 +86,7 @@
     # show all of something, keep commands consistent in plain English
     authors = "shortlog -ns --no-merges"
     branches = "branch -avv"
+    merged-branches = "branch -a --merged"
     remotes = "remote -v"
     stashes = "stash list"
     tags = "!git log --tags --simplify-by-decoration --pretty=\"format:%ai %d\" | grep tag | sed 's/.*tag: \\([^,)]*\\).*/\\1/' | less -FRX"
@@ -88,7 +94,7 @@
     # question aliases, whatis this commit, whoami (ignore 'useconfigonly'),
     # whois this other author
     whatis = "show"
-    whoami = "!git config --get-regexp 'user.*' | colrm 1 5 | sed -e '/^useconfigonly.*$/d' -e 's/[ ]/ = /'"
+    whoami = "!git config --get-regexp '^user.*' | colrm 1 5 | sed -e '/^useconfigonly.*$/d' -e 's/[ ]/ = /'"
     whois = "!sh -c 'git log -i -1 --pretty=\"tformat:%aN <%aE>\" --author=\"$1\"' -"
 
     # make a .mailmap file based on the shortlog

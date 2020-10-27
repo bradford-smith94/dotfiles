@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/ftdetect/gitconfig.vim
-" updated: 09/22/2017
+" updated: 2020-06-30
 " gitconfig filetype detection
 
-autocmd BufNewFile,BufRead gitconfig set filetype=gitconfig
+autocmd BufNewFile,BufRead gitconfig,.gitconfig.local set filetype=gitconfig
