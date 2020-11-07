@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 2020-09-09
+# updated: 2020-11-07
 #####################
 
 [user]
@@ -25,6 +25,9 @@
 [commit]
     # commits start with prefilled text provided in:
     template = ~/.gitmessage
+    gpgSign = true
+[tag]
+    gpgSign = true
 [color]
     ui = auto
     branch = true
