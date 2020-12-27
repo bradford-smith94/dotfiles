@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 2020-11-07
+# updated: 2020-12-27
 #####################
 
 [user]
@@ -88,7 +88,7 @@
 
     # show all of something, keep commands consistent in plain English
     authors = "shortlog -ns --no-merges"
-    branches = "branch -avv"
+    branches = "!git rainbow-branches"
     merged-branches = "branch -a --merged"
     remotes = "remote -v"
     stashes = "stash list"
