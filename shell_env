@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.shell_env
-# updated: 2018-09-26
+# updated: 2021-02-09
 #####################
 
 # turn off flow control (ctrl-q and ctrl-s)
@@ -84,6 +84,9 @@ case $(tty) in
             if [ -f /usr/bin/screenfetch ]; then
                 screenfetch
             fi
+        else
+            GPG_TTY=$(tty)
+            export GPG_TTY
         fi
         ;;
 esac
