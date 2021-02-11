@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 2020-09-07
+" updated: 2021-02-11
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -79,7 +79,7 @@ Plug 'unblevable/quick-scope'
 Plug 'vim-scripts/scons.vim'
 "originally scrooloose/syntastic
 Plug 'vim-syntastic/syntastic'
-Plug 'Yggdroot/indentLine', { 'for': [ 'html', 'xhtml', 'xml', 'yaml' ] }
+Plug 'Yggdroot/indentLine', { 'for': [ 'python', 'html', 'xhtml', 'xml', 'yaml' ] }
 call plug#end()
 
 "felt like these belonged with plugin initialization
@@ -122,7 +122,8 @@ endif
 
 let g:superupdate_skip_first = 1
 
-let g:indentLine_fileType = ['html', 'xhtml', 'xml', 'yaml']
+let g:indentLine_fileType = ['python', 'html', 'xhtml', 'xml', 'yaml']
+let g:indentLine_setColors = 0
 
 let g:colorizer_auto_filetype = 'css,scss,xdefaults'
 
@@ -407,6 +408,7 @@ nnoremap <leader>d :Diff<CR>
 nnoremap <leader>e :e<space>
 nnoremap <leader>f :exe ":e " . resolve(join([$HOME, "/.vim/ftplugin/", &filetype, ".vim"], ""))<CR>
 nnoremap <leader>h :nohlsearch<CR>
+nnoremap <leader>i :IndentLinesToggle<CR>
 nnoremap <leader>l :setlocal list!<CR>
 nnoremap <leader>m :update<CR>:make<CR>
 nnoremap <leader>q :q<CR>
