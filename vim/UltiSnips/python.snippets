@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.vim/UltiSnips/python.snippets
-# updated: 2019-10-29
+# updated: 2021-06-10
 
 snippet #pylint "pylint: disable=" b
 #pylint: disable=$1
@@ -15,4 +15,9 @@ snippet trace "print traceback" b
 import sys, traceback
 exc_type, exc_value, exc_traceback = sys.exc_info()
 traceback.print_tb(exc_traceback, limit=1, file=sys.stdout)
+endsnippet
+
+snippet main "main function" b
+if __name__ == '__main__':
+    pass
 endsnippet
