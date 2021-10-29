@@ -1,10 +1,10 @@
 " Bradford Smith
 " ~/.vim/autoload/git.vim
-" 2018-06-20
+" 2020-12-09
 " Simple git helper functions (or the only features I use from fugitive)
 
 function! git#blame() abort
-    silent let blame = system('git blame -l ' . expand('%'))
+    silent let blame = system('git blame -l -w ' . expand('%'))
     if v:shell_error
         echohl Error
         echomsg 'Error in git blame: ' . blame
