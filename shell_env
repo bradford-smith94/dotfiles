@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.shell_env
-# updated: 2021-02-09
+# updated: 2022-03-20
 #####################
 
 # turn off flow control (ctrl-q and ctrl-s)
@@ -56,7 +56,7 @@ fi
 
 # enable xterm transparency with transset-df
 if command -v transset-df >/dev/null 2>&1; then
-    [ -n "$XTERM_VERSION" ] && transset-df --id "$WINDOWID" .95 >/dev/null
+    [ -n "$XTERM_VERSION" ] && transset-df --id "$WINDOWID" .95 >/dev/null 2>&1
 fi
 
 # start ssh-agent
@@ -78,15 +78,27 @@ case $(tty) in
         ;;
     # else in a ptty
     *)
+        # https://unix.stackexchange.com/a/43604
+        # https://wiki.archlinux.org/title/Tmux#Start_tmux_on_every_shell_login
+        if command -v tmux >/dev/null 2>&1; then
+            # if not in tmux
+            if [[ -z "$TMUX" ]]; then
+                if ! tmux has-session -t main 2>/dev/null; then
+                    tmux new-session -s main
+                fi
+            fi
+        fi
+
         # if not in SSH
         if [ "x${SSH_TTY}" = "x" ]; then
             #   and screenfetch is installed
-            if [ -f /usr/bin/screenfetch ]; then
+            if command -v screenfetch >/dev/null 2>&1; then
                 screenfetch
             fi
-        else
+        else # in ssh
             GPG_TTY=$(tty)
             export GPG_TTY
+            [[ -n "$TMUX" ]] && cat /etc/motd 2>/dev/null
         fi
         ;;
 esac
