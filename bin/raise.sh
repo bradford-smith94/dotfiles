@@ -1,7 +1,7 @@
 #!/bin/bash
 # Bradford Smith
 # ~/bin/raise.sh
-# updated: 2020-08-22
+# updated: 2022-05-17
 # Use wmctrl to raise a window if it exists or launch the command
 
 # sanitize PATH variable
@@ -23,7 +23,7 @@ if [ $# -ne 1 ]; then
 fi
 PRG=$1
 
-WMNAME=$(wmctrl -xl | grep -i "$PRG" | cut -d' ' -f 4)
+WMNAME=$(wmctrl -xl | grep -i "$PRG" | cut -d' ' -f 3)
 if [ -n "$WMNAME" ]; then
     #echo "$WMNAME"
     wmctrl -xa "$WMNAME"
