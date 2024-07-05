@@ -1,7 +1,7 @@
 #!/bin/sh
 # Bradford Smith
 # ~/bin/reflect_mirrors.sh
-# updated: 2018-05-17
+# updated: 2023-08-10
 # Run reflector on /etc/pacman.d/mirrorlist to keep them up to date
 
 # sanitize PATH variable
@@ -40,8 +40,8 @@ mv "$MIRRORLIST" "$BACKUP"
 # get new mirrorlist from archlinux.org
 if wget -q -O "$MIRRORLIST" "$URL" ; then
 
-    # run reflector to sort mirrors by fastest 200 USA mirrors
-    if reflector -c 'United States' -l 200 --sort rate --save "$MIRRORLIST" ; then
+    # run reflector to sort mirrors by fastest 10 USA mirrors
+    if reflector -c 'United States' -l 10 --sort rate --save "$MIRRORLIST" ; then
         echo "Reflector updated mirrorlist successfully"
     else
         echo "Reflector failed, replacing old mirrorlist" 1>&2
