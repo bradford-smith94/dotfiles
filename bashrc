@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.bashrc
-# updated: 12/01/2016
+# updated: 2024-01-22
 #####################
 
 # If not running interactively, don't do anything
@@ -11,8 +11,13 @@ if [ -f /etc/bash.bashrc ]; then
     . /etc/bash.bashrc
 fi
 
-# unset bash_history file
-HISTFILE=
+# bash history file
+if [ ! -d "$HOME/.bash" ]; then
+    mkdir "$HOME/.bash/"
+fi
+HISTFILE="$HOME/.bash/history"
+HISTSIZE=100000
+SAVEHIST=100000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.

@@ -1,13 +1,18 @@
 # Bradford Smith
 # ~/.zshrc
-# updated: 04/04/2018
+# updated: 2024-04-25
 #####################
 
 # theme it
 source "$HOME/.zsh/bsmith.zsh-theme"
 
-# unset history file
-HISTFILE=
+# history file
+HISTFILE="$HOME/.zsh/histfile"
+HISTSIZE=100000
+SAVEHIST=100000
+setopt append_history
+setopt share_history
+
 
 # use vim-like keybindings
 bindkey -v

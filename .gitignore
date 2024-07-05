@@ -31,3 +31,4 @@ config/ranger/tagged
 
 # zsh completion dump
 zsh/.zcompdump
+zsh/histfile
