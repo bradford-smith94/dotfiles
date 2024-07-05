@@ -83,11 +83,15 @@
     shortgraph = "log --graph --branches --remotes --tags --pretty='%C(red)%h%C(reset)%C(auto)%d%C(reset) %s' --abbrev-commit"
     lines = "!git grep -z --cached -Il '' | xargs -0 wc -l"
     lines-authored = "!git grep -z --cached -Il '' | xargs -0 -n1 git blame --line-porcelain HEAD | grep -a \"^author \"|sort|uniq -c|sort -nr | awk '{lines[count++]=$0;sum+=$1}END{for(i=0;i<count;i++){ print lines[i] \" (\" lines[i]/sum*100 \"%)\"}}'"
+    lines-authored-w = "!git grep -z --cached -Il '' | xargs -0 -n1 git blame -w --line-porcelain HEAD | grep -a \"^author \"|sort|uniq -c|sort -nr | awk '{lines[count++]=$0;sum+=$1}END{for(i=0;i<count;i++){ print lines[i] \" (\" lines[i]/sum*100 \"%)\"}}'"
 
     # log aliases
-    # use after git pull to show a log of the new commits
+    # use after git pull to show a log of the new commits (can optionally take a
+    # ref name e.g. HEAD, branch name) https://stackoverflow.com/a/12631371
     new = "!git log $1@{1}..$1@{0} \"$@\""
     newest = "log -1"
+    # hardcoding HEAD in diffnew allows for arguments to diff (e.g. diff -w)
+    diffnew = "!git diff HEAD@{1}..HEAD@{0}"
     # use to show commits from only today/yesterday
     today ="log --since=midnight"
     yesterday = "log --since=\"yesterday midnight\" --until=midnight"
@@ -132,9 +136,12 @@
 
     # for the rare occasion you want to stash _only_ unstaged changes
     stash-unstaged = "stash -k"
+    add-w = "!git diff -U0 -w --no-color \"$@\" | git apply --cached --ignore-whitespace --unidiff-zero -"
 
     # useful to navigate to repository root: `cd $(git top)`
     top = "rev-parse --show-toplevel"
 
     # stop git from tracking a file
     untrack = "rm --cached"
+    # status without untracked
+    status-clean = "status -uno"
