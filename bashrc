@@ -33,6 +33,14 @@ else
     SSH=""
 fi
 
+# check for network namespace
+nns=$(ip netns identify)
+if [ -n "$nns" ]; then
+    NNS="(nns: $nns) "
+else
+    NNS=""
+fi
+
 # Prompt
 if [[ $EUID -ne 0 ]]; then
     # | user - green
@@ -54,7 +62,7 @@ fi
 PROMPT_DIR="\[\e[1;34m\]\w\[\e[m\]"
 
 # (ssh) user@host: dir$
-PS1="$SSH$PROMPT_USER$PROMPT_HOST $PROMPT_DIR$PROMPT_CHAR "
+PS1="$SSH$NNS$PROMPT_USER$PROMPT_HOST $PROMPT_DIR$PROMPT_CHAR "
 
 # source shared shell environment
 if [ -f "$HOME/.shell_env" ]; then

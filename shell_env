@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.shell_env
-# updated: 2022-03-20
+# updated: 2024-07-05
 #####################
 
 # turn off flow control (ctrl-q and ctrl-s)
@@ -47,6 +47,11 @@ if [ -d /opt/android-sdk/tools/ ]; then
     PATH=$PATH:/opt/android-sdk/tools/
 fi
 export PATH=$PATH
+
+# support local rust env
+if [ -d "$HOME/.cargo/env" ]; then
+    . "$HOME/.cargo/env"
+fi
 
 # use vim as the default editor and man pager
 if command -v vim >/dev/null 2>&1; then
