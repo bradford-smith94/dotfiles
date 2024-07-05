@@ -49,7 +49,8 @@ Plug 'bradford-smith94/vim-colors-bsmith'
 Plug 'bradford-smith94/vim-dauber'
 Plug 'bradford-smith94/vim-superupdate'
 Plug 'chrisbra/Colorizer', { 'for': ['css', 'scss', 'html', 'xdefaults'] }
-if ! has('patch-8.1-360')
+if v:version < 801 || (v:version == 801 && !has('patch360'))
+    let s:using_diff_enhanced = 1
     Plug 'chrisbra/vim-diff-enhanced'
 endif
 Plug 'editorconfig/editorconfig-vim'
@@ -67,7 +68,10 @@ Plug 'nikvdp/ejs-syntax'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'pangloss/vim-javascript'
 Plug 'runoshun/vim-alloy'
-if ! has('patch-8.2-1066') && has('patch-7.3-885') && has('lua')
+if has('lua') && ((v:version == 802 && !has('patch1066'))
+            \ || (v:version < 802 && v:version > 703)
+            \ || (v:version == 703 && has('patch885')))
+    let s:using_neocomplete = 1
     Plug 'shougo/neocomplete'
 else
     Plug 'ervandew/supertab'
@@ -101,7 +105,7 @@ let g:syntastic_mode_map = {
             \ 'active_filetypes': [],
             \ 'passive_filetypes': ['ejs', 'html'] }
 
-if ! has('patch-8.2-1066') && has('patch-7.3-885') && has('lua')
+if exists('s:using_neocomplete')
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
     let g:neocomplete#sources#syntax#min_keyword_length = 3
@@ -142,7 +146,7 @@ let g:scratch_top = 0
 let g:rooter_manual_only = 1
 
 "when started in diffmode set diff algorithm to patience (EnhancedDiff plugin)
-if &diff && ! has('patch-8.1-360')
+if &diff && exists('s:using_diff_enhanced')
     let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
 elseif &diff
     set diffopt+=internal,algorithm:patience
@@ -254,7 +258,7 @@ set scrolloff=5
 set scrolljump=5
 "list chars unicode: tab U+25b6, nbsp U+2423, trail/space U+2219, eol U+21b5
 set listchars=tab:▶-,nbsp:␣,trail:∙,eol:↵
-if has('patch-7.4-711') "listchars option 'space' was added in this patch
+if v:version > 704 || (v:version == 704 && has('patch711')) "listchars option 'space' was added in this patch
     set listchars+=space:∙ "U+2219
 endif
 
