@@ -23,21 +23,6 @@ if command -v srm >/dev/null 2>&1; then
     alias sfill='sfill -vz' # same as srm but works on free partition space
 fi
 
-function enable-coredump() {
-    ulimit -c > ~/.cache/old_core_limit
-    old_pattern=$(sysctl kernel.core_pattern | sed 's/.*= //')
-    echo -n $old_pattern > ~/.cache/old_core_pattern
-    ulimit -c unlimited
-    sudo sysctl -w kernel.core_pattern=%e_%t.coredump
-}
-
-function disable-coredump() {
-    old_limit=$(cat ~/.cache/old_core_limit)
-    old_pattern=$(cat ~/.cache/old_core_pattern)
-    ulimit -c "${old_limit}"
-    sudo sysctl -w kernel.core_pattern="${old_pattern}"
-}
-
 if command -v gs >/dev/null 2>&1; then
     ## Ghostscript combine pdfs (usage: `gs-pdf in1.pdf in2.pdf ...`)
     ##      (can also read in a list of files using `gs-pdf @list.txt`)
@@ -98,6 +83,21 @@ alias :h=':help'
 function :help () {
     # quickly access vim help
     vim -c ":help $1" -c ":only";
+}
+
+function enable-coredump() {
+    ulimit -c > ~/.cache/old_core_limit
+    old_pattern=$(sysctl kernel.core_pattern | sed 's/.*= //')
+    echo -n $old_pattern > ~/.cache/old_core_pattern
+    ulimit -c unlimited
+    sudo sysctl -w kernel.core_pattern=%e_%t.coredump
+}
+
+function disable-coredump() {
+    old_limit=$(cat ~/.cache/old_core_limit)
+    old_pattern=$(cat ~/.cache/old_core_pattern)
+    ulimit -c "${old_limit}"
+    sudo sysctl -w kernel.core_pattern="${old_pattern}"
 }
 
 ## Local Aliases
