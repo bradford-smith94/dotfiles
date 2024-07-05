@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vim/ftplugin/cpp.vim
-" 02/28/2018
+" 2022-06-22
 " C++ filetype specific configuration
 
 "mappings
@@ -11,3 +11,6 @@ else
     nnoremap <buffer> <F5> :update<CR>:!g++ %<CR>
     inoremap <buffer> <F5> <C-o>:update<CR><C-o>:!g++ %<CR>
 endif
+
+"setlocal path+=./include/,../include/
+setlocal path+=include;

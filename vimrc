@@ -80,6 +80,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'unblevable/quick-scope'
+Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': ['cpp'] }
 Plug 'vim-scripts/scons.vim'
 "originally scrooloose/syntastic
 Plug 'vim-syntastic/syntastic'
@@ -350,6 +351,7 @@ augroup END
 "abbreviation for remembering my grep flags
 cabbrev grep <C-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'grep -srnw
             \ --binary-files=without-match --exclude-dir=.git
+            \ --exclude-dir=build --exclude-dir=__pycache__
             \ --exclude-dir=node_modules --exclude=tags '.
             \ (FindRootDirectory()=='' ? '.' : FindRootDirectory()) .' -e' :
             \ 'grep')<CR>

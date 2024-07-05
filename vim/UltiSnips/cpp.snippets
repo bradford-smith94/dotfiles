@@ -1,0 +1,25 @@
+# Bradford Smith
+# ~/.vim/UltiSnips/cpp.snippets
+# updated: 2022-12-09
+
+snippet namespace "namespace" b
+namespace $1 {
+	$2
+} // namespace $1
+endsnippet
+
+snippet class "class" b
+class $1 {
+	private:
+	public:
+		$1()
+		~$1()
+};
+endsnippet
+
+snippet function "function" b
+${1:void} ${2:class}::${3:function}($4)
+{
+	$5
+}
+endsnippet
