@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitignore (global gitignore)
-# updated: 2018-08-23
+# updated: 2022-07-05
 #################################
 
 ## Linux ##
@@ -10,6 +10,7 @@
 .*.s[a-w][a-z]
 .s[a-w][a-z]
 .netrwhist
+.*.un~
 
 ## Git Merge ##
 *.orig

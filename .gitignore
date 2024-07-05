@@ -18,6 +18,9 @@ vim/swap/
 # the viminfo file
 vim/viminfo
 
+# undo files
+vim/undo/
+
 # netrw history file
 vim/.netrwhist
 

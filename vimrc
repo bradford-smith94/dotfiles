@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 2021-02-11
+" updated: 2024-07-05
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -13,6 +13,10 @@ set t_vb=
 set tags+=tags;,./tags;
 if has('viminfo')
     set viminfo+=n~/.vim/viminfo
+endif
+if has('persistent_undo')
+    set undodir=~/.vim/undo//
+    set undofile
 endif
 set nomodeline
 set notimeout "don't timeout on :mappings
