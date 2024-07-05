@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 2022-10-14
+# updated: 2024-07-05
 #####################
 
 [user]
@@ -11,6 +11,7 @@
 [core]
     editor = vim
     excludesfile = ~/.gitignore
+    #fsmonitor = true
 [init]
     templatedir = ~/.git_template
 [include]
@@ -29,7 +30,7 @@
 [tag]
     gpgSign = true
 [color]
-    ui = auto
+    ui = always
     branch = true
     diff = true
     interactive = true
@@ -61,6 +62,8 @@
     showPatch = true
 [fetch]
     prune = true
+[format]
+    pretty = fuller
 [alias]
     # show aliases (meta-aliases?)
     alias = "!git config --get-regexp 'alias.*' | colrm 1 6 | sed -e 's/[ ]/ = /' -e 's/[ ]\\+/ /g' | fmt -t"
@@ -98,6 +101,18 @@
     remotes = "remote -v"
     stashes = "stash list"
     tags = "!git log --tags --simplify-by-decoration --pretty=\"format:%ai %d\" | grep tag | sed 's/^.*(\\(.*\\))$/\\1/' | awk '{i=1; while (i<NF) { if ($i== \"tag:\") { t=$(i+1); gsub(\",\", \"\", t); print t; ++i} ++i;}}' | less -FRX"
+
+    # https://stackoverflow.com/a/46085465
+    large-files = "!git rev-list --objects --all \
+        | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' \
+        | sed -n 's/^blob //p' \
+        | sort -r --numeric-sort --key=2 \
+        | head -n 10 \
+        | cut -c 1-12,41- \
+        | $(command -v gnufmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest"
+
+    # show history of given file
+    history = "log -p --"
 
     # question aliases, whatis this commit, whoami (ignore 'useconfigonly'),
     # whois this other author
