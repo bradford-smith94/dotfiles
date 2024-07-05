@@ -113,7 +113,7 @@
         | sort -r --numeric-sort --key=2 \
         | head -n 10 \
         | cut -c 1-12,41- \
-        | $(command -v gnufmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest"
+        | $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest"
 
     # show history of given file
     history = "log -p --"
