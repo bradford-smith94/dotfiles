@@ -93,6 +93,8 @@ case $(tty) in
                 fi
             fi
         fi
+        GPG_TTY=$(tty)
+        export GPG_TTY
 
         # if not in SSH
         if [ "x${SSH_TTY}" = "x" ]; then
@@ -101,8 +103,6 @@ case $(tty) in
                 screenfetch
             fi
         else # in ssh
-            GPG_TTY=$(tty)
-            export GPG_TTY
             [[ -n "$TMUX" ]] && cat /etc/motd 2>/dev/null
         fi
         ;;
