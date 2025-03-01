@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 2024-07-05
+" updated: 2025-03-01
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -42,13 +42,14 @@ call plug#begin('~/.vim/bundle')
 "plugins '<github_user>/<repo>' or full git path
 Plug 'AndrewRadev/linediff.vim'
 Plug 'airblade/vim-rooter'
+Plug 'aklt/plantuml-syntax'
 Plug 'artoj/qmake-syntax-vim'
 Plug 'baskerville/vim-sxhkdrc'
 Plug 'bradford-smith94/vim-autolist'
 Plug 'bradford-smith94/vim-colors-bsmith'
 Plug 'bradford-smith94/vim-dauber'
 Plug 'bradford-smith94/vim-superupdate'
-Plug 'chrisbra/Colorizer', { 'for': ['css', 'scss', 'html', 'xdefaults'] }
+Plug 'chrisbra/Colorizer', {'for': ['css', 'scss', 'html', 'xdefaults']}
 if v:version < 801 || (v:version == 801 && !has('patch360'))
     let s:using_diff_enhanced = 1
     Plug 'chrisbra/vim-diff-enhanced'
@@ -74,7 +75,7 @@ if has('lua') && ((v:version == 802 && !has('patch1066'))
     let s:using_neocomplete = 1
     Plug 'shougo/neocomplete'
 else
-    Plug 'ervandew/supertab'
+    Plug 'ervandew/supertab', {'branch': 'main'}
 endif
 if v:version >= 704 && (has('python3') || has('python'))
     Plug 'SirVer/ultisnips'
@@ -83,12 +84,14 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
+Plug 'tyru/open-browser.vim', {'for': ['plantuml']}
 Plug 'unblevable/quick-scope'
-Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': ['cpp'] }
+Plug 'vim-scripts/DoxygenToolkit.vim', {'for': ['cpp']}
 Plug 'vim-scripts/scons.vim'
 "originally scrooloose/syntastic
 Plug 'vim-syntastic/syntastic'
-Plug 'Yggdroot/indentLine', { 'for': [ 'python', 'html', 'xhtml', 'xml', 'yaml' ] }
+Plug 'weirongxu/plantuml-previewer.vim', {'for': ['plantuml']}
+Plug 'Yggdroot/indentLine', {'for': ['python', 'html', 'xhtml', 'xml', 'yaml']}
 call plug#end()
 
 "felt like these belonged with plugin initialization
@@ -441,6 +444,7 @@ endif
 "}}}
 
 nnoremap <BS> :ClearSearch<CR>
+nnoremap <c-h> :ClearSearch<CR>
 
 "double slash in visual searches for selection
 "see: http://vim.wikia.com/wiki/Search_for_visually_selected_text
