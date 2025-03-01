@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 2024-07-05
+# updated: 2024-08-06
 #####################
 
 [user]
@@ -101,9 +101,10 @@
     # show all of something, keep commands consistent in plain English
     authors = "shortlog -ns --no-merges"
     branches = "!git rainbow-branches"
+    branches-local = "bracnh -vv"
     merged-branches = "branch -a --merged"
     remotes = "remote -v"
-    stashes = "stash list"
+    stashes = "stash list --pretty=format:\"%C(red)%h%C(reset)(%C(magenta)%gd%C(reset)): %<(70,trunc)%s %C(green)(%cr)%C(reset)\""
     tags = "!git log --tags --simplify-by-decoration --pretty=\"format:%ai %d\" | grep tag | sed 's/^.*(\\(.*\\))$/\\1/' | awk '{i=1; while (i<NF) { if ($i== \"tag:\") { t=$(i+1); gsub(\",\", \"\", t); print t; ++i} ++i;}}' | less -FRX"
 
     # https://stackoverflow.com/a/46085465
