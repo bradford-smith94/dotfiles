@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 2024-08-06
+# updated: 2025-03-06
 #####################
 
 [user]
@@ -101,7 +101,7 @@
     # show all of something, keep commands consistent in plain English
     authors = "shortlog -ns --no-merges"
     branches = "!git rainbow-branches"
-    branches-local = "bracnh -vv"
+    branches-local = "branch -vv"
     merged-branches = "branch -a --merged"
     remotes = "remote -v"
     stashes = "stash list --pretty=format:\"%C(red)%h%C(reset)(%C(magenta)%gd%C(reset)): %<(70,trunc)%s %C(green)(%cr)%C(reset)\""
