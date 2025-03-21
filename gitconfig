@@ -1,6 +1,6 @@
 # Bradford Smith
 # ~/.gitconfig
-# updated: 2025-03-06
+# updated: 2025-03-21
 #####################
 
 [user]
@@ -81,9 +81,9 @@
     graph = "log --graph --branches --remotes --tags --pretty='%w(76, 0, 6)%C(red)%h%C(reset) -%C(auto)%d%C(reset) %s%n %C(green)(%cr) %C(bold blue)<%aN>%C(reset)' --abbrev-commit --date=relative"
     graph-branch = "log --graph --pretty='%w(76, 0, 6)%C(red)%h%C(reset) -%C(auto)%d%C(reset) %s%n %C(green)(%cr) %C(bold blue)<%aN>%C(reset)' --abbrev-commit --date=relative"
     shortgraph = "log --graph --branches --remotes --tags --pretty='%C(red)%h%C(reset)%C(auto)%d%C(reset) %s' --abbrev-commit"
-    lines = "!git grep -z --cached -Il '' | xargs -0 wc -l"
-    lines-authored = "!git grep -z --cached -Il '' | xargs -0 -n1 git blame --line-porcelain HEAD | grep -a \"^author \"|sort|uniq -c|sort -nr | awk '{lines[count++]=$0;sum+=$1}END{for(i=0;i<count;i++){ print lines[i] \" (\" lines[i]/sum*100 \"%)\"}}'"
-    lines-authored-w = "!git grep -z --cached -Il '' | xargs -0 -n1 git blame -w --line-porcelain HEAD | grep -a \"^author \"|sort|uniq -c|sort -nr | awk '{lines[count++]=$0;sum+=$1}END{for(i=0;i<count;i++){ print lines[i] \" (\" lines[i]/sum*100 \"%)\"}}'"
+    lines = "!git grep --no-color -z --cached -Il '' | xargs -0 wc -l"
+    lines-authored = "!git grep --no-color -z --cached -Il '' | xargs -0 -n1 git blame --line-porcelain HEAD | grep -a \"^author \"|sort|uniq -c|sort -nr | awk '{lines[count++]=$0;sum+=$1}END{for(i=0;i<count;i++){ print lines[i] \" (\" lines[i]/sum*100 \"%)\"}}'"
+    lines-authored-w = "!git grep --no-color -z --cached -Il '' | xargs -0 -n1 git blame -w --line-porcelain HEAD | grep -a \"^author \"|sort|uniq -c|sort -nr | awk '{lines[count++]=$0;sum+=$1}END{for(i=0;i<count;i++){ print lines[i] \" (\" lines[i]/sum*100 \"%)\"}}'"
 
     # log aliases
     # use after git pull to show a log of the new commits (can optionally take a
