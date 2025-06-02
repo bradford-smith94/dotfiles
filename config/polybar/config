@@ -1,6 +1,6 @@
 ; Bradford Smith
 ; ~/.config/polybar/config
-; updated: 2019-02-23
+; updated: 2025-06-01
 ; ========================
 
 [colors]
@@ -67,6 +67,18 @@ label-occupied-foreground = ${colors.green}
 label-monocle = " M "
 label-monocle-foreground = ${colors.bg}
 label-monocle-background = ${colors.red}
+
+label-locked = " L "
+label-locked-foreground = ${colors.bg}
+label-locked-background = ${colors.orange}
+
+label-sticky = " S "
+label-sticky-foreground = ${colors.bg}
+label-sticky-background = ${colors.orange}
+
+label-private = " P "
+label-private-foreground = ${colors.bg}
+label-private-background = ${colors.orange}
 
 label-urgent = " %name%"
 label-urgent-foreground = ${colors.orange}
