@@ -1,6 +1,6 @@
 " Bradford Smith
 " ~/.vimrc
-" updated: 2025-03-01
+" updated: 2026-04-19
 """""""""""""""""""""
 
 "{{{-core stuff-----------------------------------------------------------------
@@ -28,71 +28,26 @@ filetype plugin indent on
 
 
 "{{{-plugins--------------------------------------------------------------------
-"see: https://github.com/junegunn/vim-plug/wiki/faq#automatic-installation
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    augroup vimplug_first_install_group
-        autocmd!
-        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-    augroup END
+if !has('packages')
+    runtime pack/others/opt/vim-pathogen/autoload/pathogen.vim
+    execute pathogen#infect()
 endif
 
-call plug#begin('~/.vim/bundle')
-"plugins '<github_user>/<repo>' or full git path
-Plug 'AndrewRadev/linediff.vim'
-Plug 'airblade/vim-rooter'
-Plug 'aklt/plantuml-syntax'
-Plug 'artoj/qmake-syntax-vim'
-Plug 'baskerville/vim-sxhkdrc'
-Plug 'bradford-smith94/vim-autolist'
-Plug 'bradford-smith94/vim-colors-bsmith'
-Plug 'bradford-smith94/vim-dauber'
-Plug 'bradford-smith94/vim-superupdate'
-Plug 'chrisbra/Colorizer', {'for': ['css', 'scss', 'html', 'xdefaults']}
 if v:version < 801 || (v:version == 801 && !has('patch360'))
     let s:using_diff_enhanced = 1
-    Plug 'chrisbra/vim-diff-enhanced'
+    packadd! vim-diff-enhanced
 endif
-Plug 'editorconfig/editorconfig-vim'
-Plug 'EinfachToll/DidYouMean'
-Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'honza/vim-snippets'
-Plug 'konfekt/fastfold'
-Plug 'markonm/traces.vim'
-Plug 'matze/vim-tex-fold'
-Plug 'mgrabovsky/vim-xverif'
-Plug 'mtth/scratch.vim'
-Plug 'mxw/vim-jsx'
-Plug 'nelstrom/vim-markdown-folding'
-Plug 'nikvdp/ejs-syntax'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'pangloss/vim-javascript'
-Plug 'runoshun/vim-alloy'
 if has('lua') && ((v:version == 802 && !has('patch1066'))
             \ || (v:version < 802 && v:version > 703)
             \ || (v:version == 703 && has('patch885')))
     let s:using_neocomplete = 1
-    Plug 'shougo/neocomplete'
+    packadd! neocomplete
 else
-    Plug 'ervandew/supertab', {'branch': 'main'}
+    packadd! supertab
 endif
 if v:version >= 704 && (has('python3') || has('python'))
-    Plug 'SirVer/ultisnips'
+    packadd! ultisnips
 endif
-Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-repeat'
-Plug 'tyru/open-browser.vim', {'for': ['plantuml']}
-Plug 'unblevable/quick-scope'
-Plug 'vim-scripts/DoxygenToolkit.vim', {'for': ['cpp']}
-Plug 'vim-scripts/scons.vim'
-"originally scrooloose/syntastic
-Plug 'vim-syntastic/syntastic'
-Plug 'weirongxu/plantuml-previewer.vim', {'for': ['plantuml']}
-Plug 'Yggdroot/indentLine', {'for': ['python', 'html', 'xhtml', 'xml', 'yaml']}
-call plug#end()
 
 "felt like these belonged with plugin initialization
 source $VIMRUNTIME/ftplugin/man.vim "initializes the :Man command

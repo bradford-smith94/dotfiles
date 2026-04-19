@@ -2,6 +2,9 @@
 
 My configuration files (dotfiles) for anyone that is interested.
 
+This repo contains submodules, clone with `--recurse-submodules` or run `git
+submodule update --init --recursive` after cloning.
+
 ## Repository Structure
 
 For the most part the whole repository is meant to be symbolically linked into

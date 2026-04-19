@@ -1,7 +1,10 @@
 " Bradford Smith
 " ~/.vim/ftplugin/cpp.vim
-" 2022-06-22
+" 2026-04-18
 " C++ filetype specific configuration
+
+"settings
+packadd DoxygenToolkit.vim
 
 "mappings
 if !empty(glob('Makefile'))

@@ -1,9 +1,10 @@
 " Bradford Smith
 " ~/.vim/ftplugin/html.vim
-" 2019-02-03
+" 2026-04-18
 " HTML filetype specific configuration
 
 "settings
+packadd Colorizer
 setlocal wrap
 setlocal foldmethod=indent
 setlocal omnifunc=htmlcomplete#CompleteTags

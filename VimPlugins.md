@@ -1,0 +1,45 @@
+# Vim Plugins
+
+All plugins are now submoduled under `vim/pack/` to match Vim 8 package format.
+
+- 'AndrewRadev/linediff.vim', `others/start`
+- 'airblade/vim-rooter', `others/start`
+- 'aklt/plantuml-syntax', `filetypes/start`
+- 'artoj/qmake-syntax-vim', `filetypes/start`
+- 'baskerville/vim-sxhkdrc', `filetypes/start`
+- 'bradford-smith94/vim-autolist', `mine/start`
+- 'bradford-smith94/vim-colors-bsmith', `mine/start`
+- 'bradford-smith94/vim-dauber', `mine/start`
+- 'bradford-smith94/vim-superupdate', `mine/opt`
+- 'chrisbra/Colorizer', `others/opt`, started in ftplugins for: ['css', 'html', 'xdefaults']
+- 'chrisbra/vim-diff-enhanced', `others/opt`, started in vimrc on conditions
+- 'editorconfig/editorconfig-vim', `others/start`
+- 'EinfachToll/DidYouMean', `others/start`
+- 'Glench/Vim-Jinja2-Syntax', `filetypes/start`
+- 'honza/vim-snippets', `others/start`
+- 'konfekt/fastfold', `others/start`
+- 'markonm/traces.vim', `others/start`
+- 'matze/vim-tex-fold', `filetypes/start`
+- 'mgrabovsky/vim-xverif', `filetypes/start`
+- 'mtth/scratch.vim', `others/start`
+- 'mxw/vim-jsx', `filetypes/start`
+- 'nelstrom/vim-markdown-folding', `filetypes/start`
+- 'nikvdp/ejs-syntax', `filetypes/start`
+- 'octol/vim-cpp-enhanced-highlight'
+- 'pangloss/vim-javascript', `filetypes/start`
+- 'runoshun/vim-alloy', `filetypes/start`
+- 'shougo/neocomplete', `others/opt`, started in vimrc on conditions
+- 'ervandew/supertab', `others/opt`, started in vimrc on conditions
+- 'SirVer/ultisnips', `others/start`
+- 'tpope/vim-speeddating', `others/start`
+- 'tpope/vim-surround', `others/start`
+- 'tpope/vim-unimpaired', `others/start`
+- 'tpope/vim-repeat', `others/start`
+- 'tpope/vim-pathogen', `others/opt`, started in vimrc for Vim < 8
+- 'tyru/open-browser.vim', `others/opt`, started in ftplugins for: ['plantuml']
+- 'unblevable/quick-scope', `others/start`
+- 'vim-scripts/DoxygenToolkit.vim', `others/opt`, started in ftplugins for: ['cpp']
+- 'vim-scripts/scons.vim', `filetypes/start`
+- 'vim-syntastic/syntastic' (originally `scrooloose/syntastic`), `others/start`
+- 'weirongxu/plantuml-previewer.vim', `others/opt` started in ftplugins for: ['plantuml']
+- 'Yggdroot/indentLine', `others/start`
