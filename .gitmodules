@@ -1,123 +1,123 @@
 [submodule "vim/pack/mine/start/vim-autolist"]
 	path = vim/pack/mine/start/vim-autolist
-	url = github:bradford-smith94/vim-autolist
+	url = https://github.com/bradford-smith94/vim-autolist
 [submodule "vim/pack/mine/start/vim-colors-bsmith"]
 	path = vim/pack/mine/start/vim-colors-bsmith
-	url = github:bradford-smith94/vim-colors-bsmith
+	url = https://github.com/bradford-smith94/vim-colors-bsmith
 [submodule "vim/pack/mine/start/vim-dauber"]
 	path = vim/pack/mine/start/vim-dauber
-	url = github:bradford-smith94/vim-dauber
+	url = https://github.com/bradford-smith94/vim-dauber
 [submodule "vim/pack/filetypes/start/plantuml-syntax"]
 	path = vim/pack/filetypes/start/plantuml-syntax
-	url = github:aklt/plantuml-syntax
+	url = https://github.com/aklt/plantuml-syntax
 [submodule "vim/pack/filetypes/start/qmake-syntax-vim"]
 	path = vim/pack/filetypes/start/qmake-syntax-vim
-	url = github:artoj/qmake-syntax-vim
+	url = https://github.com/artoj/qmake-syntax-vim
 [submodule "vim/pack/filetypes/start/vim-sxhkdrc"]
 	path = vim/pack/filetypes/start/vim-sxhkdrc
-	url = github:baskerville/vim-sxhkdrc
+	url = https://github.com/baskerville/vim-sxhkdrc
 [submodule "vim/pack/filetypes/start/Vim-Jinja2-Syntax"]
 	path = vim/pack/filetypes/start/Vim-Jinja2-Syntax
-	url = github:Glench/Vim-Jinja2-Syntax
+	url = https://github.com/Glench/Vim-Jinja2-Syntax
 [submodule "vim/pack/filetypes/start/vim-tex-fold"]
 	path = vim/pack/filetypes/start/vim-tex-fold
-	url = github:matze/vim-tex-fold
+	url = https://github.com/matze/vim-tex-fold
 [submodule "vim/pack/filetypes/start/vim-xverif"]
 	path = vim/pack/filetypes/start/vim-xverif
-	url = github:mgrabovsky/vim-xverif
+	url = https://github.com/mgrabovsky/vim-xverif
 [submodule "vim/pack/filetypes/start/vim-jsx"]
 	path = vim/pack/filetypes/start/vim-jsx
-	url = github:mxw/vim-jsx
+	url = https://github.com/mxw/vim-jsx
 [submodule "vim/pack/filetypes/start/vim-markdown-folding"]
 	path = vim/pack/filetypes/start/vim-markdown-folding
-	url = github:nelstrom/vim-markdown-folding
+	url = https://github.com/nelstrom/vim-markdown-folding
 [submodule "vim/pack/filetypes/start/ejs-syntax"]
 	path = vim/pack/filetypes/start/ejs-syntax
-	url = github:nikvdp/ejs-syntax
+	url = https://github.com/nikvdp/ejs-syntax
 [submodule "vim/pack/filetypes/start/vim-cpp-enhanced-highlight"]
 	path = vim/pack/filetypes/start/vim-cpp-enhanced-highlight
-	url = github:octol/vim-cpp-enhanced-highlight
+	url = https://github.com/octol/vim-cpp-enhanced-highlight
 [submodule "vim/pack/filetypes/start/vim-javascript"]
 	path = vim/pack/filetypes/start/vim-javascript
-	url = github:pangloss/vim-javascript
+	url = https://github.com/pangloss/vim-javascript
 [submodule "vim/pack/filetypes/start/vim-alloy"]
 	path = vim/pack/filetypes/start/vim-alloy
-	url = github:runoshun/vim-alloy
+	url = https://github.com/runoshun/vim-alloy
 [submodule "vim/pack/filetypes/start/scons.vim"]
 	path = vim/pack/filetypes/start/scons.vim
-	url = github:vim-scripts/scons.vim
+	url = https://github.com/vim-scripts/scons.vim
 [submodule "vim/pack/others/start/linediff.vim"]
 	path = vim/pack/others/start/linediff.vim
-	url = github:AndrewRadev/linediff.vim
+	url = https://github.com/AndrewRadev/linediff.vim
 [submodule "vim/pack/others/start/vim-rooter"]
 	path = vim/pack/others/start/vim-rooter
-	url = github:airblade/vim-rooter
+	url = https://github.com/airblade/vim-rooter
 [submodule "vim/pack/others/opt/Colorizer"]
 	path = vim/pack/others/opt/Colorizer
-	url = github:chrisbra/Colorizer
+	url = https://github.com/chrisbra/Colorizer
 [submodule "vim/pack/others/opt/vim-diff-enhanced"]
 	path = vim/pack/others/opt/vim-diff-enhanced
-	url = github:chrisbra/vim-diff-enhanced
+	url = https://github.com/chrisbra/vim-diff-enhanced
 [submodule "vim/pack/others/start/editorconfig-vim"]
 	path = vim/pack/others/start/editorconfig-vim
-	url = github:editorconfig/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim
 [submodule "vim/pack/others/start/DidYouMean"]
 	path = vim/pack/others/start/DidYouMean
-	url = github:EinfachToll/DidYouMean
+	url = https://github.com/EinfachToll/DidYouMean
 [submodule "vim/pack/others/start/vim-snippets"]
 	path = vim/pack/others/start/vim-snippets
-	url = github:honza/vim-snippets
+	url = https://github.com/honza/vim-snippets
 [submodule "vim/pack/others/start/fastfold"]
 	path = vim/pack/others/start/fastfold
-	url = github:konfekt/fastfold
+	url = https://github.com/konfekt/fastfold
 [submodule "vim/pack/others/start/traces.vim"]
 	path = vim/pack/others/start/traces.vim
-	url = github:markonm/traces.vim
+	url = https://github.com/markonm/traces.vim
 [submodule "vim/pack/others/start/scratch.vim"]
 	path = vim/pack/others/start/scratch.vim
-	url = github:mtth/scratch.vim
+	url = https://github.com/mtth/scratch.vim
 [submodule "vim/pack/others/opt/neocomplete"]
 	path = vim/pack/others/opt/neocomplete
-	url = github:shougo/neocomplete
+	url = https://github.com/shougo/neocomplete
 [submodule "vim/pack/others/opt/supertab"]
 	path = vim/pack/others/opt/supertab
-	url = github:ervandew/supertab
+	url = https://github.com/ervandew/supertab
 [submodule "vim/pack/others/opt/ultisnips"]
 	path = vim/pack/others/opt/ultisnips
-	url = github:SirVer/ultisnips
+	url = https://github.com/SirVer/ultisnips
 [submodule "vim/pack/others/start/vim-speeddating"]
 	path = vim/pack/others/start/vim-speeddating
-	url = github:tpope/vim-speeddating
+	url = https://github.com/tpope/vim-speeddating
 [submodule "vim/pack/others/start/vim-surround"]
 	path = vim/pack/others/start/vim-surround
-	url = github:tpope/vim-surround
+	url = https://github.com/tpope/vim-surround
 [submodule "vim/pack/others/start/vim-unimpaired"]
 	path = vim/pack/others/start/vim-unimpaired
-	url = github:tpope/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired
 [submodule "vim/pack/others/start/vim-repeat"]
 	path = vim/pack/others/start/vim-repeat
-	url = github:tpope/vim-repeat
+	url = https://github.com/tpope/vim-repeat
 [submodule "vim/pack/others/opt/vim-pathogen"]
 	path = vim/pack/others/opt/vim-pathogen
-	url = github:tpope/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen
 [submodule "vim/pack/others/opt/open-browser.vim"]
 	path = vim/pack/others/opt/open-browser.vim
-	url = github:tyru/open-browser.vim
+	url = https://github.com/tyru/open-browser.vim
 [submodule "vim/pack/others/start/quick-scope"]
 	path = vim/pack/others/start/quick-scope
-	url = github:unblevable/quick-scope
+	url = https://github.com/unblevable/quick-scope
 [submodule "vim/pack/others/opt/DoxygenToolkit.vim"]
 	path = vim/pack/others/opt/DoxygenToolkit.vim
-	url = github:vim-scripts/DoxygenToolkit.vim
+	url = https://github.com/vim-scripts/DoxygenToolkit.vim
 [submodule "vim/pack/others/start/syntastic"]
 	path = vim/pack/others/start/syntastic
-	url = github:vim-syntastic/syntastic
+	url = https://github.com/vim-syntastic/syntastic
 [submodule "vim/pack/others/opt/plantuml-previewer.vim"]
 	path = vim/pack/others/opt/plantuml-previewer.vim
-	url = github:weirongxu/plantuml-previewer.vim
+	url = https://github.com/weirongxu/plantuml-previewer.vim
 [submodule "vim/pack/others/opt/indentLine"]
 	path = vim/pack/others/start/indentLine
-	url = github:Yggdroot/indentLine
+	url = https://github.com/Yggdroot/indentLine
 [submodule "vim/pack/mine/opt/vim-superupdate"]
 	path = vim/pack/mine/opt/vim-superupdate
-	url = github:bradford-smith94/vim-superupdate
+	url = https://github.com/bradford-smith94/vim-superupdate
